@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 export type GovUKButtonColorType =
   | 'primary'
@@ -12,7 +12,7 @@ export type GovUKButtonColorType =
   standalone: true,
   imports: [NgClass],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKButtonComponent {
   disabled = input(false);

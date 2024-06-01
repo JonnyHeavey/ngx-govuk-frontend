@@ -1,5 +1,5 @@
 import { TitleCasePipe } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
 
 export type GovUKPhase = 'alpha' | 'beta';
@@ -9,6 +9,7 @@ export type GovUKPhase = 'alpha' | 'beta';
   standalone: true,
   imports: [TitleCasePipe, GovUKTagComponent],
   templateUrl: './phase-banner.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKPhaseBannerComponent {
   phase = input<GovUKPhase>('beta');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { GovUKButtonComponent } from '../button/button.component';
 
 @Component({
@@ -6,5 +6,6 @@ import { GovUKButtonComponent } from '../button/button.component';
   standalone: true,
   imports: [GovUKButtonComponent],
   templateUrl: './button-group.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKButtonGroupComponent {}

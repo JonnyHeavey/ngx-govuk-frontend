@@ -1,5 +1,10 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
 
 export type GovUKTagColor =
   | 'grey'
@@ -18,6 +23,7 @@ export type GovUKTagColor =
   standalone: true,
   imports: [NgClass],
   templateUrl: './tag.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKTagComponent {
   color = input<GovUKTagColor>('blue');

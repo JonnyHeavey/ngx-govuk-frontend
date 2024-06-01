@@ -22,6 +22,9 @@
       "ngx-govuk-frontend/button": [
         "libs/ngx-govuk-frontend/button/src/index.ts"
       ],
+      "ngx-govuk-frontend/cookie-banner": [
+        "libs/ngx-govuk-frontend/cookie-banner/src/index.ts"
+      ],
       "ngx-govuk-frontend/inset-text": [
         "libs/ngx-govuk-frontend/inset-text/src/index.ts"
       ],
