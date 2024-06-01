@@ -25,7 +25,7 @@ const ButtonTemplate: StoryFn<GovUKButtonComponent> = (
 ) => ({
   props: { ...args },
   template: `<ngx-govuk-button ${argsToTemplate(args)}>
-    Hello world
+    Save and continue
   </ngx-govuk-button>`,
 });
 
