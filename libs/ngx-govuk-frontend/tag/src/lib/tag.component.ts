@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 export type GovUKTagColor =
   | 'grey'
@@ -21,8 +21,13 @@ export type GovUKTagColor =
 })
 export class GovUKTagComponent {
   color = input<GovUKTagColor>('blue');
+  extraClasses = input<string>();
 
-  readonly colorClasses: Record<GovUKTagColor, string> = {
+  readonly classes = computed(
+    () => `${this.colorClasses[this.color()]} ${this.extraClasses()}`
+  );
+
+  private readonly colorClasses: Record<GovUKTagColor, string> = {
     grey: 'govuk-tag--grey',
     green: 'govuk-tag--green',
     turquoise: 'govuk-tag--turquoise',
