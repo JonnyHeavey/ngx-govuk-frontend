@@ -25,6 +25,9 @@
       "ngx-govuk-frontend/inset-text": [
         "libs/ngx-govuk-frontend/inset-text/src/index.ts"
       ],
+      "ngx-govuk-frontend/panel": [
+        "libs/ngx-govuk-frontend/panel/src/index.ts"
+      ],
       "ngx-govuk-frontend/tag": ["libs/ngx-govuk-frontend/tag/src/index.ts"],
       "ngx-govuk-frontend/warning-text": [
         "libs/ngx-govuk-frontend/warning-text/src/index.ts"
