@@ -28,6 +28,9 @@
       "ngx-govuk-frontend/details": [
         "libs/ngx-govuk-frontend/details/src/index.ts"
       ],
+      "ngx-govuk-frontend/footer": [
+        "libs/ngx-govuk-frontend/footer/src/index.ts"
+      ],
       "ngx-govuk-frontend/inset-text": [
         "libs/ngx-govuk-frontend/inset-text/src/index.ts"
       ],
