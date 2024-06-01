@@ -1,5 +1,5 @@
-export { GovUKButtonGroupComponent } from './button-group/button-group.component';
+export { GovUKButtonGroupComponent } from './lib/button-group/button-group.component';
 export {
   GovUKButtonColorType,
   GovUKButtonComponent,
-} from './button/button.component';
+} from './lib/button/button.component';
