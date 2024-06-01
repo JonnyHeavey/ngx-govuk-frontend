@@ -31,6 +31,40 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/ngx-govuk-frontend/.storybook",
+        "browserTarget": "ngx-govuk-frontend:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputDir": "dist/storybook/ngx-govuk-frontend",
+        "configDir": "libs/ngx-govuk-frontend/.storybook",
+        "browserTarget": "ngx-govuk-frontend:build-storybook",
+        "compodoc": false,
+        "styles": [
+          "node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css"
+        ]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   }
 }
