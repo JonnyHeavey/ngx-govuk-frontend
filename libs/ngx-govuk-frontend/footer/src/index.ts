@@ -1,3 +1,1 @@
-export const greeting = 'Hello World!';
-
-export * from './lib/footer.component';
+export { GovUKFooterComponent } from './lib/footer.component';

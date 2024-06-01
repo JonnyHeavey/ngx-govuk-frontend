@@ -1,3 +1,1 @@
-export const greeting = 'Hello World!';
-
-export * from './lib/details.component';
+export { GovUKDetailsComponent } from './lib/details.component';

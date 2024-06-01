@@ -1,3 +1,1 @@
-export const greeting = 'Hello World!';
-
-export * from './lib/header.component';
+export { GovUKHeaderComponent } from './lib/header.component';
