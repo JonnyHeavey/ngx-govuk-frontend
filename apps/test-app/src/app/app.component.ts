@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NgxGovukFrontendComponent } from 'ngx-govuk-frontend';
+import { GovUKButtonComponent } from 'ngx-govuk-frontend/button';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, NgxGovukFrontendComponent],
+  imports: [RouterModule, GovUKButtonComponent],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
