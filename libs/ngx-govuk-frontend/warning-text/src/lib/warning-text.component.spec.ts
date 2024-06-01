@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { WarningTextComponent } from './warning-text.component';
+import { GovUKWarningTextComponent } from './warning-text.component';
 
-describe('WarningTextComponent', () => {
-  let component: WarningTextComponent;
-  let fixture: ComponentFixture<WarningTextComponent>;
+describe('GovUKWarningTextComponent', () => {
+  let component: GovUKWarningTextComponent;
+  let fixture: ComponentFixture<GovUKWarningTextComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WarningTextComponent],
+      imports: [GovUKWarningTextComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(WarningTextComponent);
+    fixture = TestBed.createComponent(GovUKWarningTextComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
