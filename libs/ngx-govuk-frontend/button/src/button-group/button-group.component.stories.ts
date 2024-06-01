@@ -9,7 +9,7 @@ import { GovUKButtonGroupComponent } from './button-group.component';
 
 const meta: Meta<GovUKButtonGroupComponent> = {
   component: GovUKButtonGroupComponent,
-  title: 'GovUKButtonGroupComponent',
+  title: 'Button/GovUKButtonGroupComponent',
   decorators: [
     moduleMetadata({
       imports: [GovUKButtonComponent],

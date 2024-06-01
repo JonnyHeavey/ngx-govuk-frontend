@@ -9,7 +9,7 @@ import { GovUKButtonColorType, GovUKButtonComponent } from './button.component';
 
 const meta: Meta<GovUKButtonComponent> = {
   component: GovUKButtonComponent,
-  title: 'GovUKButtonComponent',
+  title: 'Button/GovUKButtonComponent',
   argTypes: {
     color: {
       options: ['primary', 'secondary', 'warning', 'inverse'],
