@@ -8,7 +8,7 @@ const meta: Meta<GovUKWarningTextComponent> = {
 export default meta;
 type Story = StoryObj<GovUKWarningTextComponent>;
 
-const ButtonTemplate: StoryFn<GovUKWarningTextComponent> = (
+const Template: StoryFn<GovUKWarningTextComponent> = (
   args: GovUKWarningTextComponent
 ) => ({
   props: { ...args },
@@ -18,5 +18,5 @@ const ButtonTemplate: StoryFn<GovUKWarningTextComponent> = (
 });
 
 export const Primary: Story = {
-  render: ButtonTemplate,
+  render: Template,
 };

@@ -19,7 +19,7 @@ const meta: Meta<GovUKButtonGroupComponent> = {
 export default meta;
 type Story = StoryObj<GovUKButtonGroupComponent>;
 
-const ButtonGroupTemplate: StoryFn<GovUKButtonGroupComponent> = (
+const Template: StoryFn<GovUKButtonGroupComponent> = (
   args: GovUKButtonGroupComponent
 ) => ({
   props: { ...args },
@@ -30,6 +30,6 @@ const ButtonGroupTemplate: StoryFn<GovUKButtonGroupComponent> = (
 });
 
 export const Primary: Story = {
-  render: ButtonGroupTemplate,
+  render: Template,
   args: {},
 };

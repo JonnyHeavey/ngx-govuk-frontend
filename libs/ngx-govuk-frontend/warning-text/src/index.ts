@@ -1,1 +1,1 @@
-export { GovUKWarningTextComponent } from './warning-text/warning-text.component';
+export { GovUKWarningTextComponent } from './lib/warning-text.component';

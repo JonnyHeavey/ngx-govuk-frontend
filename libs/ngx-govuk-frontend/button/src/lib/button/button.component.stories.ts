@@ -20,7 +20,7 @@ const meta: Meta<GovUKButtonComponent> = {
 export default meta;
 type Story = StoryObj<GovUKButtonComponent>;
 
-const ButtonTemplate: StoryFn<GovUKButtonComponent> = (
+const Template: StoryFn<GovUKButtonComponent> = (
   args: GovUKButtonComponent
 ) => ({
   props: { ...args },
@@ -36,6 +36,6 @@ const defaultArgs = {
 };
 
 export const Primary: Story = {
-  render: ButtonTemplate,
+  render: Template,
   args: defaultArgs,
 };
