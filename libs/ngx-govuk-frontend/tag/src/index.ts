@@ -1,1 +1,1 @@
-export { GovUKTagComponent } from './lib/tag.component';
+export { GovUKTagColor, GovUKTagComponent } from './lib/tag.component';
