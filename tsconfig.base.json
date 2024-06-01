@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "ngx-govuk-frontend": ["libs/ngx-govuk-frontend/src/index.ts"],
+      "ngx-govuk-frontend/back-link": [
+        "libs/ngx-govuk-frontend/back-link/src/index.ts"
+      ],
       "ngx-govuk-frontend/button": [
         "libs/ngx-govuk-frontend/button/src/index.ts"
       ],
