@@ -25,6 +25,9 @@
       "ngx-govuk-frontend/inset-text": [
         "libs/ngx-govuk-frontend/inset-text/src/index.ts"
       ],
+      "ngx-govuk-frontend/notification-banner": [
+        "libs/ngx-govuk-frontend/notification-banner/src/index.ts"
+      ],
       "ngx-govuk-frontend/panel": [
         "libs/ngx-govuk-frontend/panel/src/index.ts"
       ],
