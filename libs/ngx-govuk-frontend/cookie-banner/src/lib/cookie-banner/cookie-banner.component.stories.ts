@@ -1,4 +1,3 @@
-import { InputSignal } from '@angular/core';
 import {
   argsToTemplate,
   type Meta,
@@ -14,9 +13,7 @@ const meta: Meta<GovUKCookieBannerComponent> = {
 export default meta;
 type Story = StoryObj<GovUKCookieBannerComponent>;
 
-const Template: StoryFn<GovUKCookieBannerComponent> = (
-  args: GovUKCookieBannerComponent
-) => ({
+const Template: StoryFn<GovUKCookieBannerComponent> = (args) => ({
   props: { ...args },
   template: `<ngx-govuk-cookie-banner ${argsToTemplate(args)}>
     
@@ -26,6 +23,6 @@ const Template: StoryFn<GovUKCookieBannerComponent> = (
 export const Primary: Story = {
   render: Template,
   args: {
-    appName: 'Test Application' as unknown as InputSignal<string>,
+    appName: 'Test Application',
   },
 };

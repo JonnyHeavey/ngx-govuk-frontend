@@ -1,4 +1,3 @@
-import { InputSignal } from '@angular/core';
 import {
   argsToTemplate,
   type Meta,
@@ -14,9 +13,7 @@ const meta: Meta<GovUKNotificationBannerComponent> = {
 export default meta;
 type Story = StoryObj<GovUKNotificationBannerComponent>;
 
-const Template: StoryFn<GovUKNotificationBannerComponent> = (
-  args: GovUKNotificationBannerComponent
-) => ({
+const Template: StoryFn<GovUKNotificationBannerComponent> = (args) => ({
   props: { ...args },
   template: `<ngx-govuk-notification-banner ${argsToTemplate(args)}>
     <p class="govuk-notification-banner__heading">
@@ -29,6 +26,6 @@ const Template: StoryFn<GovUKNotificationBannerComponent> = (
 export const Primary: Story = {
   render: Template,
   args: {
-    title: 'Important' as unknown as InputSignal<string>,
+    title: 'Important',
   },
 };

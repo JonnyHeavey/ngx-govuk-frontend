@@ -1,11 +1,10 @@
-import { InputSignal } from '@angular/core';
 import {
   argsToTemplate,
   type Meta,
   type StoryFn,
   type StoryObj,
 } from '@storybook/angular';
-import { GovUKTagColor, GovUKTagComponent } from './tag.component';
+import { GovUKTagComponent } from './tag.component';
 
 const meta: Meta<GovUKTagComponent> = {
   component: GovUKTagComponent,
@@ -32,7 +31,7 @@ const meta: Meta<GovUKTagComponent> = {
 export default meta;
 type Story = StoryObj<GovUKTagComponent>;
 
-const Template: StoryFn<GovUKTagComponent> = (args: GovUKTagComponent) => ({
+const Template: StoryFn<GovUKTagComponent> = (args) => ({
   props: { ...args },
   template: `<ngx-govuk-tag ${argsToTemplate(args)}>
     Completed
@@ -42,6 +41,6 @@ const Template: StoryFn<GovUKTagComponent> = (args: GovUKTagComponent) => ({
 export const Primary: Story = {
   render: Template,
   args: {
-    color: 'red' as unknown as InputSignal<GovUKTagColor>,
+    color: 'red',
   },
 };

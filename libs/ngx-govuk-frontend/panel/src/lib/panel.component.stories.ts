@@ -1,4 +1,3 @@
-import { InputSignal } from '@angular/core';
 import {
   argsToTemplate,
   type Meta,
@@ -14,7 +13,7 @@ const meta: Meta<GovUKPanelComponent> = {
 export default meta;
 type Story = StoryObj<GovUKPanelComponent>;
 
-const Template: StoryFn<GovUKPanelComponent> = (args: GovUKPanelComponent) => ({
+const Template: StoryFn<GovUKPanelComponent> = (args) => ({
   props: { ...args },
   template: `<ngx-govuk-panel ${argsToTemplate(args)}>
     <span>Your reference number<br><strong>HDJ2123F</strong></span>
@@ -24,6 +23,6 @@ const Template: StoryFn<GovUKPanelComponent> = (args: GovUKPanelComponent) => ({
 export const Primary: Story = {
   render: Template,
   args: {
-    title: 'Application complete' as unknown as InputSignal<string>,
+    title: 'Application complete',
   },
 };

@@ -1,4 +1,3 @@
-import { InputSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   argsToTemplate,
@@ -27,16 +26,14 @@ const meta: Meta<GovUKHeaderComponent> = {
 export default meta;
 type Story = StoryObj<GovUKHeaderComponent>;
 
-const Template: StoryFn<GovUKHeaderComponent> = (
-  args: GovUKHeaderComponent
-) => ({
+const Template: StoryFn<GovUKHeaderComponent> = (args) => ({
   props: { ...args },
   template: `<ngx-govuk-header ${argsToTemplate(args)}>
   </ngx-govuk-header>`,
 });
 
 const defaultArgs = {
-  logoLink: '/' as unknown as InputSignal<string>,
+  logoLink: '/',
 };
 
 export const Primary: Story = {
@@ -48,7 +45,7 @@ export const ServiceName: Story = {
   render: Template,
   args: {
     ...defaultArgs,
-    appName: 'Service name' as unknown as InputSignal<string | undefined>,
-    appLink: '/' as unknown as InputSignal<string | undefined>,
+    appName: 'Service name',
+    appLink: '/',
   },
 };

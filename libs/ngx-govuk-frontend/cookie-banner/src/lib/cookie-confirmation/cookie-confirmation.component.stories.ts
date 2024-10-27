@@ -8,9 +8,7 @@ const meta: Meta<GovUKCookieConfirmationComponent> = {
 export default meta;
 type Story = StoryObj<GovUKCookieConfirmationComponent>;
 
-const Template: StoryFn<GovUKCookieConfirmationComponent> = (
-  args: GovUKCookieConfirmationComponent
-) => ({
+const Template: StoryFn<GovUKCookieConfirmationComponent> = (args) => ({
   props: { ...args },
   template: `<ngx-govuk-cookie-confirmation>
   </ngx-govuk-cookie-confirmation>`,

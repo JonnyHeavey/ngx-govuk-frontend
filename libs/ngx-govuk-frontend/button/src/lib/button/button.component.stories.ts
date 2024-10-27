@@ -1,4 +1,3 @@
-import { InputSignal } from '@angular/core';
 import {
   argsToTemplate,
   type Meta,
@@ -20,9 +19,7 @@ const meta: Meta<GovUKButtonComponent> = {
 export default meta;
 type Story = StoryObj<GovUKButtonComponent>;
 
-const Template: StoryFn<GovUKButtonComponent> = (
-  args: GovUKButtonComponent
-) => ({
+const Template: StoryFn<GovUKButtonComponent> = (args) => ({
   props: { ...args },
   template: `<ngx-govuk-button ${argsToTemplate(args)}>
     Save and continue
@@ -30,9 +27,9 @@ const Template: StoryFn<GovUKButtonComponent> = (
 });
 
 const defaultArgs = {
-  color: 'primary' as unknown as InputSignal<GovUKButtonColorType>,
-  disabled: false as unknown as InputSignal<boolean>,
-  start: false as unknown as InputSignal<boolean>,
+  color: 'primary' as GovUKButtonColorType,
+  disabled: false,
+  start: false,
 };
 
 export const Primary: Story = {
