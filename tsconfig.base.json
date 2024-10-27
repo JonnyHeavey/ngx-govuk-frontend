@@ -34,6 +34,9 @@
       "ngx-govuk-frontend/footer": [
         "libs/ngx-govuk-frontend/footer/src/index.ts"
       ],
+      "ngx-govuk-frontend/form-utils": [
+        "libs/ngx-govuk-frontend/form-utils/src/index.ts"
+      ],
       "ngx-govuk-frontend/header": [
         "libs/ngx-govuk-frontend/header/src/index.ts"
       ],
@@ -50,6 +53,9 @@
         "libs/ngx-govuk-frontend/phase-banner/src/index.ts"
       ],
       "ngx-govuk-frontend/tag": ["libs/ngx-govuk-frontend/tag/src/index.ts"],
+      "ngx-govuk-frontend/text-input": [
+        "libs/ngx-govuk-frontend/text-input/src/index.ts"
+      ],
       "ngx-govuk-frontend/warning-text": [
         "libs/ngx-govuk-frontend/warning-text/src/index.ts"
       ]

@@ -1,3 +1,11 @@
 <h1>Ngx Gov.uk Frontend</h1>
 <router-outlet></router-outlet>
 <ngx-govuk-button>Hello world</ngx-govuk-button>
+
+<form [formGroup]="form">
+  <ngx-govuk-text-input
+    formControlName="price"
+    prefix="$"
+    suffix="per item"
+  ></ngx-govuk-text-input>
+</form>
