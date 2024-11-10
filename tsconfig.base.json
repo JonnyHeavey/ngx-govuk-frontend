@@ -56,6 +56,9 @@
       "ngx-govuk-frontend/text-input": [
         "libs/ngx-govuk-frontend/text-input/src/index.ts"
       ],
+      "ngx-govuk-frontend/textarea": [
+        "libs/ngx-govuk-frontend/textarea/src/index.ts"
+      ],
       "ngx-govuk-frontend/warning-text": [
         "libs/ngx-govuk-frontend/warning-text/src/index.ts"
       ]

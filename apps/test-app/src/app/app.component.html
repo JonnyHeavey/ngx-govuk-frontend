@@ -3,9 +3,6 @@
 <ngx-govuk-button>Hello world</ngx-govuk-button>
 
 <form [formGroup]="form">
-  <ngx-govuk-text-input
-    formControlName="price"
-    prefix="$"
-    suffix="per item"
-  ></ngx-govuk-text-input>
+  <ngx-govuk-text-input formControlName="price" prefix="$" suffix="per item" />
+  <ngx-govuk-textarea formControlName="description" />
 </form>

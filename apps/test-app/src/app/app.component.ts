@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { GovUKButtonComponent } from 'ngx-govuk-frontend/button';
 import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
+import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
 
 @Component({
   standalone: true,
@@ -11,6 +12,7 @@ import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
     GovUKButtonComponent,
     ReactiveFormsModule,
     GovUKTextInputComponent,
+    GovUKTextareaComponent,
   ],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',
@@ -19,6 +21,7 @@ import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
 export class AppComponent {
   form = inject(FormBuilder).nonNullable.group({
     price: '',
+    description: '',
   });
 
   constructor() {
