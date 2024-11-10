@@ -58,6 +58,9 @@
       "ngx-govuk-frontend/phase-banner": [
         "libs/ngx-govuk-frontend/phase-banner/src/index.ts"
       ],
+      "ngx-govuk-frontend/radio": [
+        "libs/ngx-govuk-frontend/radio/src/index.ts"
+      ],
       "ngx-govuk-frontend/tag": ["libs/ngx-govuk-frontend/tag/src/index.ts"],
       "ngx-govuk-frontend/text-input": [
         "libs/ngx-govuk-frontend/text-input/src/index.ts"
