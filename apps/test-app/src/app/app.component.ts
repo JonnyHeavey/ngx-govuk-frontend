@@ -5,8 +5,8 @@ import { GovUKButtonComponent } from 'ngx-govuk-frontend/button';
 import { GovUKCheckboxComponent } from 'ngx-govuk-frontend/checkbox';
 import { GovUKPasswordInputComponent } from 'ngx-govuk-frontend/password-input';
 import {
-  GovUKRadioButtonComponent,
   GovUKRadioGroupComponent,
+  GovUKRadioOption,
 } from 'ngx-govuk-frontend/radio';
 import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
 import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
@@ -20,7 +20,6 @@ import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
     GovUKTextareaComponent,
     GovUKPasswordInputComponent,
     GovUKCheckboxComponent,
-    GovUKRadioButtonComponent,
     GovUKRadioGroupComponent,
   ],
   selector: 'ngx-govuk-frontend-root',
@@ -36,8 +35,13 @@ export class AppComponent {
     price: '',
     password: '',
     rememberMe: false,
-    choice: '',
+    choice: 'B',
   });
+
+  options: GovUKRadioOption[] = [
+    { label: 'Option A', value: 'A' },
+    { label: 'Option B', value: 'B' },
+  ];
 
   constructor() {
     this.form.valueChanges.subscribe((changes) => {

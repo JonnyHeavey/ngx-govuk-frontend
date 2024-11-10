@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ValueAccessorDirective } from 'ngx-govuk-frontend/form-utils';
+import {
+  ValueAccessorDirective,
+  injectNgControl,
+} from 'ngx-govuk-frontend/form-utils';
+
+export interface GovUKRadioOption {
+  label: string;
+  value: string;
+}
 
 @Component({
   selector: 'ngx-govuk-radio-group',
@@ -10,4 +18,14 @@ import { ValueAccessorDirective } from 'ngx-govuk-frontend/form-utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [ValueAccessorDirective],
 })
-export class GovUKRadioGroupComponent {}
+export class GovUKRadioGroupComponent {
+  readonly ngControl = injectNgControl();
+
+  readonly options = input.required<GovUKRadioOption[]>();
+
+  setValue(value: string) {
+    if (this.ngControl.control.value !== value) {
+      this.ngControl.control.setValue(value);
+    }
+  }
+}
