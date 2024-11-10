@@ -25,6 +25,9 @@
       "ngx-govuk-frontend/button": [
         "libs/ngx-govuk-frontend/button/src/index.ts"
       ],
+      "ngx-govuk-frontend/checkbox": [
+        "libs/ngx-govuk-frontend/checkbox/src/index.ts"
+      ],
       "ngx-govuk-frontend/cookie-banner": [
         "libs/ngx-govuk-frontend/cookie-banner/src/index.ts"
       ],
