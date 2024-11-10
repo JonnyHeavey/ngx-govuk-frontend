@@ -49,6 +49,9 @@
       "ngx-govuk-frontend/panel": [
         "libs/ngx-govuk-frontend/panel/src/index.ts"
       ],
+      "ngx-govuk-frontend/password-input": [
+        "libs/ngx-govuk-frontend/password-input/src/index.ts"
+      ],
       "ngx-govuk-frontend/phase-banner": [
         "libs/ngx-govuk-frontend/phase-banner/src/index.ts"
       ],
