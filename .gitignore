@@ -40,6 +40,6 @@ Thumbs.db
 
 .angular
 
-.nx/cache
+.nx
 
 storybook-static

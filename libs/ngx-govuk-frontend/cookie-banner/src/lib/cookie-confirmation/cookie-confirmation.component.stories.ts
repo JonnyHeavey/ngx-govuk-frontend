@@ -3,15 +3,14 @@ import { GovUKCookieConfirmationComponent } from './cookie-confirmation.componen
 
 const meta: Meta<GovUKCookieConfirmationComponent> = {
   component: GovUKCookieConfirmationComponent,
-  title: 'Cookie Banner/GovUKCookieConfirmationComponent',
+  title: 'Cookies/GovUKCookieConfirmationComponent',
 };
 export default meta;
 type Story = StoryObj<GovUKCookieConfirmationComponent>;
 
 const Template: StoryFn<GovUKCookieConfirmationComponent> = (args) => ({
   props: { ...args },
-  template: `<ngx-govuk-cookie-confirmation>
-  </ngx-govuk-cookie-confirmation>`,
+  template: `<ngx-govuk-cookie-confirmation />`,
 });
 
 export const Primary: Story = {

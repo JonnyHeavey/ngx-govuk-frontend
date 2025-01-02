@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { GovUKButtonComponent } from 'ngx-govuk-frontend/button';
 import { GovUKCheckboxComponent } from 'ngx-govuk-frontend/checkbox';
+import { GovUKHeaderComponent } from 'ngx-govuk-frontend/header';
 import { GovUKPasswordInputComponent } from 'ngx-govuk-frontend/password-input';
 import {
   GovUKRadioGroupComponent,
@@ -14,6 +15,7 @@ import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
   standalone: true,
   imports: [
     RouterModule,
+    GovUKHeaderComponent,
     GovUKButtonComponent,
     ReactiveFormsModule,
     GovUKTextInputComponent,
@@ -44,8 +46,8 @@ export class AppComponent {
   ];
 
   constructor() {
-    this.form.valueChanges.subscribe((changes) => 
-      console.log('changes', changes)
+    this.form.valueChanges.subscribe((changes) =>
+      console.log('changes', changes),
     );
   }
 }

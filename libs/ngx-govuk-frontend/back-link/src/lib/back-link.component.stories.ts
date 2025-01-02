@@ -9,11 +9,10 @@ export default meta;
 type Story = StoryObj<GovUKBackLinkComponent>;
 
 const Template: StoryFn<GovUKBackLinkComponent> = (
-  args: GovUKBackLinkComponent
+  args: GovUKBackLinkComponent,
 ) => ({
   props: { ...args },
-  template: `<ngx-govuk-back-link>
-  </ngx-govuk-back-link>`,
+  template: `<ngx-govuk-back-link />`,
 });
 
 export const Primary: Story = {

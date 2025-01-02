@@ -6,11 +6,11 @@ import {
   type StoryFn,
   type StoryObj,
 } from '@storybook/angular';
-import { GovUKTextInputComponent } from './text-input.component';
+import { GovUKCheckboxComponent } from './checkbox.component';
 
-const meta: Meta<GovUKTextInputComponent> = {
-  component: GovUKTextInputComponent,
-  title: 'Forms/GovUKTextInputComponent',
+const meta: Meta<GovUKCheckboxComponent> = {
+  component: GovUKCheckboxComponent,
+  title: 'Forms/GovUKCheckboxComponent',
   decorators: [
     moduleMetadata({
       imports: [ReactiveFormsModule],
@@ -19,22 +19,22 @@ const meta: Meta<GovUKTextInputComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<GovUKTextInputComponent>;
+type Story = StoryObj<GovUKCheckboxComponent>;
 
-const Template: StoryFn<GovUKTextInputComponent> = (args) => ({
-  props: { ...args, form: new FormGroup({ input: new FormControl('') }) },
+const Template: StoryFn<GovUKCheckboxComponent> = (args) => ({
+  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },
   template: `<form [formGroup]="form">
-      <ngx-govuk-text-input
+      <ngx-govuk-checkbox
         formControlName="input"
          ${argsToTemplate(args)}
-      ></ngx-govuk-text-input>
+      ></ngx-govuk-checkbox>
     </form>`,
 });
 
 export const Primary: Story = {
   render: Template,
   args: {
-    prefix: '£',
-    suffix: 'per item',
+    id: 'checkbox1',
+    label: 'Sample',
   },
 };

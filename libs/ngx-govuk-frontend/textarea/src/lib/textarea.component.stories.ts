@@ -6,11 +6,11 @@ import {
   type StoryFn,
   type StoryObj,
 } from '@storybook/angular';
-import { GovUKTextInputComponent } from './text-input.component';
+import { GovUKTextareaComponent } from './textarea.component';
 
-const meta: Meta<GovUKTextInputComponent> = {
-  component: GovUKTextInputComponent,
-  title: 'Forms/GovUKTextInputComponent',
+const meta: Meta<GovUKTextareaComponent> = {
+  component: GovUKTextareaComponent,
+  title: 'Forms/GovUKTextareaComponent',
   decorators: [
     moduleMetadata({
       imports: [ReactiveFormsModule],
@@ -19,22 +19,19 @@ const meta: Meta<GovUKTextInputComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<GovUKTextInputComponent>;
+type Story = StoryObj<GovUKTextareaComponent>;
 
-const Template: StoryFn<GovUKTextInputComponent> = (args) => ({
+const Template: StoryFn<GovUKTextareaComponent> = (args) => ({
   props: { ...args, form: new FormGroup({ input: new FormControl('') }) },
   template: `<form [formGroup]="form">
-      <ngx-govuk-text-input
+      <ngx-govuk-textarea
         formControlName="input"
          ${argsToTemplate(args)}
-      ></ngx-govuk-text-input>
+      ></ngx-govuk-textarea>
     </form>`,
 });
 
 export const Primary: Story = {
   render: Template,
-  args: {
-    prefix: '£',
-    suffix: 'per item',
-  },
+  args: {},
 };

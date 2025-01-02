@@ -26,7 +26,7 @@ const Template: StoryFn<GovUKPhaseBannerComponent> = (args) => ({
   props: { ...args },
   template: `<ngx-govuk-phase-banner ${argsToTemplate(args)}>
     <span class="govuk-phase-banner__text">
-      This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
     </span>
   </ngx-govuk-phase-banner>`,
 });

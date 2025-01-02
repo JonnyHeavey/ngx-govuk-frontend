@@ -8,7 +8,7 @@ import { GovUKCookieBannerComponent } from './cookie-banner.component';
 
 const meta: Meta<GovUKCookieBannerComponent> = {
   component: GovUKCookieBannerComponent,
-  title: 'Cookie Banner/GovUKCookieBannerComponent',
+  title: 'Cookies/GovUKCookieBannerComponent',
 };
 export default meta;
 type Story = StoryObj<GovUKCookieBannerComponent>;
