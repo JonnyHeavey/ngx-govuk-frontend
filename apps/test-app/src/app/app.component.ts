@@ -44,8 +44,8 @@ export class AppComponent {
   ];
 
   constructor() {
-    this.form.valueChanges.subscribe((changes) => {
-      console.log('changes', changes);
-    });
+    this.form.valueChanges.subscribe((changes) => 
+      console.log('changes', changes)
+    );
   }
 }

@@ -18,4 +18,15 @@ describe('BackLinkComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render back link with default class', () => {
+    const linkElement = fixture.nativeElement.querySelector('a');
+    expect(linkElement).toBeTruthy();
+    expect(linkElement.classList.contains('govuk-back-link')).toBeTruthy();
+  });
+
+  it('should render with default "Back" text', () => {
+    const linkElement = fixture.nativeElement.querySelector('a');
+    expect(linkElement.textContent.trim()).toBe('Back');
+  });
 });
