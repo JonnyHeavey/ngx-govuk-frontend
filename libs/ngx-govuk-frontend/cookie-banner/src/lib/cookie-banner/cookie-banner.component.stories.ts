@@ -15,9 +15,7 @@ type Story = StoryObj<GovUKCookieBannerComponent>;
 
 const Template: StoryFn<GovUKCookieBannerComponent> = (args) => ({
   props: { ...args },
-  template: `<ngx-govuk-cookie-banner ${argsToTemplate(args)}>
-    
-  </ngx-govuk-cookie-banner>`,
+  template: `<ngx-govuk-cookie-banner ${argsToTemplate(args)} />`,
 });
 
 export const Primary: Story = {
