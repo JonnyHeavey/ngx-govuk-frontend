@@ -25,9 +25,11 @@
 <ngx-govuk-tag color="green">Completed</ngx-govuk-tag>
 
 <form [formGroup]="form">
-  <ngx-govuk-text-input formControlName="title" />
+  <ngx-govuk-text-input formControlName="colour" label="What is your favourite colour?" hint="Perhaps is blue, or maybe red?" inputId="colour" isPageTitle="true" autocomplete="given-name" extraClasses="govuk-input--width-5 govuk-input--extra-letter-spacing" />
+  <ngx-govuk-text-input formControlName="earning" prefix="£" label="How much do you earn?" hint="This should be your pre-tax income amount" inputId="earning" />
+  <ngx-govuk-text-input formControlName="weight" suffix="KG" label="How much do you weigh?" inputId="weight" />
+
   <ngx-govuk-textarea formControlName="description" />
-  <ngx-govuk-text-input formControlName="price" prefix="£" suffix="per item" />
   <ngx-govuk-password-input formControlName="password" />
   <ngx-govuk-checkbox
     formControlName="rememberMe"

@@ -34,7 +34,13 @@ const Template: StoryFn<GovUKTextInputComponent> = (args) => ({
 export const Primary: Story = {
   render: Template,
   args: {
-    prefix: '£',
-    suffix: 'per item',
+    inputId: 'story1',
+    label: 'What is your favourite colour?',
+    isPageTitle: true,
+    autocomplete: 'off',
+    extraClasses: '',
+    hint: 'Primary colours are red, green and blue',
+    prefix: '',
+    suffix: '',
   },
 };

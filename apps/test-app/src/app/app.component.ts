@@ -54,7 +54,9 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
 })
 export class AppComponent {
   readonly form = inject(FormBuilder).nonNullable.group({
-    title: '',
+    colour: 'blue',
+    earning: '',
+    weight: '',
     description: '',
     price: '',
     password: '',
