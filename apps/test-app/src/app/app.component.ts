@@ -57,7 +57,7 @@ export class AppComponent {
     colour: 'blue',
     earning: '',
     weight: '',
-    description: '',
+    detail: '',
     price: '',
     password: '',
     rememberMe: false,

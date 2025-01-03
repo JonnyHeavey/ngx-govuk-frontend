@@ -1,4 +1,7 @@
-<ngx-govuk-phase-banner>This service is in beta, please let us know if its broken</ngx-govuk-phase-banner>
+<ngx-govuk-phase-banner
+  >This service is in beta, please let us know if its
+  broken</ngx-govuk-phase-banner
+>
 <ngx-govuk-header logoLink="" />
 
 <div>
@@ -18,25 +21,51 @@
 
 <ngx-govuk-inset-text>I am inset text</ngx-govuk-inset-text>
 
-<ngx-govuk-notification-banner title="Notification title">Notification content</ngx-govuk-notification-banner>
+<ngx-govuk-notification-banner title="Notification title"
+  >Notification content</ngx-govuk-notification-banner
+>
 
 <ngx-govuk-panel title="Panel title">Panel content</ngx-govuk-panel>
 
 <ngx-govuk-tag color="green">Completed</ngx-govuk-tag>
 
 <form [formGroup]="form">
-  <ngx-govuk-text-input formControlName="colour" label="What is your favourite colour?" hint="Perhaps is blue, or maybe red?" inputId="colour" isPageTitle="true" autocomplete="given-name" extraClasses="govuk-input--width-5 govuk-input--extra-letter-spacing" />
-  <ngx-govuk-text-input formControlName="earning" prefix="£" label="How much do you earn?" hint="This should be your pre-tax income amount" inputId="earning" />
-  <ngx-govuk-text-input formControlName="weight" suffix="KG" label="How much do you weigh?" inputId="weight" />
+  <ngx-govuk-text-input
+    formControlName="colour"
+    label="What is your favourite colour?"
+    hint="Perhaps is blue, or maybe red?"
+    inputId="colour"
+    isPageTitle="true"
+    autocomplete="given-name"
+    extraClasses="govuk-input--width-5 govuk-input--extra-letter-spacing"
+  />
+  <ngx-govuk-text-input
+    formControlName="earning"
+    prefix="£"
+    label="How much do you earn?"
+    hint="This should be your pre-tax income amount"
+    inputId="earning"
+  />
+  <ngx-govuk-text-input
+    formControlName="weight"
+    suffix="KG"
+    label="How much do you weigh?"
+    inputId="weight"
+  />
 
-  <ngx-govuk-textarea formControlName="description" />
+  <ngx-govuk-textarea
+    formControlName="detail"
+    label="Can you provide more detail?"
+    hint="Do not include personal or financial information, like your National Insurance number or credit card details"
+    inputId="detail"
+  />
   <ngx-govuk-password-input formControlName="password" />
   <ngx-govuk-checkbox
     formControlName="rememberMe"
     id="remember"
     label="Remember Me"
   />
-  
+
   <ngx-govuk-radio-group formControlName="choice" [options]="options" />
 </form>
 

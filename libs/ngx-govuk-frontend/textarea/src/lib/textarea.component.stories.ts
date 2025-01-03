@@ -33,5 +33,13 @@ const Template: StoryFn<GovUKTextareaComponent> = (args) => ({
 
 export const Primary: Story = {
   render: Template,
-  args: {},
+  args: {
+    inputId: 'story1',
+    label: 'Can you provide more detail?',
+    isPageTitle: true,
+    autocomplete: 'off',
+    extraClasses: '',
+    hint: 'Do not include personal or financial information, like your National Insurance number or credit card details',
+    rows: 2,
+  },
 };
