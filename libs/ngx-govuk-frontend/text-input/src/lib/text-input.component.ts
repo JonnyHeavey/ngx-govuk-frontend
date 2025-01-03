@@ -23,6 +23,7 @@ import {
  * ></ngx-govuk-text-input>
  * ```
  *
+ * @extends {GovUKBaseInputDirective}
  * @property {string} inputId - Required. The ID attribute for the input element.
  * @property {string} label - Required. The label text for the input field.
  * @property {boolean} isPageTitle - Optional. When true, renders the label as a page heading (h1). Defaults to false.
