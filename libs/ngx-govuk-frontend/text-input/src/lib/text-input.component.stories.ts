@@ -35,11 +35,11 @@ export const Primary: Story = {
   render: Template,
   args: {
     inputId: 'story1',
-    label: 'What is your favourite colour?',
+    label: 'What is the name of the event?',
     isPageTitle: true,
     autocomplete: 'off',
     extraClasses: '',
-    hint: 'Primary colours are red, green and blue',
+    hint: "The name you'll use on promotional material",
     prefix: '',
     suffix: '',
   },
