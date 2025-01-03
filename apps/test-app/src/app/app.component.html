@@ -2,9 +2,8 @@
 <ngx-govuk-header logoLink="" />
 
 <div>
-  <ngx-govuk-back-link></ngx-govuk-back-link>
+  <ngx-govuk-back-link />
 </div>
-
 
 <ngx-govuk-button>Hello world</ngx-govuk-button>
 
@@ -28,14 +27,14 @@
 <form [formGroup]="form">
   <ngx-govuk-text-input formControlName="title" />
   <ngx-govuk-textarea formControlName="description" />
-  <ngx-govuk-text-input formControlName="price" prefix="$" suffix="per item" />
+  <ngx-govuk-text-input formControlName="price" prefix="£" suffix="per item" />
   <ngx-govuk-password-input formControlName="password" />
   <ngx-govuk-checkbox
     formControlName="rememberMe"
     id="remember"
     label="Remember Me"
   />
-
+  
   <ngx-govuk-radio-group formControlName="choice" [options]="options" />
 </form>
 

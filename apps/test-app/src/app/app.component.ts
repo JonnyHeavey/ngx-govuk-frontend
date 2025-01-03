@@ -53,9 +53,7 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  private readonly fb = inject(FormBuilder);
-
-  form = this.fb.nonNullable.group({
+  readonly form = inject(FormBuilder).nonNullable.group({
     title: '',
     description: '',
     price: '',
@@ -67,11 +65,12 @@ export class AppComponent {
   options: GovUKRadioOption[] = [
     { label: 'Option A', value: 'A' },
     { label: 'Option B', value: 'B' },
+    { label: 'Option C', value: 'C' },
   ];
 
   constructor() {
     this.form.valueChanges.subscribe((changes) =>
-      console.log('changes', changes),
+      console.log('Form Model Update', changes),
     );
   }
 }
