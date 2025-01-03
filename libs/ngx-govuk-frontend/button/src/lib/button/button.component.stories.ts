@@ -26,13 +26,11 @@ const Template: StoryFn<GovUKButtonComponent> = (args) => ({
   </ngx-govuk-button>`,
 });
 
-const defaultArgs = {
-  color: 'primary' as GovUKButtonColorType,
-  disabled: false,
-  start: false,
-};
-
 export const Primary: Story = {
   render: Template,
-  args: defaultArgs,
+  args: {
+    color: 'primary' as GovUKButtonColorType,
+    disabled: false,
+    start: false,
+  },
 };
