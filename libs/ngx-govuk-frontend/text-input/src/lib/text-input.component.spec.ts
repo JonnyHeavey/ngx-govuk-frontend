@@ -4,6 +4,7 @@ import { GovUKTextInputComponent } from './text-input.component';
 
 import { Component, viewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { GovUKBaseInputDirective } from '../../../form-utils/src';
 
 @Component({
   template: `
@@ -22,7 +23,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     </form>
   `,
   standalone: true,
-  imports: [GovUKTextInputComponent, ReactiveFormsModule],
+  imports: [
+    GovUKTextInputComponent,
+    GovUKBaseInputDirective,
+    ReactiveFormsModule,
+  ],
 })
 class TestHostComponent {
   inputId = '';
@@ -88,19 +93,23 @@ describe('GovUKTextInputComponent', () => {
     expect(control?.valid).toBeTruthy();
   });
 
-  it('should have required inputs', () => {
-    TestBed.runInInjectionContext(() => {
-      expect(component.inputId()).toBe('test-input');
-      expect(component.label()).toBe('Test Input');
-    });
+  it('should have matching id on input and for attribute on label', () => {
+    const inputElement = fixture.nativeElement.querySelector('.govuk-input');
+    const labelElement = fixture.nativeElement.querySelector('.govuk-label');
+
+    expect(inputElement.getAttribute('id')).toBe('test-input');
+    expect(labelElement.getAttribute('for')).toBe('test-input');
   });
 
-  it('should have isPageTitle input', () => {
-    TestBed.runInInjectionContext(() => {
-      hostComponent.isPageTitle = true;
-      fixture.detectChanges();
-      expect(component.isPageTitle()).toBe(true);
-    });
+  it('should maintain matching id and for attributes when inputId changes', () => {
+    hostComponent.inputId = 'new-test-id';
+    fixture.detectChanges();
+
+    const inputElement = fixture.nativeElement.querySelector('.govuk-input');
+    const labelElement = fixture.nativeElement.querySelector('.govuk-label');
+
+    expect(inputElement.getAttribute('id')).toBe('new-test-id');
+    expect(labelElement.getAttribute('for')).toBe('new-test-id');
   });
 
   it('should render as page heading when isPageTitle is true', () => {
@@ -133,15 +142,6 @@ describe('GovUKTextInputComponent', () => {
     expect(labelElement?.textContent?.trim()).toBe('Test Input');
   });
 
-  it('should have hint input', () => {
-    TestBed.runInInjectionContext(() => {
-      const hostComponent = fixture.componentInstance;
-      hostComponent.hint = 'This is a helpful hint';
-      fixture.detectChanges();
-      expect(component.hint()).toBe('This is a helpful hint');
-    });
-  });
-
   it('should render hint element in DOM when hint is set', () => {
     const hostComponent = fixture.componentInstance;
     hostComponent.hint = 'This is a helpful hint';
@@ -150,15 +150,6 @@ describe('GovUKTextInputComponent', () => {
     const hintElement = fixture.nativeElement.querySelector('.govuk-hint');
     expect(hintElement).toBeTruthy();
     expect(hintElement.textContent.trim()).toBe('This is a helpful hint');
-  });
-
-  it('should have autocomplete input', () => {
-    TestBed.runInInjectionContext(() => {
-      const hostComponent = fixture.componentInstance;
-      hostComponent.autocomplete = 'given-name';
-      fixture.detectChanges();
-      expect(component.autocomplete()).toBe('given-name');
-    });
   });
 
   it('should render autocomplete attribute in DOM when autocomplete is set', () => {
@@ -173,15 +164,6 @@ describe('GovUKTextInputComponent', () => {
   it('should default autocomplete to "off"', () => {
     const inputElement = fixture.nativeElement.querySelector('.govuk-input');
     expect(inputElement.getAttribute('autocomplete')).toBe('off');
-  });
-
-  it('should have extraClasses input', () => {
-    TestBed.runInInjectionContext(() => {
-      const hostComponent = fixture.componentInstance;
-      hostComponent.extraClasses = 'custom-class another-class';
-      fixture.detectChanges();
-      expect(component.extraClasses()).toBe('custom-class another-class');
-    });
   });
 
   it('should render extraClasses in DOM when set', () => {

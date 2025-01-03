@@ -1,13 +1,8 @@
 import { NgClass } from '@angular/common';
-import {
-  booleanAttribute,
-  ChangeDetectionStrategy,
-  Component,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  injectNgControl,
+  GovUKBaseInputDirective,
   ValueAccessorDirective,
 } from 'ngx-govuk-frontend/form-utils';
 
@@ -45,16 +40,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [ValueAccessorDirective],
 })
-export class GovUKTextInputComponent {
-  readonly ngControl = injectNgControl();
-
-  readonly inputId = input.required<string>();
-  readonly label = input.required<string>();
-
-  readonly isPageTitle = input(false, { transform: booleanAttribute });
-  readonly autocomplete = input('off');
-  readonly extraClasses = input('');
-  readonly hint = input('');
+export class GovUKTextInputComponent extends GovUKBaseInputDirective {
   readonly prefix = input('');
   readonly suffix = input('');
 }
