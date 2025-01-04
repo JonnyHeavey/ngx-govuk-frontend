@@ -33,5 +33,12 @@ const Template: StoryFn<GovUKPasswordInputComponent> = (args) => ({
 
 export const Primary: Story = {
   render: Template,
-  args: {},
+  args: {
+    inputId: 'story1',
+    label: 'Password',
+    isPageTitle: true,
+    autocomplete: 'off',
+    extraClasses: '',
+    hint: '',
+  },
 };
