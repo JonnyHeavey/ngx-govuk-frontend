@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   GovUKBaseInputDirective,
+  GovUKFormGroupComponent,
   ValueAccessorDirective,
 } from 'ngx-govuk-frontend/form-utils';
 
@@ -38,7 +39,7 @@ import {
 @Component({
   selector: 'ngx-govuk-textarea',
   standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
+  imports: [NgClass, ReactiveFormsModule, GovUKFormGroupComponent],
   templateUrl: './textarea.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [ValueAccessorDirective],

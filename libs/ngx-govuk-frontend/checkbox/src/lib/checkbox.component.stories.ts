@@ -34,7 +34,7 @@ const Template: StoryFn<GovUKCheckboxComponent> = (args) => ({
 export const Primary: Story = {
   render: Template,
   args: {
-    id: 'checkbox1',
+    inputId: 'checkbox1',
     label: 'Sample',
   },
 };

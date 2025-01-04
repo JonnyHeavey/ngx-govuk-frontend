@@ -2,10 +2,14 @@
   <input
     class="govuk-checkboxes__input"
     type="checkbox"
-    [id]="id()"
+    [attr.id]="inputId()"
     [checked]="ngControl.control.value"
   />
-  <label class="govuk-label govuk-checkboxes__label" [for]="id()">
+  <label
+    class="govuk-label govuk-checkboxes__label"
+    [attr.for]="inputId()"
+    (click)="toggle()"
+  >
     {{ label() }}
   </label>
 </div>

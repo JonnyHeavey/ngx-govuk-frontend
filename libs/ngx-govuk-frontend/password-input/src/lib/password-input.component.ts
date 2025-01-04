@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   GovUKBaseInputDirective,
+  GovUKFormGroupComponent,
   ValueAccessorDirective,
 } from 'ngx-govuk-frontend/form-utils';
 
@@ -25,7 +26,7 @@ import {
 @Component({
   selector: 'ngx-govuk-password-input',
   standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
+  imports: [NgClass, ReactiveFormsModule, GovUKFormGroupComponent],
   templateUrl: './password-input.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [ValueAccessorDirective],

@@ -16,7 +16,7 @@ import {
 export class GovUKCheckboxComponent {
   readonly ngControl = injectNgControl();
 
-  readonly id = input.required<string>();
+  readonly inputId = input.required<string>();
   readonly label = input.required<string>();
 
   toggle() {
