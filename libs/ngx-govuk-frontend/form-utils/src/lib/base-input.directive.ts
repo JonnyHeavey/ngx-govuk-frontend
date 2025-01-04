@@ -34,7 +34,7 @@ export class GovUKBaseInputDirective {
   readonly inputId = input.required<string>();
   readonly label = input.required<string>();
 
-  readonly autocomplete = input('off');
+  readonly autocomplete = input<AutoFill>('off');
   readonly extraClasses = input('');
   readonly hint = input('');
   readonly isPageTitle = input(false, { transform: booleanAttribute });
