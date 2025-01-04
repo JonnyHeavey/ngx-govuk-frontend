@@ -4,7 +4,6 @@ import { GovUKTextInputComponent } from './text-input.component';
 
 import { Component, viewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { GovUKBaseInputDirective } from '../../../form-utils/src';
 
 @Component({
   template: `
@@ -23,11 +22,7 @@ import { GovUKBaseInputDirective } from '../../../form-utils/src';
     </form>
   `,
   standalone: true,
-  imports: [
-    GovUKTextInputComponent,
-    GovUKBaseInputDirective,
-    ReactiveFormsModule,
-  ],
+  imports: [GovUKTextInputComponent, ReactiveFormsModule],
 })
 class TestHostComponent {
   inputId = '';

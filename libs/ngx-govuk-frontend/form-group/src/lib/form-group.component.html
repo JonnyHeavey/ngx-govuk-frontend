@@ -1,19 +1,22 @@
 <div class="govuk-form-group">
-  @if (isPageTitle()) {
+  @if (formGroup.isPageTitle()) {
     <h1 class="govuk-label-wrapper">
-      <label class="govuk-label govuk-label--l" [attr.for]="inputId()">
-        {{ label() }}
+      <label
+        class="govuk-label govuk-label--l"
+        [attr.for]="formGroup.inputId()"
+      >
+        {{ formGroup.label() }}
       </label>
     </h1>
   } @else {
-    <label class="govuk-label" [attr.for]="inputId()">
-      {{ label() }}
+    <label class="govuk-label" [attr.for]="formGroup.inputId()">
+      {{ formGroup.label() }}
     </label>
   }
 
-  @if (hint()) {
+  @if (formGroup.hint()) {
     <div class="govuk-hint">
-      {{ hint() }}
+      {{ formGroup.hint() }}
     </div>
   }
 

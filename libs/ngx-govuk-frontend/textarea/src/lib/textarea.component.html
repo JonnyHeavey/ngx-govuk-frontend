@@ -1,14 +1,14 @@
 <ngx-govuk-form-group
-  [inputId]="inputId()"
-  [label]="label()"
-  [isPageTitle]="isPageTitle()"
-  [hint]="hint()"
+  [inputId]="formGroup.inputId()"
+  [label]="formGroup.label()"
+  [isPageTitle]="formGroup.isPageTitle()"
+  [hint]="formGroup.hint()"
 >
   <textarea
     class="govuk-textarea"
     [ngClass]="extraClasses()"
     [formControl]="ngControl.control"
-    [attr.id]="inputId()"
+    [attr.id]="formGroup.inputId()"
     [attr.autocomplete]="autocomplete()"
     [attr.rows]="rows()"
   ></textarea>

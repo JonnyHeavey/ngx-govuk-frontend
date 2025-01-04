@@ -1,15 +1,23 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { GovUKFormGroupComponent } from 'ngx-govuk-frontend/form-group';
 import {
-  GovUKBaseInputDirective,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  GovUKFormGroupComponent,
+  GovUKFormGroupDirective,
+  formGroupDirectiveInputs,
+} from 'ngx-govuk-frontend/form-group';
+import {
   ValueAccessorDirective,
+  injectNgControl,
 } from 'ngx-govuk-frontend/form-utils';
 
 /**
  * A textarea component that follows the GOV.UK Design System guidelines.
- * This component extends GovUKBaseInputDirective to provide common form input functionality.
  *
  * @example
  * ```html
@@ -22,19 +30,13 @@ import {
  * ></ngx-govuk-textarea>
  * ```
  *
- * @implements {ValueAccessorDirective} Provides form control value accessor functionality
- * @extends {GovUKBaseInputDirective} Inherits common form input properties and methods
- *
- * Required inputs:
- * @property {string} label - The label text for the textarea
- * @property {string} inputId - Unique identifier for the textarea element
- *
- * Optional inputs:
- * @property {number} rows - Number of visible text rows for the textarea. Defaults to 2.
- * @property {string} hint - Hint text providing additional context
- * @property {boolean} isPageTitle - Whether the label should be styled as a page heading. Defaults to false.
+ * @property {string} inputId - Required. The ID attribute for the input element.
+ * @property {string} label - Required. The label text for the input field.
+ * @property {string} hint - Optional. Help text displayed below the label.
+ * @property {boolean} isPageTitle - Optional. When true, renders the label as a page heading (h1). Defaults to false.
  * @property {string} autocomplete - HTML autocomplete attribute value
  * @property {string} extraClasses - Additional CSS classes to apply to the textarea
+ * @property {number} rows - Number of visible text rows for the textarea. Defaults to 2.
  */
 @Component({
   selector: 'ngx-govuk-textarea',
@@ -42,8 +44,19 @@ import {
   imports: [NgClass, ReactiveFormsModule, GovUKFormGroupComponent],
   templateUrl: './textarea.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [ValueAccessorDirective],
+  hostDirectives: [
+    ValueAccessorDirective,
+    {
+      directive: GovUKFormGroupDirective,
+      inputs: formGroupDirectiveInputs,
+    },
+  ],
 })
-export class GovUKTextareaComponent extends GovUKBaseInputDirective {
+export class GovUKTextareaComponent {
+  readonly ngControl = injectNgControl();
+  readonly formGroup = inject(GovUKFormGroupDirective);
+
+  readonly autocomplete = input<AutoFill>();
+  readonly extraClasses = input<string>();
   readonly rows = input(2);
 }

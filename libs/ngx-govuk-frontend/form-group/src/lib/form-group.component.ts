@@ -1,9 +1,8 @@
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
-  booleanAttribute,
-  ChangeDetectionStrategy,
-  Component,
-  input,
-} from '@angular/core';
+  GovUKFormGroupDirective,
+  formGroupDirectiveInputs,
+} from './form-group.directive';
 
 /**
  * A form group component that wraps form controls with a label and optional hint text.
@@ -21,23 +20,23 @@ import {
  * </ngx-govuk-form-group>
  * ```
  *
- * @input inputId - Required. The ID to be applied to the form control element. This is used to associate the label with the form control.
- * @input label - Required. The text label to display above the form control.
- * @input hint - Optional. Additional hint text to display below the label. Defaults to an empty string.
- * @input isPageTitle - Optional. When true, the label will be styled as a page heading. Defaults to false.
+ * @property {string} inputId - Required. The ID attribute for the input element.
+ * @property {string} label - Required. The label text for the input field.
+ * @property {string} hint - Optional. Help text displayed below the label.
+ * @property {boolean} isPageTitle - Optional. When true, renders the label as a page heading (h1). Defaults to false.
  */
 @Component({
   selector: 'ngx-govuk-form-group',
   standalone: true,
   templateUrl: './form-group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  hostDirectives: [
+    {
+      directive: GovUKFormGroupDirective,
+      inputs: formGroupDirectiveInputs,
+    },
+  ],
 })
 export class GovUKFormGroupComponent {
-  readonly inputId = input.required<string>();
-  readonly label = input.required<string>();
-
-  readonly hint = input('');
-  readonly isPageTitle = input(false, { transform: booleanAttribute });
-
-  // TODO try including this in the parent components via composition, or make this be defined in a directive and use as composition in both...
+  readonly formGroup = inject(GovUKFormGroupDirective);
 }

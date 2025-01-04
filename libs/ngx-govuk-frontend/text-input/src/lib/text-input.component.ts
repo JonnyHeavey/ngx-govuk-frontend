@@ -1,10 +1,19 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { GovUKFormGroupComponent } from 'ngx-govuk-frontend/form-group';
 import {
-  GovUKBaseInputDirective,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  GovUKFormGroupComponent,
+  GovUKFormGroupDirective,
+  formGroupDirectiveInputs,
+} from 'ngx-govuk-frontend/form-group';
+import {
   ValueAccessorDirective,
+  injectNgControl,
 } from 'ngx-govuk-frontend/form-utils';
 
 /**
@@ -24,13 +33,12 @@ import {
  * ></ngx-govuk-text-input>
  * ```
  *
- * @extends {GovUKBaseInputDirective}
  * @property {string} inputId - Required. The ID attribute for the input element.
  * @property {string} label - Required. The label text for the input field.
+ * @property {string} hint - Optional. Help text displayed below the label.
  * @property {boolean} isPageTitle - Optional. When true, renders the label as a page heading (h1). Defaults to false.
  * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.
  * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.
- * @property {string} hint - Optional. Help text displayed below the label.
  * @property {string} prefix - Optional. Text or symbol displayed before the input field (e.g., '£').
  * @property {string} suffix - Optional. Text or symbol displayed after the input field (e.g., 'per day').
  */
@@ -40,9 +48,20 @@ import {
   imports: [NgClass, ReactiveFormsModule, GovUKFormGroupComponent],
   templateUrl: './text-input.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [ValueAccessorDirective],
+  hostDirectives: [
+    ValueAccessorDirective,
+    {
+      directive: GovUKFormGroupDirective,
+      inputs: formGroupDirectiveInputs,
+    },
+  ],
 })
-export class GovUKTextInputComponent extends GovUKBaseInputDirective {
-  readonly prefix = input('');
-  readonly suffix = input('');
+export class GovUKTextInputComponent {
+  readonly ngControl = injectNgControl();
+  readonly formGroup = inject(GovUKFormGroupDirective);
+
+  readonly autocomplete = input<AutoFill>();
+  readonly extraClasses = input<string>();
+  readonly prefix = input<string>();
+  readonly suffix = input<string>();
 }
