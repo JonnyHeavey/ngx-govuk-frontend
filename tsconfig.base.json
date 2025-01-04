@@ -37,6 +37,9 @@
       "ngx-govuk-frontend/footer": [
         "libs/ngx-govuk-frontend/footer/src/index.ts"
       ],
+      "ngx-govuk-frontend/form-group": [
+        "libs/ngx-govuk-frontend/form-group/src/index.ts"
+      ],
       "ngx-govuk-frontend/form-utils": [
         "libs/ngx-govuk-frontend/form-utils/src/index.ts"
       ],

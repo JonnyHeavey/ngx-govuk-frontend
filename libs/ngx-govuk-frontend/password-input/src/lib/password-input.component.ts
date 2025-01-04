@@ -1,9 +1,9 @@
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GovUKFormGroupComponent } from 'ngx-govuk-frontend/form-group';
 import {
   GovUKBaseInputDirective,
-  GovUKFormGroupComponent,
   ValueAccessorDirective,
 } from 'ngx-govuk-frontend/form-utils';
 
