@@ -21,6 +21,10 @@ import {
   GovUKRadioGroupComponent,
   GovUKRadioOption,
 } from 'ngx-govuk-frontend/radio';
+import {
+  GovUKSelectComponent,
+  GovUKSelectOption,
+} from 'ngx-govuk-frontend/select';
 import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
 import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
 import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
@@ -44,6 +48,7 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
     GovUKPanelComponent,
     GovUKTextInputComponent,
     GovUKTextareaComponent,
+    GovUKSelectComponent,
     GovUKPasswordInputComponent,
     GovUKCheckboxComponent,
     GovUKRadioGroupComponent,
@@ -56,7 +61,10 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
 })
 export class AppComponent {
   readonly form = inject(FormBuilder).nonNullable.group({
-    colour: ['blue', Validators.compose([Validators.required, Validators.minLength(2)])],
+    colour: [
+      'blue',
+      Validators.compose([Validators.required, Validators.minLength(2)]),
+    ],
     earning: '',
     weight: '',
     detail: ['', Validators.required],
@@ -64,12 +72,19 @@ export class AppComponent {
     password: ['', Validators.required],
     rememberMe: false,
     choice: 'B',
+    selection: '',
   });
 
   options: GovUKRadioOption[] = [
     { label: 'Option A', value: 'A' },
     { label: 'Option B', value: 'B' },
     { label: 'Option C', value: 'C' },
+  ];
+
+  colours: GovUKSelectOption[] = [
+    { label: 'Red', value: 'red' },
+    { label: 'Blue', value: 'blue' },
+    { label: 'Green', value: 'green' },
   ];
 
   constructor() {

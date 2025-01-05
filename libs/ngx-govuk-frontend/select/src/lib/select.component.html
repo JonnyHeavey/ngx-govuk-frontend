@@ -1,0 +1,12 @@
+<select
+  class="govuk-select"
+  [class.govuk-select--error]="ngControl.touched && ngControl.errors"
+  [formControl]="ngControl.control"
+  [attr.id]="commonFormInput.inputId() ? commonFormInput.inputId() : null"
+>
+  @for (option of options(); track option.value) {
+    <option [value]="option.value">
+      {{ option.label }}
+    </option>
+  }
+</select>

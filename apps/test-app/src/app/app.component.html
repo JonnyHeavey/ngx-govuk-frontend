@@ -91,6 +91,17 @@
   />
 
   <ngx-govuk-radio-group formControlName="choice" [options]="options" />
+
+  <ngx-govuk-form-group
+    label="What is your favourite colour?"
+    labelFor="favouriteColour"
+  >
+    <ngx-govuk-select
+      formControlName="selection"
+      [options]="colours"
+      inputId="favouriteColour"
+    />
+  </ngx-govuk-form-group>
 </form>
 
 <ngx-govuk-warning-text>This is a warning</ngx-govuk-warning-text>
