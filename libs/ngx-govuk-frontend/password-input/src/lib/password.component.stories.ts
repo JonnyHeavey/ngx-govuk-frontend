@@ -6,7 +6,6 @@ import {
   type StoryFn,
   type StoryObj,
 } from '@storybook/angular';
-import { GovUKFormGroupDirective } from 'ngx-govuk-frontend/form-group';
 import { GovUKPasswordInputComponent } from './password-input.component';
 
 const meta: Meta<GovUKPasswordInputComponent> = {
@@ -20,7 +19,7 @@ const meta: Meta<GovUKPasswordInputComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<GovUKFormGroupDirective & GovUKPasswordInputComponent>;
+type Story = StoryObj<GovUKPasswordInputComponent>;
 
 const Template: StoryFn<GovUKPasswordInputComponent> = (args) => ({
   props: { ...args, form: new FormGroup({ input: new FormControl('') }) },
@@ -36,10 +35,7 @@ export const Primary: Story = {
   render: Template,
   args: {
     inputId: 'story1',
-    label: 'Password',
-    isPageTitle: true,
     autocomplete: 'off',
     extraClasses: '',
-    hint: '',
   },
 };

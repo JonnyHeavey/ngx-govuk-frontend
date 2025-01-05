@@ -10,6 +10,7 @@ import { GovUKCheckboxComponent } from 'ngx-govuk-frontend/checkbox';
 import { GovUKCookieBannerComponent } from 'ngx-govuk-frontend/cookie-banner';
 import { GovUKDetailsComponent } from 'ngx-govuk-frontend/details';
 import { GovUKFooterComponent } from 'ngx-govuk-frontend/footer';
+import { GovUKFormGroupComponent } from 'ngx-govuk-frontend/form-group';
 import { GovUKHeaderComponent } from 'ngx-govuk-frontend/header';
 import { GovUKInsetTextComponent } from 'ngx-govuk-frontend/inset-text';
 import { GovUKNotificationBannerComponent } from 'ngx-govuk-frontend/notification-banner';
@@ -29,6 +30,7 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
   imports: [
     RouterModule,
     ReactiveFormsModule,
+    GovUKFormGroupComponent,
     GovUKPhaseBannerComponent,
     GovUKHeaderComponent,
     GovUKFooterComponent,

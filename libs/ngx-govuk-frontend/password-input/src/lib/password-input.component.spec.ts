@@ -11,11 +11,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       <ngx-govuk-password-input
         formControlName="testInput"
         [inputId]="inputId"
-        [label]="label"
-        [isPageTitle]="isPageTitle"
         [autocomplete]="autocomplete"
         [extraClasses]="extraClasses"
-        [hint]="hint"
       ></ngx-govuk-password-input>
     </form>
   `,
@@ -24,11 +21,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 class TestHostComponent {
   inputId = '';
-  label = '';
-  isPageTitle = false;
   autocomplete = 'off';
   extraClasses = '';
-  hint = '';
   form: FormGroup;
   component = viewChild.required(GovUKPasswordInputComponent);
 
@@ -50,9 +44,6 @@ describe('GovUKPasswordInputComponent', () => {
     fixture = TestBed.createComponent(TestHostComponent);
     hostComponent = fixture.componentInstance;
     component = fixture.componentInstance.component();
-
-    hostComponent.inputId = 'test-password';
-    hostComponent.label = 'Test Password';
 
     fixture.detectChanges();
   });
@@ -84,37 +75,13 @@ describe('GovUKPasswordInputComponent', () => {
     expect(control?.valid).toBeTruthy();
   });
 
-  it('should have matching id on input and for attribute on label', () => {
+  it('should render id attribute in DOM when inputId is set', () => {
+    const hostComponent = fixture.componentInstance;
+    hostComponent.inputId = 'test-password-id';
+    fixture.detectChanges();
+
     const inputElement = fixture.nativeElement.querySelector('.govuk-input');
-    const labelElement = fixture.nativeElement.querySelector('.govuk-label');
-
-    expect(inputElement.getAttribute('id')).toBe('test-password');
-    expect(labelElement.getAttribute('for')).toBe('test-password');
-  });
-
-  it('should render as page heading when isPageTitle is true', () => {
-    hostComponent.isPageTitle = true;
-    fixture.detectChanges();
-
-    const headingElement = fixture.nativeElement.querySelector(
-      'h1.govuk-label-wrapper',
-    );
-    const labelElement = headingElement?.querySelector('.govuk-label--l');
-
-    expect(headingElement).toBeTruthy();
-    expect(labelElement).toBeTruthy();
-    expect(labelElement?.textContent?.trim()).toBe('Test Password');
-  });
-
-  it('should render hint element in DOM when hint is set', () => {
-    hostComponent.hint = 'Must be at least 8 characters';
-    fixture.detectChanges();
-
-    const hintElement = fixture.nativeElement.querySelector('.govuk-hint');
-    expect(hintElement).toBeTruthy();
-    expect(hintElement.textContent.trim()).toBe(
-      'Must be at least 8 characters',
-    );
+    expect(inputElement.getAttribute('id')).toBe('test-password-id');
   });
 
   it('should render autocomplete attribute in DOM when autocomplete is set', () => {
@@ -123,11 +90,6 @@ describe('GovUKPasswordInputComponent', () => {
 
     const inputElement = fixture.nativeElement.querySelector('.govuk-input');
     expect(inputElement.getAttribute('autocomplete')).toBe('new-password');
-  });
-
-  it('should default autocomplete to "off"', () => {
-    const inputElement = fixture.nativeElement.querySelector('.govuk-input');
-    expect(inputElement.getAttribute('autocomplete')).toBe('off');
   });
 
   it('should render extraClasses in DOM when set', () => {

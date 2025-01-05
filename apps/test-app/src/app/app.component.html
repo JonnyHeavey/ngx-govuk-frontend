@@ -30,42 +30,58 @@
 <ngx-govuk-tag color="green">Completed</ngx-govuk-tag>
 
 <form [formGroup]="form">
-  <ngx-govuk-text-input
-    formControlName="colour"
+  <ngx-govuk-form-group
     label="What is your favourite colour?"
-    hint="Perhaps is blue, or maybe red?"
-    inputId="colour"
+    labelFor="colour"
     isPageTitle="true"
-    autocomplete="given-name"
-    extraClasses="govuk-input--width-5 govuk-input--extra-letter-spacing"
-  />
-  <ngx-govuk-text-input
-    formControlName="earning"
-    prefix="£"
+    hint="Testing 123"
+  >
+    <ngx-govuk-text-input
+      formControlName="colour"
+      hint="Perhaps is blue, or maybe red?"
+      inputId="colour"
+      isPageTitle="true"
+      autocomplete="given-name"
+      extraClasses="govuk-input--width-5 govuk-input--extra-letter-spacing"
+    />
+  </ngx-govuk-form-group>
+
+  <ngx-govuk-form-group
     label="How much do you earn?"
+    labelFor="earning"
     hint="This should be your pre-tax income amount"
-    inputId="earning"
-  />
-  <ngx-govuk-text-input
-    formControlName="weight"
-    suffix="KG"
-    label="How much do you weigh?"
-    inputId="weight"
-  />
+  >
+    <ngx-govuk-text-input
+      formControlName="earning"
+      prefix="£"
+      inputId="earning"
+    />
+  </ngx-govuk-form-group>
 
-  <ngx-govuk-textarea
-    formControlName="detail"
-    label="Can you provide more detail?"
-    hint="Do not include personal or financial information, like your National Insurance number or credit card details"
-    inputId="detail"
-    extraClasses="govuk-input--width-20"
-  />
+  <ngx-govuk-form-group label="How much do you weigh?" labelFor="weight">
+    <ngx-govuk-text-input
+      formControlName="weight"
+      suffix="KG"
+      inputId="weight"
+    />
+  </ngx-govuk-form-group>
 
-  <ngx-govuk-password-input
-    formControlName="password"
-    label="Password"
-    inputId="password"
-  />
+  <ngx-govuk-form-group label="Can you provide more detail?" labelFor="detail">
+    <ngx-govuk-textarea
+      formControlName="detail"
+      hint="Do not include personal or financial information, like your National Insurance number or credit card details"
+      inputId="detail"
+      extraClasses="govuk-input--width-20"
+    />
+  </ngx-govuk-form-group>
+
+  <ngx-govuk-form-group label="Password" labelFor="password">
+    <ngx-govuk-password-input
+      formControlName="password"
+      label="Password"
+      inputId="password"
+    />
+  </ngx-govuk-form-group>
 
   <ngx-govuk-checkbox
     formControlName="rememberMe"

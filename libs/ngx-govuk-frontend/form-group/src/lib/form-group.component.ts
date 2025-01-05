@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
-  GovUKFormGroupDirective,
-  formGroupDirectiveInputs,
-} from './form-group.directive';
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  input,
+} from '@angular/core';
 
 /**
  * A form group component that wraps form controls with a label and optional hint text.
@@ -30,13 +31,11 @@ import {
   standalone: true,
   templateUrl: './form-group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [
-    {
-      directive: GovUKFormGroupDirective,
-      inputs: formGroupDirectiveInputs,
-    },
-  ],
 })
 export class GovUKFormGroupComponent {
-  readonly formGroup = inject(GovUKFormGroupDirective);
+  readonly label = input<string>();
+  readonly labelFor = input<string>();
+
+  readonly hint = input<string>();
+  readonly isPageTitle = input(false, { transform: booleanAttribute });
 }

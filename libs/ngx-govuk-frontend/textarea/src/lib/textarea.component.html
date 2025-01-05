@@ -1,15 +1,10 @@
-<ngx-govuk-form-group
-  [inputId]="formGroup.inputId()"
-  [label]="formGroup.label()"
-  [isPageTitle]="formGroup.isPageTitle()"
-  [hint]="formGroup.hint()"
->
+<div class="govuk-input__wrapper">
   <textarea
     class="govuk-textarea"
     [ngClass]="extraClasses()"
     [formControl]="ngControl.control"
-    [attr.id]="formGroup.inputId()"
-    [attr.autocomplete]="autocomplete()"
+    [attr.id]="inputId() ? inputId() : null"
+    [attr.autocomplete]="autocomplete() ? autocomplete() : null"
     [attr.rows]="rows()"
   ></textarea>
-</ngx-govuk-form-group>
+</div>

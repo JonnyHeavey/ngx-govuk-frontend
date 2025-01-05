@@ -1,23 +1,25 @@
 <div class="govuk-form-group">
-  @if (formGroup.isPageTitle()) {
-    <h1 class="govuk-label-wrapper">
-      <label
-        class="govuk-label govuk-label--l"
-        [attr.for]="formGroup.inputId()"
-      >
-        {{ formGroup.label() }}
+  @if (label()) {
+    @if (isPageTitle()) {
+      <h1 class="govuk-label-wrapper">
+        <label
+          class="govuk-label govuk-label--l"
+          [attr.for]="labelFor() ? labelFor() : null"
+        >
+          {{ label() }}
+        </label>
+      </h1>
+    } @else {
+      <label class="govuk-label" [attr.for]="labelFor() ? labelFor() : null">
+        {{ label() }}
       </label>
-    </h1>
-  } @else {
-    <label class="govuk-label" [attr.for]="formGroup.inputId()">
-      {{ formGroup.label() }}
-    </label>
-  }
+    }
 
-  @if (formGroup.hint()) {
-    <div class="govuk-hint">
-      {{ formGroup.hint() }}
-    </div>
+    @if (hint()) {
+      <div class="govuk-hint">
+        {{ hint() }}
+      </div>
+    }
   }
 
   <ng-content />

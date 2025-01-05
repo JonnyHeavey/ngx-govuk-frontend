@@ -76,7 +76,7 @@ describe('GovUKCheckboxComponent', () => {
       const hostComponent = fixture.componentInstance;
       hostComponent.id = 'custom-id';
       fixture.detectChanges();
-      expect(component.id()).toBe('custom-id');
+      expect(component.inputId()).toBe('custom-id');
     });
   });
 

@@ -6,7 +6,6 @@ import {
   type StoryFn,
   type StoryObj,
 } from '@storybook/angular';
-import { GovUKFormGroupDirective } from 'ngx-govuk-frontend/form-group';
 import { GovUKTextareaComponent } from './textarea.component';
 
 const meta: Meta<GovUKTextareaComponent> = {
@@ -20,7 +19,7 @@ const meta: Meta<GovUKTextareaComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<GovUKFormGroupDirective & GovUKTextareaComponent>;
+type Story = StoryObj<GovUKTextareaComponent>;
 
 const Template: StoryFn<GovUKTextareaComponent> = (args) => ({
   props: { ...args, form: new FormGroup({ input: new FormControl('') }) },
@@ -36,11 +35,8 @@ export const Primary: Story = {
   render: Template,
   args: {
     inputId: 'story1',
-    label: 'Can you provide more detail?',
-    isPageTitle: true,
     autocomplete: 'off',
     extraClasses: '',
-    hint: 'Do not include personal or financial information, like your National Insurance number or credit card details',
     rows: 2,
   },
 };

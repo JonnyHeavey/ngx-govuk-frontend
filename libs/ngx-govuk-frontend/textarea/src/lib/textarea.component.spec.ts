@@ -11,11 +11,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       <ngx-govuk-textarea
         formControlName="testInput"
         [inputId]="inputId"
-        [label]="label"
-        [isPageTitle]="isPageTitle"
         [autocomplete]="autocomplete"
         [extraClasses]="extraClasses"
-        [hint]="hint"
         [rows]="rows"
       ></ngx-govuk-textarea>
     </form>
@@ -25,11 +22,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 class TestHostComponent {
   inputId = '';
-  label = '';
-  isPageTitle = false;
   autocomplete = '';
   extraClasses = '';
-  hint = '';
   rows = 2;
   form: FormGroup;
   component = viewChild.required(GovUKTextareaComponent);
@@ -52,9 +46,6 @@ describe('GovUKTextareaComponent', () => {
     fixture = TestBed.createComponent(TestHostComponent);
     hostComponent = fixture.componentInstance;
     component = fixture.componentInstance.component();
-
-    hostComponent.inputId = 'test-textarea';
-    hostComponent.label = 'Test Textarea';
 
     fixture.detectChanges();
   });
@@ -86,65 +77,13 @@ describe('GovUKTextareaComponent', () => {
     expect(control?.valid).toBeTruthy();
   });
 
-  it('should have matching id on textarea and for attribute on label', () => {
-    const textareaElement =
-      fixture.nativeElement.querySelector('.govuk-textarea');
-    const labelElement = fixture.nativeElement.querySelector('.govuk-label');
-
-    expect(textareaElement.getAttribute('id')).toBe('test-textarea');
-    expect(labelElement.getAttribute('for')).toBe('test-textarea');
-  });
-
-  it('should maintain matching id and for attributes when inputId changes', () => {
-    hostComponent.inputId = 'new-test-id';
-    fixture.detectChanges();
-
-    const textareaElement =
-      fixture.nativeElement.querySelector('.govuk-textarea');
-    const labelElement = fixture.nativeElement.querySelector('.govuk-label');
-
-    expect(textareaElement.getAttribute('id')).toBe('new-test-id');
-    expect(labelElement.getAttribute('for')).toBe('new-test-id');
-  });
-
-  it('should render as page heading when isPageTitle is true', () => {
-    hostComponent.isPageTitle = true;
-    fixture.detectChanges();
-
-    const headingElement = fixture.nativeElement.querySelector(
-      'h1.govuk-label-wrapper',
-    );
-    const labelElement = headingElement?.querySelector('.govuk-label--l');
-
-    expect(headingElement).toBeTruthy();
-    expect(labelElement).toBeTruthy();
-    expect(labelElement?.textContent?.trim()).toBe('Test Textarea');
-  });
-
-  it('should render as regular label when isPageTitle is false', () => {
-    hostComponent.isPageTitle = false;
-    fixture.detectChanges();
-
-    const headingElement = fixture.nativeElement.querySelector(
-      'h1.govuk-label-wrapper',
-    );
-    const labelElement = fixture.nativeElement.querySelector(
-      '.govuk-label:not(.govuk-label--l)',
-    );
-
-    expect(headingElement).toBeFalsy();
-    expect(labelElement).toBeTruthy();
-    expect(labelElement?.textContent?.trim()).toBe('Test Textarea');
-  });
-
-  it('should render hint element in DOM when hint is set', () => {
+  it('should render id attribute in DOM when inputId is set', () => {
     const hostComponent = fixture.componentInstance;
-    hostComponent.hint = 'This is a helpful hint';
+    hostComponent.inputId = 'test-textarea-id';
     fixture.detectChanges();
 
-    const hintElement = fixture.nativeElement.querySelector('.govuk-hint');
-    expect(hintElement).toBeTruthy();
-    expect(hintElement.textContent.trim()).toBe('This is a helpful hint');
+    const textareaElement = fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(textareaElement.getAttribute('id')).toBe('test-textarea-id');
   });
 
   it('should render autocomplete attribute in DOM when autocomplete is set', () => {

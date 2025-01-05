@@ -5,7 +5,6 @@ import {
   type StoryObj,
 } from '@storybook/angular';
 import { GovUKFormGroupComponent } from './form-group.component';
-import { GovUKFormGroupDirective } from './form-group.directive';
 
 const meta: Meta<GovUKFormGroupComponent> = {
   component: GovUKFormGroupComponent,
@@ -13,7 +12,7 @@ const meta: Meta<GovUKFormGroupComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<GovUKFormGroupDirective & GovUKFormGroupComponent>;
+type Story = StoryObj<GovUKFormGroupComponent>;
 
 const Template: StoryFn<GovUKFormGroupComponent> = (args) => ({
   props: { ...args },
@@ -23,8 +22,8 @@ const Template: StoryFn<GovUKFormGroupComponent> = (args) => ({
 export const Primary: Story = {
   render: Template,
   args: {
-    inputId: 'story1',
     label: 'What is the name of the event?',
+    labelFor: 'story1',
     isPageTitle: true,
     hint: "The name you'll use on promotional material",
   },
