@@ -2,10 +2,12 @@
   <textarea
     class="govuk-textarea"
     [class.govuk-textarea--error]="ngControl.touched && ngControl.errors"
-    [ngClass]="extraClasses()"
+    [ngClass]="commonFormInput.extraClasses()"
     [formControl]="ngControl.control"
-    [attr.id]="inputId() ? inputId() : null"
-    [attr.autocomplete]="autocomplete() ? autocomplete() : null"
+    [attr.id]="commonFormInput.inputId() ? commonFormInput.inputId() : null"
+    [attr.autocomplete]="
+      commonFormInput.autocomplete() ? commonFormInput.autocomplete() : null
+    "
     [attr.rows]="rows()"
   ></textarea>
 </div>

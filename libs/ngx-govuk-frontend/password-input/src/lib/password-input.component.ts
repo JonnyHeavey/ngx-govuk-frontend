@@ -2,13 +2,15 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  input,
+  inject,
   signal,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
+  GovUKCommonFormInputDirective,
   ValueAccessorDirective,
   injectNgControl,
+  inputCommonInputs,
 } from 'ngx-govuk-frontend/form-utils';
 
 /**
@@ -29,14 +31,14 @@ import {
   imports: [NgClass, ReactiveFormsModule],
   templateUrl: './password-input.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [ValueAccessorDirective],
+  hostDirectives: [
+    ValueAccessorDirective,
+    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+  ],
 })
 export class GovUKPasswordInputComponent {
   readonly ngControl = injectNgControl();
-
-  readonly autocomplete = input<AutoFill>();
-  readonly extraClasses = input<string>();
-  readonly inputId = input<string>();
+  readonly commonFormInput = inject(GovUKCommonFormInputDirective);
 
   readonly isVisible = signal(false);
 

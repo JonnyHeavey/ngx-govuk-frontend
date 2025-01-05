@@ -5,10 +5,12 @@
 
   <input
     class="govuk-input"
-    [ngClass]="extraClasses()"
+    [ngClass]="commonFormInput.extraClasses()"
     [class.govuk-input--error]="ngControl.touched && ngControl.errors"
-    [attr.id]="inputId() ? inputId() : null"
-    [attr.autocomplete]="autocomplete() ? autocomplete() : null"
+    [attr.id]="commonFormInput.inputId() ? commonFormInput.inputId() : null"
+    [attr.autocomplete]="
+      commonFormInput.autocomplete() ? commonFormInput.autocomplete() : null
+    "
     type="text"
     [formControl]="ngControl.control"
   />

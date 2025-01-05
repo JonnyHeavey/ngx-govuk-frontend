@@ -6,6 +6,7 @@ import {
   type StoryFn,
   type StoryObj,
 } from '@storybook/angular';
+import { GovUKCommonFormInputDirective } from 'ngx-govuk-frontend/form-utils';
 import { GovUKTextInputComponent } from './text-input.component';
 
 const meta: Meta<GovUKTextInputComponent> = {
@@ -19,7 +20,7 @@ const meta: Meta<GovUKTextInputComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<GovUKTextInputComponent>;
+type Story = StoryObj<GovUKCommonFormInputDirective & GovUKTextInputComponent>;
 
 const Template: StoryFn<GovUKTextInputComponent> = (args) => ({
   props: { ...args, form: new FormGroup({ input: new FormControl('') }) },
