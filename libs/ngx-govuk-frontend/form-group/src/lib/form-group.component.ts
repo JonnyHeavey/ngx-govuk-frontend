@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -36,6 +37,7 @@ export class GovUKFormGroupComponent {
   readonly label = input<string>();
   readonly labelFor = input<string>();
 
+  readonly errorMessage = input<string>();
   readonly hint = input<string>();
   readonly isPageTitle = input(false, { transform: booleanAttribute });
 }

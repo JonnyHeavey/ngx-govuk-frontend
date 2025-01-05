@@ -6,6 +6,7 @@
   <input
     class="govuk-input"
     [ngClass]="extraClasses()"
+    [class.govuk-input--error]="ngControl.touched && ngControl.errors"
     [attr.id]="inputId() ? inputId() : null"
     [attr.autocomplete]="autocomplete() ? autocomplete() : null"
     type="text"

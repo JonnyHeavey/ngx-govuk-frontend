@@ -1,4 +1,4 @@
-<div class="govuk-form-group">
+<div class="govuk-form-group" [class.govuk-form-group--error]="errorMessage()">
   @if (label()) {
     @if (isPageTitle()) {
       <h1 class="govuk-label-wrapper">
@@ -19,6 +19,12 @@
       <div class="govuk-hint">
         {{ hint() }}
       </div>
+    }
+
+    @if (errorMessage()) {
+      <p class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> {{ errorMessage() }}
+      </p>
     }
   }
 

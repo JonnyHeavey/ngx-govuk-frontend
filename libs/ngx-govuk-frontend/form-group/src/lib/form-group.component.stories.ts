@@ -26,5 +26,6 @@ export const Primary: Story = {
     labelFor: 'story1',
     isPageTitle: true,
     hint: "The name you'll use on promotional material",
+    errorMessage: "",
   },
 };

@@ -35,10 +35,8 @@ export const Primary: Story = {
   render: Template,
   args: {
     inputId: 'story1',
-
     autocomplete: 'off',
     extraClasses: '',
-
     prefix: '',
     suffix: '',
   },

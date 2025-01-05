@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
       [labelFor]="labelFor"
       [hint]="hint"
       [isPageTitle]="isPageTitle"
+      [errorMessage]="errorMessage"
     >
       <input type="text" id="test-input">
     </ngx-govuk-form-group>
@@ -21,6 +22,7 @@ class TestHostComponent {
   labelFor = '';
   hint = '';
   isPageTitle = false;
+  errorMessage = '';
 }
 
 describe('GovUKFormGroupComponent', () => {
@@ -107,5 +109,29 @@ describe('GovUKFormGroupComponent', () => {
     const labelElement = fixture.nativeElement.querySelector('.govuk-label');
     expect(labelElement).toBeTruthy();
     expect(labelElement.textContent.trim()).toBe('Regular Label');
+  });
+
+  it('should render error message and error class when errorMessage is set', () => {
+    hostComponent.label = 'Label';
+    hostComponent.errorMessage = 'Test error message';
+    fixture.detectChanges();
+
+    const errorElement = fixture.nativeElement.querySelector('.govuk-error-message');
+    const formGroupElement = fixture.nativeElement.querySelector('.govuk-form-group');
+    
+    expect(errorElement.textContent.trim()).toContain('Test error message');
+    expect(formGroupElement.classList.contains('govuk-form-group--error')).toBe(true);
+  });
+
+  it('should not render error message when errorMessage is not set', () => {
+    hostComponent.label = 'Label';
+    hostComponent.errorMessage = '';
+    fixture.detectChanges();
+
+    const errorElement = fixture.nativeElement.querySelector('.govuk-error-message');
+    const formGroupElement = fixture.nativeElement.querySelector('.govuk-form-group');
+    
+    expect(errorElement).toBeFalsy();
+    expect(formGroupElement.classList.contains('govuk-form-group--error')).toBe(false);
   });
 });

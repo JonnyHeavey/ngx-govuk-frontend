@@ -121,4 +121,33 @@ describe('GovUKTextareaComponent', () => {
       fixture.nativeElement.querySelector('.govuk-textarea');
     expect(textareaElement.getAttribute('rows')).toBe('5');
   });
+
+  it('should add error class when form control has validation error', () => {
+    const control = hostComponent.form.get('testInput');
+    control?.setValue('');
+    control?.markAsTouched();
+    fixture.detectChanges();
+
+    const textareaElement = fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(textareaElement.classList.contains('govuk-textarea--error')).toBeTruthy();
+  });
+
+  it('should not have error class when form control has no validation errors', () => {
+    const control = hostComponent.form.get('testInput');
+    control?.setValue('valid value');
+    control?.markAsTouched();
+    fixture.detectChanges();
+
+    const textareaElement = fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(textareaElement.classList.contains('govuk-textarea--error')).toBeFalsy();
+  });
+
+  it('should not have error class when form control has not been touched', () => {
+    const control = hostComponent.form.get('testInput');
+    control?.setValue('');
+    fixture.detectChanges();
+
+    const textareaElement = fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(textareaElement.classList.contains('govuk-textarea--error')).toBeFalsy();
+  });
 });

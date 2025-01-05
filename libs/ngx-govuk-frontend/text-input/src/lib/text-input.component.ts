@@ -1,5 +1,5 @@
-import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { JsonPipe, NgClass } from '@angular/common';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   ValueAccessorDirective,

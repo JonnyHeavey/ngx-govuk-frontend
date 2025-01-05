@@ -122,4 +122,33 @@ describe('GovUKPasswordInputComponent', () => {
     expect(input.getAttribute('type')).toBe('password');
     expect(button.textContent.trim()).toBe('Show');
   });
+
+  it('should add error class when form control has validation error', () => {
+    const control = hostComponent.form.get('testInput');
+    control?.setValue('');
+    control?.markAsTouched();
+    fixture.detectChanges();
+
+    const inputElement = fixture.nativeElement.querySelector('.govuk-input');
+    expect(inputElement.classList.contains('govuk-input--error')).toBeTruthy();
+  });
+
+  it('should not have error class when form control has no validation errors', () => {
+    const control = hostComponent.form.get('testInput');
+    control?.setValue('valid value');
+    control?.markAsTouched();
+    fixture.detectChanges();
+
+    const inputElement = fixture.nativeElement.querySelector('.govuk-input');
+    expect(inputElement.classList.contains('govuk-input--error')).toBeFalsy();
+  });
+
+  it('should not have error class when form control has not been touched', () => {
+    const control = hostComponent.form.get('testInput');
+    control?.setValue('');
+    fixture.detectChanges();
+
+    const inputElement = fixture.nativeElement.querySelector('.govuk-input');
+    expect(inputElement.classList.contains('govuk-input--error')).toBeFalsy();
+  });
 });

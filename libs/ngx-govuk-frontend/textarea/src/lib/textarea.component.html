@@ -1,6 +1,7 @@
 <div class="govuk-input__wrapper">
   <textarea
     class="govuk-textarea"
+    [class.govuk-textarea--error]="ngControl.touched && ngControl.errors"
     [ngClass]="extraClasses()"
     [formControl]="ngControl.control"
     [attr.id]="inputId() ? inputId() : null"

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { GovUKBackLinkComponent } from 'ngx-govuk-frontend/back-link';
 import {
@@ -56,12 +56,12 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
 })
 export class AppComponent {
   readonly form = inject(FormBuilder).nonNullable.group({
-    colour: 'blue',
+    colour: ['blue', Validators.compose([Validators.required, Validators.minLength(2)])],
     earning: '',
     weight: '',
-    detail: '',
+    detail: ['', Validators.required],
     price: '',
-    password: '',
+    password: ['', Validators.required],
     rememberMe: false,
     choice: 'B',
   });
