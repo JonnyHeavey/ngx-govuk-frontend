@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
-import { GovUKRadioGroupComponent } from './radio-group.component';
+import {
+  GovUKRadioGroupComponent,
+  GovUKRadioOption,
+} from './radio-group.component';
 
 import { Component, viewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -11,6 +14,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       <ngx-govuk-radio-group
         formControlName="testRadio"
         [options]="options"
+        [inline]="inline"
+        [small]="small"
       ></ngx-govuk-radio-group>
     </form>
   `,
@@ -18,10 +23,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   imports: [GovUKRadioGroupComponent, ReactiveFormsModule],
 })
 class TestHostComponent {
-  options = [
+  options: GovUKRadioOption[] = [
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },
   ];
+  inline = false;
+  small = false;
   form: FormGroup;
   component = viewChild.required(GovUKRadioGroupComponent);
 
@@ -83,5 +90,58 @@ describe('GovUKRadioGroupComponent', () => {
 
     control?.setValue('option1');
     expect(control?.valid).toBeTruthy();
+  });
+
+  it('should apply inline class when inline input is set', () => {
+    TestBed.runInInjectionContext(() => {
+      fixture.componentInstance.inline = true;
+      fixture.detectChanges();
+      const radioGroup = fixture.nativeElement.querySelector('.govuk-radios');
+      expect(
+        radioGroup.classList.contains('govuk-radios--inline'),
+      ).toBeTruthy();
+    });
+  });
+
+  it('should not apply inline class when inline input is false', () => {
+    TestBed.runInInjectionContext(() => {
+      fixture.componentInstance.inline = false;
+      fixture.detectChanges();
+      const radioGroup = fixture.nativeElement.querySelector('.govuk-radios');
+      expect(radioGroup.classList.contains('govuk-radios--inline')).toBeFalsy();
+    });
+  });
+
+  it('should apply small class when small input is set', () => {
+    TestBed.runInInjectionContext(() => {
+      fixture.componentInstance.small = true;
+      fixture.detectChanges();
+      const radioGroup = fixture.nativeElement.querySelector('.govuk-radios');
+      expect(radioGroup.classList.contains('govuk-radios--small')).toBeTruthy();
+    });
+  });
+
+  it('should not apply small class when small input is false', () => {
+    TestBed.runInInjectionContext(() => {
+      fixture.componentInstance.small = false;
+      fixture.detectChanges();
+      const radioGroup = fixture.nativeElement.querySelector('.govuk-radios');
+      expect(radioGroup.classList.contains('govuk-radios--small')).toBeFalsy();
+    });
+  });
+
+  it('should render hint text when present on an option', () => {
+    TestBed.runInInjectionContext(() => {
+      const hostComponent = fixture.componentInstance;
+      hostComponent.options = [
+        { value: 'option1', label: 'Option 1', hint: 'This is a hint' },
+        { value: 'option2', label: 'Option 2' },
+      ];
+      fixture.detectChanges();
+
+      const hint = fixture.nativeElement.querySelector('.govuk-radios__hint');
+      expect(hint).toBeTruthy();
+      expect(hint.textContent.trim()).toBe('This is a hint');
+    });
   });
 });

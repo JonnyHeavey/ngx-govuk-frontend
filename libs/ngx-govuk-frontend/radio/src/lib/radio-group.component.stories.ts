@@ -38,9 +38,12 @@ export const Primary: Story = {
       {
         value: 'a',
         label: 'Option A',
+        hint: 'This is a hint',
       },
       { value: 'b', label: 'Option B' },
       { value: 'c', label: 'Option C' },
     ],
+    small: false,
+    inline: false,
   },
 };

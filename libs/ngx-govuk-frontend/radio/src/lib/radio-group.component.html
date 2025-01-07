@@ -1,16 +1,24 @@
-<div class="govuk-radios">
+<div
+  class="govuk-radios"
+  [class.govuk-radios--small]="small()"
+  [class.govuk-radios--inline]="inline()"
+>
   @for (option of options(); track option.value) {
-  <div class="govuk-radios__item" (click)="setValue(option.value)">
-    <input
-      class="govuk-radios__input"
-      type="radio"
-      [formControl]="ngControl.control"
-      [value]="option.value"
-    />
-    <label class="govuk-label govuk-radios__label">
-      {{ option.label }}
-    </label>
-  </div>
-
+    <div class="govuk-radios__item" (click)="setValue(option.value)">
+      <input
+        class="govuk-radios__input"
+        type="radio"
+        [formControl]="ngControl.control"
+        [value]="option.value"
+      />
+      <label class="govuk-label govuk-radios__label">
+        {{ option.label }}
+      </label>
+      @if (option.hint) {
+        <div class="govuk-hint govuk-radios__hint">
+          {{ option.hint }}
+        </div>
+      }
+    </div>
   }
 </div>

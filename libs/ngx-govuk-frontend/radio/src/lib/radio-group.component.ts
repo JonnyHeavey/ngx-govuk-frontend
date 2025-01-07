@@ -1,13 +1,19 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  input,
+} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  ValueAccessorDirective,
   injectNgControl,
+  ValueAccessorDirective,
 } from 'ngx-govuk-frontend/form-utils';
 
 export interface GovUKRadioOption {
   label: string;
   value: string;
+  hint?: string;
 }
 
 @Component({
@@ -22,6 +28,8 @@ export class GovUKRadioGroupComponent {
   readonly ngControl = injectNgControl();
 
   readonly options = input.required<GovUKRadioOption[]>();
+  readonly small = input(false, { transform: booleanAttribute });
+  readonly inline = input(false, { transform: booleanAttribute });
 
   setValue(value: string) {
     if (this.ngControl.control.value !== value) {
