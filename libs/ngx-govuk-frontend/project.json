@@ -39,7 +39,8 @@
         "port": 4400,
         "configDir": "libs/ngx-govuk-frontend/.storybook",
         "browserTarget": "ngx-govuk-frontend:build-storybook",
-        "compodoc": false
+        "compodoc": true,
+        "compodocArgs": ["-e", "json", "-d", "libs/ngx-govuk-frontend"]
       },
       "configurations": {
         "ci": {
@@ -55,7 +56,8 @@
         "outputDir": "dist/storybook/ngx-govuk-frontend",
         "configDir": "libs/ngx-govuk-frontend/.storybook",
         "browserTarget": "ngx-govuk-frontend:build-storybook",
-        "compodoc": false,
+        "compodoc": true,
+        "compodocArgs": ["-e", "json", "-d", "libs/ngx-govuk-frontend"],
         "styles": [
           "node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css"
         ]
