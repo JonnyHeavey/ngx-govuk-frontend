@@ -9,6 +9,7 @@ import {
 import { GovUKCheckboxComponent } from 'ngx-govuk-frontend/checkbox';
 import { GovUKCookieBannerComponent } from 'ngx-govuk-frontend/cookie-banner';
 import { GovUKDetailsComponent } from 'ngx-govuk-frontend/details';
+import { GovUKFieldsetComponent } from 'ngx-govuk-frontend/fieldset';
 import { GovUKFooterComponent } from 'ngx-govuk-frontend/footer';
 import { GovUKFormGroupComponent } from 'ngx-govuk-frontend/form-group';
 import { GovUKHeaderComponent } from 'ngx-govuk-frontend/header';
@@ -38,6 +39,7 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
     GovUKPhaseBannerComponent,
     GovUKHeaderComponent,
     GovUKFooterComponent,
+    GovUKFieldsetComponent,
     GovUKBackLinkComponent,
     GovUKButtonGroupComponent,
     GovUKButtonComponent,

@@ -1,0 +1,30 @@
+<div class="govuk-form-group" [class.govuk-form-group--error]="errorMessage()">
+  <fieldset class="govuk-fieldset">
+    <legend
+      class="govuk-fieldset__legend"
+      [class.govuk-fieldset__legend--l]="isPageTitle()"
+    >
+      @if (isPageTitle()) {
+        <h1 class="govuk-fieldset__heading">
+          {{ legend() }}
+        </h1>
+      } @else {
+        {{ legend() }}
+      }
+    </legend>
+
+    @if (hint()) {
+      <div class="govuk-hint">
+        {{ hint() }}
+      </div>
+    }
+
+    @if (errorMessage()) {
+      <p class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> {{ errorMessage() }}
+      </p>
+    }
+
+    <ng-content />
+  </fieldset>
+</div>

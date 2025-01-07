@@ -84,11 +84,17 @@
     />
   </ngx-govuk-form-group>
 
-  <ngx-govuk-checkbox
-    formControlName="rememberMe"
-    inputId="remember"
-    label="Remember Me"
-  />
+  <ngx-govuk-fieldset
+    legend="Do you want to remember me?"
+    hint="It will be helpful"
+    isPageTitle="true"
+  >
+    <ngx-govuk-checkbox
+      formControlName="rememberMe"
+      inputId="remember"
+      label="Remember Me"
+    />
+  </ngx-govuk-fieldset>
 
   <ngx-govuk-radio-group formControlName="choice" [options]="options" />
 
