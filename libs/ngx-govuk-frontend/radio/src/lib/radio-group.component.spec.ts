@@ -144,4 +144,51 @@ describe('GovUKRadioGroupComponent', () => {
       expect(hint.textContent.trim()).toBe('This is a hint');
     });
   });
+  it('should render divider when isDivider is true on an option', () => {
+    TestBed.runInInjectionContext(() => {
+      const hostComponent = fixture.componentInstance;
+      hostComponent.options = [
+        { value: 'option1', label: 'Option 1' },
+        { value: 'option2', label: 'Option 2', isDivided: true },
+      ];
+      fixture.detectChanges();
+
+      const divider = fixture.nativeElement.querySelector(
+        '.govuk-radios__divider',
+      );
+      expect(divider).toBeTruthy();
+    });
+  });
+
+  it('should not render divider when no option has isDivider set', () => {
+    TestBed.runInInjectionContext(() => {
+      const hostComponent = fixture.componentInstance;
+      hostComponent.options = [
+        { value: 'option1', label: 'Option 1' },
+        { value: 'option2', label: 'Option 2' },
+      ];
+      fixture.detectChanges();
+
+      const divider = fixture.nativeElement.querySelector(
+        '.govuk-radios__divider',
+      );
+      expect(divider).toBeFalsy();
+    });
+  });
+
+  it('should not render divider when isDivided is set on first option', () => {
+    TestBed.runInInjectionContext(() => {
+      const hostComponent = fixture.componentInstance;
+      hostComponent.options = [
+        { value: 'option1', label: 'Option 1', isDivided: true },
+        { value: 'option2', label: 'Option 2' },
+      ];
+      fixture.detectChanges();
+
+      const divider = fixture.nativeElement.querySelector(
+        '.govuk-radios__divider',
+      );
+      expect(divider).toBeFalsy();
+    });
+  });
 });

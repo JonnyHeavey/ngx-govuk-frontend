@@ -14,6 +14,11 @@ export interface GovUKRadioOption {
   label: string;
   value: string;
   hint?: string;
+  isDivided?: boolean;
+}
+
+export interface GovUKRadioDivider {
+  text: string;
 }
 
 @Component({
