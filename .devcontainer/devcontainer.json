@@ -6,9 +6,8 @@
   // "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
   "dockerFile": "Dockerfile",
   // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {
-    "ghcr.io/devcontainers-contrib/features/angular-cli:2.0.15": {}
-  },
+  // "features": {
+  // },
   "runArgs": [
     "--network=host"
   ],
@@ -24,20 +23,11 @@
       "settings": {},
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
-        // "Angular.ng-template", // Inluded in "loiane.angular-extension-pack"
-        "loiane.angular-extension-pack",
-        "dbaeumer.vscode-eslint",
-        "lucono.karma-test-explorer",
-        "johnpapa.angular2",
-        "alexiv.vscode-angular2-files",
+        "nrwl.angular-console",
         "esbenp.prettier-vscode",
-        "shardulm94.trailing-spaces",
-        "GitHub.vscode-github-actions",
-        "bradlc.vscode-tailwindcss",
+        "firsttris.vscode-jest-runner",
         "ms-playwright.playwright",
-        "EditorConfig.EditorConfig",
-        "Orta.vscode-jest",
-        "nrwl.angular-console"
+        "dbaeumer.vscode-eslint"
       ]
     }
   }
