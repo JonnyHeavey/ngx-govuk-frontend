@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       <ngx-govuk-checkbox
         formControlName="testCheckbox"
         [label]="label"
-        [id]="id"
+        [inputId]="inputId"
       ></ngx-govuk-checkbox>
     </form>
   `,
@@ -20,7 +20,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 class TestHostComponent {
   label = 'Test Label';
-  id = 'test-checkbox';
+  inputId = 'test-checkbox';
   form: FormGroup;
   component = viewChild.required(GovUKCheckboxComponent);
 
@@ -74,7 +74,7 @@ describe('GovUKCheckboxComponent', () => {
   it('should have id input', () => {
     TestBed.runInInjectionContext(() => {
       const hostComponent = fixture.componentInstance;
-      hostComponent.id = 'custom-id';
+      hostComponent.inputId = 'custom-id';
       fixture.detectChanges();
       expect(component.inputId()).toBe('custom-id');
     });
@@ -84,7 +84,7 @@ describe('GovUKCheckboxComponent', () => {
     TestBed.runInInjectionContext(() => {
       const hostComponent = fixture.componentInstance;
       const testId = 'test-checkbox-id';
-      hostComponent.id = testId;
+      hostComponent.inputId = testId;
       fixture.detectChanges();
 
       const checkboxElement = fixture.nativeElement.querySelector(`#${testId}`);
