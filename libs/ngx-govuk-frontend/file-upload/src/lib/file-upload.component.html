@@ -1,0 +1,7 @@
+<input
+  class="govuk-file-upload"
+  [ngClass]="commonFormInput.extraClasses()"
+  [class.govuk-file-upload--error]="ngControl.touched && ngControl.errors"
+  [attr.id]="commonFormInput.inputId() ? commonFormInput.inputId() : null"
+  type="file"
+/>

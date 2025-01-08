@@ -37,6 +37,9 @@
       "ngx-govuk-frontend/fieldset": [
         "libs/ngx-govuk-frontend/fieldset/src/index.ts"
       ],
+      "ngx-govuk-frontend/file-upload": [
+        "libs/ngx-govuk-frontend/file-upload/src/index.ts"
+      ],
       "ngx-govuk-frontend/footer": [
         "libs/ngx-govuk-frontend/footer/src/index.ts"
       ],

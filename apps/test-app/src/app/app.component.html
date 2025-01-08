@@ -108,6 +108,14 @@
       inputId="favouriteColour"
     />
   </ngx-govuk-form-group>
+
+  <ngx-govuk-form-group
+    label="Upload a file"
+    labelFor="file"
+    errorMessage="File is too large"
+  >
+    <ngx-govuk-file-upload formControlName="file" inputId="file" />
+  </ngx-govuk-form-group>
 </form>
 
 <ngx-govuk-warning-text>This is a warning</ngx-govuk-warning-text>
