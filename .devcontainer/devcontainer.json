@@ -6,8 +6,13 @@
   // "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
   "dockerFile": "Dockerfile",
   // Features to add to the dev container. More info: https://containers.dev/features.
-  // "features": {
-  // },
+  "features": {
+    "docker-in-docker": {
+      "version": "latest",
+      "moby": true,
+      "dockerDashComposeVersion": "v1"
+    }
+  },
   "runArgs": [
     "--network=host"
   ],

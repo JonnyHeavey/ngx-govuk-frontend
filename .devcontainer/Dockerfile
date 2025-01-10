@@ -7,3 +7,4 @@ RUN apt-get update && apt-get -y install google-chrome-stable
 
 ENV CHROME_BIN=/usr/bin/google-chrome-stable
 
+RUN curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
