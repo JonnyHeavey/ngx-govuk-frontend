@@ -96,7 +96,15 @@
     />
   </ngx-govuk-fieldset>
 
-  <ngx-govuk-radio-group formControlName="choice" [options]="options" />
+  <ngx-govuk-radio-group formControlName="choice">
+    <ngx-govuk-radio-option value="red" label="Red" />
+    <ngx-govuk-radio-option
+      value="blue"
+      label="Blue"
+      hint="This is the colour of the sky"
+    />
+    <ngx-govuk-radio-option value="green" label="Green" isDivided="true" />
+  </ngx-govuk-radio-group>
 
   <ngx-govuk-form-group
     label="What is your favourite colour?"

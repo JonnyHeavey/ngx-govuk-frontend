@@ -21,7 +21,7 @@ import { GovUKPasswordInputComponent } from 'ngx-govuk-frontend/password-input';
 import { GovUKPhaseBannerComponent } from 'ngx-govuk-frontend/phase-banner';
 import {
   GovUKRadioGroupComponent,
-  GovUKRadioOption,
+  GovUKRadioOptionDirective,
 } from 'ngx-govuk-frontend/radio';
 import {
   GovUKSelectComponent,
@@ -31,6 +31,7 @@ import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
 import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
 import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
 import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
+
 @Component({
   standalone: true,
   imports: [
@@ -58,6 +59,7 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
     GovUKTagComponent,
     GovUKWarningTextComponent,
     GovUKFileUploadComponent,
+    GovUKRadioOptionDirective,
   ],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',
@@ -75,15 +77,10 @@ export class AppComponent {
     price: '',
     password: ['', Validators.required],
     rememberMe: false,
-    choice: 'B',
+    choice: 'green',
     selection: '',
+    file: '',
   });
-
-  options: GovUKRadioOption[] = [
-    { label: 'Option A', value: 'A' },
-    { label: 'Option B', value: 'B' },
-    { label: 'Option C', value: 'C' },
-  ];
 
   colours: GovUKSelectOption[] = [
     { label: 'Red', value: 'red' },
