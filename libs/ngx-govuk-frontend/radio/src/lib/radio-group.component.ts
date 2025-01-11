@@ -2,6 +2,7 @@ import {
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
+  contentChildren,
   input,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -9,17 +10,7 @@ import {
   injectNgControl,
   ValueAccessorDirective,
 } from 'ngx-govuk-frontend/form-utils';
-
-export interface GovUKRadioOption {
-  label: string;
-  value: string;
-  hint?: string;
-  isDivided?: boolean;
-}
-
-export interface GovUKRadioDivider {
-  text: string;
-}
+import { GovUKRadioOptionDirective } from './radio-option.directive';
 
 @Component({
   selector: 'ngx-govuk-radio-group',
@@ -31,8 +22,8 @@ export interface GovUKRadioDivider {
 })
 export class GovUKRadioGroupComponent {
   readonly ngControl = injectNgControl();
+  readonly options = contentChildren(GovUKRadioOptionDirective);
 
-  readonly options = input.required<GovUKRadioOption[]>();
   readonly small = input(false, { transform: booleanAttribute });
   readonly inline = input(false, { transform: booleanAttribute });
 

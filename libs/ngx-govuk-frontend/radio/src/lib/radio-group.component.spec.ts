@@ -1,26 +1,43 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
-import {
-  GovUKRadioGroupComponent,
-  GovUKRadioOption,
-} from './radio-group.component';
+import { GovUKRadioGroupComponent } from './radio-group.component';
 
 import { Component, viewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { GovUKRadioOptionDirective } from './radio-option/radio-option.directive';
+
+interface GovUKRadioOption {
+  value: string;
+  label: string;
+  hint?: string;
+  isDivided?: boolean;
+}
 
 @Component({
   template: `
     <form [formGroup]="form">
       <ngx-govuk-radio-group
         formControlName="testRadio"
-        [options]="options"
         [inline]="inline"
         [small]="small"
-      ></ngx-govuk-radio-group>
+      >
+        @for (option of options; track option.value) {
+          <ngx-govuk-radio-option
+            [value]="option.value"
+            [label]="option.label"
+            [hint]="option.hint"
+            [isDivided]="option.isDivided"
+          />
+        }
+      </ngx-govuk-radio-group>
     </form>
   `,
   standalone: true,
-  imports: [GovUKRadioGroupComponent, ReactiveFormsModule],
+  imports: [
+    GovUKRadioGroupComponent,
+    GovUKRadioOptionDirective,
+    ReactiveFormsModule,
+  ],
 })
 class TestHostComponent {
   options: GovUKRadioOption[] = [

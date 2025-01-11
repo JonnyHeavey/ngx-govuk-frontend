@@ -13,5 +13,5 @@
     "../**/*.stories.js",
     "*.js",
     "*.ts"
-  ]
+, "../radio/src/lib/radio-option.directive.ts"  ]
 }
