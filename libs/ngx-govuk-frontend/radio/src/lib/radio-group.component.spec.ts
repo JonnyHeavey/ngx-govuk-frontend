@@ -4,7 +4,7 @@ import { GovUKRadioGroupComponent } from './radio-group.component';
 
 import { Component, viewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { GovUKRadioOptionDirective } from './radio-option/radio-option.directive';
+import { GovUKRadioOptionDirective } from './radio-option.directive';
 
 interface GovUKRadioOption {
   value: string;
