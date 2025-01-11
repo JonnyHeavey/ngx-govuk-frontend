@@ -199,7 +199,7 @@
         },
         {
             "name": "GovUKButtonComponent",
-            "id": "component-GovUKButtonComponent-f5821ae6c81f0381dd229514bc39e61e29b3eabdd60579b4ea1ac4a147aa95c11d8d8a0a0082c6a33add3d146a9fb5b3b328674db32c9437b9811446cc5c64bf",
+            "id": "component-GovUKButtonComponent-a2aa56cdf09d1184346564ea0ae7cd30c71ab5ea31cdbff746865815bda04714f7b7c2e5b748fb3178fa046c4250874d46d915e8b069fee4b6d6315f4ee15b33",
             "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -290,10 +290,10 @@
                     "name": "NgClass"
                 }
             ],
-            "description": "<p>A button component following the GovUK Design System</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">&lt;ngx-govuk-button color=&quot;primary&quot;&gt;Save and continue&lt;/ngx-govuk-button&gt;</code></pre></div><ul>\n<li>&#39;primary&#39; (default) - Blue button for primary actions</li>\n<li>&#39;secondary&#39; - Grey button for secondary actions</li>\n<li>&#39;warning&#39; - Red button for destructive actions</li>\n<li>&#39;inverse&#39; - White button for use on dark backgrounds</li>\n</ul>\n",
-            "rawdescription": "\n\nA button component following the GovUK Design System\n\n```html\n<ngx-govuk-button color=\"primary\">Save and continue</ngx-govuk-button>\n```\n  - 'primary' (default) - Blue button for primary actions\n  - 'secondary' - Grey button for secondary actions\n  - 'warning' - Red button for destructive actions\n  - 'inverse' - White button for use on dark backgrounds\n",
+            "description": "<p>A button component following the GovUK Design System (<a href=\"https://design-system.service.gov.uk/components/button/\">https://design-system.service.gov.uk/components/button/</a>)</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">&lt;ngx-govuk-button color=&quot;primary&quot;&gt;Save and continue&lt;/ngx-govuk-button&gt;</code></pre></div><ul>\n<li>&#39;primary&#39; (default) - Green button for primary actions</li>\n<li>&#39;secondary&#39; - Grey button for secondary actions</li>\n<li>&#39;warning&#39; - Red button for destructive actions</li>\n<li>&#39;inverse&#39; - White button for use on dark backgrounds</li>\n</ul>\n",
+            "rawdescription": "\n\nA button component following the GovUK Design System (https://design-system.service.gov.uk/components/button/)\n\n```html\n<ngx-govuk-button color=\"primary\">Save and continue</ngx-govuk-button>\n```\n  - 'primary' (default) - Green button for primary actions\n  - 'secondary' - Grey button for secondary actions\n  - 'warning' - Red button for destructive actions\n  - 'inverse' - White button for use on dark backgrounds\n",
             "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * The color type for GovUK buttons\n * @typedef {('primary'|'secondary'|'warning'|'inverse')} GovUKButtonColorType\n * - 'primary' - Default blue button\n * - 'secondary' - Grey button for secondary actions\n * - 'warning' - Red warning button\n * - 'inverse' - White button on dark background\n */\nexport type GovUKButtonColorType =\n  | 'primary'\n  | 'secondary'\n  | 'warning'\n  | 'inverse';\n\n/**\n * A button component following the GovUK Design System\n * @component\n *\n * @example\n * <ngx-govuk-button color=\"primary\">Save and continue</ngx-govuk-button>\n *\n * @property {boolean} disabled - Whether the button is disabled\n * @property {boolean} start - Whether to show the start icon (forward arrow)\n * @property {GovUKButtonColorType} color - The color variant of the button\n *   - 'primary' (default) - Blue button for primary actions\n *   - 'secondary' - Grey button for secondary actions\n *   - 'warning' - Red button for destructive actions\n *   - 'inverse' - White button for use on dark backgrounds\n */\n@Component({\n  selector: 'ngx-govuk-button',\n  standalone: true,\n  imports: [NgClass],\n  templateUrl: './button.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKButtonComponent {\n  disabled = input(false);\n  start = input(false);\n  color = input<GovUKButtonColorType>('primary');\n}\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * The color type for GovUK buttons\n * @typedef {('primary'|'secondary'|'warning'|'inverse')} GovUKButtonColorType\n * - 'primary' - Default blue button\n * - 'secondary' - Grey button for secondary actions\n * - 'warning' - Red warning button\n * - 'inverse' - White button on dark background\n */\nexport type GovUKButtonColorType =\n  | 'primary'\n  | 'secondary'\n  | 'warning'\n  | 'inverse';\n\n/**\n * A button component following the GovUK Design System (https://design-system.service.gov.uk/components/button/)\n * @component\n *\n * @example\n * <ngx-govuk-button color=\"primary\">Save and continue</ngx-govuk-button>\n *\n * @property {boolean} disabled - Whether the button is disabled\n * @property {boolean} start - Whether to show the start icon (forward arrow)\n * @property {GovUKButtonColorType} color - The color variant of the button\n *   - 'primary' (default) - Green button for primary actions\n *   - 'secondary' - Grey button for secondary actions\n *   - 'warning' - Red button for destructive actions\n *   - 'inverse' - White button for use on dark backgrounds\n */\n@Component({\n  selector: 'ngx-govuk-button',\n  standalone: true,\n  imports: [NgClass],\n  templateUrl: './button.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKButtonComponent {\n  disabled = input(false);\n  start = input(false);\n  color = input<GovUKButtonColorType>('primary');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2280,14 +2280,40 @@
                 "defaultValue": "{\n  logoLink: '/',\n}"
             },
             {
-                "name": "meta",
+                "name": "DefaultButton",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<GovUKBackLinkComponent>",
-                "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'primary' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n  name: 'Default buttons',\n}",
+                "rawdescription": "Use a default button for the main call to action on a page.",
+                "description": "<p>Use a default button for the main call to action on a page.</p>\n"
+            },
+            {
+                "name": "DisabledButtons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'secondary' as GovUKButtonColorType,\n    disabled: true,\n    start: false,\n  },\n  name: 'Disabled Buttons',\n}",
+                "rawdescription": "Disabled buttons have poor contrast and can confuse some users, so avoid them if possible.",
+                "description": "<p>Disabled buttons have poor contrast and can confuse some users, so avoid them if possible.</p>\n"
+            },
+            {
+                "name": "InverseButtons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'inverse' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n  name: 'Buttons on dark backgrounds',\n}",
+                "rawdescription": "Inverse shows white buttons on dark backgrounds",
+                "description": "<p>Inverse shows white buttons on dark backgrounds</p>\n"
             },
             {
                 "name": "meta",
@@ -2298,6 +2324,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<GovUKCheckboxComponent>",
                 "defaultValue": "{\n  component: GovUKCheckboxComponent,\n  title: 'Forms/GovUKCheckboxComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKBackLinkComponent>",
+                "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
             },
             {
                 "name": "meta",
@@ -2523,21 +2559,21 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: Template,\n  args: {\n    inverse: false,\n  },\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  render: Template,\n  args: {\n    inputId: 'checkbox1',\n    label: 'Sample',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    inverse: false,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -2713,16 +2749,6 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'primary' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/button/src/lib/button-group/button-group.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2750,6 +2776,18 @@
                 "defaultValue": "{\n  render: Template,\n}"
             },
             {
+                "name": "SecondaryButtons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'secondary' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n  name: 'Secondary Buttons',\n}",
+                "rawdescription": "Use secondary buttons for secondary calls to action on a page.",
+                "description": "<p>Use secondary buttons for secondary calls to action on a page.</p>\n"
+            },
+            {
                 "name": "ServiceName",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2760,14 +2798,16 @@
                 "defaultValue": "{\n  render: Template,\n  args: {\n    ...defaultArgs,\n    appName: 'Service name',\n    appLink: '/',\n  },\n}"
             },
             {
-                "name": "Template",
+                "name": "StartButtons",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "StoryFn<GovUKBackLinkComponent>",
-                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-back-link ${argsToTemplate(args)} />`,\n})"
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'primary' as GovUKButtonColorType,\n    disabled: false,\n    start: true,\n  },\n  name: 'Start Buttons',\n}",
+                "rawdescription": "Use a start button for the main call to action on your service’s Start page.\nStart buttons do not usually submit form data, so use a link tag instead of a button tag.",
+                "description": "<p>Use a start button for the main call to action on your service’s Start page.\nStart buttons do not usually submit form data, so use a link tag instead of a button tag.</p>\n"
             },
             {
                 "name": "Template",
@@ -2778,6 +2818,16 @@
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKCheckboxComponent>",
                 "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-checkbox\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-checkbox>\n    </form>`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryFn<GovUKBackLinkComponent>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-back-link ${argsToTemplate(args)} />`,\n})"
             },
             {
                 "name": "Template",
@@ -2957,7 +3007,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKButtonComponent>",
-                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-button ${argsToTemplate(args)}>\n    Save and continue\n  </ngx-govuk-button>`,\n})"
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-button ${argsToTemplate(args)}>\n    Button\n  </ngx-govuk-button>`,\n})"
             },
             {
                 "name": "Template",
@@ -2988,6 +3038,18 @@
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKCookieConfirmationComponent>",
                 "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-cookie-confirmation />`,\n})"
+            },
+            {
+                "name": "WarningButtons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'warning' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n  name: 'Warning Buttons',\n}",
+                "rawdescription": "Warning buttons are designed to make users think carefully before they use them.",
+                "description": "<p>Warning buttons are designed to make users think carefully before they use them.</p>\n"
             }
         ],
         "functions": [],
@@ -3029,8 +3091,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<GovUKBackLinkComponent>",
-                "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                "rawtype": "StoryObj<GovUKCheckboxComponent>",
+                "file": "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -3040,8 +3102,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<GovUKCheckboxComponent>",
-                "file": "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts",
+                "rawtype": "StoryObj<GovUKBackLinkComponent>",
+                "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -3345,36 +3407,98 @@
                     "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-header ${argsToTemplate(args)}>\n  </ngx-govuk-header>`,\n})"
                 }
             ],
-            "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts": [
+            "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts": [
+                {
+                    "name": "DefaultButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'primary' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n  name: 'Default buttons',\n}",
+                    "rawdescription": "Use a default button for the main call to action on a page.",
+                    "description": "<p>Use a default button for the main call to action on a page.</p>\n"
+                },
+                {
+                    "name": "DisabledButtons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'secondary' as GovUKButtonColorType,\n    disabled: true,\n    start: false,\n  },\n  name: 'Disabled Buttons',\n}",
+                    "rawdescription": "Disabled buttons have poor contrast and can confuse some users, so avoid them if possible.",
+                    "description": "<p>Disabled buttons have poor contrast and can confuse some users, so avoid them if possible.</p>\n"
+                },
+                {
+                    "name": "InverseButtons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'inverse' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n  name: 'Buttons on dark backgrounds',\n}",
+                    "rawdescription": "Inverse shows white buttons on dark backgrounds",
+                    "description": "<p>Inverse shows white buttons on dark backgrounds</p>\n"
+                },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<GovUKBackLinkComponent>",
-                    "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
+                    "type": "Meta<GovUKButtonComponent>",
+                    "defaultValue": "{\n  component: GovUKButtonComponent,\n  title: 'Button/GovUKButtonComponent',\n  argTypes: {\n    color: {\n      options: ['primary', 'secondary', 'warning', 'inverse'],\n      control: { type: 'select' },\n    },\n  },\n}"
                 },
                 {
-                    "name": "Primary",
+                    "name": "SecondaryButtons",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: Template,\n  args: {\n    inverse: false,\n  },\n}"
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'secondary' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n  name: 'Secondary Buttons',\n}",
+                    "rawdescription": "Use secondary buttons for secondary calls to action on a page.",
+                    "description": "<p>Use secondary buttons for secondary calls to action on a page.</p>\n"
+                },
+                {
+                    "name": "StartButtons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'primary' as GovUKButtonColorType,\n    disabled: false,\n    start: true,\n  },\n  name: 'Start Buttons',\n}",
+                    "rawdescription": "Use a start button for the main call to action on your service’s Start page.\nStart buttons do not usually submit form data, so use a link tag instead of a button tag.",
+                    "description": "<p>Use a start button for the main call to action on your service’s Start page.\nStart buttons do not usually submit form data, so use a link tag instead of a button tag.</p>\n"
                 },
                 {
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "StoryFn<GovUKBackLinkComponent>",
-                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-back-link ${argsToTemplate(args)} />`,\n})"
+                    "type": "StoryFn<GovUKButtonComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-button ${argsToTemplate(args)}>\n    Button\n  </ngx-govuk-button>`,\n})"
+                },
+                {
+                    "name": "WarningButtons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'warning' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n  name: 'Warning Buttons',\n}",
+                    "rawdescription": "Warning buttons are designed to make users think carefully before they use them.",
+                    "description": "<p>Warning buttons are designed to make users think carefully before they use them.</p>\n"
                 }
             ],
             "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts": [
@@ -3407,6 +3531,38 @@
                     "deprecationMessage": "",
                     "type": "StoryFn<GovUKCheckboxComponent>",
                     "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-checkbox\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-checkbox>\n    </form>`,\n})"
+                }
+            ],
+            "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKBackLinkComponent>",
+                    "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    inverse: false,\n  },\n}"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryFn<GovUKBackLinkComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-back-link ${argsToTemplate(args)} />`,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/details/src/lib/details.component.stories.ts": [
@@ -3921,38 +4077,6 @@
                     "defaultValue": "(\n  args: GovUKWarningTextComponent\n) => ({\n  props: { ...args },\n  template: `<ngx-govuk-warning-text>\n    You can be fined up to £5,000 if you do not register.\n  </ngx-govuk-warning-text>`,\n})"
                 }
             ],
-            "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts": [
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<GovUKButtonComponent>",
-                    "defaultValue": "{\n  component: GovUKButtonComponent,\n  title: 'Button/GovUKButtonComponent',\n  argTypes: {\n    color: {\n      options: ['primary', 'secondary', 'warning', 'inverse'],\n      control: { type: 'select' },\n    },\n  },\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: Template,\n  args: {\n    color: 'primary' as GovUKButtonColorType,\n    disabled: false,\n    start: false,\n  },\n}"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "StoryFn<GovUKButtonComponent>",
-                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-button ${argsToTemplate(args)}>\n    Save and continue\n  </ngx-govuk-button>`,\n})"
-                }
-            ],
             "libs/ngx-govuk-frontend/button/src/lib/button-group/button-group.component.stories.ts": [
                 {
                     "name": "meta",
@@ -4104,19 +4228,6 @@
                     "kind": 192
                 }
             ],
-            "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<GovUKBackLinkComponent>",
-                    "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts": [
                 {
                     "name": "Story",
@@ -4124,6 +4235,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<GovUKCheckboxComponent>",
                     "file": "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKBackLinkComponent>",
+                    "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -4407,7 +4531,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 2,
+        "count": 7,
         "status": "low",
         "files": [
             {
@@ -4533,6 +4657,36 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "DefaultButton",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DisabledButtons",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InverseButtons",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "meta",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -4543,10 +4697,20 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
+                "name": "SecondaryButtons",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "StartButtons",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
             },
             {
                 "filePath": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
@@ -4557,6 +4721,16 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WarningButtons",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
             },
             {
                 "filePath": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.stories.ts",
