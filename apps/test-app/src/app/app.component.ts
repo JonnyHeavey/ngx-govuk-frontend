@@ -27,6 +27,7 @@ import {
   GovUKSelectComponent,
   GovUKSelectOption,
 } from 'ngx-govuk-frontend/select';
+import { GovUKTabComponent, GovUKTabsComponent } from 'ngx-govuk-frontend/tabs';
 import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
 import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
 import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
@@ -60,6 +61,8 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
     GovUKWarningTextComponent,
     GovUKFileUploadComponent,
     GovUKRadioOptionDirective,
+    GovUKTabsComponent,
+    GovUKTabComponent,
   ],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',

@@ -2,86 +2,6 @@
     "pipes": [],
     "interfaces": [
         {
-            "name": "GovUKRadioDivider",
-            "id": "interface-GovUKRadioDivider-a40a9ac7aec8d9356b547277885f066dd5e006751214c59945d45e15c17ada2429182d1dece0610d5b535ca28651012b09aa146d4b88e6abe98ccf0a15ce8960",
-            "file": "libs/ngx-govuk-frontend/radio/src/lib/radio-group.component.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "import {\r\n  booleanAttribute,\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  input,\r\n} from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  injectNgControl,\r\n  ValueAccessorDirective,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\nexport interface GovUKRadioOption {\r\n  label: string;\r\n  value: string;\r\n  hint?: string;\r\n  isDivided?: boolean;\r\n}\r\n\r\nexport interface GovUKRadioDivider {\r\n  text: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'ngx-govuk-radio-group',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule],\r\n  templateUrl: './radio-group.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [ValueAccessorDirective],\r\n})\r\nexport class GovUKRadioGroupComponent {\r\n  readonly ngControl = injectNgControl();\r\n\r\n  readonly options = input.required<GovUKRadioOption[]>();\r\n  readonly small = input(false, { transform: booleanAttribute });\r\n  readonly inline = input(false, { transform: booleanAttribute });\r\n\r\n  setValue(value: string) {\r\n    if (this.ngControl.control.value !== value) {\r\n      this.ngControl.control.setValue(value);\r\n    }\r\n  }\r\n}\r\n",
-            "properties": [
-                {
-                    "name": "text",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 21
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "GovUKRadioOption",
-            "id": "interface-GovUKRadioOption-a40a9ac7aec8d9356b547277885f066dd5e006751214c59945d45e15c17ada2429182d1dece0610d5b535ca28651012b09aa146d4b88e6abe98ccf0a15ce8960",
-            "file": "libs/ngx-govuk-frontend/radio/src/lib/radio-group.component.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "import {\r\n  booleanAttribute,\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  input,\r\n} from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  injectNgControl,\r\n  ValueAccessorDirective,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\nexport interface GovUKRadioOption {\r\n  label: string;\r\n  value: string;\r\n  hint?: string;\r\n  isDivided?: boolean;\r\n}\r\n\r\nexport interface GovUKRadioDivider {\r\n  text: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'ngx-govuk-radio-group',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule],\r\n  templateUrl: './radio-group.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [ValueAccessorDirective],\r\n})\r\nexport class GovUKRadioGroupComponent {\r\n  readonly ngControl = injectNgControl();\r\n\r\n  readonly options = input.required<GovUKRadioOption[]>();\r\n  readonly small = input(false, { transform: booleanAttribute });\r\n  readonly inline = input(false, { transform: booleanAttribute });\r\n\r\n  setValue(value: string) {\r\n    if (this.ngControl.control.value !== value) {\r\n      this.ngControl.control.setValue(value);\r\n    }\r\n  }\r\n}\r\n",
-            "properties": [
-                {
-                    "name": "hint",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "isDivided",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 17
-                },
-                {
-                    "name": "label",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 14
-                },
-                {
-                    "name": "value",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 15
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
             "name": "GovUKSelectOption",
             "id": "interface-GovUKSelectOption-664a44373ebeaed188deb84c1005fe828f1d3c0072b5464f0428c657dc7fd09d68b42fc13cf867caf801509f176155cc8bdc6f5131e2d74e52b1f9bc78caca43",
             "file": "libs/ngx-govuk-frontend/select/src/lib/select.component.ts",
@@ -121,7 +41,130 @@
     "guards": [],
     "interceptors": [],
     "classes": [],
-    "directives": [],
+    "directives": [
+        {
+            "name": "GovUKRadioOptionDirective",
+            "id": "directive-GovUKRadioOptionDirective-3875a4a67414d4278199dcc7379e36fdccb35addc820b3c03153060f54e7dc76f1153110c1b860217aa809434b2349b8e92e1005a3919cc747db5cf7452ae26f",
+            "file": "libs/ngx-govuk-frontend/radio/src/lib/radio-option.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { booleanAttribute, Directive, input } from '@angular/core';\n\n@Directive({\n  selector: 'ngx-govuk-radio-option',\n  standalone: true,\n})\nexport class GovUKRadioOptionDirective {\n  readonly label = input.required<string>();\n  readonly value = input.required<string>();\n\n  readonly hint = input<string>();\n  readonly isDivided = input(false, { transform: booleanAttribute });\n}\n",
+            "selector": "ngx-govuk-radio-option",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "hint",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "hint",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "isDivided",
+                    "defaultValue": "input(false, { transform: booleanAttribute })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                }
+            ],
+            "methodsClass": [],
+            "extends": []
+        }
+    ],
     "components": [
         {
             "name": "GovUKBackLinkComponent",
@@ -1629,7 +1672,7 @@
         },
         {
             "name": "GovUKRadioGroupComponent",
-            "id": "component-GovUKRadioGroupComponent-a40a9ac7aec8d9356b547277885f066dd5e006751214c59945d45e15c17ada2429182d1dece0610d5b535ca28651012b09aa146d4b88e6abe98ccf0a15ce8960",
+            "id": "component-GovUKRadioGroupComponent-8cf8eb6277b7ca4873359960a5cf744ec25361adfa42fd46f9398c434bb46ba99269690838bfaaa3f55df21361f78bae91726f815f2d13f8aefc39fdd6c6b54e",
             "file": "libs/ngx-govuk-frontend/radio/src/lib/radio-group.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1661,7 +1704,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 37,
+                    "line": 28,
                     "modifierKind": [
                         148
                     ]
@@ -1675,21 +1718,21 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33,
+                    "line": 24,
                     "modifierKind": [
                         148
                     ]
                 },
                 {
                     "name": "options",
-                    "defaultValue": "input.required<GovUKRadioOption[]>()",
+                    "defaultValue": "contentChildren(GovUKRadioOptionDirective)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 35,
+                    "line": 25,
                     "modifierKind": [
                         148
                     ]
@@ -1703,7 +1746,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36,
+                    "line": 27,
                     "modifierKind": [
                         148
                     ]
@@ -1723,7 +1766,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1753,12 +1796,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  booleanAttribute,\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  input,\r\n} from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  injectNgControl,\r\n  ValueAccessorDirective,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\nexport interface GovUKRadioOption {\r\n  label: string;\r\n  value: string;\r\n  hint?: string;\r\n  isDivided?: boolean;\r\n}\r\n\r\nexport interface GovUKRadioDivider {\r\n  text: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'ngx-govuk-radio-group',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule],\r\n  templateUrl: './radio-group.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [ValueAccessorDirective],\r\n})\r\nexport class GovUKRadioGroupComponent {\r\n  readonly ngControl = injectNgControl();\r\n\r\n  readonly options = input.required<GovUKRadioOption[]>();\r\n  readonly small = input(false, { transform: booleanAttribute });\r\n  readonly inline = input(false, { transform: booleanAttribute });\r\n\r\n  setValue(value: string) {\r\n    if (this.ngControl.control.value !== value) {\r\n      this.ngControl.control.setValue(value);\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  booleanAttribute,\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  contentChildren,\r\n  input,\r\n} from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  injectNgControl,\r\n  ValueAccessorDirective,\r\n} from 'ngx-govuk-frontend/form-utils';\r\nimport { GovUKRadioOptionDirective } from './radio-option.directive';\r\n\r\n@Component({\r\n  selector: 'ngx-govuk-radio-group',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule],\r\n  templateUrl: './radio-group.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [ValueAccessorDirective],\r\n})\r\nexport class GovUKRadioGroupComponent {\r\n  readonly ngControl = injectNgControl();\r\n  readonly options = contentChildren(GovUKRadioOptionDirective);\r\n\r\n  readonly small = input(false, { transform: booleanAttribute });\r\n  readonly inline = input(false, { transform: booleanAttribute });\r\n\r\n  setValue(value: string) {\r\n    if (this.ngControl.control.value !== value) {\r\n      this.ngControl.control.setValue(value);\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div\r\n  class=\"govuk-radios\"\r\n  [class.govuk-radios--small]=\"small()\"\r\n  [class.govuk-radios--inline]=\"inline()\"\r\n>\r\n  @for (option of options(); track option.value) {\r\n    @if ($index > 0 && option.isDivided) {\r\n      <div class=\"govuk-radios__divider\">Or</div>\r\n    }\r\n    <div class=\"govuk-radios__item\" (click)=\"setValue(option.value)\">\r\n      <input\r\n        class=\"govuk-radios__input\"\r\n        type=\"radio\"\r\n        [formControl]=\"ngControl.control\"\r\n        [value]=\"option.value\"\r\n      />\r\n      <label class=\"govuk-label govuk-radios__label\">\r\n        {{ option.label }}\r\n      </label>\r\n      @if (option.hint) {\r\n        <div class=\"govuk-hint govuk-radios__hint\">\r\n          {{ option.hint }}\r\n        </div>\r\n      }\r\n    </div>\r\n  }\r\n</div>\r\n"
+            "templateData": "<div\r\n  class=\"govuk-radios\"\r\n  [class.govuk-radios--small]=\"small()\"\r\n  [class.govuk-radios--inline]=\"inline()\"\r\n>\r\n  @for (option of options(); track option.value) {\r\n    @if ($index > 0 && option.isDivided()) {\r\n      <div class=\"govuk-radios__divider\">Or</div>\r\n    }\r\n    <div class=\"govuk-radios__item\" (click)=\"setValue(option.value())\">\r\n      <input\r\n        class=\"govuk-radios__input\"\r\n        type=\"radio\"\r\n        [formControl]=\"ngControl.control\"\r\n        [value]=\"option.value()\"\r\n      />\r\n      <label class=\"govuk-label govuk-radios__label\">\r\n        {{ option.label() }}\r\n      </label>\r\n      @if (option.hint()) {\r\n        <div class=\"govuk-hint govuk-radios__hint\">\r\n          {{ option.hint() }}\r\n        </div>\r\n      }\r\n    </div>\r\n  }\r\n</div>\r\n"
         },
         {
             "name": "GovUKSelectComponent",
@@ -1854,6 +1897,277 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<select\r\n  class=\"govuk-select\"\r\n  [class.govuk-select--error]=\"ngControl.touched && ngControl.errors\"\r\n  [formControl]=\"ngControl.control\"\r\n  [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\r\n>\r\n  @for (option of options(); track option.value) {\r\n    <option [value]=\"option.value\">\r\n      {{ option.label }}\r\n    </option>\r\n  }\r\n</select>\r\n"
+        },
+        {
+            "name": "GovUKTabComponent",
+            "id": "component-GovUKTabComponent-f4490486e62cbc9958ea0afc0807d4cf2a551050b4e1eea72dd9747ea15a9e2675858f62655ba8236808114a543228eff7098b8e5102c65ca1accccb5aba49d7",
+            "file": "libs/ngx-govuk-frontend/tabs/src/lib/tab/tab.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-tab",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./tab.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "tabContent",
+                    "defaultValue": "viewChild.required<TemplateRef<unknown>>('tabContent')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n@Component({\n  standalone: true,\n  selector: 'ngx-govuk-tab',\n  templateUrl: './tab.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTabComponent {\n  readonly id = input.required<string>();\n  readonly title = input.required<string>();\n\n  public readonly tabContent =\n    viewChild.required<TemplateRef<unknown>>('tabContent');\n  // TODO ID\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<ng-template #tabContent><ng-content /></ng-template>\n"
+        },
+        {
+            "name": "GovUKTabsComponent",
+            "id": "component-GovUKTabsComponent-f2ce5359ec16887cd55bd481f7aebaac4acadc4c223f943da1e7d15f7d2f6d2a202d8e0c8a110dc44548eef2efb9bf6644d13362c72d4610b4c9107506b7be7d",
+            "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-tabs",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./tabs.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "activeTab",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "activeTab",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "tabs",
+                    "defaultValue": "contentChildren(GovUKTabComponent)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "selectTab",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgTemplateOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  contentChildren,\n  input,\n  model,\n} from '@angular/core';\nimport { GovUKTabComponent } from '../tab/tab.component';\n\n@Component({\n  selector: 'ngx-govuk-tabs',\n  standalone: true,\n  imports: [NgTemplateOutlet],\n  templateUrl: './tabs.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTabsComponent {\n  readonly title = input.required<string>();\n\n  readonly tabs = contentChildren(GovUKTabComponent);\n\n  readonly activeTab = model(0);\n\n  selectTab(index: number, event: Event): void {\n    event.preventDefault();\n    this.activeTab.set(index);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">Contents</h2>\n  <ul class=\"govuk-tabs__list\" role=\"tablist\">\n    @for (tab of tabs(); track tab.id) {\n      <li\n        class=\"govuk-tabs__list-item\"\n        [class.govuk-tabs__list-item--selected]=\"$index === activeTab()\"\n        role=\"presentation\"\n      >\n        <a\n          class=\"govuk-tabs__tab\"\n          (click)=\"selectTab($index, $event)\"\n          href=\"#\"\n          role=\"tab\"\n        >\n          {{ tab.title() }}\n        </a>\n      </li>\n    }\n  </ul>\n\n  @for (tab of tabs(); track tab.id) {\n    <div\n      class=\"govuk-tabs__panel\"\n      [class.govuk-tabs__panel--hidden]=\"$index !== activeTab()\"\n      role=\"tabpanel\"\n    >\n      <ng-container [ngTemplateOutlet]=\"tab.tabContent()\" />\n    </div>\n  }\n</div>\n\n<!-- \n\n<div class=\"govuk-tabs\">\n  <ul class=\"govuk-tabs__list\" role=\"tablist\">\n    <li\n      *ngFor=\"let tabItem of tabList; let i = index\"\n      [class.govuk-tabs__list-item--selected]=\"(tabItem.isSelected | async) === true\"\n      class=\"govuk-tabs__list-item\"\n      role=\"presentation\"\n    >\n      <a\n        #anchor\n        (keydown)=\"anchorKeydown($event, i)\"\n        [attr.aria-controls]=\"tabItem.id\"\n        [attr.aria-selected]=\"tabItem.isSelected | async\"\n        [fragment]=\"tabItem.id\"\n        [id]=\"'tab_' + tabItem.id\"\n        [routerLink]=\"\"\n        [state]=\"{ scrollSkip: true }\"\n        [tabIndex]=\"(tabItem.isSelected | async) ? 0 : -1\"\n        class=\"govuk-tabs__tab\"\n        queryParamsHandling=\"preserve\"\n        role=\"tab\"\n      >\n        {{ tabItem.label }}\n      </a>\n    </li>\n  </ul>\n  <ng-container *ngFor=\"let tab of tabEagerList\">\n    <div\n      [attr.aria-labelledby]=\"'tab_' + tab.id\"\n      [class.govuk-tabs__panel--hidden]=\"(tab.isSelected | async) === false\"\n      [id]=\"tab.id\"\n      class=\"govuk-tabs__panel\"\n      role=\"tabpanel\"\n    >\n      <ng-template [ngTemplateOutlet]=\"tab.templateRef\"></ng-template>\n    </div>\n  </ng-container>\n  <ng-container *ngFor=\"let tab of tabLazyList\">\n    <div\n      *ngIf=\"tab.isSelected | async\"\n      [attr.aria-labelledby]=\"'tab_' + tab.id\"\n      [id]=\"tab.id\"\n      class=\"govuk-tabs__panel\"\n      role=\"tabpanel\"\n    >\n      <ng-template [ngTemplateOutlet]=\"tab.templateRef\"></ng-template>\n    </div>\n  </ng-container>\n</div> -->\n"
         },
         {
             "name": "GovUKTagComponent",
@@ -2417,7 +2731,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GovUKRadioGroupComponent>",
-                "defaultValue": "{\n  component: GovUKRadioGroupComponent,\n  title: 'Forms/GovUKRadioGroupComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: GovUKRadioGroupComponent,\n  title: 'Forms/GovUKRadioGroupComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule, GovUKRadioOptionDirective],\n    }),\n  ],\n  argTypes: {\n    small: {\n      control: {\n        type: 'boolean',\n      },\n    },\n    inline: {\n      control: {\n        type: 'boolean',\n      },\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -2508,6 +2822,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<GovUKCookieConfirmationComponent>",
                 "defaultValue": "{\n  component: GovUKCookieConfirmationComponent,\n  title: 'Cookies/GovUKCookieConfirmationComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKTabsComponent>",
+                "defaultValue": "{\n  component: GovUKTabsComponent,\n  title: 'Tabs/GovUKTabsComponent',\n}"
             },
             {
                 "name": "preview",
@@ -2657,7 +2981,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: Template,\n  args: {\n    options: [\n      {\n        value: 'a',\n        label: 'Option A',\n        hint: 'This is a hint',\n        isDivided: true,\n      },\n      { value: 'b', label: 'Option B' },\n      { value: 'c', label: 'Option C', isDivided: true },\n    ],\n    small: false,\n    inline: false,\n  },\n}"
+                "defaultValue": "{\n  render: Template,\n  args: {\n    small: false,\n    inline: false,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -2748,6 +3072,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  render: Template,\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    title: 'Tabs title',\n  },\n}"
             },
             {
                 "name": "ServiceName",
@@ -2897,7 +3231,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKRadioGroupComponent>",
-                "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-radio-group\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-radio-group>\n    </form>`,\n})"
+                "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-radio-group\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      >\n        <ngx-govuk-radio-option value=\"red\" label=\"Red\" />\n        <ngx-govuk-radio-option\n          value=\"blue\"\n          label=\"Blue\"\n          hint=\"This is the colour of the sky\"\n        />\n        <ngx-govuk-radio-option value=\"green\" label=\"Green\" isDivided=\"true\" />\n      </ngx-govuk-radio-group>\n    </form>`,\n})"
             },
             {
                 "name": "Template",
@@ -2988,6 +3322,16 @@
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKCookieConfirmationComponent>",
                 "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-cookie-confirmation />`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryFn<GovUKTabsComponent>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `  <ngx-govuk-tabs ${argsToTemplate(args)}>\n    <ngx-govuk-tab id=\"tab-one\" title=\"Tab One\">\n      Tab One Content\n    </ngx-govuk-tab>\n    <ngx-govuk-tab id=\"tab-two\" title=\"Tab Two\">\n      Tab Two Content\n    </ngx-govuk-tab>\n    <ngx-govuk-tab id=\"tab-three\" title=\"Tab Three\">\n      Tab Three Content\n    </ngx-govuk-tab>\n  </ngx-govuk-tabs>`,\n})"
             }
         ],
         "functions": [],
@@ -3273,6 +3617,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<GovUKCookieConfirmationComponent>",
                 "file": "libs/ngx-govuk-frontend/cookie-banner/src/lib/cookie-confirmation/cookie-confirmation.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKTabsComponent>",
+                "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -3738,7 +4093,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GovUKRadioGroupComponent>",
-                    "defaultValue": "{\n  component: GovUKRadioGroupComponent,\n  title: 'Forms/GovUKRadioGroupComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: GovUKRadioGroupComponent,\n  title: 'Forms/GovUKRadioGroupComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule, GovUKRadioOptionDirective],\n    }),\n  ],\n  argTypes: {\n    small: {\n      control: {\n        type: 'boolean',\n      },\n    },\n    inline: {\n      control: {\n        type: 'boolean',\n      },\n    },\n  },\n}"
                 },
                 {
                     "name": "Primary",
@@ -3748,7 +4103,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: Template,\n  args: {\n    options: [\n      {\n        value: 'a',\n        label: 'Option A',\n        hint: 'This is a hint',\n        isDivided: true,\n      },\n      { value: 'b', label: 'Option B' },\n      { value: 'c', label: 'Option C', isDivided: true },\n    ],\n    small: false,\n    inline: false,\n  },\n}"
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    small: false,\n    inline: false,\n  },\n}"
                 },
                 {
                     "name": "Template",
@@ -3758,7 +4113,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoryFn<GovUKRadioGroupComponent>",
-                    "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-radio-group\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-radio-group>\n    </form>`,\n})"
+                    "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-radio-group\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      >\n        <ngx-govuk-radio-option value=\"red\" label=\"Red\" />\n        <ngx-govuk-radio-option\n          value=\"blue\"\n          label=\"Blue\"\n          hint=\"This is the colour of the sky\"\n        />\n        <ngx-govuk-radio-option value=\"green\" label=\"Green\" isDivided=\"true\" />\n      </ngx-govuk-radio-group>\n    </form>`,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/select/src/lib/select.component.stories.ts": [
@@ -4047,6 +4402,38 @@
                     "deprecationMessage": "",
                     "type": "StoryFn<GovUKCookieConfirmationComponent>",
                     "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-cookie-confirmation />`,\n})"
+                }
+            ],
+            "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKTabsComponent>",
+                    "defaultValue": "{\n  component: GovUKTabsComponent,\n  title: 'Tabs/GovUKTabsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    title: 'Tabs title',\n  },\n}"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryFn<GovUKTabsComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `  <ngx-govuk-tabs ${argsToTemplate(args)}>\n    <ngx-govuk-tab id=\"tab-one\" title=\"Tab One\">\n      Tab One Content\n    </ngx-govuk-tab>\n    <ngx-govuk-tab id=\"tab-two\" title=\"Tab Two\">\n      Tab Two Content\n    </ngx-govuk-tab>\n    <ngx-govuk-tab id=\"tab-three\" title=\"Tab Three\">\n      Tab Three Content\n    </ngx-govuk-tab>\n  </ngx-govuk-tabs>`,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/.storybook/preview.ts": [
@@ -4397,6 +4784,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<GovUKCookieConfirmationComponent>",
                     "file": "libs/ngx-govuk-frontend/cookie-banner/src/lib/cookie-confirmation/cookie-confirmation.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKTabsComponent>",
+                    "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -5353,21 +5753,12 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/ngx-govuk-frontend/radio/src/lib/radio-group.component.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "GovUKRadioDivider",
+                "filePath": "libs/ngx-govuk-frontend/radio/src/lib/radio-option.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "GovUKRadioOptionDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/ngx-govuk-frontend/radio/src/lib/radio-group.component.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "GovUKRadioOption",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -5426,6 +5817,64 @@
                 "name": "GovUKSelectOption",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/tabs/src/lib/tab/tab.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKTabComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKTabsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {

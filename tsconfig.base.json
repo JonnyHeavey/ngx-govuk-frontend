@@ -73,6 +73,7 @@
       "ngx-govuk-frontend/select": [
         "libs/ngx-govuk-frontend/select/src/index.ts"
       ],
+      "ngx-govuk-frontend/tabs": ["libs/ngx-govuk-frontend/tabs/src/index.ts"],
       "ngx-govuk-frontend/tag": ["libs/ngx-govuk-frontend/tag/src/index.ts"],
       "ngx-govuk-frontend/text-input": [
         "libs/ngx-govuk-frontend/text-input/src/index.ts"
