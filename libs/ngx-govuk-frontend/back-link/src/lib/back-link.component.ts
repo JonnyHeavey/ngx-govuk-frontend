@@ -1,4 +1,9 @@
-import { booleanAttribute, Component, input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  input,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 /**
@@ -27,6 +32,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './back-link.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKBackLinkComponent {
   readonly link = input.required<RouterLink['routerLink']>();
