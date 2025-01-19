@@ -7,6 +7,10 @@ import {
 import { GovUKFooterComponent } from 'ngx-govuk-frontend/footer';
 import { GovUKHeaderComponent } from 'ngx-govuk-frontend/header';
 import { GovUKPhaseBannerComponent } from 'ngx-govuk-frontend/phase-banner';
+import {
+  GovUKServiceNavigationComponent,
+  GovUKServiceNavigationItemDirective,
+} from 'ngx-govuk-frontend/service-navigation';
 
 @Component({
   standalone: true,
@@ -17,6 +21,8 @@ import { GovUKPhaseBannerComponent } from 'ngx-govuk-frontend/phase-banner';
     GovUKPhaseBannerComponent,
     GovUKBreadcrumbsComponent,
     GovUKBreadcrumbDirective,
+    GovUKServiceNavigationComponent,
+    GovUKServiceNavigationItemDirective,
   ],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',
