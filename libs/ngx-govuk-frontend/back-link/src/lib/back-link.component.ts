@@ -27,7 +27,6 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './back-link.component.html',
-  hostDirectives: [{ directive: RouterLink, inputs: ['routerLink: link'] }],
 })
 export class GovUKBackLinkComponent {
   readonly link = input.required<RouterLink['routerLink']>();

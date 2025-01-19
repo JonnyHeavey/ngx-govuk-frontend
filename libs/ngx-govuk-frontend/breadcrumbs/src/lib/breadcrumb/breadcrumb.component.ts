@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,10 +10,9 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'ngx-govuk-breadcrumb',
   standalone: true,
-  imports: [RouterLink, JsonPipe],
+  imports: [RouterLink],
   templateUrl: './breadcrumb.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [{ directive: RouterLink, inputs: ['routerLink: link'] }],
 })
 export class GovUKBreadcrumbComponent {
   readonly link = input<RouterLink['routerLink']>();
