@@ -1,0 +1,9 @@
+<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+    @for (item of items(); track $index) {
+      <li class="govuk-breadcrumbs__list-item">
+        <ng-container [ngTemplateOutlet]="item.templateRef()" />
+      </li>
+    }
+  </ol>
+</nav>

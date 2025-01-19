@@ -1,1 +1,1 @@
-export { GovUKBackLinkDirective } from './lib/back-link.directive';
+export { GovUKBackLinkComponent } from './lib/back-link.component';

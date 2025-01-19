@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GovUKBackLinkDirective } from 'ngx-govuk-frontend/back-link';
+import { GovUKBackLinkComponent } from 'ngx-govuk-frontend/back-link';
 import { GovUKCheckboxComponent } from 'ngx-govuk-frontend/checkbox';
 import { GovUKFieldsetComponent } from 'ngx-govuk-frontend/fieldset';
 import { GovUKFileUploadComponent } from 'ngx-govuk-frontend/file-upload';
@@ -23,7 +23,7 @@ import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
     ReactiveFormsModule,
     GovUKFormGroupComponent,
     GovUKFieldsetComponent,
-    GovUKBackLinkDirective,
+    GovUKBackLinkComponent,
     GovUKTextInputComponent,
     GovUKTextareaComponent,
     GovUKSelectComponent,
