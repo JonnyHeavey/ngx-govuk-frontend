@@ -6,7 +6,10 @@
     broken</ngx-govuk-phase-banner
   >
 
-  <a routerLink="/">Home</a> | <a routerLink="/forms">Forms</a>
+  <ngx-govuk-breadcrumbs>
+    <ngx-govuk-breadcrumb link="/">Home</ngx-govuk-breadcrumb>
+    <ngx-govuk-breadcrumb link="/forms">Forms</ngx-govuk-breadcrumb>
+  </ngx-govuk-breadcrumbs>
 
   <router-outlet></router-outlet>
 

@@ -22,6 +22,9 @@
       "ngx-govuk-frontend/back-link": [
         "libs/ngx-govuk-frontend/back-link/src/index.ts"
       ],
+      "ngx-govuk-frontend/breadcrumbs": [
+        "libs/ngx-govuk-frontend/breadcrumbs/src/index.ts"
+      ],
       "ngx-govuk-frontend/button": [
         "libs/ngx-govuk-frontend/button/src/index.ts"
       ],

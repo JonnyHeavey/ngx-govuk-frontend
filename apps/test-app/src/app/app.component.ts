@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import {
+  GovUKBreadcrumbComponent,
+  GovUKBreadcrumbsComponent,
+} from 'ngx-govuk-frontend/breadcrumbs';
 import { GovUKFooterComponent } from 'ngx-govuk-frontend/footer';
 import { GovUKHeaderComponent } from 'ngx-govuk-frontend/header';
 import { GovUKPhaseBannerComponent } from 'ngx-govuk-frontend/phase-banner';
@@ -7,10 +11,12 @@ import { GovUKPhaseBannerComponent } from 'ngx-govuk-frontend/phase-banner';
 @Component({
   standalone: true,
   imports: [
-    RouterModule,
+    RouterOutlet,
     GovUKHeaderComponent,
     GovUKFooterComponent,
     GovUKPhaseBannerComponent,
+    GovUKBreadcrumbsComponent,
+    GovUKBreadcrumbComponent,
   ],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',
