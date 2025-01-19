@@ -1953,6 +1953,66 @@
             "templateData": "<select\r\n  class=\"govuk-select\"\r\n  [class.govuk-select--error]=\"ngControl.touched && ngControl.errors\"\r\n  [formControl]=\"ngControl.control\"\r\n  [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\r\n>\r\n  @for (option of options(); track option.value) {\r\n    <option [value]=\"option.value\">\r\n      {{ option.label }}\r\n    </option>\r\n  }\r\n</select>\r\n"
         },
         {
+            "name": "GovUKServiceNavigationComponent",
+            "id": "component-GovUKServiceNavigationComponent-6a24392ecaa668f25f035d896594d51d1b1ea0a99eb519fba73e01b21a6404a3d8140b7b8377ac70045f2308bad21b484bf1c63ba604099aa8671188184d9a32",
+            "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-service-navigation",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./navigation.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "items",
+                    "defaultValue": "contentChildren(GovUKServiceNavigationItemDirective)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterLink"
+                },
+                {
+                    "name": "RouterLinkActive"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  contentChildren,\n} from '@angular/core';\nimport { RouterLink, RouterLinkActive } from '@angular/router';\nimport { GovUKServiceNavigationItemDirective } from './item/navigation-item.directive';\n\n@Component({\n  selector: 'ngx-govuk-service-navigation',\n  standalone: true,\n  imports: [RouterLink, RouterLinkActive],\n  templateUrl: './navigation.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKServiceNavigationComponent {\n  readonly items = contentChildren(GovUKServiceNavigationItemDirective);\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"govuk-service-navigation\" data-module=\"govuk-service-navigation\">\n  <div class=\"govuk-width-container\">\n    <div class=\"govuk-service-navigation__container\">\n      <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n        <ul class=\"govuk-service-navigation__list\">\n          @for (item of items(); track $index) {\n            <li\n              class=\"govuk-service-navigation__item\"\n              routerLinkActive=\"govuk-service-navigation__item--active\"\n              [routerLinkActiveOptions]=\"{ exact: true }\"\n              #rla=\"routerLinkActive\"\n            >\n              <a\n                class=\"govuk-service-navigation__link\"\n                [attr.aria-current]=\"rla.isActive ? true : null\"\n                [routerLink]=\"item.link()\"\n              >\n                @if (rla.isActive) {\n                  <strong class=\"govuk-service-navigation__active-fallback\">{{\n                    item.label()\n                  }}</strong>\n                } @else {\n                  {{ item.label() }}\n                }\n              </a>\n            </li>\n          }\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
             "name": "GovUKTabComponent",
             "id": "component-GovUKTabComponent-33166941b1d1c16bbea4192bee710954caba0295ff4c8b91d337176cb918e8da125dfa64bd9c8d65adfec593169d76f91f33c85bf0e9ac5fad402e499706c26a",
             "file": "libs/ngx-govuk-frontend/tabs/src/lib/tab/tab.component.ts",
@@ -2654,7 +2714,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GovUKBackLinkComponent>",
-                "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
+                "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n  decorators: [\n    moduleMetadata({\n      providers: [{ provide: ActivatedRoute, useValue: {} }],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -2664,7 +2724,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GovUKBreadcrumbsComponent>",
-                "defaultValue": "{\n  component: GovUKBreadcrumbsComponent,\n  title: 'Tabs/GovUKBreadcrumbsComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKBreadcrumbsComponent, GovUKBreadcrumbDirective],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: GovUKBreadcrumbsComponent,\n  title: 'Breadcrumbs/GovUKBreadcrumbsComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKBreadcrumbsComponent, GovUKBreadcrumbDirective],\n      providers: [{ provide: ActivatedRoute, useValue: {} }],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -2810,6 +2870,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKServiceNavigationComponent>",
+                "defaultValue": "{\n  component: GovUKServiceNavigationComponent,\n  title: 'Service Navigation/GovUKServiceNavigationComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [\n        GovUKServiceNavigationComponent,\n        GovUKServiceNavigationItemDirective,\n      ],\n      providers: [{ provide: ActivatedRoute, useValue: {} }],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2914,7 +2984,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: Template,\n  args: {\n    inverse: false,\n  },\n}"
+                "defaultValue": "{\n  render: Template,\n  args: {\n    inverse: false,\n    link: '/back',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -3070,6 +3140,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3184,7 +3264,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKBreadcrumbsComponent>",
-                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n\n    <ngx-govuk-breadcrumbs>\n      <ngx-govuk-breadcrumb link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-breadcrumb link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-breadcrumb link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-breadcrumbs>\n  `,\n})"
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-breadcrumbs>\n      <ngx-govuk-breadcrumb link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-breadcrumb link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-breadcrumb link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-breadcrumbs>\n  `,\n})"
             },
             {
                 "name": "Template",
@@ -3325,6 +3405,16 @@
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKSelectComponent>",
                 "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-select\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-radio-group>\n    </form>`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryFn<GovUKServiceNavigationComponent>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-service-navigation>\n      <ngx-govuk-service-navigaiton-item link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-service-navigaiton-item link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-service-navigaiton-item link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-service-navigation>\n  `,\n})"
             },
             {
                 "name": "Template",
@@ -3632,6 +3722,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKServiceNavigationComponent>",
+                "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<GovUKTagComponent>",
                 "file": "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts",
                 "deprecated": false,
@@ -3803,7 +3904,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GovUKBackLinkComponent>",
-                    "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
+                    "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n  decorators: [\n    moduleMetadata({\n      providers: [{ provide: ActivatedRoute, useValue: {} }],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -3813,7 +3914,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: Template,\n  args: {\n    inverse: false,\n  },\n}"
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    inverse: false,\n    link: '/back',\n  },\n}"
                 },
                 {
                     "name": "Template",
@@ -3835,7 +3936,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GovUKBreadcrumbsComponent>",
-                    "defaultValue": "{\n  component: GovUKBreadcrumbsComponent,\n  title: 'Tabs/GovUKBreadcrumbsComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKBreadcrumbsComponent, GovUKBreadcrumbDirective],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: GovUKBreadcrumbsComponent,\n  title: 'Breadcrumbs/GovUKBreadcrumbsComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKBreadcrumbsComponent, GovUKBreadcrumbDirective],\n      providers: [{ provide: ActivatedRoute, useValue: {} }],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -3855,7 +3956,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoryFn<GovUKBreadcrumbsComponent>",
-                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n\n    <ngx-govuk-breadcrumbs>\n      <ngx-govuk-breadcrumb link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-breadcrumb link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-breadcrumb link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-breadcrumbs>\n  `,\n})"
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-breadcrumbs>\n      <ngx-govuk-breadcrumb link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-breadcrumb link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-breadcrumb link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-breadcrumbs>\n  `,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts": [
@@ -4272,6 +4373,38 @@
                     "deprecationMessage": "",
                     "type": "StoryFn<GovUKSelectComponent>",
                     "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl(false) }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-select\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-radio-group>\n    </form>`,\n})"
+                }
+            ],
+            "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKServiceNavigationComponent>",
+                    "defaultValue": "{\n  component: GovUKServiceNavigationComponent,\n  title: 'Service Navigation/GovUKServiceNavigationComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [\n        GovUKServiceNavigationComponent,\n        GovUKServiceNavigationItemDirective,\n      ],\n      providers: [{ provide: ActivatedRoute, useValue: {} }],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {},\n}"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryFn<GovUKServiceNavigationComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-service-navigation>\n      <ngx-govuk-service-navigaiton-item link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-service-navigaiton-item link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-service-navigaiton-item link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-service-navigation>\n  `,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts": [
@@ -4819,6 +4952,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<GovUKSelectComponent>",
                     "file": "libs/ngx-govuk-frontend/select/src/lib/select.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKServiceNavigationComponent>",
+                    "file": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -6005,6 +6151,55 @@
                 "name": "GovUKSelectOption",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/service-navigation/src/lib/navigation.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKServiceNavigationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

@@ -1,0 +1,32 @@
+<div class="govuk-service-navigation" data-module="govuk-service-navigation">
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+        <ul class="govuk-service-navigation__list">
+          @for (item of items(); track $index) {
+            <li
+              class="govuk-service-navigation__item"
+              routerLinkActive="govuk-service-navigation__item--active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              #rla="routerLinkActive"
+            >
+              <a
+                class="govuk-service-navigation__link"
+                [attr.aria-current]="rla.isActive ? true : null"
+                [routerLink]="item.link()"
+              >
+                @if (rla.isActive) {
+                  <strong class="govuk-service-navigation__active-fallback">{{
+                    item.label()
+                  }}</strong>
+                } @else {
+                  {{ item.label() }}
+                }
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
