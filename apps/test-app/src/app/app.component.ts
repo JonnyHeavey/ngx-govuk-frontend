@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {
-  GovUKBreadcrumbComponent,
+  GovUKBreadcrumbDirective,
   GovUKBreadcrumbsComponent,
 } from 'ngx-govuk-frontend/breadcrumbs';
 import { GovUKFooterComponent } from 'ngx-govuk-frontend/footer';
@@ -16,7 +16,7 @@ import { GovUKPhaseBannerComponent } from 'ngx-govuk-frontend/phase-banner';
     GovUKFooterComponent,
     GovUKPhaseBannerComponent,
     GovUKBreadcrumbsComponent,
-    GovUKBreadcrumbComponent,
+    GovUKBreadcrumbDirective,
   ],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',

@@ -1,18 +1,18 @@
-import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   contentChildren,
 } from '@angular/core';
-import { GovUKBreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { RouterLink } from '@angular/router';
+import { GovUKBreadcrumbDirective } from './breadcrumb/breadcrumb.directive';
 
 @Component({
   selector: 'ngx-govuk-breadcrumbs',
   standalone: true,
-  imports: [NgTemplateOutlet, GovUKBreadcrumbComponent],
+  imports: [RouterLink],
   templateUrl: './breadcrumbs.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKBreadcrumbsComponent {
-  readonly items = contentChildren(GovUKBreadcrumbComponent);
+  readonly items = contentChildren(GovUKBreadcrumbDirective);
 }

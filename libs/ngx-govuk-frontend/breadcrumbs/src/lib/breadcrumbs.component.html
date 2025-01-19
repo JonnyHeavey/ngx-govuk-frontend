@@ -2,7 +2,9 @@
   <ol class="govuk-breadcrumbs__list">
     @for (item of items(); track $index) {
       <li class="govuk-breadcrumbs__list-item">
-        <ng-container [ngTemplateOutlet]="item.templateRef()" />
+        <a class="govuk-breadcrumbs__link" [routerLink]="item.link()"
+          >{{ item.label() }}<ng-content
+        /></a>
       </li>
     }
   </ol>
