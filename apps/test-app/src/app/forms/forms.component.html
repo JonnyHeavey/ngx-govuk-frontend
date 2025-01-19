@@ -1,0 +1,103 @@
+<div class="govuk-frontend-supported">
+  <a ngxGovUkBackLink routerLink="../">Back</a>
+
+  <form [formGroup]="form">
+    <ngx-govuk-form-group
+      label="What is your favourite colour?"
+      labelFor="colour"
+      isPageTitle="true"
+      hint="Testing 123"
+      errorMessage="Green is actually the best color"
+    >
+      <ngx-govuk-text-input
+        formControlName="colour"
+        hint="Perhaps is blue, or maybe red?"
+        inputId="colour"
+        isPageTitle="true"
+        autocomplete="given-name"
+        extraClasses="govuk-input--width-5 govuk-input--extra-letter-spacing"
+      />
+    </ngx-govuk-form-group>
+
+    <ngx-govuk-form-group
+      label="How much do you earn?"
+      labelFor="earning"
+      hint="This should be your pre-tax income amount"
+    >
+      <ngx-govuk-text-input
+        formControlName="earning"
+        prefix="£"
+        inputId="earning"
+      />
+    </ngx-govuk-form-group>
+
+    <ngx-govuk-form-group label="How much do you weigh?" labelFor="weight">
+      <ngx-govuk-text-input
+        formControlName="weight"
+        suffix="KG"
+        inputId="weight"
+      />
+    </ngx-govuk-form-group>
+
+    <ngx-govuk-form-group
+      label="Can you provide more detail?"
+      labelFor="detail"
+    >
+      <ngx-govuk-textarea
+        formControlName="detail"
+        hint="Do not include personal or financial information, like your National Insurance number or credit card details"
+        inputId="detail"
+        extraClasses="govuk-input--width-20"
+      />
+    </ngx-govuk-form-group>
+
+    <ngx-govuk-form-group label="Password" labelFor="password">
+      <ngx-govuk-password-input
+        formControlName="password"
+        label="Password"
+        inputId="password"
+      />
+    </ngx-govuk-form-group>
+
+    <ngx-govuk-fieldset
+      legend="Do you want to remember me?"
+      hint="It will be helpful"
+      isPageTitle="true"
+    >
+      <ngx-govuk-checkbox
+        formControlName="rememberMe"
+        inputId="remember"
+        label="Remember Me"
+      />
+    </ngx-govuk-fieldset>
+
+    <ngx-govuk-radio-group formControlName="choice">
+      <ngx-govuk-radio-option value="red" label="Red" />
+      <ngx-govuk-radio-option
+        value="blue"
+        label="Blue"
+        hint="This is the colour of the sky"
+      />
+      <ngx-govuk-radio-option value="green" label="Green" isDivided="true" />
+    </ngx-govuk-radio-group>
+
+    <ngx-govuk-form-group
+      label="What is your favourite colour?"
+      labelFor="favouriteColour"
+    >
+      <ngx-govuk-select
+        formControlName="selection"
+        [options]="colours"
+        inputId="favouriteColour"
+      />
+    </ngx-govuk-form-group>
+
+    <ngx-govuk-form-group
+      label="Upload a file"
+      labelFor="file"
+      errorMessage="File is too large"
+    >
+      <ngx-govuk-file-upload formControlName="file" inputId="file" />
+    </ngx-govuk-form-group>
+  </form>
+</div>

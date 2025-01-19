@@ -167,80 +167,6 @@
     ],
     "components": [
         {
-            "name": "GovUKBackLinkComponent",
-            "id": "component-GovUKBackLinkComponent-21718601a9f8ce5006c12485fb16575085ef4234f18f7203030379f7881504f90a00d46d896c2908075428207aae9925a7ef15ed571436c9be1dec4c0ba24a32",
-            "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "ngx-govuk-back-link",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./back-link.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "inverse",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 33,
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "inverse",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 33,
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "NgClass"
-                }
-            ],
-            "description": "<p>A component that renders a GOV.UK back link.</p>\n<p>This component implements the GOV.UK Design System back link component.\nIt provides a consistent way to help users navigate back to the previous page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-back-link&gt;&lt;/ngx-govuk-back-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-back-link [inverse]=&quot;true&quot;&gt;&lt;/ngx-govuk-back-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">                             for use on darker backgrounds. Defaults to false.\n\nSee {&#64;link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK back link.\n\nThis component implements the GOV.UK Design System back link component.\nIt provides a consistent way to help users navigate back to the previous page.\n\n```html\n```html\n<ngx-govuk-back-link></ngx-govuk-back-link>\n```\n```\n```html\n```html\n<ngx-govuk-back-link [inverse]=\"true\"></ngx-govuk-back-link>\n```\n```\n                             for use on darker backgrounds. Defaults to false.\n\nSee {@link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}\n",
-            "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * A component that renders a GOV.UK back link.\n *\n * This component implements the GOV.UK Design System back link component.\n * It provides a consistent way to help users navigate back to the previous page.\n *\n * @example\n * ```html\n * <ngx-govuk-back-link></ngx-govuk-back-link>\n * ```\n *\n * @example With inverse color scheme\n * ```html\n * <ngx-govuk-back-link [inverse]=\"true\"></ngx-govuk-back-link>\n * ```\n *\n * @property {boolean} inverse - When true, displays the back link in inverse colors\n *                              for use on darker backgrounds. Defaults to false.\n *\n * @see {@link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}\n */\n@Component({\n  selector: 'ngx-govuk-back-link',\n  standalone: true,\n  imports: [NgClass],\n  templateUrl: './back-link.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKBackLinkComponent {\n  readonly inverse = input(false);\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<a\n  class=\"govuk-back-link\"\n  [ngClass]=\"{ 'govuk-back-link--inverse': inverse() }\"\n>\n  <ng-content>Back</ng-content>\n</a>\n"
-        },
-        {
             "name": "GovUKButtonComponent",
             "id": "component-GovUKButtonComponent-f5821ae6c81f0381dd229514bc39e61e29b3eabdd60579b4ea1ac4a147aa95c11d8d8a0a0082c6a33add3d146a9fb5b3b328674db32c9437b9811446cc5c64bf",
             "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.ts",
@@ -1900,7 +1826,7 @@
         },
         {
             "name": "GovUKTabComponent",
-            "id": "component-GovUKTabComponent-f4490486e62cbc9958ea0afc0807d4cf2a551050b4e1eea72dd9747ea15a9e2675858f62655ba8236808114a543228eff7098b8e5102c65ca1accccb5aba49d7",
+            "id": "component-GovUKTabComponent-33166941b1d1c16bbea4192bee710954caba0295ff4c8b91d337176cb918e8da125dfa64bd9c8d65adfec593169d76f91f33c85bf0e9ac5fad402e499706c26a",
             "file": "libs/ngx-govuk-frontend/tabs/src/lib/tab/tab.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1973,7 +1899,6 @@
                     "description": "",
                     "line": 19,
                     "modifierKind": [
-                        125,
                         148
                     ]
                 },
@@ -2002,7 +1927,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n@Component({\n  standalone: true,\n  selector: 'ngx-govuk-tab',\n  templateUrl: './tab.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTabComponent {\n  readonly id = input.required<string>();\n  readonly title = input.required<string>();\n\n  public readonly tabContent =\n    viewChild.required<TemplateRef<unknown>>('tabContent');\n  // TODO ID\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n@Component({\n  standalone: true,\n  selector: 'ngx-govuk-tab',\n  templateUrl: './tab.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTabComponent {\n  readonly id = input.required<string>();\n  readonly title = input.required<string>();\n\n  readonly tabContent = viewChild.required<TemplateRef<unknown>>('tabContent');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2167,7 +2092,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">Contents</h2>\n  <ul class=\"govuk-tabs__list\" role=\"tablist\">\n    @for (tab of tabs(); track tab.id) {\n      <li\n        class=\"govuk-tabs__list-item\"\n        [class.govuk-tabs__list-item--selected]=\"$index === activeTab()\"\n        role=\"presentation\"\n      >\n        <a\n          class=\"govuk-tabs__tab\"\n          (click)=\"selectTab($index, $event)\"\n          href=\"#\"\n          role=\"tab\"\n        >\n          {{ tab.title() }}\n        </a>\n      </li>\n    }\n  </ul>\n\n  @for (tab of tabs(); track tab.id) {\n    <div\n      class=\"govuk-tabs__panel\"\n      [class.govuk-tabs__panel--hidden]=\"$index !== activeTab()\"\n      role=\"tabpanel\"\n    >\n      <ng-container [ngTemplateOutlet]=\"tab.tabContent()\" />\n    </div>\n  }\n</div>\n\n<!-- \n\n<div class=\"govuk-tabs\">\n  <ul class=\"govuk-tabs__list\" role=\"tablist\">\n    <li\n      *ngFor=\"let tabItem of tabList; let i = index\"\n      [class.govuk-tabs__list-item--selected]=\"(tabItem.isSelected | async) === true\"\n      class=\"govuk-tabs__list-item\"\n      role=\"presentation\"\n    >\n      <a\n        #anchor\n        (keydown)=\"anchorKeydown($event, i)\"\n        [attr.aria-controls]=\"tabItem.id\"\n        [attr.aria-selected]=\"tabItem.isSelected | async\"\n        [fragment]=\"tabItem.id\"\n        [id]=\"'tab_' + tabItem.id\"\n        [routerLink]=\"\"\n        [state]=\"{ scrollSkip: true }\"\n        [tabIndex]=\"(tabItem.isSelected | async) ? 0 : -1\"\n        class=\"govuk-tabs__tab\"\n        queryParamsHandling=\"preserve\"\n        role=\"tab\"\n      >\n        {{ tabItem.label }}\n      </a>\n    </li>\n  </ul>\n  <ng-container *ngFor=\"let tab of tabEagerList\">\n    <div\n      [attr.aria-labelledby]=\"'tab_' + tab.id\"\n      [class.govuk-tabs__panel--hidden]=\"(tab.isSelected | async) === false\"\n      [id]=\"tab.id\"\n      class=\"govuk-tabs__panel\"\n      role=\"tabpanel\"\n    >\n      <ng-template [ngTemplateOutlet]=\"tab.templateRef\"></ng-template>\n    </div>\n  </ng-container>\n  <ng-container *ngFor=\"let tab of tabLazyList\">\n    <div\n      *ngIf=\"tab.isSelected | async\"\n      [attr.aria-labelledby]=\"'tab_' + tab.id\"\n      [id]=\"tab.id\"\n      class=\"govuk-tabs__panel\"\n      role=\"tabpanel\"\n    >\n      <ng-template [ngTemplateOutlet]=\"tab.templateRef\"></ng-template>\n    </div>\n  </ng-container>\n</div> -->\n"
+            "templateData": "<div class=\"govuk-tabs\">\n  <h2 class=\"govuk-tabs__title\">Contents</h2>\n  <ul class=\"govuk-tabs__list\" role=\"tablist\">\n    @for (tab of tabs(); track tab.id) {\n      <li\n        class=\"govuk-tabs__list-item\"\n        [class.govuk-tabs__list-item--selected]=\"$index === activeTab()\"\n        role=\"presentation\"\n      >\n        <a\n          class=\"govuk-tabs__tab\"\n          (click)=\"selectTab($index, $event)\"\n          href=\"#\"\n          role=\"tab\"\n        >\n          {{ tab.title() }}\n        </a>\n      </li>\n    }\n  </ul>\n\n  @for (tab of tabs(); track tab.id) {\n    <div\n      class=\"govuk-tabs__panel\"\n      [class.govuk-tabs__panel--hidden]=\"$index !== activeTab()\"\n      role=\"tabpanel\"\n    >\n      <ng-container [ngTemplateOutlet]=\"tab.tabContent()\" />\n    </div>\n  }\n</div>\n"
         },
         {
             "name": "GovUKTagComponent",
@@ -2600,8 +2525,8 @@
                 "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<GovUKBackLinkComponent>",
-                "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
+                "type": "Meta<GovUKBackLinkDirective>",
+                "defaultValue": "{\n  component: GovUKBackLinkDirective,\n  title: 'Back Link/GovUKBackLinkDirective',\n}"
             },
             {
                 "name": "meta",
@@ -2831,7 +2756,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GovUKTabsComponent>",
-                "defaultValue": "{\n  component: GovUKTabsComponent,\n  title: 'Tabs/GovUKTabsComponent',\n}"
+                "defaultValue": "{\n  component: GovUKTabsComponent,\n  title: 'Tabs/GovUKTabsComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKTabsComponent, GovUKTabComponent],\n    }),\n  ],\n}"
             },
             {
                 "name": "preview",
@@ -3100,8 +3025,8 @@
                 "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "StoryFn<GovUKBackLinkComponent>",
-                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-back-link ${argsToTemplate(args)} />`,\n})"
+                "type": "StoryFn<GovUKBackLinkDirective>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<a ngxGovUkBackLink ${argsToTemplate(args)}>Back</a>`,\n})"
             },
             {
                 "name": "Template",
@@ -3331,7 +3256,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKTabsComponent>",
-                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `  <ngx-govuk-tabs ${argsToTemplate(args)}>\n    <ngx-govuk-tab id=\"tab-one\" title=\"Tab One\">\n      Tab One Content\n    </ngx-govuk-tab>\n    <ngx-govuk-tab id=\"tab-two\" title=\"Tab Two\">\n      Tab Two Content\n    </ngx-govuk-tab>\n    <ngx-govuk-tab id=\"tab-three\" title=\"Tab Three\">\n      Tab Three Content\n    </ngx-govuk-tab>\n  </ngx-govuk-tabs>`,\n})"
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n  <div class=\"govuk-frontend-supported\">\n    <ngx-govuk-tabs ${argsToTemplate(args)}>\n      <ngx-govuk-tab id=\"tab-one\" title=\"Tab One\">\n        Tab One Content\n      </ngx-govuk-tab>\n      <ngx-govuk-tab id=\"tab-two\" title=\"Tab Two\">\n        Tab Two Content\n      </ngx-govuk-tab>\n      <ngx-govuk-tab id=\"tab-three\" title=\"Tab Three\">\n        Tab Three Content\n      </ngx-govuk-tab>\n    </ngx-govuk-tabs>\n  </div>\n  `,\n})"
             }
         ],
         "functions": [],
@@ -3373,7 +3298,7 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<GovUKBackLinkComponent>",
+                "rawtype": "StoryObj<GovUKBackLinkDirective>",
                 "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3708,8 +3633,8 @@
                     "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<GovUKBackLinkComponent>",
-                    "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
+                    "type": "Meta<GovUKBackLinkDirective>",
+                    "defaultValue": "{\n  component: GovUKBackLinkDirective,\n  title: 'Back Link/GovUKBackLinkDirective',\n}"
                 },
                 {
                     "name": "Primary",
@@ -3728,8 +3653,8 @@
                     "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "StoryFn<GovUKBackLinkComponent>",
-                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-back-link ${argsToTemplate(args)} />`,\n})"
+                    "type": "StoryFn<GovUKBackLinkDirective>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<a ngxGovUkBackLink ${argsToTemplate(args)}>Back</a>`,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts": [
@@ -4413,7 +4338,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GovUKTabsComponent>",
-                    "defaultValue": "{\n  component: GovUKTabsComponent,\n  title: 'Tabs/GovUKTabsComponent',\n}"
+                    "defaultValue": "{\n  component: GovUKTabsComponent,\n  title: 'Tabs/GovUKTabsComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKTabsComponent, GovUKTabComponent],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -4433,7 +4358,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoryFn<GovUKTabsComponent>",
-                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `  <ngx-govuk-tabs ${argsToTemplate(args)}>\n    <ngx-govuk-tab id=\"tab-one\" title=\"Tab One\">\n      Tab One Content\n    </ngx-govuk-tab>\n    <ngx-govuk-tab id=\"tab-two\" title=\"Tab Two\">\n      Tab Two Content\n    </ngx-govuk-tab>\n    <ngx-govuk-tab id=\"tab-three\" title=\"Tab Three\">\n      Tab Three Content\n    </ngx-govuk-tab>\n  </ngx-govuk-tabs>`,\n})"
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n  <div class=\"govuk-frontend-supported\">\n    <ngx-govuk-tabs ${argsToTemplate(args)}>\n      <ngx-govuk-tab id=\"tab-one\" title=\"Tab One\">\n        Tab One Content\n      </ngx-govuk-tab>\n      <ngx-govuk-tab id=\"tab-two\" title=\"Tab Two\">\n        Tab Two Content\n      </ngx-govuk-tab>\n      <ngx-govuk-tab id=\"tab-three\" title=\"Tab Three\">\n        Tab Three Content\n      </ngx-govuk-tab>\n    </ngx-govuk-tabs>\n  </div>\n  `,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/.storybook/preview.ts": [
@@ -4496,7 +4421,7 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<GovUKBackLinkComponent>",
+                    "rawtype": "StoryObj<GovUKBackLinkDirective>",
                     "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -4869,15 +4794,6 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
-            },
-            {
-                "filePath": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "GovUKBackLinkComponent",
-                "coveragePercent": 33,
-                "coverageCount": "1/3",
-                "status": "medium"
             },
             {
                 "filePath": "libs/ngx-govuk-frontend/button/src/lib/button-group/button-group.component.stories.ts",
