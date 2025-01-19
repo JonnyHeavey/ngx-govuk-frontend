@@ -1,2 +1,2 @@
-export { GovUKBreadcrumbComponent } from './lib/breadcrumb/breadcrumb.component';
+export { GovUKBreadcrumbDirective } from './lib/breadcrumb/breadcrumb.directive';
 export { GovUKBreadcrumbsComponent } from './lib/breadcrumbs.component';

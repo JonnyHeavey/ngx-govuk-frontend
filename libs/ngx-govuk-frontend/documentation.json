@@ -167,6 +167,134 @@
     ],
     "components": [
         {
+            "name": "GovUKBackLinkComponent",
+            "id": "component-GovUKBackLinkComponent-48d953ceeb1d1c6b82f3c775903ff74a8a2a01a35031861338076b0094b4ad55e2c84be7cbea368fa159bed390a95e48488ff777d89cc30ef6238f81d7afdbfe",
+            "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-back-link",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./back-link.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "inverse",
+                    "defaultValue": "input(false, { transform: booleanAttribute })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "link",
+                    "defaultValue": "input.required<RouterLink['routerLink']>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterLink"
+                }
+            ],
+            "description": "<p>A component that renders a GOV.UK back link.</p>\n<p>This component implements the GOV.UK Design System back link component.\nIt provides a consistent way to help users navigate back to the previous page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-back-link&gt;&lt;/ngx-govuk-back-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-back-link [inverse]=&quot;true&quot;&gt;&lt;/ngx-govuk-back-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">                             for use on darker backgrounds. Defaults to false.\n\nSee {&#64;link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}</code></pre></div>",
+            "rawdescription": "\n\nA component that renders a GOV.UK back link.\n\nThis component implements the GOV.UK Design System back link component.\nIt provides a consistent way to help users navigate back to the previous page.\n\n```html\n```html\n<ngx-govuk-back-link></ngx-govuk-back-link>\n```\n```\n```html\n```html\n<ngx-govuk-back-link [inverse]=\"true\"></ngx-govuk-back-link>\n```\n```\n                             for use on darker backgrounds. Defaults to false.\n\nSee {@link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}\n",
+            "type": "component",
+            "sourceCode": "import {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  input,\n} from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\n/**\n * A component that renders a GOV.UK back link.\n *\n * This component implements the GOV.UK Design System back link component.\n * It provides a consistent way to help users navigate back to the previous page.\n *\n * @example\n * ```html\n * <ngx-govuk-back-link></ngx-govuk-back-link>\n * ```\n *\n * @example With inverse color scheme\n * ```html\n * <ngx-govuk-back-link [inverse]=\"true\"></ngx-govuk-back-link>\n * ```\n *\n * @property {boolean} inverse - When true, displays the back link in inverse colors\n *                              for use on darker backgrounds. Defaults to false.\n *\n * @see {@link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}\n */\n@Component({\n  selector: 'ngx-govuk-back-link',\n  standalone: true,\n  imports: [RouterLink],\n  templateUrl: './back-link.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKBackLinkComponent {\n  readonly link = input.required<RouterLink['routerLink']>();\n\n  readonly inverse = input(false, { transform: booleanAttribute });\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<a\n  class=\"govuk-back-link\"\n  [class.govuk-back-link--inverse]=\"inverse()\"\n  [routerLink]=\"link()\"\n  ><ng-content>Back</ng-content>\n</a>\n"
+        },
+        {
+            "name": "GovUKBreadcrumbsComponent",
+            "id": "component-GovUKBreadcrumbsComponent-8b416e3d6e01510ce9228249c2c4a275f92cd357504f886d76cc4368733beb5e2643fe2ebf5b3cd9ea8b5f75e6c3851303f22e0a44375dfba8c14809772612bf",
+            "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-breadcrumbs",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./breadcrumbs.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "items",
+                    "defaultValue": "contentChildren(GovUKBreadcrumbDirective)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterLink"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  contentChildren,\n} from '@angular/core';\nimport { RouterLink } from '@angular/router';\nimport { GovUKBreadcrumbDirective } from './breadcrumb/breadcrumb.directive';\n\n@Component({\n  selector: 'ngx-govuk-breadcrumbs',\n  standalone: true,\n  imports: [RouterLink],\n  templateUrl: './breadcrumbs.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKBreadcrumbsComponent {\n  readonly items = contentChildren(GovUKBreadcrumbDirective);\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<nav class=\"govuk-breadcrumbs\" aria-label=\"Breadcrumb\">\n  <ol class=\"govuk-breadcrumbs__list\">\n    @for (item of items(); track $index) {\n      <li class=\"govuk-breadcrumbs__list-item\">\n        <a class=\"govuk-breadcrumbs__link\" [routerLink]=\"item.link()\"\n          >{{ item.label() }}<ng-content\n        /></a>\n      </li>\n    }\n  </ol>\n</nav>\n"
+        },
+        {
             "name": "GovUKButtonComponent",
             "id": "component-GovUKButtonComponent-f5821ae6c81f0381dd229514bc39e61e29b3eabdd60579b4ea1ac4a147aa95c11d8d8a0a0082c6a33add3d146a9fb5b3b328674db32c9437b9811446cc5c64bf",
             "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.ts",
@@ -2525,8 +2653,18 @@
                 "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<GovUKBackLinkDirective>",
-                "defaultValue": "{\n  component: GovUKBackLinkDirective,\n  title: 'Back Link/GovUKBackLinkDirective',\n}"
+                "type": "Meta<GovUKBackLinkComponent>",
+                "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKBreadcrumbsComponent>",
+                "defaultValue": "{\n  component: GovUKBreadcrumbsComponent,\n  title: 'Tabs/GovUKBreadcrumbsComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKBreadcrumbsComponent, GovUKBreadcrumbDirective],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -2782,6 +2920,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3025,8 +3173,18 @@
                 "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "StoryFn<GovUKBackLinkDirective>",
-                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<a ngxGovUkBackLink ${argsToTemplate(args)}>Back</a>`,\n})"
+                "type": "StoryFn<GovUKBackLinkComponent>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-back-link ${argsToTemplate(args)} />`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryFn<GovUKBreadcrumbsComponent>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n\n    <ngx-govuk-breadcrumbs>\n      <ngx-govuk-breadcrumb link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-breadcrumb link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-breadcrumb link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-breadcrumbs>\n  `,\n})"
             },
             {
                 "name": "Template",
@@ -3298,8 +3456,19 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<GovUKBackLinkDirective>",
+                "rawtype": "StoryObj<GovUKBackLinkComponent>",
                 "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKBreadcrumbsComponent>",
+                "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -3633,8 +3802,8 @@
                     "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<GovUKBackLinkDirective>",
-                    "defaultValue": "{\n  component: GovUKBackLinkDirective,\n  title: 'Back Link/GovUKBackLinkDirective',\n}"
+                    "type": "Meta<GovUKBackLinkComponent>",
+                    "defaultValue": "{\n  component: GovUKBackLinkComponent,\n  title: 'Back Link/GovUKBackLinkComponent',\n}"
                 },
                 {
                     "name": "Primary",
@@ -3653,8 +3822,40 @@
                     "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "StoryFn<GovUKBackLinkDirective>",
-                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<a ngxGovUkBackLink ${argsToTemplate(args)}>Back</a>`,\n})"
+                    "type": "StoryFn<GovUKBackLinkComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-back-link ${argsToTemplate(args)} />`,\n})"
+                }
+            ],
+            "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKBreadcrumbsComponent>",
+                    "defaultValue": "{\n  component: GovUKBreadcrumbsComponent,\n  title: 'Tabs/GovUKBreadcrumbsComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKBreadcrumbsComponent, GovUKBreadcrumbDirective],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {},\n}"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryFn<GovUKBreadcrumbsComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n\n    <ngx-govuk-breadcrumbs>\n      <ngx-govuk-breadcrumb link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-breadcrumb link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-breadcrumb link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-breadcrumbs>\n  `,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts": [
@@ -4421,8 +4622,21 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<GovUKBackLinkDirective>",
+                    "rawtype": "StoryObj<GovUKBackLinkComponent>",
                     "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKBreadcrumbsComponent>",
+                    "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -4793,6 +5007,64 @@
                 "name": "Story",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKBackLinkComponent",
+                "coveragePercent": 33,
+                "coverageCount": "1/3",
+                "status": "medium"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKBreadcrumbsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

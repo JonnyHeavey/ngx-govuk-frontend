@@ -1,5 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import {
   argsToTemplate,
+  moduleMetadata,
   type Meta,
   type StoryFn,
   type StoryObj,
@@ -9,6 +11,11 @@ import { GovUKBackLinkComponent } from './back-link.component';
 const meta: Meta<GovUKBackLinkComponent> = {
   component: GovUKBackLinkComponent,
   title: 'Back Link/GovUKBackLinkComponent',
+  decorators: [
+    moduleMetadata({
+      providers: [{ provide: ActivatedRoute, useValue: {} }],
+    }),
+  ],
 };
 export default meta;
 type Story = StoryObj<GovUKBackLinkComponent>;
@@ -22,5 +29,6 @@ export const Primary: Story = {
   render: Template,
   args: {
     inverse: false,
+    link: '/back',
   },
 };
