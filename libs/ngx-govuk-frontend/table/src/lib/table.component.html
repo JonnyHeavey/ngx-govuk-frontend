@@ -1,0 +1,57 @@
+<table
+  cdk-table
+  [dataSource]="dataSource()"
+  class="govuk-table"
+  [class.govuk-table--small-text-until-tablet]="small()"
+>
+  @if (caption()) {
+    <caption class="govuk-table__caption govuk-table__caption--m">
+      {{
+        caption()
+      }}
+    </caption>
+  }
+
+  @for (column of columns(); track column.key) {
+    <ng-container [cdkColumnDef]="column.key">
+      <th
+        cdk-header-cell
+        *cdkHeaderCellDef
+        class="govuk-table__header"
+        [class.govuk-table__header--numeric]="column.isNumeric"
+        [class]="column.customClass"
+        scope="col"
+      >
+        {{ column.header }}
+      </th>
+
+      <ng-container *cdkCellDef="let item">
+        @if (column.isRowHeader) {
+          <th cdk-cell class="govuk-table__header" scope="row">
+            {{ item[column.key] }}
+          </th>
+        } @else {
+          <td
+            cdk-cell
+            class="govuk-table__cell"
+            [class.govuk-table__cell--numeric]="column.isNumeric"
+          >
+            {{ item[column.key] }}
+          </td>
+        }
+      </ng-container>
+    </ng-container>
+  }
+
+  <tr
+    cdk-header-row
+    *cdkHeaderRowDef="columnKeys()"
+    class="govuk-table__row"
+  ></tr>
+
+  <tr
+    cdk-row
+    *cdkRowDef="let row; columns: columnKeys()"
+    class="govuk-table__row"
+  ></tr>
+</table>
