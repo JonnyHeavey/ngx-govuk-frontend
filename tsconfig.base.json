@@ -79,6 +79,9 @@
       "ngx-govuk-frontend/service-navigation": [
         "libs/ngx-govuk-frontend/service-navigation/src/index.ts"
       ],
+      "ngx-govuk-frontend/table": [
+        "libs/ngx-govuk-frontend/table/src/index.ts"
+      ],
       "ngx-govuk-frontend/tabs": ["libs/ngx-govuk-frontend/tabs/src/index.ts"],
       "ngx-govuk-frontend/tag": ["libs/ngx-govuk-frontend/tag/src/index.ts"],
       "ngx-govuk-frontend/text-input": [

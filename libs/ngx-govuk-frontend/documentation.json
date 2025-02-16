@@ -2123,6 +2123,151 @@
             "templateData": "<ng-template #tabContent><ng-content /></ng-template>\n"
         },
         {
+            "name": "GovUKTableComponent",
+            "id": "component-GovUKTableComponent-3a8417a4bb7db5fb471458ce55abed179bb3a44a325b60c220690ad8d66d02a339087d87e47b08a00fbd4efd2135c4eaa76ebebb8ed6c76e3af0d8b11d16769c",
+            "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "caption",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "small",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "caption",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "columnKeys",
+                    "defaultValue": "computed(() =>\n    this.columns().map((column) => column.key),\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "columns",
+                    "defaultValue": "input.required<GovUKTableColumn[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "dataSource",
+                    "defaultValue": "input.required<unknown[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "small",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CdkTableModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CdkTableModule } from '@angular/cdk/table';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n} from '@angular/core';\n\nexport type GovUKTableColumn = {\n  header: string;\n  key: string;\n  isRowHeader?: boolean;\n  isNumeric?: boolean;\n};\n\n@Component({\n  selector: 'ngx-govuk-table',\n  standalone: true,\n  imports: [CdkTableModule],\n  templateUrl: './table.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTableComponent {\n  readonly columns = input.required<GovUKTableColumn[]>();\n  readonly dataSource = input.required<unknown[]>();\n\n  readonly caption = input<string>();\n  readonly small = input(false);\n\n  readonly columnKeys = computed(() =>\n    this.columns().map((column) => column.key),\n  );\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<table\n  cdk-table\n  [dataSource]=\"dataSource()\"\n  class=\"govuk-table\"\n  [class.govuk-table--small-text-until-tablet]=\"small()\"\n>\n  @if (caption(); as tableCaption) {\n    <caption class=\"govuk-table__caption govuk-table__caption--m\">\n      {{\n        tableCaption\n      }}\n    </caption>\n  }\n\n  @for (column of columns(); track column.key) {\n    <ng-container [cdkColumnDef]=\"column.key\">\n      <th\n        cdk-header-cell\n        *cdkHeaderCellDef\n        class=\"govuk-table__header\"\n        [class.govuk-table__header--numeric]=\"column.isNumeric\"\n        scope=\"col\"\n      >\n        {{ column.header }}\n      </th>\n\n      <ng-container *cdkCellDef=\"let item\">\n        @if (column.isRowHeader) {\n          <th cdk-cell class=\"govuk-table__header\" scope=\"row\">\n            {{ item[column.key] }}\n          </th>\n        } @else {\n          <td\n            cdk-cell\n            class=\"govuk-table__cell\"\n            [class.govuk-table__cell--numeric]=\"column.isNumeric\"\n          >\n            {{ item[column.key] }}\n          </td>\n        }\n      </ng-container>\n    </ng-container>\n  }\n\n  <tr\n    cdk-header-row\n    *cdkHeaderRowDef=\"columnKeys()\"\n    class=\"govuk-table__row\"\n  ></tr>\n\n  <tr\n    cdk-row\n    *cdkRowDef=\"let row; columns: columnKeys()\"\n    class=\"govuk-table__row\"\n  ></tr>\n</table>\n"
+        },
+        {
             "name": "GovUKTabsComponent",
             "id": "component-GovUKTabsComponent-f2ce5359ec16887cd55bd481f7aebaac4acadc4c223f943da1e7d15f7d2f6d2a202d8e0c8a110dc44548eef2efb9bf6644d13362c72d4610b4c9107506b7be7d",
             "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.ts",
@@ -2910,6 +3055,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKTableComponent>",
+                "defaultValue": "{\n  component: GovUKTableComponent,\n  title: 'Table/GovUKTableComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/warning-text/src/lib/warning-text.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3175,6 +3330,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  render: Template,\n  args: {\n    inputId: 'story1',\n    autocomplete: 'off',\n    extraClasses: '',\n    rows: 2,\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    caption: 'Example table',\n    small: false,\n    columns: [\n      { header: 'Name', key: 'name', isRowHeader: true },\n      { header: 'Age', key: 'age' },\n    ],\n    dataSource: [\n      { name: 'Alice', age: 25 },\n      { name: 'Bob', age: 30 },\n    ],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -3450,6 +3615,16 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryFn<GovUKTableComponent>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-table ${argsToTemplate(args)} />`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/warning-text/src/lib/warning-text.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3530,6 +3705,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 192
+            },
+            {
+                "name": "GovUKTableColumn",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
             },
             {
                 "name": "GovUKTagColor",
@@ -3757,6 +3943,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<>",
                 "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKTableComponent>",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4503,6 +4700,38 @@
                     "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl('') }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-textarea\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-textarea>\n    </form>`,\n})"
                 }
             ],
+            "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKTableComponent>",
+                    "defaultValue": "{\n  component: GovUKTableComponent,\n  title: 'Table/GovUKTableComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    caption: 'Example table',\n    small: false,\n    columns: [\n      { header: 'Name', key: 'name', isRowHeader: true },\n      { header: 'Age', key: 'age' },\n    ],\n    dataSource: [\n      { name: 'Alice', age: 25 },\n      { name: 'Bob', age: 30 },\n    ],\n  },\n}"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryFn<GovUKTableComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-table ${argsToTemplate(args)} />`,\n})"
+                }
+            ],
             "libs/ngx-govuk-frontend/warning-text/src/lib/warning-text.component.stories.ts": [
                 {
                     "name": "meta",
@@ -4735,6 +4964,19 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 192
+                }
+            ],
+            "libs/ngx-govuk-frontend/table/src/lib/table.component.ts": [
+                {
+                    "name": "GovUKTableColumn",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
                 }
             ],
             "libs/ngx-govuk-frontend/tag/src/lib/tag.component.ts": [
@@ -5004,6 +5246,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<>",
                     "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKTableComponent>",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -6200,6 +6455,65 @@
                 "name": "GovUKServiceNavigationComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/table/src/lib/table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKTableComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/table/src/lib/table.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "GovUKTableColumn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
