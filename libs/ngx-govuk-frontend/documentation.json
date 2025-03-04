@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "GovUKSelectOption",
-            "id": "interface-GovUKSelectOption-664a44373ebeaed188deb84c1005fe828f1d3c0072b5464f0428c657dc7fd09d68b42fc13cf867caf801509f176155cc8bdc6f5131e2d74e52b1f9bc78caca43",
+            "id": "interface-GovUKSelectOption-5d623f176d75b1e72c97ab695bf144d824bcfe06fbc1b30570d54d3d50ef188c72b3628e23f3495ae4ea441691a4776af73012ae240067a20f38d79350b31796",
             "file": "libs/ngx-govuk-frontend/select/src/lib/select.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  inject,\r\n  input,\r\n} from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  ValueAccessorDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\nexport interface GovUKSelectOption {\r\n  label: string;\r\n  value: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'ngx-govuk-select',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule],\r\n  templateUrl: './select.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKSelectComponent {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n\r\n  readonly options = input.required<GovUKSelectOption[]>();\r\n}\r\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  inject,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\nexport interface GovUKSelectOption {\n  label: string;\n  value: string;\n}\n\n@Component({\n  selector: 'ngx-govuk-select',\n  standalone: true,\n  imports: [ReactiveFormsModule],\n  templateUrl: './select.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKSelectComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  readonly options = input.required<GovUKSelectOption[]>();\n}\n",
             "properties": [
                 {
                     "name": "label",
@@ -856,7 +856,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<details class=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">{{ summary() }}</span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    <ng-content></ng-content>\r\n  </div>\r\n</details>\r\n"
+            "templateData": "<details class=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">{{ summary() }}</span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    <ng-content></ng-content>\n  </div>\n</details>\n"
         },
         {
             "name": "GovUKFieldsetComponent",
@@ -998,7 +998,7 @@
         },
         {
             "name": "GovUKFileUploadComponent",
-            "id": "component-GovUKFileUploadComponent-44c45f6910a21051577178d72bea5c4e4ef8e47b2c48f28f762f4a6e2cf8155cbd874ac56eb895225e35bdf2393479e34380e7c81fa5d5de014d818923345977",
+            "id": "component-GovUKFileUploadComponent-8dba6e2144a6556ffd737f974dd06d23e53739edd2db853c69d57a9e2f2dfef6fe56c1e1bc33a03090917ebf82e2a60868e132fa2d279637ffba10fbb3793bca",
             "file": "libs/ngx-govuk-frontend/file-upload/src/lib/file-upload.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1073,12 +1073,12 @@
             "description": "<p>A form file upload input component that follows the GOV.UK Design System styling and behavior.</p>\n<p>This component provides a file upload input field.\nIt integrates with Angular&#39;s form controls.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-file-upload formControlName=&quot;photo&quot; inputId=&quot;photo-upload&quot; /&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
             "rawdescription": "\n\nA form file upload input component that follows the GOV.UK Design System styling and behavior.\n\nThis component provides a file upload input field.\nIt integrates with Angular's form controls.\n\n```html\n```html\n<ngx-govuk-file-upload formControlName=\"photo\" inputId=\"photo-upload\" />\n```\n```\n",
             "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, inject } from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  ValueAccessorDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\n/**\r\n * A form file upload input component that follows the GOV.UK Design System styling and behavior.\r\n *\r\n * This component provides a file upload input field.\r\n * It integrates with Angular's form controls.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-file-upload formControlName=\"photo\" inputId=\"photo-upload\" />\r\n * ```\r\n *\r\n * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.\r\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.\r\n * @property {string} inputId - Optional. The ID attribute for the input element.\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-file-upload',\r\n  standalone: true,\r\n  imports: [NgClass, ReactiveFormsModule],\r\n  templateUrl: './file-upload.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKFileUploadComponent {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n}\r\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * A form file upload input component that follows the GOV.UK Design System styling and behavior.\n *\n * This component provides a file upload input field.\n * It integrates with Angular's form controls.\n *\n * @example\n * ```html\n * <ngx-govuk-file-upload formControlName=\"photo\" inputId=\"photo-upload\" />\n * ```\n *\n * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.\n * @property {string} inputId - Optional. The ID attribute for the input element.\n */\n@Component({\n  selector: 'ngx-govuk-file-upload',\n  standalone: true,\n  imports: [NgClass, ReactiveFormsModule],\n  templateUrl: './file-upload.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKFileUploadComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<input\r\n  class=\"govuk-file-upload\"\r\n  [ngClass]=\"commonFormInput.extraClasses()\"\r\n  [class.govuk-file-upload--error]=\"ngControl.touched && ngControl.errors\"\r\n  [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\r\n  type=\"file\"\r\n/>\r\n"
+            "templateData": "<input\n  class=\"govuk-file-upload\"\n  [ngClass]=\"commonFormInput.extraClasses()\"\n  [class.govuk-file-upload--error]=\"ngControl.touched && ngControl.errors\"\n  [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\n  type=\"file\"\n/>\n"
         },
         {
             "name": "GovUKFooterComponent",
@@ -1726,7 +1726,7 @@
         },
         {
             "name": "GovUKRadioGroupComponent",
-            "id": "component-GovUKRadioGroupComponent-8cf8eb6277b7ca4873359960a5cf744ec25361adfa42fd46f9398c434bb46ba99269690838bfaaa3f55df21361f78bae91726f815f2d13f8aefc39fdd6c6b54e",
+            "id": "component-GovUKRadioGroupComponent-1a89aaf5fca65d28fd40a578965a28f49039a22537152e15f3dad9f5ef315889b4ee23300da0d5d62eeea85e459093a17e6b5800d568a22eebe097a43ee144cb",
             "file": "libs/ngx-govuk-frontend/radio/src/lib/radio-group.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1850,16 +1850,16 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  booleanAttribute,\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  contentChildren,\r\n  input,\r\n} from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  injectNgControl,\r\n  ValueAccessorDirective,\r\n} from 'ngx-govuk-frontend/form-utils';\r\nimport { GovUKRadioOptionDirective } from './radio-option.directive';\r\n\r\n@Component({\r\n  selector: 'ngx-govuk-radio-group',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule],\r\n  templateUrl: './radio-group.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [ValueAccessorDirective],\r\n})\r\nexport class GovUKRadioGroupComponent {\r\n  readonly ngControl = injectNgControl();\r\n  readonly options = contentChildren(GovUKRadioOptionDirective);\r\n\r\n  readonly small = input(false, { transform: booleanAttribute });\r\n  readonly inline = input(false, { transform: booleanAttribute });\r\n\r\n  setValue(value: string) {\r\n    if (this.ngControl.control.value !== value) {\r\n      this.ngControl.control.setValue(value);\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  contentChildren,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  injectNgControl,\n  ValueAccessorDirective,\n} from 'ngx-govuk-frontend/form-utils';\nimport { GovUKRadioOptionDirective } from './radio-option.directive';\n\n@Component({\n  selector: 'ngx-govuk-radio-group',\n  standalone: true,\n  imports: [ReactiveFormsModule],\n  templateUrl: './radio-group.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [ValueAccessorDirective],\n})\nexport class GovUKRadioGroupComponent {\n  readonly ngControl = injectNgControl();\n  readonly options = contentChildren(GovUKRadioOptionDirective);\n\n  readonly small = input(false, { transform: booleanAttribute });\n  readonly inline = input(false, { transform: booleanAttribute });\n\n  setValue(value: string) {\n    if (this.ngControl.control.value !== value) {\n      this.ngControl.control.setValue(value);\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div\r\n  class=\"govuk-radios\"\r\n  [class.govuk-radios--small]=\"small()\"\r\n  [class.govuk-radios--inline]=\"inline()\"\r\n>\r\n  @for (option of options(); track option.value) {\r\n    @if ($index > 0 && option.isDivided()) {\r\n      <div class=\"govuk-radios__divider\">Or</div>\r\n    }\r\n    <div class=\"govuk-radios__item\" (click)=\"setValue(option.value())\">\r\n      <input\r\n        class=\"govuk-radios__input\"\r\n        type=\"radio\"\r\n        [formControl]=\"ngControl.control\"\r\n        [value]=\"option.value()\"\r\n      />\r\n      <label class=\"govuk-label govuk-radios__label\">\r\n        {{ option.label() }}\r\n      </label>\r\n      @if (option.hint()) {\r\n        <div class=\"govuk-hint govuk-radios__hint\">\r\n          {{ option.hint() }}\r\n        </div>\r\n      }\r\n    </div>\r\n  }\r\n</div>\r\n"
+            "templateData": "<div\n  class=\"govuk-radios\"\n  [class.govuk-radios--small]=\"small()\"\n  [class.govuk-radios--inline]=\"inline()\"\n>\n  @for (option of options(); track option.value) {\n    @if ($index > 0 && option.isDivided()) {\n      <div class=\"govuk-radios__divider\">Or</div>\n    }\n    <div class=\"govuk-radios__item\" (click)=\"setValue(option.value())\">\n      <input\n        class=\"govuk-radios__input\"\n        type=\"radio\"\n        [formControl]=\"ngControl.control\"\n        [value]=\"option.value()\"\n      />\n      <label class=\"govuk-label govuk-radios__label\">\n        {{ option.label() }}\n      </label>\n      @if (option.hint()) {\n        <div class=\"govuk-hint govuk-radios__hint\">\n          {{ option.hint() }}\n        </div>\n      }\n    </div>\n  }\n</div>\n"
         },
         {
             "name": "GovUKSelectComponent",
-            "id": "component-GovUKSelectComponent-664a44373ebeaed188deb84c1005fe828f1d3c0072b5464f0428c657dc7fd09d68b42fc13cf867caf801509f176155cc8bdc6f5131e2d74e52b1f9bc78caca43",
+            "id": "component-GovUKSelectComponent-5d623f176d75b1e72c97ab695bf144d824bcfe06fbc1b30570d54d3d50ef188c72b3628e23f3495ae4ea441691a4776af73012ae240067a20f38d79350b31796",
             "file": "libs/ngx-govuk-frontend/select/src/lib/select.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1945,12 +1945,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  inject,\r\n  input,\r\n} from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  ValueAccessorDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\nexport interface GovUKSelectOption {\r\n  label: string;\r\n  value: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'ngx-govuk-select',\r\n  standalone: true,\r\n  imports: [ReactiveFormsModule],\r\n  templateUrl: './select.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKSelectComponent {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n\r\n  readonly options = input.required<GovUKSelectOption[]>();\r\n}\r\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  inject,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\nexport interface GovUKSelectOption {\n  label: string;\n  value: string;\n}\n\n@Component({\n  selector: 'ngx-govuk-select',\n  standalone: true,\n  imports: [ReactiveFormsModule],\n  templateUrl: './select.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKSelectComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  readonly options = input.required<GovUKSelectOption[]>();\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<select\r\n  class=\"govuk-select\"\r\n  [class.govuk-select--error]=\"ngControl.touched && ngControl.errors\"\r\n  [formControl]=\"ngControl.control\"\r\n  [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\r\n>\r\n  @for (option of options(); track option.value) {\r\n    <option [value]=\"option.value\">\r\n      {{ option.label }}\r\n    </option>\r\n  }\r\n</select>\r\n"
+            "templateData": "<select\n  class=\"govuk-select\"\n  [class.govuk-select--error]=\"ngControl.touched && ngControl.errors\"\n  [formControl]=\"ngControl.control\"\n  [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\n>\n  @for (option of options(); track option.value) {\n    <option [value]=\"option.value\">\n      {{ option.label }}\n    </option>\n  }\n</select>\n"
         },
         {
             "name": "GovUKServiceNavigationComponent",
@@ -2124,7 +2124,7 @@
         },
         {
             "name": "GovUKTableComponent",
-            "id": "component-GovUKTableComponent-3a8417a4bb7db5fb471458ce55abed179bb3a44a325b60c220690ad8d66d02a339087d87e47b08a00fbd4efd2135c4eaa76ebebb8ed6c76e3af0d8b11d16769c",
+            "id": "component-GovUKTableComponent-81f8e03fec71b7558a56a9cd9eb647ccf87c4906ee340aca66974cfdb22cafad4b7c54138c087b6de702709b71cfc2d8014981ec0e446a22eea1a90fba3f9aac",
             "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2149,7 +2149,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "modifierKind": [
                         148
                     ],
@@ -2164,7 +2164,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "modifierKind": [
                         148
                     ],
@@ -2181,7 +2181,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "modifierKind": [
                         148
                     ],
@@ -2196,7 +2196,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "modifierKind": [
                         148
                     ]
@@ -2210,7 +2210,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 25,
                     "modifierKind": [
                         148
                     ]
@@ -2224,7 +2224,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "modifierKind": [
                         148
                     ]
@@ -2238,7 +2238,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "modifierKind": [
                         148
                     ],
@@ -2260,12 +2260,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CdkTableModule } from '@angular/cdk/table';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n} from '@angular/core';\n\nexport type GovUKTableColumn = {\n  header: string;\n  key: string;\n  isRowHeader?: boolean;\n  isNumeric?: boolean;\n};\n\n@Component({\n  selector: 'ngx-govuk-table',\n  standalone: true,\n  imports: [CdkTableModule],\n  templateUrl: './table.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTableComponent {\n  readonly columns = input.required<GovUKTableColumn[]>();\n  readonly dataSource = input.required<unknown[]>();\n\n  readonly caption = input<string>();\n  readonly small = input(false);\n\n  readonly columnKeys = computed(() =>\n    this.columns().map((column) => column.key),\n  );\n}\n",
+            "sourceCode": "import { CdkTableModule } from '@angular/cdk/table';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n} from '@angular/core';\n\nexport type GovUKTableColumn = {\n  header: string;\n  key: string;\n  isRowHeader?: boolean;\n  isNumeric?: boolean;\n  customClass?: string;\n};\n\n@Component({\n  selector: 'ngx-govuk-table',\n  standalone: true,\n  imports: [CdkTableModule],\n  templateUrl: './table.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTableComponent {\n  readonly columns = input.required<GovUKTableColumn[]>();\n  readonly dataSource = input.required<unknown[]>();\n\n  readonly caption = input<string>();\n  readonly small = input(false);\n\n  readonly columnKeys = computed(() =>\n    this.columns().map((column) => column.key),\n  );\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<table\n  cdk-table\n  [dataSource]=\"dataSource()\"\n  class=\"govuk-table\"\n  [class.govuk-table--small-text-until-tablet]=\"small()\"\n>\n  @if (caption(); as tableCaption) {\n    <caption class=\"govuk-table__caption govuk-table__caption--m\">\n      {{\n        tableCaption\n      }}\n    </caption>\n  }\n\n  @for (column of columns(); track column.key) {\n    <ng-container [cdkColumnDef]=\"column.key\">\n      <th\n        cdk-header-cell\n        *cdkHeaderCellDef\n        class=\"govuk-table__header\"\n        [class.govuk-table__header--numeric]=\"column.isNumeric\"\n        scope=\"col\"\n      >\n        {{ column.header }}\n      </th>\n\n      <ng-container *cdkCellDef=\"let item\">\n        @if (column.isRowHeader) {\n          <th cdk-cell class=\"govuk-table__header\" scope=\"row\">\n            {{ item[column.key] }}\n          </th>\n        } @else {\n          <td\n            cdk-cell\n            class=\"govuk-table__cell\"\n            [class.govuk-table__cell--numeric]=\"column.isNumeric\"\n          >\n            {{ item[column.key] }}\n          </td>\n        }\n      </ng-container>\n    </ng-container>\n  }\n\n  <tr\n    cdk-header-row\n    *cdkHeaderRowDef=\"columnKeys()\"\n    class=\"govuk-table__row\"\n  ></tr>\n\n  <tr\n    cdk-row\n    *cdkRowDef=\"let row; columns: columnKeys()\"\n    class=\"govuk-table__row\"\n  ></tr>\n</table>\n"
+            "templateData": "<table\n  cdk-table\n  [dataSource]=\"dataSource()\"\n  class=\"govuk-table\"\n  [class.govuk-table--small-text-until-tablet]=\"small()\"\n>\n  @if (caption()) {\n    <caption class=\"govuk-table__caption govuk-table__caption--m\">\n      {{\n        caption()\n      }}\n    </caption>\n  }\n\n  @for (column of columns(); track column.key) {\n    <ng-container [cdkColumnDef]=\"column.key\">\n      <th\n        cdk-header-cell\n        *cdkHeaderCellDef\n        class=\"govuk-table__header\"\n        [class.govuk-table__header--numeric]=\"column.isNumeric\"\n        [class]=\"column.customClass\"\n        scope=\"col\"\n      >\n        {{ column.header }}\n      </th>\n\n      <ng-container *cdkCellDef=\"let item\">\n        @if (column.isRowHeader) {\n          <th cdk-cell class=\"govuk-table__header\" scope=\"row\">\n            {{ item[column.key] }}\n          </th>\n        } @else {\n          <td\n            cdk-cell\n            class=\"govuk-table__cell\"\n            [class.govuk-table__cell--numeric]=\"column.isNumeric\"\n          >\n            {{ item[column.key] }}\n          </td>\n        }\n      </ng-container>\n    </ng-container>\n  }\n\n  <tr\n    cdk-header-row\n    *cdkHeaderRowDef=\"columnKeys()\"\n    class=\"govuk-table__row\"\n  ></tr>\n\n  <tr\n    cdk-row\n    *cdkRowDef=\"let row; columns: columnKeys()\"\n    class=\"govuk-table__row\"\n  ></tr>\n</table>\n"
         },
         {
             "name": "GovUKTabsComponent",
@@ -2650,7 +2650,7 @@
         },
         {
             "name": "GovUKTextInputComponent",
-            "id": "component-GovUKTextInputComponent-afbb7c13483a1b599c0cdc1660990647c7fc87b0802181b5a0b635cc45f57feeadfb4baeb5fa0abae95c81eca08f6a2e2e24ce8e3630512e31805df69082fc50",
+            "id": "component-GovUKTextInputComponent-b3e75fd126f26154240e03ddc9369da641125e4ea422396cb757cd070005c0fa349ef563c88369a99d62d3e2efdc87c825649fea2ff1afb0ab3c506818e794fe",
             "file": "libs/ngx-govuk-frontend/text-input/src/lib/text-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2782,12 +2782,12 @@
             "description": "<p>A form input component that follows the GOV.UK Design System styling and behavior.</p>\n<p>This component provides a text input field with optional features like autocomplete, prefixes, and suffixes.\nIt integrates with Angular&#39;s form controls and supports accessibility features.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-text-input\n  formControlName=&quot;firstName&quot;\n  inputId=&quot;first-name&quot;\n  autocomplete=&quot;given-name&quot;\n&gt;&lt;/ngx-govuk-text-input&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
             "rawdescription": "\n\nA form input component that follows the GOV.UK Design System styling and behavior.\n\nThis component provides a text input field with optional features like autocomplete, prefixes, and suffixes.\nIt integrates with Angular's form controls and supports accessibility features.\n\n```html\n```html\n<ngx-govuk-text-input\n  formControlName=\"firstName\"\n  inputId=\"first-name\"\n  autocomplete=\"given-name\"\n></ngx-govuk-text-input>\n```\n```\n",
             "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\r\nimport {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  inject,\r\n  input,\r\n} from '@angular/core';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  ValueAccessorDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\n/**\r\n * A form input component that follows the GOV.UK Design System styling and behavior.\r\n *\r\n * This component provides a text input field with optional features like autocomplete, prefixes, and suffixes.\r\n * It integrates with Angular's form controls and supports accessibility features.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-text-input\r\n *   formControlName=\"firstName\"\r\n *   inputId=\"first-name\"\r\n *   autocomplete=\"given-name\"\r\n * ></ngx-govuk-text-input>\r\n * ```\r\n *\r\n * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.\r\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.\r\n * @property {string} inputId - Optional. The ID attribute for the input element.\r\n * @property {string} prefix - Optional. Text or symbol displayed before the input field (e.g., '£').\r\n * @property {string} suffix - Optional. Text or symbol displayed after the input field (e.g., 'per day').\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-text-input',\r\n  standalone: true,\r\n  imports: [NgClass, ReactiveFormsModule],\r\n  templateUrl: './text-input.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKTextInputComponent {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n\r\n  readonly prefix = input<string>();\r\n  readonly suffix = input<string>();\r\n}\r\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  inject,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * A form input component that follows the GOV.UK Design System styling and behavior.\n *\n * This component provides a text input field with optional features like autocomplete, prefixes, and suffixes.\n * It integrates with Angular's form controls and supports accessibility features.\n *\n * @example\n * ```html\n * <ngx-govuk-text-input\n *   formControlName=\"firstName\"\n *   inputId=\"first-name\"\n *   autocomplete=\"given-name\"\n * ></ngx-govuk-text-input>\n * ```\n *\n * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.\n * @property {string} inputId - Optional. The ID attribute for the input element.\n * @property {string} prefix - Optional. Text or symbol displayed before the input field (e.g., '£').\n * @property {string} suffix - Optional. Text or symbol displayed after the input field (e.g., 'per day').\n */\n@Component({\n  selector: 'ngx-govuk-text-input',\n  standalone: true,\n  imports: [NgClass, ReactiveFormsModule],\n  templateUrl: './text-input.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKTextInputComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  readonly prefix = input<string>();\n  readonly suffix = input<string>();\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"govuk-input__wrapper\">\r\n  @if (prefix()) {\r\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">{{ prefix() }}</div>\r\n  }\r\n\r\n  <input\r\n    class=\"govuk-input\"\r\n    [ngClass]=\"commonFormInput.extraClasses()\"\r\n    [class.govuk-input--error]=\"ngControl.touched && ngControl.errors\"\r\n    [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\r\n    [attr.autocomplete]=\"\r\n      commonFormInput.autocomplete() ? commonFormInput.autocomplete() : null\r\n    \"\r\n    type=\"text\"\r\n    [formControl]=\"ngControl.control\"\r\n  />\r\n\r\n  @if (suffix()) {\r\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">{{ suffix() }}</div>\r\n  }\r\n</div>\r\n"
+            "templateData": "<div class=\"govuk-input__wrapper\">\n  @if (prefix()) {\n    <div class=\"govuk-input__prefix\" aria-hidden=\"true\">{{ prefix() }}</div>\n  }\n\n  <input\n    class=\"govuk-input\"\n    [ngClass]=\"commonFormInput.extraClasses()\"\n    [class.govuk-input--error]=\"ngControl.touched && ngControl.errors\"\n    [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\n    [attr.autocomplete]=\"\n      commonFormInput.autocomplete() ? commonFormInput.autocomplete() : null\n    \"\n    type=\"text\"\n    [formControl]=\"ngControl.control\"\n  />\n\n  @if (suffix()) {\n    <div class=\"govuk-input__suffix\" aria-hidden=\"true\">{{ suffix() }}</div>\n  }\n</div>\n"
         },
         {
             "name": "GovUKWarningTextComponent",
@@ -3025,6 +3025,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKTableComponent>",
+                "defaultValue": "{\n  component: GovUKTableComponent,\n  title: 'Table/GovUKTableComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3050,16 +3060,6 @@
                 "deprecationMessage": "",
                 "type": "Meta<GovUKTextareaComponent>",
                 "defaultValue": "{\n  component: GovUKTextareaComponent,\n  title: 'Forms/GovUKTextareaComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule],\n    }),\n  ],\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<GovUKTableComponent>",
-                "defaultValue": "{\n  component: GovUKTableComponent,\n  title: 'Table/GovUKTableComponent',\n}"
             },
             {
                 "name": "meta",
@@ -3129,7 +3129,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\r\n  //👇 Enable auto-generated documentation for all stories\r\n  tags: ['autodocs'],\r\n}"
+                "defaultValue": "{\n  //👇 Enable auto-generated documentation for all stories\n  tags: ['autodocs'],\n}"
             },
             {
                 "name": "Primary",
@@ -3305,6 +3305,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    caption: 'Example table',\n    small: false,\n    columns: [\n      {\n        header: 'Name',\n        key: 'name',\n        isRowHeader: true,\n        customClass: 'govuk-!-width-one-half',\n      },\n      { header: 'Gender', key: 'gender' },\n      {\n        header: 'Age',\n        key: 'age',\n        isNumeric: true,\n      },\n    ],\n    dataSource: [\n      { name: 'Alice', gender: 'F', age: 25 },\n      { name: 'Bob', gender: 'M', age: 30 },\n    ],\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3330,16 +3340,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  render: Template,\n  args: {\n    inputId: 'story1',\n    autocomplete: 'off',\n    extraClasses: '',\n    rows: 2,\n  },\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: Template,\n  args: {\n    caption: 'Example table',\n    small: false,\n    columns: [\n      { header: 'Name', key: 'name', isRowHeader: true },\n      { header: 'Age', key: 'age' },\n    ],\n    dataSource: [\n      { name: 'Alice', age: 25 },\n      { name: 'Bob', age: 30 },\n    ],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -3585,6 +3585,16 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryFn<GovUKTableComponent>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-table ${argsToTemplate(args)} />`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3610,16 +3620,6 @@
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKTextareaComponent>",
                 "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl('') }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-textarea\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-textarea>\n    </form>`,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "StoryFn<GovUKTableComponent>",
-                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-table ${argsToTemplate(args)} />`,\n})"
             },
             {
                 "name": "Template",
@@ -3919,6 +3919,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKTableComponent>",
+                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<GovUKTagComponent>",
                 "file": "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts",
                 "deprecated": false,
@@ -3943,17 +3954,6 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<>",
                 "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<GovUKTableComponent>",
-                "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4604,6 +4604,38 @@
                     "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-service-navigation>\n      <ngx-govuk-service-navigaiton-item link=\"page-one\" label=\"Page One\" />\n      <ngx-govuk-service-navigaiton-item link=\"page-two\" label=\"Page Two\" />\n      <ngx-govuk-service-navigaiton-item link=\"page-three\" label=\"Page Three\" />\n    </ngx-govuk-service-navigation>\n  `,\n})"
                 }
             ],
+            "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKTableComponent>",
+                    "defaultValue": "{\n  component: GovUKTableComponent,\n  title: 'Table/GovUKTableComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    caption: 'Example table',\n    small: false,\n    columns: [\n      {\n        header: 'Name',\n        key: 'name',\n        isRowHeader: true,\n        customClass: 'govuk-!-width-one-half',\n      },\n      { header: 'Gender', key: 'gender' },\n      {\n        header: 'Age',\n        key: 'age',\n        isNumeric: true,\n      },\n    ],\n    dataSource: [\n      { name: 'Alice', gender: 'F', age: 25 },\n      { name: 'Bob', gender: 'M', age: 30 },\n    ],\n  },\n}"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryFn<GovUKTableComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-table ${argsToTemplate(args)} />`,\n})"
+                }
+            ],
             "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts": [
                 {
                     "name": "meta",
@@ -4698,38 +4730,6 @@
                     "deprecationMessage": "",
                     "type": "StoryFn<GovUKTextareaComponent>",
                     "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl('') }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-textarea\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-textarea>\n    </form>`,\n})"
-                }
-            ],
-            "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts": [
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<GovUKTableComponent>",
-                    "defaultValue": "{\n  component: GovUKTableComponent,\n  title: 'Table/GovUKTableComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: Template,\n  args: {\n    caption: 'Example table',\n    small: false,\n    columns: [\n      { header: 'Name', key: 'name', isRowHeader: true },\n      { header: 'Age', key: 'age' },\n    ],\n    dataSource: [\n      { name: 'Alice', age: 25 },\n      { name: 'Bob', age: 30 },\n    ],\n  },\n}"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "StoryFn<GovUKTableComponent>",
-                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n    <ngx-govuk-table ${argsToTemplate(args)} />`,\n})"
                 }
             ],
             "libs/ngx-govuk-frontend/warning-text/src/lib/warning-text.component.stories.ts": [
@@ -4933,7 +4933,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\r\n  //👇 Enable auto-generated documentation for all stories\r\n  tags: ['autodocs'],\r\n}"
+                    "defaultValue": "{\n  //👇 Enable auto-generated documentation for all stories\n  tags: ['autodocs'],\n}"
                 }
             ]
         },
@@ -5213,6 +5213,19 @@
                     "kind": 183
                 }
             ],
+            "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKTableComponent>",
+                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/ngx-govuk-frontend/tag/src/lib/tag.component.stories.ts": [
                 {
                     "name": "Story",
@@ -5246,19 +5259,6 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<>",
                     "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<GovUKTableComponent>",
-                    "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
