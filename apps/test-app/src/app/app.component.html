@@ -16,7 +16,13 @@
     <ngx-govuk-breadcrumb label="Forms" link="/forms" />
   </ngx-govuk-breadcrumbs>
 
-  <router-outlet></router-outlet>
+  <ngx-govuk-skip-link href="#main-content"
+    >Skip to main content</ngx-govuk-skip-link
+  >
+
+  <main id="main-content" class="govuk-main-wrapper">
+    <router-outlet></router-outlet>
+  </main>
 
   <ngx-govuk-footer />
 </div>
