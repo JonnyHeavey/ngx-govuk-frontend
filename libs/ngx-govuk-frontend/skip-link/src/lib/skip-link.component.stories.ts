@@ -2,7 +2,7 @@ import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { GovUKSkipLinkComponent } from './skip-link.component';
 
 const meta: Meta<GovUKSkipLinkComponent> = {
-  title: 'Components/Skip Link',
+  title: 'Skip Link/GovUKSkipLinkComponent',
   component: GovUKSkipLinkComponent,
   decorators: [
     moduleMetadata({
