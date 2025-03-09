@@ -198,7 +198,6 @@ describe('GovUKTextareaComponent', () => {
         control?.setValue('This is a test');
         fixture.detectChanges();
 
-        expect(component.currentLength()).toBe(14);
         expect(component.characterCountMessage()).toBe(
           'You have 86 characters remaining',
         );

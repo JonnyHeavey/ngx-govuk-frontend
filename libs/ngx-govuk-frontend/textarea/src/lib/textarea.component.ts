@@ -70,22 +70,16 @@ export class GovUKTextareaComponent implements OnInit {
   readonly maxLength = input<number | null>(null);
   readonly showCharacterCount = input(false);
 
-  private readonly controlValue: WritableSignal<string> = signal('');
-
-  readonly currentLength = computed(() => this.controlValue().length ?? 0);
-
-  readonly remainingCharacters = computed(() => {
+  private readonly currentLength: WritableSignal<number> = signal(0);
+  private readonly remainingCharacters = computed(() => {
     const maxLength = this.maxLength();
     return maxLength === null ? null : maxLength - this.currentLength();
   });
 
   readonly characterCountMessage = computed(() => {
-    if (this.maxLength() === null) {
-      return null;
-    }
-
     const remaining = this.remainingCharacters();
-    if (remaining === null) {
+
+    if (this.maxLength() === null || remaining === null) {
       return null;
     }
 
@@ -100,6 +94,6 @@ export class GovUKTextareaComponent implements OnInit {
   ngOnInit(): void {
     this.ngControl.valueChanges
       ?.pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((value) => this.controlValue.set(value));
+      .subscribe((value) => this.currentLength.set(value.length));
   }
 }
