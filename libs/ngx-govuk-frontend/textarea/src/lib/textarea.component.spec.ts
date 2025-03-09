@@ -9,11 +9,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   template: `
     <form [formGroup]="form">
       <ngx-govuk-textarea
-        formControlName="testInput"
+        formControlName="testTextarea"
         [inputId]="inputId"
         [autocomplete]="autocomplete"
         [extraClasses]="extraClasses"
         [rows]="rows"
+        [maxLength]="maxLength"
+        [showCharacterCount]="showCharacterCount"
       ></ngx-govuk-textarea>
     </form>
   `,
@@ -22,15 +24,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 class TestHostComponent {
   inputId = '';
-  autocomplete = '';
+  autocomplete = 'off';
   extraClasses = '';
   rows = 2;
+  maxLength: number | null = null;
+  showCharacterCount = false;
   form: FormGroup;
   component = viewChild.required(GovUKTextareaComponent);
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      testInput: ['', Validators.required],
+      testTextarea: ['', Validators.required],
     });
   }
 }
@@ -47,6 +51,8 @@ describe('GovUKTextareaComponent', () => {
     hostComponent = fixture.componentInstance;
     component = fixture.componentInstance.component();
 
+    hostComponent.inputId = 'test-textarea';
+
     fixture.detectChanges();
   });
 
@@ -58,17 +64,16 @@ describe('GovUKTextareaComponent', () => {
 
   it('should update form control value', () => {
     const testValue = 'test textarea content';
-    const hostComponent = fixture.componentInstance;
+    const control = hostComponent.form.get('testTextarea');
 
-    hostComponent.form.get('testInput')?.setValue(testValue);
+    control?.setValue(testValue);
     fixture.detectChanges();
 
-    expect(hostComponent.form.get('testInput')?.value).toBe(testValue);
+    expect(control?.value).toBe(testValue);
   });
 
   it('should handle form validation', () => {
-    const hostComponent = fixture.componentInstance;
-    const control = hostComponent.form.get('testInput');
+    const control = hostComponent.form.get('testTextarea');
 
     control?.setValue('');
     expect(control?.valid).toBeFalsy();
@@ -78,26 +83,24 @@ describe('GovUKTextareaComponent', () => {
   });
 
   it('should render id attribute in DOM when inputId is set', () => {
-    const hostComponent = fixture.componentInstance;
     hostComponent.inputId = 'test-textarea-id';
-    fixture.detectChanges();
-
-    const textareaElement = fixture.nativeElement.querySelector('.govuk-textarea');
-    expect(textareaElement.getAttribute('id')).toBe('test-textarea-id');
-  });
-
-  it('should render autocomplete attribute in DOM when autocomplete is set', () => {
-    const hostComponent = fixture.componentInstance;
-    hostComponent.autocomplete = 'given-name';
     fixture.detectChanges();
 
     const textareaElement =
       fixture.nativeElement.querySelector('.govuk-textarea');
-    expect(textareaElement.getAttribute('autocomplete')).toBe('given-name');
+    expect(textareaElement.getAttribute('id')).toBe('test-textarea-id');
+  });
+
+  it('should render autocomplete attribute in DOM when autocomplete is set', () => {
+    hostComponent.autocomplete = 'on';
+    fixture.detectChanges();
+
+    const textareaElement =
+      fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(textareaElement.getAttribute('autocomplete')).toBe('on');
   });
 
   it('should render extraClasses in DOM when set', () => {
-    const hostComponent = fixture.componentInstance;
     hostComponent.extraClasses = 'custom-class another-class';
     fixture.detectChanges();
 
@@ -107,13 +110,7 @@ describe('GovUKTextareaComponent', () => {
     expect(textareaElement.classList.contains('another-class')).toBeTruthy();
   });
 
-  it('should set default rows to 2', () => {
-    const textareaElement =
-      fixture.nativeElement.querySelector('.govuk-textarea');
-    expect(textareaElement.getAttribute('rows')).toBe('2');
-  });
-
-  it('should update rows when input changes', () => {
+  it('should render rows attribute in DOM when rows is set', () => {
     hostComponent.rows = 5;
     fixture.detectChanges();
 
@@ -122,32 +119,188 @@ describe('GovUKTextareaComponent', () => {
     expect(textareaElement.getAttribute('rows')).toBe('5');
   });
 
+  it('should render maxlength attribute in DOM when maxLength is set', () => {
+    hostComponent.maxLength = 100;
+    fixture.detectChanges();
+
+    const textareaElement =
+      fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(textareaElement.getAttribute('maxlength')).toBe('100');
+  });
+
   it('should add error class when form control has validation error', () => {
-    const control = hostComponent.form.get('testInput');
+    const control = hostComponent.form.get('testTextarea');
     control?.setValue('');
     control?.markAsTouched();
     fixture.detectChanges();
 
-    const textareaElement = fixture.nativeElement.querySelector('.govuk-textarea');
-    expect(textareaElement.classList.contains('govuk-textarea--error')).toBeTruthy();
+    const textareaElement =
+      fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(
+      textareaElement.classList.contains('govuk-textarea--error'),
+    ).toBeTruthy();
   });
 
   it('should not have error class when form control has no validation errors', () => {
-    const control = hostComponent.form.get('testInput');
+    const control = hostComponent.form.get('testTextarea');
     control?.setValue('valid value');
     control?.markAsTouched();
     fixture.detectChanges();
 
-    const textareaElement = fixture.nativeElement.querySelector('.govuk-textarea');
-    expect(textareaElement.classList.contains('govuk-textarea--error')).toBeFalsy();
+    const textareaElement =
+      fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(
+      textareaElement.classList.contains('govuk-textarea--error'),
+    ).toBeFalsy();
   });
 
   it('should not have error class when form control has not been touched', () => {
-    const control = hostComponent.form.get('testInput');
+    const control = hostComponent.form.get('testTextarea');
     control?.setValue('');
     fixture.detectChanges();
 
-    const textareaElement = fixture.nativeElement.querySelector('.govuk-textarea');
-    expect(textareaElement.classList.contains('govuk-textarea--error')).toBeFalsy();
+    const textareaElement =
+      fixture.nativeElement.querySelector('.govuk-textarea');
+    expect(
+      textareaElement.classList.contains('govuk-textarea--error'),
+    ).toBeFalsy();
+  });
+
+  describe('Character count functionality', () => {
+    it('should not show character count by default', () => {
+      const characterCountMessage = fixture.nativeElement.querySelector(
+        '.govuk-character-count__message',
+      );
+      expect(characterCountMessage).toBeNull();
+    });
+
+    it('should show character count when showCharacterCount is true and maxLength is set', () => {
+      TestBed.runInInjectionContext(() => {
+        hostComponent.showCharacterCount = true;
+        hostComponent.maxLength = 100;
+        fixture.detectChanges();
+
+        const characterCountMessage = fixture.nativeElement.querySelector(
+          '.govuk-character-count__message',
+        );
+        expect(characterCountMessage).not.toBeNull();
+        expect(component.characterCountMessage()).toBe(
+          'You have 100 characters remaining',
+        );
+      });
+    });
+
+    it('should update character count when text is entered', () => {
+      TestBed.runInInjectionContext(() => {
+        hostComponent.showCharacterCount = true;
+        hostComponent.maxLength = 100;
+        const control = hostComponent.form.get('testTextarea');
+        control?.setValue('This is a test');
+        fixture.detectChanges();
+
+        expect(component.characterCountMessage()).toBe(
+          'You have 86 characters remaining',
+        );
+      });
+    });
+
+    it('should show "too many" message when text exceeds maxLength', () => {
+      TestBed.runInInjectionContext(() => {
+        hostComponent.showCharacterCount = true;
+        hostComponent.maxLength = 10;
+        const control = hostComponent.form.get('testTextarea');
+        control?.setValue('This is a test that is too long');
+        fixture.detectChanges();
+
+        expect(component.characterCountMessage()).toBe(
+          'You have 21 characters too many',
+        );
+      });
+    });
+
+    it('should add govuk-character-count class when showCharacterCount is true', () => {
+      hostComponent.showCharacterCount = true;
+      fixture.detectChanges();
+
+      const containerElement = fixture.nativeElement.querySelector('div');
+      expect(
+        containerElement.classList.contains('govuk-character-count'),
+      ).toBeTruthy();
+    });
+
+    it('should add govuk-js-character-count class to textarea when showCharacterCount is true', () => {
+      hostComponent.showCharacterCount = true;
+      fixture.detectChanges();
+
+      const textareaElement =
+        fixture.nativeElement.querySelector('.govuk-textarea');
+      expect(
+        textareaElement.classList.contains('govuk-js-character-count'),
+      ).toBeTruthy();
+    });
+
+    it('should set aria-describedby attribute when showCharacterCount is true', () => {
+      hostComponent.showCharacterCount = true;
+      hostComponent.maxLength = 100;
+      fixture.detectChanges();
+
+      const textareaElement =
+        fixture.nativeElement.querySelector('.govuk-textarea');
+      expect(textareaElement.getAttribute('aria-describedby')).toBe(
+        'test-textarea-info',
+      );
+    });
+
+    it('should handle singular form correctly when one character remaining', () => {
+      TestBed.runInInjectionContext(() => {
+        hostComponent.showCharacterCount = true;
+        hostComponent.maxLength = 10;
+        const control = hostComponent.form.get('testTextarea');
+        control?.setValue('Nine char');
+        fixture.detectChanges();
+
+        expect(component.characterCountMessage()).toBe(
+          'You have 1 character remaining',
+        );
+      });
+    });
+
+    it('should handle singular form correctly when one character too many', () => {
+      TestBed.runInInjectionContext(() => {
+        hostComponent.showCharacterCount = true;
+        hostComponent.maxLength = 10;
+        const control = hostComponent.form.get('testTextarea');
+        control?.setValue('Eleven char');
+        fixture.detectChanges();
+
+        expect(component.characterCountMessage()).toBe(
+          'You have 1 character too many',
+        );
+      });
+    });
+
+    it('should have aria-live attribute set to polite on character count message', () => {
+      hostComponent.showCharacterCount = true;
+      hostComponent.maxLength = 100;
+      fixture.detectChanges();
+
+      const characterCountMessage = fixture.nativeElement.querySelector(
+        '.govuk-character-count__message',
+      );
+      expect(characterCountMessage.getAttribute('aria-live')).toBe('polite');
+    });
+
+    it('should have correct ID on character count message', () => {
+      hostComponent.showCharacterCount = true;
+      hostComponent.maxLength = 100;
+      fixture.detectChanges();
+
+      const characterCountMessage = fixture.nativeElement.querySelector(
+        '.govuk-character-count__message',
+      );
+      expect(characterCountMessage.getAttribute('id')).toBe(
+        'test-textarea-info',
+      );
+    });
   });
 });

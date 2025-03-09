@@ -1,13 +1,34 @@
-<div class="govuk-input__wrapper">
-  <textarea
-    class="govuk-textarea"
-    [class.govuk-textarea--error]="ngControl.touched && ngControl.errors"
-    [ngClass]="commonFormInput.extraClasses()"
-    [formControl]="ngControl.control"
-    [attr.id]="commonFormInput.inputId() ? commonFormInput.inputId() : null"
-    [attr.autocomplete]="
-      commonFormInput.autocomplete() ? commonFormInput.autocomplete() : null
-    "
-    [attr.rows]="rows()"
-  ></textarea>
+<div [class.govuk-character-count]="showCharacterCount()">
+  <div class="govuk-input__wrapper">
+    <textarea
+      class="govuk-textarea"
+      [class.govuk-textarea--error]="ngControl.touched && ngControl.errors"
+      [class.govuk-js-character-count]="showCharacterCount()"
+      [ngClass]="commonFormInput.extraClasses()"
+      [formControl]="ngControl.control"
+      [attr.id]="commonFormInput.inputId() ? commonFormInput.inputId() : null"
+      [attr.autocomplete]="
+        commonFormInput.autocomplete() ? commonFormInput.autocomplete() : null
+      "
+      [attr.rows]="rows()"
+      [attr.maxlength]="maxLength()"
+      [attr.aria-describedby]="
+        showCharacterCount() && commonFormInput.inputId()
+          ? commonFormInput.inputId() + '-info'
+          : null
+      "
+    ></textarea>
+  </div>
+
+  @if (showCharacterCount() && maxLength()) {
+    <div
+      [attr.id]="
+        commonFormInput.inputId() ? commonFormInput.inputId() + '-info' : null
+      "
+      class="govuk-hint govuk-character-count__message"
+      [attr.aria-live]="'polite'"
+    >
+      {{ characterCountMessage() }}
+    </div>
+  }
 </div>

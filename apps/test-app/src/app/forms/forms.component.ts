@@ -43,13 +43,17 @@ export class FormsComponent {
     ],
     earning: '',
     weight: '',
-    detail: ['', Validators.required],
+    detail: [
+      '',
+      Validators.compose([Validators.required, Validators.maxLength(100)]),
+    ],
     price: '',
     password: ['', Validators.required],
     rememberMe: false,
     choice: 'green',
     selection: '',
     file: '',
+    shortComment: ['', Validators.maxLength(50)],
   });
 
   colours: GovUKSelectOption[] = [

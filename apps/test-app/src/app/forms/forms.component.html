@@ -45,9 +45,12 @@
     >
       <ngx-govuk-textarea
         formControlName="detail"
-        hint="Do not include personal or financial information, like your National Insurance number or credit card details"
+        hint="Do not include personal or financial information, like your National Insurance number or credit card details. You have a maximum of 200 characters."
         inputId="detail"
         extraClasses="govuk-input--width-20"
+        [maxLength]="100"
+        [showCharacterCount]="true"
+        [rows]="5"
       />
     </ngx-govuk-form-group>
 
@@ -98,6 +101,20 @@
       errorMessage="File is too large"
     >
       <ngx-govuk-file-upload formControlName="file" inputId="file" />
+    </ngx-govuk-form-group>
+
+    <ngx-govuk-form-group
+      label="Short comment (max 50 characters)"
+      labelFor="shortComment"
+    >
+      <ngx-govuk-textarea
+        formControlName="shortComment"
+        hint="Keep it brief - this demonstrates the character count functionality with a smaller limit"
+        inputId="shortComment"
+        [maxLength]="50"
+        [showCharacterCount]="true"
+        [rows]="3"
+      />
     </ngx-govuk-form-group>
   </form>
 </div>
