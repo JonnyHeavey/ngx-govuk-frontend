@@ -41,3 +41,42 @@ export const Primary: Story = {
     rows: 2,
   },
 };
+
+export const WithCharacterCount: Story = {
+  render: Template,
+  args: {
+    inputId: 'story2',
+    autocomplete: 'off',
+    extraClasses: '',
+    rows: 5,
+    maxLength: 200,
+    showCharacterCount: true,
+  },
+};
+
+export const WithCharacterCountAndInitialValue: Story = {
+  render: (args) => ({
+    props: {
+      ...args,
+      form: new FormGroup({
+        input: new FormControl(
+          'This is some initial text to demonstrate the character count functionality.',
+        ),
+      }),
+    },
+    template: `<form [formGroup]="form">
+      <ngx-govuk-textarea
+        formControlName="input"
+         ${argsToTemplate(args)}
+      ></ngx-govuk-textarea>
+    </form>`,
+  }),
+  args: {
+    inputId: 'story3',
+    autocomplete: 'off',
+    extraClasses: '',
+    rows: 5,
+    maxLength: 100,
+    showCharacterCount: true,
+  },
+};
