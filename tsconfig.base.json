@@ -76,6 +76,9 @@
       "ngx-govuk-frontend/service-navigation": [
         "libs/ngx-govuk-frontend/service-navigation/src/index.ts"
       ],
+      "ngx-govuk-frontend/skip-link": [
+        "libs/ngx-govuk-frontend/skip-link/src/index.ts"
+      ],
       "ngx-govuk-frontend/table": [
         "libs/ngx-govuk-frontend/table/src/index.ts"
       ],

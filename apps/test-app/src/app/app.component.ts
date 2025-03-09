@@ -11,6 +11,7 @@ import {
   GovUKServiceNavigationComponent,
   GovUKServiceNavigationItemDirective,
 } from 'ngx-govuk-frontend/service-navigation';
+import { GovUKSkipLinkComponent } from 'ngx-govuk-frontend/skip-link';
 
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ import {
     GovUKBreadcrumbDirective,
     GovUKServiceNavigationComponent,
     GovUKServiceNavigationItemDirective,
+    GovUKSkipLinkComponent,
   ],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',
