@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
+  GovUKAccordionComponent,
+  GovUKAccordionItemComponent,
+} from 'ngx-govuk-frontend/accordion';
+import {
   GovUKButtonComponent,
   GovUKButtonGroupComponent,
 } from 'ngx-govuk-frontend/button';
@@ -33,6 +37,8 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
     GovUKTabsComponent,
     GovUKTabComponent,
     GovUKTableComponent,
+    GovUKAccordionComponent,
+    GovUKAccordionItemComponent,
   ],
   selector: 'ngx-govuk-frontend-demo',
   templateUrl: './demo.component.html',
@@ -59,4 +65,6 @@ export class DemoComponent {
     { name: 'Alice', age: 25, gender: 'M' },
     { name: 'Bob', age: 30, gender: 'F' },
   ];
+
+  readonly initialExpandedItems = ['1', '3'];
 }

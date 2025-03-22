@@ -167,6 +167,385 @@
     ],
     "components": [
         {
+            "name": "GovUKAccordionComponent",
+            "id": "component-GovUKAccordionComponent-8f06b73845dec37b5da329439d8c484f9efc0e326a4261a16fd8ed309c3ffe1c49b605535b90d58e786b9f138950018163fe84a190ed13a917926584fe72a82a",
+            "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-accordion",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./accordion.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [
+                {
+                    "name": "CdkAccordion"
+                }
+            ],
+            "inputsClass": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "allExpanded",
+                    "defaultValue": "computed(() => {\n    const allItems = this.items();\n    const expandedItems = this.expandedItems();\n    return (\n      allItems.length > 0 &&\n      allItems.every((item) => expandedItems.includes(item.itemId()))\n    );\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "expandedItems",
+                    "defaultValue": "model<string[]>([])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "initialExpanded",
+                    "defaultValue": "input<string[]>([])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "items",
+                    "defaultValue": "contentChildren(GovUKAccordionItemComponent)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "isExpanded",
+                    "args": [
+                        {
+                            "name": "itemId",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "itemId",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleAll",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 70,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleItem",
+                    "args": [
+                        {
+                            "name": "itemId",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "itemId",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgTemplateOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CdkAccordion } from '@angular/cdk/accordion';\nimport { NgTemplateOutlet } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  contentChildren,\n  effect,\n  input,\n  model,\n} from '@angular/core';\nimport { GovUKAccordionItemComponent } from '../accordion-item/accordion-item.component';\n\n@Component({\n  standalone: true,\n  imports: [NgTemplateOutlet],\n  selector: 'ngx-govuk-accordion',\n  templateUrl: './accordion.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [CdkAccordion],\n})\nexport class GovUKAccordionComponent {\n  readonly id = input.required<string>();\n  readonly initialExpanded = input<string[]>([]);\n\n  readonly expandedItems = model<string[]>([]);\n\n  readonly items = contentChildren(GovUKAccordionItemComponent);\n\n  readonly allExpanded = computed(() => {\n    const allItems = this.items();\n    const expandedItems = this.expandedItems();\n    return (\n      allItems.length > 0 &&\n      allItems.every((item) => expandedItems.includes(item.itemId()))\n    );\n  });\n\n  constructor() {\n    effect(\n      () => {\n        const initialExpandedItems = this.expandedItems();\n        const initialExpanded = this.initialExpanded();\n\n        if (initialExpandedItems.length === 0 && initialExpanded.length > 0) {\n          this.expandedItems.set([...initialExpanded]);\n        }\n      },\n      { allowSignalWrites: true },\n    );\n  }\n\n  isExpanded(itemId: string): boolean {\n    return this.expandedItems().includes(itemId);\n  }\n\n  toggleItem(itemId: string): void {\n    const currentExpanded = this.expandedItems();\n    const index = currentExpanded.indexOf(itemId);\n\n    if (index === -1) {\n      this.expandedItems.set([...currentExpanded, itemId]);\n    } else {\n      const newExpanded = [...currentExpanded];\n      newExpanded.splice(index, 1);\n      this.expandedItems.set(newExpanded);\n    }\n  }\n\n  toggleAll(): void {\n    if (this.allExpanded()) {\n      this.expandedItems.set([]);\n    } else {\n      this.expandedItems.set(this.items().map((item) => item.itemId()));\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 37
+            },
+            "extends": [],
+            "templateData": "<div class=\"govuk-accordion\" [attr.id]=\"id()\">\n  <div class=\"govuk-accordion__controls\">\n    <button\n      type=\"button\"\n      class=\"govuk-accordion__show-all\"\n      [attr.aria-expanded]=\"allExpanded()\"\n      (click)=\"toggleAll()\"\n    >\n      <span\n        class=\"govuk-accordion-nav__chevron\"\n        [class.govuk-accordion-nav__chevron--down]=\"!allExpanded()\"\n      ></span>\n      <span class=\"govuk-accordion__show-all-text\">\n        {{ allExpanded() ? 'Hide all sections' : 'Show all sections' }}\n      </span>\n    </button>\n  </div>\n  @for (item of items(); track item.itemId()) {\n    <div\n      class=\"govuk-accordion__section\"\n      [class.govuk-accordion__section--expanded]=\"isExpanded(item.itemId())\"\n    >\n      <div class=\"govuk-accordion__section-header\">\n        <h2 class=\"govuk-accordion__section-heading\">\n          <button\n            type=\"button\"\n            class=\"govuk-accordion__section-button\"\n            [attr.aria-expanded]=\"isExpanded(item.itemId())\"\n            [attr.aria-controls]=\"id() + '-content-' + item.itemId()\"\n            [attr.aria-label]=\"\n              item.heading() +\n              (item.summary() ? ', ' + item.summary() + ', ' : ', ') +\n              (isExpanded(item.itemId()) ? 'Hide' : 'Show') +\n              ' this section'\n            \"\n            (click)=\"toggleItem(item.itemId())\"\n          >\n            <span\n              class=\"govuk-accordion__section-heading-text\"\n              [attr.id]=\"id() + '-heading-' + item.itemId()\"\n            >\n              <span class=\"govuk-accordion__section-heading-text-focus\">\n                {{ item.heading() }}\n              </span>\n            </span>\n\n            @if (item.summary()) {\n              <span\n                class=\"govuk-visually-hidden govuk-accordion__section-heading-divider\"\n                >,\n              </span>\n              <span\n                class=\"govuk-accordion__section-summary govuk-body\"\n                [attr.id]=\"id() + '-summary-' + item.itemId()\"\n              >\n                <span class=\"govuk-accordion__section-summary-focus\">\n                  {{ item.summary() }}\n                </span>\n              </span>\n            }\n\n            <span\n              class=\"govuk-visually-hidden govuk-accordion__section-heading-divider\"\n              >,\n            </span>\n            <span class=\"govuk-accordion__section-toggle\" data-nosnippet=\"\">\n              <span class=\"govuk-accordion__section-toggle-focus\">\n                <span\n                  class=\"govuk-accordion-nav__chevron\"\n                  [class.govuk-accordion-nav__chevron--down]=\"\n                    !isExpanded(item.itemId())\n                  \"\n                ></span>\n                <span class=\"govuk-accordion__section-toggle-text\">{{\n                  isExpanded(item.itemId()) ? 'Hide' : 'Show'\n                }}</span>\n              </span>\n            </span>\n          </button>\n        </h2>\n      </div>\n      <div\n        [attr.id]=\"id() + '-content-' + item.itemId()\"\n        class=\"govuk-accordion__section-content\"\n        [attr.aria-labelledby]=\"id() + '-heading-' + item.itemId()\"\n        [hidden]=\"!isExpanded(item.itemId())\"\n      >\n        <ng-container [ngTemplateOutlet]=\"item.content()\"></ng-container>\n      </div>\n    </div>\n  }\n</div>\n"
+        },
+        {
+            "name": "GovUKAccordionItemComponent",
+            "id": "component-GovUKAccordionItemComponent-5464229dd5b959d711775a698badec8f12c2f9197c2ff9c2fdb6c925c6ee66f886c0fc4a0c5a178943e6ac506aa4b6af7204b581eb5a833d40315358f071a7e6",
+            "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion-item/accordion-item.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-accordion-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./accordion-item.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "expanded",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "heading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "itemId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "summary",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "content",
+                    "defaultValue": "viewChild.required<TemplateRef<unknown>>('content')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "expanded",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "heading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "itemId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": true
+                },
+                {
+                    "name": "summary",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgTemplateOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n@Component({\n  standalone: true,\n  imports: [NgTemplateOutlet],\n  selector: 'ngx-govuk-accordion-item',\n  templateUrl: './accordion-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKAccordionItemComponent {\n  readonly itemId = input.required<string>();\n  readonly heading = input.required<string>();\n  readonly summary = input<string>();\n  readonly expanded = input(false);\n\n  readonly content = viewChild.required<TemplateRef<unknown>>('content');\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<ng-template #content>\n  <ng-content></ng-content>\n</ng-template>\n"
+        },
+        {
             "name": "GovUKBackLinkComponent",
             "id": "component-GovUKBackLinkComponent-48d953ceeb1d1c6b82f3c775903ff74a8a2a01a35031861338076b0094b4ad55e2c84be7cbea368fa159bed390a95e48488ff777d89cc30ef6238f81d7afdbfe",
             "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.ts",
@@ -2013,6 +2392,59 @@
             "templateData": "<div class=\"govuk-service-navigation\" data-module=\"govuk-service-navigation\">\n  <div class=\"govuk-width-container\">\n    <div class=\"govuk-service-navigation__container\">\n      <nav aria-label=\"Menu\" class=\"govuk-service-navigation__wrapper\">\n        <ul class=\"govuk-service-navigation__list\">\n          @for (item of items(); track $index) {\n            <li\n              class=\"govuk-service-navigation__item\"\n              routerLinkActive=\"govuk-service-navigation__item--active\"\n              [routerLinkActiveOptions]=\"{ exact: true }\"\n              #rla=\"routerLinkActive\"\n            >\n              <a\n                class=\"govuk-service-navigation__link\"\n                [attr.aria-current]=\"rla.isActive ? true : null\"\n                [routerLink]=\"item.link()\"\n              >\n                @if (rla.isActive) {\n                  <strong class=\"govuk-service-navigation__active-fallback\">{{\n                    item.label()\n                  }}</strong>\n                } @else {\n                  {{ item.label() }}\n                }\n              </a>\n            </li>\n          }\n        </ul>\n      </nav>\n    </div>\n  </div>\n</div>\n"
         },
         {
+            "name": "GovUKSkipLinkComponent",
+            "id": "component-GovUKSkipLinkComponent-8e97f3129f125b5c8a244a6e3238432e8b2dd097250e157261b9abeb2024f2866fe499acfecaea5028ad036b359c3524aba07828534695be5bc8c3e68080ba47",
+            "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-skip-link",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./skip-link.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "href",
+                    "defaultValue": "input<string>('#content')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "<p>A component that renders a GOV.UK skip link.</p>\n<p>This component implements the GOV.UK Design System skip link component.\nIt provides a way for keyboard users to bypass the top-level navigation links\nand jump to the main content on a page.</p>\n<p>The skip link component is visually hidden until a keyboard press activates it.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-skip-link href=&quot;#main-content&quot;&gt;Skip to main content&lt;/ngx-govuk-skip-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">\nSee {&#64;link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}</code></pre></div>",
+            "rawdescription": "\n\nA component that renders a GOV.UK skip link.\n\nThis component implements the GOV.UK Design System skip link component.\nIt provides a way for keyboard users to bypass the top-level navigation links\nand jump to the main content on a page.\n\nThe skip link component is visually hidden until a keyboard press activates it.\n\n```html\n```html\n<ngx-govuk-skip-link href=\"#main-content\">Skip to main content</ngx-govuk-skip-link>\n```\n```\n\nSee {@link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\r\n\r\n/**\r\n * A component that renders a GOV.UK skip link.\r\n *\r\n * This component implements the GOV.UK Design System skip link component.\r\n * It provides a way for keyboard users to bypass the top-level navigation links\r\n * and jump to the main content on a page.\r\n *\r\n * The skip link component is visually hidden until a keyboard press activates it.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-skip-link href=\"#main-content\">Skip to main content</ngx-govuk-skip-link>\r\n * ```\r\n *\r\n * @property {string} href - The target ID to skip to. Defaults to \"#content\" if not provided.\r\n *\r\n * @see {@link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-skip-link',\r\n  standalone: true,\r\n  templateUrl: './skip-link.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class GovUKSkipLinkComponent {\r\n  readonly href = input<string>('#content');\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<a class=\"govuk-skip-link\" [attr.href]=\"href()\" data-module=\"govuk-skip-link\"\r\n  ><ng-content>Skip to main content</ng-content></a\r\n>\r\n"
+        },
+        {
             "name": "GovUKTabComponent",
             "id": "component-GovUKTabComponent-33166941b1d1c16bbea4192bee710954caba0295ff4c8b91d337176cb918e8da125dfa64bd9c8d65adfec593169d76f91f33c85bf0e9ac5fad402e499706c26a",
             "file": "libs/ngx-govuk-frontend/tabs/src/lib/tab/tab.component.ts",
@@ -2535,7 +2967,7 @@
         },
         {
             "name": "GovUKTextareaComponent",
-            "id": "component-GovUKTextareaComponent-4ca49a04c77b539f4a8d81644967e3d17afbc965831c74c4e66f52ecaf6ae4d71ada612f784fc5cc28c592daa3032586c61f421e9d5c6cc27a41e6c640caec15",
+            "id": "component-GovUKTextareaComponent-4347bea8734d7e3ab0fff230fc15777540fbd530ee68a2a6cbea51d8d1dbc43dea937d2e5daf8bf8372ad1eb35a8cacd6aa9fb3c20d78e48ab6d83005803714b",
             "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2570,7 +3002,22 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 48,
+                    "line": 69,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "showCharacterCount",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
                     "modifierKind": [
                         148
                     ],
@@ -2580,6 +3027,20 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "characterCountMessage",
+                    "defaultValue": "computed(() => {\r\n    const remaining = this.remainingCharacters();\r\n\r\n    if (this.maxLength() === null || remaining === null) {\r\n      return null;\r\n    }\r\n\r\n    if (remaining < 0) {\r\n      const overLimit = Math.abs(remaining);\r\n      return `You have ${overLimit} ${overLimit === 1 ? 'character' : 'characters'} too many`;\r\n    }\r\n\r\n    return `You have ${remaining} ${remaining === 1 ? 'character' : 'characters'} remaining`;\r\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 79,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
                     "name": "commonFormInput",
                     "defaultValue": "inject(GovUKCommonFormInputDirective)",
                     "deprecated": false,
@@ -2588,7 +3049,51 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 46,
+                    "line": 65,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "currentLength",
+                    "defaultValue": "signal(0)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "WritableSignal<number>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 73,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "destroyRef",
+                    "defaultValue": "inject(DestroyRef)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 67,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "maxLength",
+                    "defaultValue": "input<number | null>(null)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 70,
                     "modifierKind": [
                         148
                     ]
@@ -2602,8 +3107,23 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 45,
+                    "line": 64,
                     "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "remainingCharacters",
+                    "defaultValue": "computed(() => {\r\n    const maxLength = this.maxLength();\r\n    return maxLength === null ? null : maxLength - this.currentLength();\r\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 74,
+                    "modifierKind": [
+                        123,
                         148
                     ]
                 },
@@ -2616,14 +3136,40 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 48,
+                    "line": 69,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "showCharacterCount",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 94,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -2638,15 +3184,18 @@
                     "type": "module"
                 }
             ],
-            "description": "<p>A textarea component that follows the GOV.UK Design System guidelines.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-textarea\n  formControlName=&quot;detail&quot;\n  inputId=&quot;detail&quot;\n  [rows]=&quot;5&quot;\n&gt;&lt;/ngx-govuk-textarea&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
-            "rawdescription": "\n\nA textarea component that follows the GOV.UK Design System guidelines.\n\n```html\n```html\n<ngx-govuk-textarea\n  formControlName=\"detail\"\n  inputId=\"detail\"\n  [rows]=\"5\"\n></ngx-govuk-textarea>\n```\n```\n",
+            "description": "<p>A textarea component that follows the GOV.UK Design System guidelines.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-textarea\n  formControlName=&quot;detail&quot;\n  inputId=&quot;detail&quot;\n  [rows]=&quot;5&quot;\n&gt;&lt;/ngx-govuk-textarea&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-textarea\n  formControlName=&quot;detail&quot;\n  inputId=&quot;detail&quot;\n  [rows]=&quot;5&quot;\n  [maxLength]=&quot;200&quot;\n  [showCharacterCount]=&quot;true&quot;\n&gt;&lt;/ngx-govuk-textarea&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
+            "rawdescription": "\n\nA textarea component that follows the GOV.UK Design System guidelines.\n\n```html\n```html\n<ngx-govuk-textarea\n  formControlName=\"detail\"\n  inputId=\"detail\"\n  [rows]=\"5\"\n></ngx-govuk-textarea>\n```\n```\n```html\n```html\n<ngx-govuk-textarea\n  formControlName=\"detail\"\n  inputId=\"detail\"\n  [rows]=\"5\"\n  [maxLength]=\"200\"\n  [showCharacterCount]=\"true\"\n></ngx-govuk-textarea>\n```\n```\n",
             "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  inject,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * A textarea component that follows the GOV.UK Design System guidelines.\n *\n * @example\n * ```html\n * <ngx-govuk-textarea\n *   formControlName=\"detail\"\n *   inputId=\"detail\"\n *   [rows]=\"5\"\n * ></ngx-govuk-textarea>\n * ```\n *\n * @property {string} autocomplete - HTML autocomplete attribute value\n * @property {string} extraClasses - Additional CSS classes to apply to the textarea\n * @property {string} inputId - Required. The ID attribute for the input element.\n * @property {number} rows - Number of visible text rows for the textarea. Defaults to 2.\n */\n@Component({\n  selector: 'ngx-govuk-textarea',\n  standalone: true,\n  imports: [NgClass, ReactiveFormsModule],\n  templateUrl: './textarea.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKTextareaComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  readonly rows = input(2);\n}\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\r\nimport {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  computed,\r\n  DestroyRef,\r\n  inject,\r\n  input,\r\n  OnInit,\r\n  signal,\r\n  WritableSignal,\r\n} from '@angular/core';\r\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n  ValueAccessorDirective,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\n/**\r\n * A textarea component that follows the GOV.UK Design System guidelines.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-textarea\r\n *   formControlName=\"detail\"\r\n *   inputId=\"detail\"\r\n *   [rows]=\"5\"\r\n * ></ngx-govuk-textarea>\r\n * ```\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-textarea\r\n *   formControlName=\"detail\"\r\n *   inputId=\"detail\"\r\n *   [rows]=\"5\"\r\n *   [maxLength]=\"200\"\r\n *   [showCharacterCount]=\"true\"\r\n * ></ngx-govuk-textarea>\r\n * ```\r\n *\r\n * @property {string} autocomplete - HTML autocomplete attribute value\r\n * @property {string} extraClasses - Additional CSS classes to apply to the textarea\r\n * @property {string} inputId - Required. The ID attribute for the input element.\r\n * @property {number} rows - Number of visible text rows for the textarea. Defaults to 2.\r\n * @property {number} maxLength - Optional. Maximum number of characters allowed in the textarea.\r\n * @property {boolean} showCharacterCount - Optional. Whether to show the character count. Defaults to false.\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-textarea',\r\n  standalone: true,\r\n  imports: [NgClass, ReactiveFormsModule],\r\n  templateUrl: './textarea.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKTextareaComponent implements OnInit {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n\r\n  private readonly destroyRef = inject(DestroyRef);\r\n\r\n  readonly rows = input(2);\r\n  readonly maxLength = input<number | null>(null);\r\n  readonly showCharacterCount = input(false);\r\n\r\n  private readonly currentLength: WritableSignal<number> = signal(0);\r\n  private readonly remainingCharacters = computed(() => {\r\n    const maxLength = this.maxLength();\r\n    return maxLength === null ? null : maxLength - this.currentLength();\r\n  });\r\n\r\n  readonly characterCountMessage = computed(() => {\r\n    const remaining = this.remainingCharacters();\r\n\r\n    if (this.maxLength() === null || remaining === null) {\r\n      return null;\r\n    }\r\n\r\n    if (remaining < 0) {\r\n      const overLimit = Math.abs(remaining);\r\n      return `You have ${overLimit} ${overLimit === 1 ? 'character' : 'characters'} too many`;\r\n    }\r\n\r\n    return `You have ${remaining} ${remaining === 1 ? 'character' : 'characters'} remaining`;\r\n  });\r\n\r\n  ngOnInit(): void {\r\n    this.ngControl.valueChanges\r\n      ?.pipe(takeUntilDestroyed(this.destroyRef))\r\n      .subscribe((value) => this.currentLength.set(value.length));\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"govuk-input__wrapper\">\n  <textarea\n    class=\"govuk-textarea\"\n    [class.govuk-textarea--error]=\"ngControl.touched && ngControl.errors\"\n    [ngClass]=\"commonFormInput.extraClasses()\"\n    [formControl]=\"ngControl.control\"\n    [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\n    [attr.autocomplete]=\"\n      commonFormInput.autocomplete() ? commonFormInput.autocomplete() : null\n    \"\n    [attr.rows]=\"rows()\"\n  ></textarea>\n</div>\n"
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div [class.govuk-character-count]=\"showCharacterCount()\">\r\n  <div class=\"govuk-input__wrapper\">\r\n    <textarea\r\n      class=\"govuk-textarea\"\r\n      [class.govuk-textarea--error]=\"ngControl.touched && ngControl.errors\"\r\n      [class.govuk-js-character-count]=\"showCharacterCount()\"\r\n      [ngClass]=\"commonFormInput.extraClasses()\"\r\n      [formControl]=\"ngControl.control\"\r\n      [attr.id]=\"commonFormInput.inputId() ? commonFormInput.inputId() : null\"\r\n      [attr.autocomplete]=\"\r\n        commonFormInput.autocomplete() ? commonFormInput.autocomplete() : null\r\n      \"\r\n      [attr.rows]=\"rows()\"\r\n      [attr.maxlength]=\"maxLength()\"\r\n      [attr.aria-describedby]=\"\r\n        showCharacterCount() && commonFormInput.inputId()\r\n          ? commonFormInput.inputId() + '-info'\r\n          : null\r\n      \"\r\n    ></textarea>\r\n  </div>\r\n\r\n  @if (showCharacterCount() && maxLength()) {\r\n    <div\r\n      [attr.id]=\"\r\n        commonFormInput.inputId() ? commonFormInput.inputId() + '-info' : null\r\n      \"\r\n      class=\"govuk-hint govuk-character-count__message\"\r\n      [attr.aria-live]=\"'polite'\"\r\n    >\r\n      {{ characterCountMessage() }}\r\n    </div>\r\n  }\r\n</div>\r\n"
         },
         {
             "name": "GovUKTextInputComponent",
@@ -2842,6 +3391,36 @@
                 "defaultValue": "{\n  stories: ['../**/*.stories.@(js|jsx|ts|tsx|mdx)'],\n  addons: ['@storybook/addon-essentials'],\n  framework: {\n    name: '@storybook/angular',\n    options: {},\n  },\n}"
             },
             {
+                "name": "CustomTarget",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    href: '#main-content',\r\n  },\r\n  parameters: {\r\n    docs: {\r\n      description: {\r\n        story:\r\n          'A skip link with a custom target. Tab to this example to see the skip link.',\r\n      },\r\n    },\r\n  },\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  parameters: {\r\n    docs: {\r\n      description: {\r\n        story:\r\n          'The default skip link component. Tab to this example to see the skip link.',\r\n      },\r\n    },\r\n  },\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <ngx-govuk-accordion [id]=\"id\">\n        <ngx-govuk-accordion-item itemId=\"1\" heading=\"Writing well for the web\">\n          <p class=\"govuk-body\">This is the content for Writing well for the web.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"2\" heading=\"Writing well for specialists\">\n          <p class=\"govuk-body\">This is the content for Writing well for specialists.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"3\" heading=\"Know your audience\">\n          <p class=\"govuk-body\">This is the content for Know your audience.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"4\" heading=\"How people read\">\n          <p class=\"govuk-body\">This is the content for How people read.</p>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+            },
+            {
                 "name": "defaultArgs",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3025,6 +3604,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKSkipLinkComponent>",
+                "defaultValue": "{\r\n  title: 'Skip Link/GovUKSkipLinkComponent',\r\n  component: GovUKSkipLinkComponent,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [GovUKSkipLinkComponent],\r\n    }),\r\n  ],\r\n  parameters: {\r\n    layout: 'padded',\r\n  },\r\n  argTypes: {\r\n    href: {\r\n      control: 'text',\r\n      description: 'The target ID to skip to',\r\n      table: {\r\n        type: { summary: 'string' },\r\n        defaultValue: { summary: '#content' },\r\n      },\r\n    },\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3059,7 +3648,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GovUKTextareaComponent>",
-                "defaultValue": "{\n  component: GovUKTextareaComponent,\n  title: 'Forms/GovUKTextareaComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule],\n    }),\n  ],\n}"
+                "defaultValue": "{\r\n  component: GovUKTextareaComponent,\r\n  title: 'Forms/GovUKTextareaComponent',\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -3070,6 +3659,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<GovUKWarningTextComponent>",
                 "defaultValue": "{\n  component: GovUKWarningTextComponent,\n  title: 'Warning Text/GovUKWarningTextComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKAccordionComponent>",
+                "defaultValue": "{\n  title: 'Components/Accordion',\n  component: GovUKAccordionComponent,\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKAccordionComponent, GovUKAccordionItemComponent],\n    }),\n  ],\n  tags: ['autodocs'],\n  argTypes: {\n    id: { control: 'text' },\n  },\n  args: {\n    id: 'accordion-example',\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3339,7 +3938,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: Template,\n  args: {\n    inputId: 'story1',\n    autocomplete: 'off',\n    extraClasses: '',\n    rows: 2,\n  },\n}"
+                "defaultValue": "{\r\n  render: Template,\r\n  args: {\r\n    inputId: 'story1',\r\n    autocomplete: 'off',\r\n    extraClasses: '',\r\n    rows: 2,\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -3619,7 +4218,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKTextareaComponent>",
-                "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl('') }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-textarea\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-textarea>\n    </form>`,\n})"
+                "defaultValue": "(args) => ({\r\n  props: { ...args, form: new FormGroup({ input: new FormControl('') }) },\r\n  template: `<form [formGroup]=\"form\">\r\n      <ngx-govuk-textarea\r\n        formControlName=\"input\"\r\n         ${argsToTemplate(args)}\r\n      ></ngx-govuk-textarea>\r\n    </form>`,\r\n})"
             },
             {
                 "name": "Template",
@@ -3680,6 +4279,46 @@
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKTabsComponent>",
                 "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n  <div class=\"govuk-frontend-supported\">\n    <ngx-govuk-tabs ${argsToTemplate(args)}>\n      <ngx-govuk-tab id=\"tab-one\" title=\"Tab One\">\n        Tab One Content\n      </ngx-govuk-tab>\n      <ngx-govuk-tab id=\"tab-two\" title=\"Tab Two\">\n        Tab Two Content\n      </ngx-govuk-tab>\n      <ngx-govuk-tab id=\"tab-three\" title=\"Tab Three\">\n        Tab Three Content\n      </ngx-govuk-tab>\n    </ngx-govuk-tabs>\n  </div>\n  `,\n})"
+            },
+            {
+                "name": "WithCharacterCount",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  render: Template,\r\n  args: {\r\n    inputId: 'story2',\r\n    autocomplete: 'off',\r\n    extraClasses: '',\r\n    rows: 5,\r\n    maxLength: 200,\r\n    showCharacterCount: true,\r\n  },\r\n}"
+            },
+            {
+                "name": "WithCharacterCountAndInitialValue",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  render: (args) => ({\r\n    props: {\r\n      ...args,\r\n      form: new FormGroup({\r\n        input: new FormControl(\r\n          'This is some initial text to demonstrate the character count functionality.',\r\n        ),\r\n      }),\r\n    },\r\n    template: `<form [formGroup]=\"form\">\r\n      <ngx-govuk-textarea\r\n        formControlName=\"input\"\r\n         ${argsToTemplate(args)}\r\n      ></ngx-govuk-textarea>\r\n    </form>`,\r\n  }),\r\n  args: {\r\n    inputId: 'story3',\r\n    autocomplete: 'off',\r\n    extraClasses: '',\r\n    rows: 5,\r\n    maxLength: 100,\r\n    showCharacterCount: true,\r\n  },\r\n}"
+            },
+            {
+                "name": "WithInitiallyExpandedItems",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      initialExpanded: ['1', '3'],\n    },\n    template: `\n      <ngx-govuk-accordion [id]=\"id\" [initialExpanded]=\"initialExpanded\">\n        <ngx-govuk-accordion-item itemId=\"1\" heading=\"Section 1 (Initially expanded)\">\n          <p class=\"govuk-body\">This is the content for Section 1.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"2\" heading=\"Section 2\">\n          <p class=\"govuk-body\">This is the content for Section 2.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"3\" heading=\"Section 3 (Initially expanded)\">\n          <p class=\"govuk-body\">This is the content for Section 3.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"4\" heading=\"Section 4\">\n          <p class=\"govuk-body\">This is the content for Section 4.</p>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "WithSummary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <ngx-govuk-accordion [id]=\"id\">\n        <ngx-govuk-accordion-item \n          itemId=\"1\" \n          heading=\"Understanding agile project management\"\n          summary=\"Introductions, methods, core features.\"\n        >\n          <ul class=\"govuk-list\">\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile and government services: an introduction</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile methods: an introduction</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Core principles of agile</a>\n            </li>\n          </ul>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item \n          itemId=\"2\" \n          heading=\"Working with agile methods\"\n          summary=\"Workspaces, tools and techniques, user stories, planning.\"\n        >\n          <ul class=\"govuk-list\">\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Creating an agile working environment</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile tools and techniques</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Set up a team wall</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Writing user stories</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Planning in agile</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Deciding on priorities</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Developing a roadmap</a>\n            </li>\n          </ul>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
             }
         ],
         "functions": [],
@@ -3919,6 +4558,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKSkipLinkComponent>",
+                "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<GovUKTableComponent>",
                 "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
                 "deprecated": false,
@@ -3965,6 +4615,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<GovUKWarningTextComponent>",
                 "file": "libs/ngx-govuk-frontend/warning-text/src/lib/warning-text.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKAccordionComponent>",
+                "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4038,6 +4699,80 @@
                     "deprecationMessage": "",
                     "type": "StorybookConfig",
                     "defaultValue": "{\n  stories: ['../**/*.stories.@(js|jsx|ts|tsx|mdx)'],\n  addons: ['@storybook/addon-essentials'],\n  framework: {\n    name: '@storybook/angular',\n    options: {},\n  },\n}"
+                }
+            ],
+            "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts": [
+                {
+                    "name": "CustomTarget",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    href: '#main-content',\r\n  },\r\n  parameters: {\r\n    docs: {\r\n      description: {\r\n        story:\r\n          'A skip link with a custom target. Tab to this example to see the skip link.',\r\n      },\r\n    },\r\n  },\r\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  parameters: {\r\n    docs: {\r\n      description: {\r\n        story:\r\n          'The default skip link component. Tab to this example to see the skip link.',\r\n      },\r\n    },\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKSkipLinkComponent>",
+                    "defaultValue": "{\r\n  title: 'Skip Link/GovUKSkipLinkComponent',\r\n  component: GovUKSkipLinkComponent,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [GovUKSkipLinkComponent],\r\n    }),\r\n  ],\r\n  parameters: {\r\n    layout: 'padded',\r\n  },\r\n  argTypes: {\r\n    href: {\r\n      control: 'text',\r\n      description: 'The target ID to skip to',\r\n      table: {\r\n        type: { summary: 'string' },\r\n        defaultValue: { summary: '#content' },\r\n      },\r\n    },\r\n  },\r\n}"
+                }
+            ],
+            "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <ngx-govuk-accordion [id]=\"id\">\n        <ngx-govuk-accordion-item itemId=\"1\" heading=\"Writing well for the web\">\n          <p class=\"govuk-body\">This is the content for Writing well for the web.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"2\" heading=\"Writing well for specialists\">\n          <p class=\"govuk-body\">This is the content for Writing well for specialists.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"3\" heading=\"Know your audience\">\n          <p class=\"govuk-body\">This is the content for Know your audience.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"4\" heading=\"How people read\">\n          <p class=\"govuk-body\">This is the content for How people read.</p>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKAccordionComponent>",
+                    "defaultValue": "{\n  title: 'Components/Accordion',\n  component: GovUKAccordionComponent,\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKAccordionComponent, GovUKAccordionItemComponent],\n    }),\n  ],\n  tags: ['autodocs'],\n  argTypes: {\n    id: { control: 'text' },\n  },\n  args: {\n    id: 'accordion-example',\n  },\n}"
+                },
+                {
+                    "name": "WithInitiallyExpandedItems",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      initialExpanded: ['1', '3'],\n    },\n    template: `\n      <ngx-govuk-accordion [id]=\"id\" [initialExpanded]=\"initialExpanded\">\n        <ngx-govuk-accordion-item itemId=\"1\" heading=\"Section 1 (Initially expanded)\">\n          <p class=\"govuk-body\">This is the content for Section 1.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"2\" heading=\"Section 2\">\n          <p class=\"govuk-body\">This is the content for Section 2.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"3\" heading=\"Section 3 (Initially expanded)\">\n          <p class=\"govuk-body\">This is the content for Section 3.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"4\" heading=\"Section 4\">\n          <p class=\"govuk-body\">This is the content for Section 4.</p>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "WithSummary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <ngx-govuk-accordion [id]=\"id\">\n        <ngx-govuk-accordion-item \n          itemId=\"1\" \n          heading=\"Understanding agile project management\"\n          summary=\"Introductions, methods, core features.\"\n        >\n          <ul class=\"govuk-list\">\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile and government services: an introduction</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile methods: an introduction</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Core principles of agile</a>\n            </li>\n          </ul>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item \n          itemId=\"2\" \n          heading=\"Working with agile methods\"\n          summary=\"Workspaces, tools and techniques, user stories, planning.\"\n        >\n          <ul class=\"govuk-list\">\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Creating an agile working environment</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile tools and techniques</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Set up a team wall</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Writing user stories</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Planning in agile</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Deciding on priorities</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Developing a roadmap</a>\n            </li>\n          </ul>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
                 }
             ],
             "libs/ngx-govuk-frontend/header/src/lib/header.component.stories.ts": [
@@ -4709,7 +5444,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GovUKTextareaComponent>",
-                    "defaultValue": "{\n  component: GovUKTextareaComponent,\n  title: 'Forms/GovUKTextareaComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule],\n    }),\n  ],\n}"
+                    "defaultValue": "{\r\n  component: GovUKTextareaComponent,\r\n  title: 'Forms/GovUKTextareaComponent',\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -4719,7 +5454,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: Template,\n  args: {\n    inputId: 'story1',\n    autocomplete: 'off',\n    extraClasses: '',\n    rows: 2,\n  },\n}"
+                    "defaultValue": "{\r\n  render: Template,\r\n  args: {\r\n    inputId: 'story1',\r\n    autocomplete: 'off',\r\n    extraClasses: '',\r\n    rows: 2,\r\n  },\r\n}"
                 },
                 {
                     "name": "Template",
@@ -4729,7 +5464,27 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoryFn<GovUKTextareaComponent>",
-                    "defaultValue": "(args) => ({\n  props: { ...args, form: new FormGroup({ input: new FormControl('') }) },\n  template: `<form [formGroup]=\"form\">\n      <ngx-govuk-textarea\n        formControlName=\"input\"\n         ${argsToTemplate(args)}\n      ></ngx-govuk-textarea>\n    </form>`,\n})"
+                    "defaultValue": "(args) => ({\r\n  props: { ...args, form: new FormGroup({ input: new FormControl('') }) },\r\n  template: `<form [formGroup]=\"form\">\r\n      <ngx-govuk-textarea\r\n        formControlName=\"input\"\r\n         ${argsToTemplate(args)}\r\n      ></ngx-govuk-textarea>\r\n    </form>`,\r\n})"
+                },
+                {
+                    "name": "WithCharacterCount",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  render: Template,\r\n  args: {\r\n    inputId: 'story2',\r\n    autocomplete: 'off',\r\n    extraClasses: '',\r\n    rows: 5,\r\n    maxLength: 200,\r\n    showCharacterCount: true,\r\n  },\r\n}"
+                },
+                {
+                    "name": "WithCharacterCountAndInitialValue",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  render: (args) => ({\r\n    props: {\r\n      ...args,\r\n      form: new FormGroup({\r\n        input: new FormControl(\r\n          'This is some initial text to demonstrate the character count functionality.',\r\n        ),\r\n      }),\r\n    },\r\n    template: `<form [formGroup]=\"form\">\r\n      <ngx-govuk-textarea\r\n        formControlName=\"input\"\r\n         ${argsToTemplate(args)}\r\n      ></ngx-govuk-textarea>\r\n    </form>`,\r\n  }),\r\n  args: {\r\n    inputId: 'story3',\r\n    autocomplete: 'off',\r\n    extraClasses: '',\r\n    rows: 5,\r\n    maxLength: 100,\r\n    showCharacterCount: true,\r\n  },\r\n}"
                 }
             ],
             "libs/ngx-govuk-frontend/warning-text/src/lib/warning-text.component.stories.ts": [
@@ -5213,6 +5968,19 @@
                     "kind": 183
                 }
             ],
+            "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKSkipLinkComponent>",
+                    "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts": [
                 {
                     "name": "Story",
@@ -5272,6 +6040,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<GovUKWarningTextComponent>",
                     "file": "libs/ngx-govuk-frontend/warning-text/src/lib/warning-text.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKAccordionComponent>",
+                    "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -5368,6 +6149,74 @@
                 "name": "preview",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/accordion/src/lib/accordion-item/accordion-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKAccordionItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithInitiallyExpandedItems",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithSummary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKAccordionComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {
@@ -6458,6 +7307,55 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CustomTarget",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKSkipLinkComponent",
+                "coveragePercent": 50,
+                "coverageCount": "1/2",
+                "status": "medium"
+            },
+            {
                 "filePath": "libs/ngx-govuk-frontend/table/src/lib/table.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -6714,6 +7612,26 @@
             },
             {
                 "filePath": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithCharacterCount",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithCharacterCountAndInitialValue",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -6727,8 +7645,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "GovUKTextareaComponent",
-                "coveragePercent": 20,
-                "coverageCount": "1/5",
+                "coveragePercent": 7,
+                "coverageCount": "1/13",
                 "status": "low"
             },
             {
