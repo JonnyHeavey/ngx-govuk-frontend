@@ -34,3 +34,59 @@
   [dataSource]="dataSource"
   [columns]="columns"
 ></ngx-govuk-table>
+
+<div class="govuk-frontend-supported">
+  <h2 class="govuk-heading-l">Accordion With Summary</h2>
+  <ngx-govuk-accordion id="accordion-with-summary">
+    <ngx-govuk-accordion-item
+      itemId="1"
+      heading="Understanding agile project management"
+      summary="Introductions, methods, core features."
+    >
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link" href="#"
+            >Agile and government services: an introduction</a
+          >
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Agile methods: an introduction</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Core principles of agile</a>
+        </li>
+      </ul>
+    </ngx-govuk-accordion-item>
+    <ngx-govuk-accordion-item
+      itemId="2"
+      heading="Working with agile methods"
+      summary="Workspaces, tools and techniques, user stories, planning."
+    >
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link" href="#"
+            >Creating an agile working environment</a
+          >
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Agile tools and techniques</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Set up a team wall</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Writing user stories</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Planning in agile</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Deciding on priorities</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Developing a roadmap</a>
+        </li>
+      </ul>
+    </ngx-govuk-accordion-item>
+  </ngx-govuk-accordion>
+</div>
