@@ -1,0 +1,40 @@
+# Workflow name
+name: Build and Publish Storybook to GitHub Pages
+
+env:
+  NX_NO_CLOUD: 'true'
+
+on:
+  # Event for the workflow to run on
+  push:
+    branches:
+      - 'main'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# List of jobs
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    # Job steps
+    steps:
+      # Manual Checkout
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Set up Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
+      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          install_command: npm ci
+          build_command: npx nx build-storybook ngx-govuk-frontend
+          path: dist/storybook/ngx-govuk-frontend/
+          checkout: true
