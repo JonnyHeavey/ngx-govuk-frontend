@@ -1,0 +1,59 @@
+<div class="govuk-date-input" [id]="commonFormInput.inputId()">
+  <div class="govuk-date-input__item">
+    <div class="govuk-form-group">
+      <label
+        class="govuk-label govuk-date-input__label"
+        [attr.for]="getInputId('day')"
+      >
+        Day
+      </label>
+      <input
+        class="govuk-input govuk-date-input__input govuk-input--width-2"
+        [ngClass]="commonFormInput.extraClasses()"
+        [class.govuk-input--error]="hasFieldError('day')"
+        [attr.id]="getInputId('day')"
+        type="text"
+        inputmode="numeric"
+        [formControl]="dateForm.controls.day"
+      />
+    </div>
+  </div>
+  <div class="govuk-date-input__item">
+    <div class="govuk-form-group">
+      <label
+        class="govuk-label govuk-date-input__label"
+        [attr.for]="getInputId('month')"
+      >
+        Month
+      </label>
+      <input
+        class="govuk-input govuk-date-input__input govuk-input--width-2"
+        [ngClass]="commonFormInput.extraClasses()"
+        [class.govuk-input--error]="hasFieldError('month')"
+        [attr.id]="getInputId('month')"
+        type="text"
+        inputmode="numeric"
+        [formControl]="dateForm.controls.month"
+      />
+    </div>
+  </div>
+  <div class="govuk-date-input__item">
+    <div class="govuk-form-group">
+      <label
+        class="govuk-label govuk-date-input__label"
+        [attr.for]="getInputId('year')"
+      >
+        Year
+      </label>
+      <input
+        class="govuk-input govuk-date-input__input govuk-input--width-4"
+        [ngClass]="commonFormInput.extraClasses()"
+        [class.govuk-input--error]="hasFieldError('year')"
+        [attr.id]="getInputId('year')"
+        type="text"
+        inputmode="numeric"
+        [formControl]="dateForm.controls.year"
+      />
+    </div>
+  </div>
+</div>

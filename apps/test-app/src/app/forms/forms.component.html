@@ -96,6 +96,18 @@
     </ngx-govuk-form-group>
 
     <ngx-govuk-form-group
+      label="What is your date of birth?"
+      labelFor="dateOfBirth"
+      hint="For example, 31 3 1980"
+      [errorMessage]="getDateErrorMessage()"
+    >
+      <ngx-govuk-date-input
+        formControlName="dateOfBirth"
+        inputId="dateOfBirth"
+      />
+    </ngx-govuk-form-group>
+
+    <ngx-govuk-form-group
       label="Upload a file"
       labelFor="file"
       errorMessage="File is too large"
@@ -116,5 +128,14 @@
         [rows]="3"
       />
     </ngx-govuk-form-group>
+
+    <div class="govuk-button-group">
+      <button class="govuk-button" type="button" (click)="validateForm()">
+        Validate Form
+      </button>
+      <button class="govuk-button" type="button" (click)="resetForm()">
+        Reset Form
+      </button>
+    </div>
   </form>
 </div>
