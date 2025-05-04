@@ -1,5 +1,11 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -32,11 +38,15 @@ interface DateInputParts {
  * <ngx-govuk-date-input
  *   formControlName="dateOfBirth"
  *   inputId="date-of-birth"
+ *   min="1900-01-01"
+ *   max="2050-12-31"
  * ></ngx-govuk-date-input>
  * ```
  *
  * @property {string} inputId - Optional. The ID prefix for the input elements.
  * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.
+ * @property {string} min - Optional. The minimum valid date in ISO format (YYYY-MM-DD).
+ * @property {string} max - Optional. The maximum valid date in ISO format (YYYY-MM-DD).
  */
 @Component({
   selector: 'ngx-govuk-date-input',
@@ -50,9 +60,41 @@ interface DateInputParts {
   ],
 })
 export class GovUKDateInputComponent {
-  // export class GovUKDateInputComponent implements ControlValueAccessor {
   readonly ngControl = injectNgControl();
   readonly commonFormInput = inject(GovUKCommonFormInputDirective);
+
+  /**
+   * The minimum valid date in ISO format (YYYY-MM-DD).
+   * Default is 1900-01-01.
+   */
+  readonly min = input('1900-01-01');
+
+  /**
+   * The maximum valid date in ISO format (YYYY-MM-DD).
+   * Default is 100 years from now.
+   */
+  readonly max = input(
+    new Date(new Date().getFullYear() + 100, 11, 31)
+      .toISOString()
+      .split('T')[0],
+  );
+
+  private readonly minDate = computed(() => {
+    try {
+      return new Date(this.min());
+    } catch (e) {
+      return new Date(1900, 0, 1); // January 1, 1900
+    }
+  });
+
+  private readonly maxDate = computed(() => {
+    try {
+      return new Date(this.max());
+    } catch (e) {
+      // Default to 100 years from now
+      return new Date(new Date().getFullYear() + 100, 11, 31); // December 31, current year + 100
+    }
+  });
 
   protected dateForm = new FormGroup(
     {
@@ -62,17 +104,12 @@ export class GovUKDateInputComponent {
       month: new FormControl<string>('', [
         Validators.pattern(/^([1-9]|0[1-9]|1[012])$/),
       ]),
-      year: new FormControl<string>('', [
-        Validators.pattern(/^\d{4}$/),
-        Validators.min(1900),
-        Validators.max(new Date().getFullYear() + 100),
-      ]),
+      year: new FormControl<string>('', [Validators.pattern(/^\d{4}$/)]),
     },
     { validators: this.dateValidator() },
   );
 
   constructor() {
-    // Handle changes in the internal form group
     this.dateForm.valueChanges.subscribe((value) => {
       const day = value.day ?? '';
       const month = value.month ?? '';
@@ -173,11 +210,20 @@ export class GovUKDateInputComponent {
         return { invalidDate: true };
       }
 
+      // Check min date
+      if (this.minDate() && date < this.minDate()) {
+        return { dateTooEarly: true, minDate: this.min() };
+      }
+
+      // Check max date
+      if (this.maxDate() && date > this.maxDate()) {
+        return { dateTooLate: true, maxDate: this.max() };
+      }
+
       return null;
     };
   }
 
-  // Process changes from internal date form
   private onDateFormChange(value: {
     day: string;
     month: string;

@@ -85,6 +85,14 @@ export class FormsComponent {
       return 'Date of birth must be a real date';
     }
 
+    if (control.errors?.['dateTooEarly']) {
+      return `Date of birth must be after ${control.errors['minDate']}`;
+    }
+
+    if (control.errors?.['dateTooLate']) {
+      return `Date of birth must be before ${control.errors['maxDate']}`;
+    }
+
     if (control.errors?.['day_pattern']) {
       return 'Day must be a number between 1 and 31';
     }
@@ -95,14 +103,6 @@ export class FormsComponent {
 
     if (control.errors?.['year_pattern']) {
       return 'Year must be a 4-digit number';
-    }
-
-    if (control.errors?.['year_min']) {
-      return 'Year must be 1900 or later';
-    }
-
-    if (control.errors?.['year_max']) {
-      return 'Year must be no more than 100 years in the future';
     }
 
     if (control.errors) {
