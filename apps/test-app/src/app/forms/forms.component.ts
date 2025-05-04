@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GovUKBackLinkComponent } from 'ngx-govuk-frontend/back-link';
 import { GovUKCheckboxComponent } from 'ngx-govuk-frontend/checkbox';
+import { GovUKDateInputComponent } from 'ngx-govuk-frontend/date-input';
 import { GovUKFieldsetComponent } from 'ngx-govuk-frontend/fieldset';
 import { GovUKFileUploadComponent } from 'ngx-govuk-frontend/file-upload';
 import { GovUKFormGroupComponent } from 'ngx-govuk-frontend/form-group';
@@ -32,6 +33,7 @@ import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
     GovUKRadioGroupComponent,
     GovUKFileUploadComponent,
     GovUKRadioOptionDirective,
+    GovUKDateInputComponent,
   ],
   templateUrl: './forms.component.html',
 })
@@ -54,6 +56,7 @@ export class FormsComponent {
     selection: '',
     file: '',
     shortComment: ['', Validators.maxLength(50)],
+    dateOfBirth: ['', Validators.required],
   });
 
   colours: GovUKSelectOption[] = [
@@ -66,5 +69,62 @@ export class FormsComponent {
     this.form.valueChanges.subscribe((changes) =>
       console.log('Form Model Update', changes),
     );
+  }
+
+  getDateErrorMessage(): string {
+    const control = this.form.get('dateOfBirth');
+    if (!control?.touched) {
+      return '';
+    }
+
+    if (control.errors?.['required']) {
+      return 'Enter your date of birth';
+    }
+
+    if (control.errors?.['invalidDate']) {
+      return 'Date of birth must be a real date';
+    }
+
+    if (control.errors?.['dateTooEarly']) {
+      return `Date of birth must be after ${control.errors['minDate']}`;
+    }
+
+    if (control.errors?.['dateTooLate']) {
+      return `Date of birth must be before ${control.errors['maxDate']}`;
+    }
+
+    if (control.errors?.['day_pattern']) {
+      return 'Day must be a number between 1 and 31';
+    }
+
+    if (control.errors?.['month_pattern']) {
+      return 'Month must be a number between 1 and 12';
+    }
+
+    if (control.errors?.['year_pattern']) {
+      return 'Year must be a 4-digit number';
+    }
+
+    if (control.errors) {
+      return 'Enter a valid date of birth';
+    }
+
+    return '';
+  }
+
+  validateForm(): void {
+    this.form.markAllAsTouched();
+    if (this.form.valid) {
+      alert('Form is valid!');
+    } else {
+      alert('Form has errors. Please check your inputs.');
+    }
+  }
+
+  resetForm(): void {
+    this.form.reset({
+      colour: 'blue',
+      choice: 'green',
+    });
   }
 }

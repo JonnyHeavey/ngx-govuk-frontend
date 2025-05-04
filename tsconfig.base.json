@@ -34,6 +34,9 @@
       "ngx-govuk-frontend/cookie-banner": [
         "libs/ngx-govuk-frontend/cookie-banner/src/index.ts"
       ],
+      "ngx-govuk-frontend/date-input": [
+        "libs/ngx-govuk-frontend/date-input/src/index.ts"
+      ],
       "ngx-govuk-frontend/details": [
         "libs/ngx-govuk-frontend/details/src/index.ts"
       ],

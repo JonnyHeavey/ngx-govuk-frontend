@@ -2,6 +2,51 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "DateInputParts",
+            "id": "interface-DateInputParts-6d349de6638f193437dd65d54fed9ca6707bfde872e9d807ff754bc963f199982c14eeee4ca59f74e8b3bf6ef94969d8161647cdf29c9134f2e5521be9f02979",
+            "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { NgClass, NgIf } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\ninterface DateInputParts {\n  day?: string;\n  month?: string;\n  year?: string;\n}\n\n/**\n * A form component for date input that follows the GOV.UK Design System styling and behavior.\n *\n * This component provides a set of input fields for day, month, and year with proper validation and styling.\n * It integrates with Angular's form controls and supports accessibility features.\n *\n * @example\n * ```html\n * <ngx-govuk-date-input\n *   formControlName=\"dateOfBirth\"\n *   inputId=\"date-of-birth\"\n * ></ngx-govuk-date-input>\n * ```\n *\n * @property {string} inputId - Optional. The ID prefix for the input elements.\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.\n */\n@Component({\n  selector: 'ngx-govuk-date-input',\n  standalone: true,\n  imports: [NgClass, NgIf, ReactiveFormsModule],\n  templateUrl: './date-input.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKDateInputComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  protected dateForm = new FormGroup({\n    day: new FormControl<string>(''),\n    month: new FormControl<string>(''),\n    year: new FormControl<string>(''),\n  });\n\n  constructor() {\n    // Handle changes in the internal form group\n    this.dateForm.valueChanges.subscribe((value) => {\n      const day = value.day ?? '';\n      const month = value.month ?? '';\n      const year = value.year ?? '';\n      this.onDateFormChange({ day, month, year });\n    });\n\n    // Handle changes from the parent form control\n    this.ngControl.valueChanges?.subscribe((value) => {\n      this.updateDateForm(value);\n    });\n  }\n\n  // Initial value setting from parent form control\n  protected writeValue(value: string | DateInputParts | null): void {\n    if (value) {\n      this.updateDateForm(value);\n    }\n  }\n\n  // Process changes from internal date form\n  private onDateFormChange(value: {\n    day: string;\n    month: string;\n    year: string;\n  }): void {\n    const { day, month, year } = value;\n\n    if (!day && !month && !year) {\n      this.ngControl.control?.setValue(null);\n      return;\n    }\n\n    const paddedDay = day.padStart(2, '0');\n    const paddedMonth = month.padStart(2, '0');\n\n    if (day && month && year) {\n      // Full date is available, use ISO format\n      this.ngControl.control?.setValue(`${year}-${paddedMonth}-${paddedDay}`);\n    } else {\n      // Partial date, pass as object\n      this.ngControl.control?.setValue({\n        day: paddedDay,\n        month: paddedMonth,\n        year,\n      });\n    }\n  }\n\n  // Update internal date form based on parent value\n  private updateDateForm(value: string | DateInputParts | null): void {\n    if (!value) {\n      this.dateForm.reset(\n        { day: '', month: '', year: '' },\n        { emitEvent: false },\n      );\n      return;\n    }\n\n    let day = '';\n    let month = '';\n    let year = '';\n\n    if (typeof value === 'string') {\n      // Handle ISO date format (YYYY-MM-DD)\n      const dateParts = value.split('-');\n      if (dateParts.length === 3) {\n        year = dateParts[0];\n        month = dateParts[1].replace(/^0/, ''); // Remove leading zero\n        day = dateParts[2].replace(/^0/, ''); // Remove leading zero\n      }\n    } else {\n      // Handle object format { day, month, year }\n      day = value.day?.replace(/^0/, '') || '';\n      month = value.month?.replace(/^0/, '') || '';\n      year = value.year || '';\n    }\n\n    this.dateForm.setValue({ day, month, year }, { emitEvent: false });\n  }\n\n  protected getInputId(part: string): string | null {\n    return this.commonFormInput.inputId()\n      ? `${this.commonFormInput.inputId()}-${part}`\n      : null;\n  }\n\n  protected hasError(): boolean {\n    return !!this.ngControl.touched && !!this.ngControl.errors;\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "day",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "month",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "year",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "GovUKSelectOption",
             "id": "interface-GovUKSelectOption-5d623f176d75b1e72c97ab695bf144d824bcfe06fbc1b30570d54d3d50ef188c72b3628e23f3495ae4ea441691a4776af73012ae240067a20f38d79350b31796",
             "file": "libs/ngx-govuk-frontend/select/src/lib/select.component.ts",
@@ -375,7 +420,7 @@
         },
         {
             "name": "GovUKAccordionItemComponent",
-            "id": "component-GovUKAccordionItemComponent-5464229dd5b959d711775a698badec8f12c2f9197c2ff9c2fdb6c925c6ee66f886c0fc4a0c5a178943e6ac506aa4b6af7204b581eb5a833d40315358f071a7e6",
+            "id": "component-GovUKAccordionItemComponent-1586a57da04d391c73d30a439ce99919ba90916d6c9c440c44462dd60338e6214602ae22b84a1e7d142b24019f75307b16e133bf569a4ff50f5bc1d42d10f0fc",
             "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion-item/accordion-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -401,7 +446,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 19,
                     "modifierKind": [
                         148
                     ],
@@ -415,7 +460,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 17,
                     "modifierKind": [
                         148
                     ],
@@ -429,7 +474,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18,
+                    "line": 16,
                     "modifierKind": [
                         148
                     ],
@@ -443,7 +488,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 18,
                     "modifierKind": [
                         148
                     ],
@@ -461,7 +506,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 21,
                     "modifierKind": [
                         148
                     ]
@@ -475,7 +520,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 19,
                     "modifierKind": [
                         148
                     ],
@@ -489,7 +534,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 17,
                     "modifierKind": [
                         148
                     ],
@@ -503,7 +548,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18,
+                    "line": 16,
                     "modifierKind": [
                         148
                     ],
@@ -517,7 +562,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 18,
                     "modifierKind": [
                         148
                     ],
@@ -530,20 +575,16 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [
-                {
-                    "name": "NgTemplateOutlet"
-                }
-            ],
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n@Component({\n  standalone: true,\n  imports: [NgTemplateOutlet],\n  selector: 'ngx-govuk-accordion-item',\n  templateUrl: './accordion-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKAccordionItemComponent {\n  readonly itemId = input.required<string>();\n  readonly heading = input.required<string>();\n  readonly summary = input<string>();\n  readonly expanded = input(false);\n\n  readonly content = viewChild.required<TemplateRef<unknown>>('content');\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n@Component({\n  standalone: true,\n  selector: 'ngx-govuk-accordion-item',\n  templateUrl: './accordion-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKAccordionItemComponent {\n  readonly itemId = input.required<string>();\n  readonly heading = input.required<string>();\n  readonly summary = input<string>();\n  readonly expanded = input(false);\n\n  readonly content = viewChild.required<TemplateRef<unknown>>('content');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<ng-template #content>\n  <ng-content></ng-content>\n</ng-template>\n"
+            "templateData": "<ng-template #content>\n  <ng-content />\n</ng-template>\n"
         },
         {
             "name": "GovUKBackLinkComponent",
@@ -1174,6 +1215,253 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<div\n  class=\"govuk-cookie-banner\"\n  data-nosnippet\n  role=\"region\"\n  aria-label=\"Cookies on [name of service]\"\n>\n  <div class=\"govuk-cookie-banner__message govuk-width-container\">\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        <div class=\"govuk-cookie-banner__content\">\n          <p class=\"govuk-body\">\n            You've accepted additional cookies. You can\n            <a class=\"govuk-link\" (click)=\"changeSettings.emit()\"\n              >change your cookie settings</a\n            >\n            at any time.\n          </p>\n        </div>\n      </div>\n    </div>\n\n    <ngx-govuk-button-group>\n      <ngx-govuk-button (click)=\"hide.emit()\"\n        >Hide cookie message</ngx-govuk-button\n      >\n    </ngx-govuk-button-group>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "GovUKDateInputComponent",
+            "id": "component-GovUKDateInputComponent-6d349de6638f193437dd65d54fed9ca6707bfde872e9d807ff754bc963f199982c14eeee4ca59f74e8b3bf6ef94969d8161647cdf29c9134f2e5521be9f02979",
+            "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-date-input",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./date-input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [
+                {
+                    "name": "ValueAccessorDirective"
+                },
+                {
+                    "name": "GovUKCommonFormInputDirective",
+                    "inputs": [],
+                    "outputs": []
+                }
+            ],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "commonFormInput",
+                    "defaultValue": "inject(GovUKCommonFormInputDirective)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "dateForm",
+                    "defaultValue": "new FormGroup({\n    day: new FormControl<string>(''),\n    month: new FormControl<string>(''),\n    year: new FormControl<string>(''),\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 49,
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "ngControl",
+                    "defaultValue": "injectNgControl()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getInputId",
+                    "args": [
+                        {
+                            "name": "part",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string | null",
+                    "typeParameters": [],
+                    "line": 138,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "part",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "hasError",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 144,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "onDateFormChange",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateDateForm",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string | DateInputParts | null",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 107,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string | DateInputParts | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string | DateInputParts | null",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string | DateInputParts | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgClass"
+                },
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "<p>A form component for date input that follows the GOV.UK Design System styling and behavior.</p>\n<p>This component provides a set of input fields for day, month, and year with proper validation and styling.\nIt integrates with Angular&#39;s form controls and supports accessibility features.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-date-input\n  formControlName=&quot;dateOfBirth&quot;\n  inputId=&quot;date-of-birth&quot;\n&gt;&lt;/ngx-govuk-date-input&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
+            "rawdescription": "\n\nA form component for date input that follows the GOV.UK Design System styling and behavior.\n\nThis component provides a set of input fields for day, month, and year with proper validation and styling.\nIt integrates with Angular's form controls and supports accessibility features.\n\n```html\n```html\n<ngx-govuk-date-input\n  formControlName=\"dateOfBirth\"\n  inputId=\"date-of-birth\"\n></ngx-govuk-date-input>\n```\n```\n",
+            "type": "component",
+            "sourceCode": "import { NgClass, NgIf } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\ninterface DateInputParts {\n  day?: string;\n  month?: string;\n  year?: string;\n}\n\n/**\n * A form component for date input that follows the GOV.UK Design System styling and behavior.\n *\n * This component provides a set of input fields for day, month, and year with proper validation and styling.\n * It integrates with Angular's form controls and supports accessibility features.\n *\n * @example\n * ```html\n * <ngx-govuk-date-input\n *   formControlName=\"dateOfBirth\"\n *   inputId=\"date-of-birth\"\n * ></ngx-govuk-date-input>\n * ```\n *\n * @property {string} inputId - Optional. The ID prefix for the input elements.\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.\n */\n@Component({\n  selector: 'ngx-govuk-date-input',\n  standalone: true,\n  imports: [NgClass, NgIf, ReactiveFormsModule],\n  templateUrl: './date-input.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKDateInputComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  protected dateForm = new FormGroup({\n    day: new FormControl<string>(''),\n    month: new FormControl<string>(''),\n    year: new FormControl<string>(''),\n  });\n\n  constructor() {\n    // Handle changes in the internal form group\n    this.dateForm.valueChanges.subscribe((value) => {\n      const day = value.day ?? '';\n      const month = value.month ?? '';\n      const year = value.year ?? '';\n      this.onDateFormChange({ day, month, year });\n    });\n\n    // Handle changes from the parent form control\n    this.ngControl.valueChanges?.subscribe((value) => {\n      this.updateDateForm(value);\n    });\n  }\n\n  // Initial value setting from parent form control\n  protected writeValue(value: string | DateInputParts | null): void {\n    if (value) {\n      this.updateDateForm(value);\n    }\n  }\n\n  // Process changes from internal date form\n  private onDateFormChange(value: {\n    day: string;\n    month: string;\n    year: string;\n  }): void {\n    const { day, month, year } = value;\n\n    if (!day && !month && !year) {\n      this.ngControl.control?.setValue(null);\n      return;\n    }\n\n    const paddedDay = day.padStart(2, '0');\n    const paddedMonth = month.padStart(2, '0');\n\n    if (day && month && year) {\n      // Full date is available, use ISO format\n      this.ngControl.control?.setValue(`${year}-${paddedMonth}-${paddedDay}`);\n    } else {\n      // Partial date, pass as object\n      this.ngControl.control?.setValue({\n        day: paddedDay,\n        month: paddedMonth,\n        year,\n      });\n    }\n  }\n\n  // Update internal date form based on parent value\n  private updateDateForm(value: string | DateInputParts | null): void {\n    if (!value) {\n      this.dateForm.reset(\n        { day: '', month: '', year: '' },\n        { emitEvent: false },\n      );\n      return;\n    }\n\n    let day = '';\n    let month = '';\n    let year = '';\n\n    if (typeof value === 'string') {\n      // Handle ISO date format (YYYY-MM-DD)\n      const dateParts = value.split('-');\n      if (dateParts.length === 3) {\n        year = dateParts[0];\n        month = dateParts[1].replace(/^0/, ''); // Remove leading zero\n        day = dateParts[2].replace(/^0/, ''); // Remove leading zero\n      }\n    } else {\n      // Handle object format { day, month, year }\n      day = value.day?.replace(/^0/, '') || '';\n      month = value.month?.replace(/^0/, '') || '';\n      year = value.year || '';\n    }\n\n    this.dateForm.setValue({ day, month, year }, { emitEvent: false });\n  }\n\n  protected getInputId(part: string): string | null {\n    return this.commonFormInput.inputId()\n      ? `${this.commonFormInput.inputId()}-${part}`\n      : null;\n  }\n\n  protected hasError(): boolean {\n    return !!this.ngControl.touched && !!this.ngControl.errors;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 53
+            },
+            "extends": [],
+            "templateData": "<div class=\"govuk-date-input\" [id]=\"commonFormInput.inputId()\">\n  <div class=\"govuk-date-input__item\">\n    <div class=\"govuk-form-group\">\n      <label\n        class=\"govuk-label govuk-date-input__label\"\n        [attr.for]=\"getInputId('day')\"\n      >\n        Day\n      </label>\n      <input\n        class=\"govuk-input govuk-date-input__input govuk-input--width-2\"\n        [ngClass]=\"commonFormInput.extraClasses()\"\n        [class.govuk-input--error]=\"hasError()\"\n        [attr.id]=\"getInputId('day')\"\n        type=\"text\"\n        inputmode=\"numeric\"\n        [formControl]=\"dateForm.controls.day\"\n      />\n    </div>\n  </div>\n  <div class=\"govuk-date-input__item\">\n    <div class=\"govuk-form-group\">\n      <label\n        class=\"govuk-label govuk-date-input__label\"\n        [attr.for]=\"getInputId('month')\"\n      >\n        Month\n      </label>\n      <input\n        class=\"govuk-input govuk-date-input__input govuk-input--width-2\"\n        [ngClass]=\"commonFormInput.extraClasses()\"\n        [class.govuk-input--error]=\"hasError()\"\n        [attr.id]=\"getInputId('month')\"\n        type=\"text\"\n        inputmode=\"numeric\"\n        [formControl]=\"dateForm.controls.month\"\n      />\n    </div>\n  </div>\n  <div class=\"govuk-date-input__item\">\n    <div class=\"govuk-form-group\">\n      <label\n        class=\"govuk-label govuk-date-input__label\"\n        [attr.for]=\"getInputId('year')\"\n      >\n        Year\n      </label>\n      <input\n        class=\"govuk-input govuk-date-input__input govuk-input--width-4\"\n        [ngClass]=\"commonFormInput.extraClasses()\"\n        [class.govuk-input--error]=\"hasError()\"\n        [attr.id]=\"getInputId('year')\"\n        type=\"text\"\n        inputmode=\"numeric\"\n        [formControl]=\"dateForm.controls.year\"\n      />\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "GovUKDetailsComponent",
@@ -3404,6 +3692,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    props: {\n      form: setupForm(),\n    },\n    template: `\n      <div class=\"govuk-form-group\">\n        <h1 class=\"govuk-heading-l\">When was your passport issued?</h1>\n        <div class=\"govuk-hint\">For example, 27 3 2007</div>\n        <form [formGroup]=\"form\">\n          <ngx-govuk-date-input\n            formControlName=\"dateField\"\n            inputId=\"passport-issued\"\n          ></ngx-govuk-date-input>\n        </form>\n      </div>\n    `,\n    moduleMetadata: {\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\n    },\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3418,7 +3716,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <ngx-govuk-accordion [id]=\"id\">\n        <ngx-govuk-accordion-item itemId=\"1\" heading=\"Writing well for the web\">\n          <p class=\"govuk-body\">This is the content for Writing well for the web.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"2\" heading=\"Writing well for specialists\">\n          <p class=\"govuk-body\">This is the content for Writing well for specialists.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"3\" heading=\"Know your audience\">\n          <p class=\"govuk-body\">This is the content for Know your audience.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"4\" heading=\"How people read\">\n          <p class=\"govuk-body\">This is the content for How people read.</p>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div class=\"govuk-frontend-supported\">\n        <ngx-govuk-accordion [id]=\"id\">\n          <ngx-govuk-accordion-item itemId=\"1\" heading=\"Writing well for the web\">\n            <p class=\"govuk-body\">This is the content for Writing well for the web.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"2\" heading=\"Writing well for specialists\">\n            <p class=\"govuk-body\">This is the content for Writing well for specialists.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"3\" heading=\"Know your audience\">\n            <p class=\"govuk-body\">This is the content for Know your audience.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"4\" heading=\"How people read\">\n            <p class=\"govuk-body\">This is the content for How people read.</p>\n          </ngx-govuk-accordion-item>\n        </ngx-govuk-accordion>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "defaultArgs",
@@ -3459,6 +3757,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<GovUKCheckboxComponent>",
                 "defaultValue": "{\n  component: GovUKCheckboxComponent,\n  title: 'Forms/GovUKCheckboxComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [ReactiveFormsModule],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKDateInputComponent>",
+                "defaultValue": "{\n  title: 'Components/Date Input',\n  component: GovUKDateInputComponent,\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n  tags: ['autodocs'],\n}"
             },
             {
                 "name": "meta",
@@ -4011,6 +4319,16 @@
                 "defaultValue": "{\n  render: Template,\n  args: {\n    ...defaultArgs,\n    appName: 'Service name',\n    appLink: '/',\n  },\n}"
             },
             {
+                "name": "setupForm",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => {\n  return new FormGroup({\n    dateField: new FormControl<string>('', Validators.required),\n  });\n}"
+            },
+            {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4301,6 +4619,16 @@
                 "defaultValue": "{\r\n  render: (args) => ({\r\n    props: {\r\n      ...args,\r\n      form: new FormGroup({\r\n        input: new FormControl(\r\n          'This is some initial text to demonstrate the character count functionality.',\r\n        ),\r\n      }),\r\n    },\r\n    template: `<form [formGroup]=\"form\">\r\n      <ngx-govuk-textarea\r\n        formControlName=\"input\"\r\n         ${argsToTemplate(args)}\r\n      ></ngx-govuk-textarea>\r\n    </form>`,\r\n  }),\r\n  args: {\r\n    inputId: 'story3',\r\n    autocomplete: 'off',\r\n    extraClasses: '',\r\n    rows: 5,\r\n    maxLength: 100,\r\n    showCharacterCount: true,\r\n  },\r\n}"
             },
             {
+                "name": "WithError",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    props: {\n      form: setupForm(),\n    },\n    template: `\n      <div class=\"govuk-form-group govuk-form-group--error\">\n        <h1 class=\"govuk-heading-l\">When was your passport issued?</h1>\n        <div class=\"govuk-hint\">For example, 27 3 2007</div>\n        <p class=\"govuk-error-message\">\n          <span class=\"govuk-visually-hidden\">Error:</span> The date your passport was issued must include a year\n        </p>\n        <form [formGroup]=\"form\">\n          <ngx-govuk-date-input\n            formControlName=\"dateField\"\n            inputId=\"passport-issued-error\"\n          ></ngx-govuk-date-input>\n        </form>\n      </div>\n    `,\n    moduleMetadata: {\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\n    },\n  }),\n}"
+            },
+            {
                 "name": "WithInitiallyExpandedItems",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4308,7 +4636,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      initialExpanded: ['1', '3'],\n    },\n    template: `\n      <ngx-govuk-accordion [id]=\"id\" [initialExpanded]=\"initialExpanded\">\n        <ngx-govuk-accordion-item itemId=\"1\" heading=\"Section 1 (Initially expanded)\">\n          <p class=\"govuk-body\">This is the content for Section 1.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"2\" heading=\"Section 2\">\n          <p class=\"govuk-body\">This is the content for Section 2.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"3\" heading=\"Section 3 (Initially expanded)\">\n          <p class=\"govuk-body\">This is the content for Section 3.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"4\" heading=\"Section 4\">\n          <p class=\"govuk-body\">This is the content for Section 4.</p>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      initialExpanded: ['1', '3'],\n    },\n    template: `\n      <div class=\"govuk-frontend-supported\">\n        <ngx-govuk-accordion [id]=\"id\" [initialExpanded]=\"initialExpanded\">\n          <ngx-govuk-accordion-item itemId=\"1\" heading=\"Section 1 (Initially expanded)\">\n            <p class=\"govuk-body\">This is the content for Section 1.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"2\" heading=\"Section 2\">\n            <p class=\"govuk-body\">This is the content for Section 2.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"3\" heading=\"Section 3 (Initially expanded)\">\n            <p class=\"govuk-body\">This is the content for Section 3.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"4\" heading=\"Section 4\">\n            <p class=\"govuk-body\">This is the content for Section 4.</p>\n          </ngx-govuk-accordion-item>\n        </ngx-govuk-accordion>\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "WithSummary",
@@ -4318,7 +4646,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <ngx-govuk-accordion [id]=\"id\">\n        <ngx-govuk-accordion-item \n          itemId=\"1\" \n          heading=\"Understanding agile project management\"\n          summary=\"Introductions, methods, core features.\"\n        >\n          <ul class=\"govuk-list\">\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile and government services: an introduction</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile methods: an introduction</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Core principles of agile</a>\n            </li>\n          </ul>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item \n          itemId=\"2\" \n          heading=\"Working with agile methods\"\n          summary=\"Workspaces, tools and techniques, user stories, planning.\"\n        >\n          <ul class=\"govuk-list\">\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Creating an agile working environment</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile tools and techniques</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Set up a team wall</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Writing user stories</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Planning in agile</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Deciding on priorities</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Developing a roadmap</a>\n            </li>\n          </ul>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div class=\"govuk-frontend-supported\">\n        <ngx-govuk-accordion [id]=\"id\">\n          <ngx-govuk-accordion-item \n            itemId=\"1\" \n            heading=\"Understanding agile project management\"\n            summary=\"Introductions, methods, core features.\"\n          >\n            <ul class=\"govuk-list\">\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Agile and government services: an introduction</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Agile methods: an introduction</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Core principles of agile</a>\n              </li>\n            </ul>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item \n            itemId=\"2\" \n            heading=\"Working with agile methods\"\n            summary=\"Workspaces, tools and techniques, user stories, planning.\"\n          >\n            <ul class=\"govuk-list\">\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Creating an agile working environment</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Agile tools and techniques</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Set up a team wall</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Writing user stories</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Planning in agile</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Deciding on priorities</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Developing a roadmap</a>\n              </li>\n            </ul>\n          </ngx-govuk-accordion-item>\n        </ngx-govuk-accordion>\n      </div>\n    `,\n  }),\n}"
             }
         ],
         "functions": [],
@@ -4395,6 +4723,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<GovUKCheckboxComponent>",
                 "file": "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKDateInputComponent>",
+                "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4733,6 +5072,48 @@
                     "defaultValue": "{\r\n  title: 'Skip Link/GovUKSkipLinkComponent',\r\n  component: GovUKSkipLinkComponent,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [GovUKSkipLinkComponent],\r\n    }),\r\n  ],\r\n  parameters: {\r\n    layout: 'padded',\r\n  },\r\n  argTypes: {\r\n    href: {\r\n      control: 'text',\r\n      description: 'The target ID to skip to',\r\n      table: {\r\n        type: { summary: 'string' },\r\n        defaultValue: { summary: '#content' },\r\n      },\r\n    },\r\n  },\r\n}"
                 }
             ],
+            "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    props: {\n      form: setupForm(),\n    },\n    template: `\n      <div class=\"govuk-form-group\">\n        <h1 class=\"govuk-heading-l\">When was your passport issued?</h1>\n        <div class=\"govuk-hint\">For example, 27 3 2007</div>\n        <form [formGroup]=\"form\">\n          <ngx-govuk-date-input\n            formControlName=\"dateField\"\n            inputId=\"passport-issued\"\n          ></ngx-govuk-date-input>\n        </form>\n      </div>\n    `,\n    moduleMetadata: {\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\n    },\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKDateInputComponent>",
+                    "defaultValue": "{\n  title: 'Components/Date Input',\n  component: GovUKDateInputComponent,\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n  tags: ['autodocs'],\n}"
+                },
+                {
+                    "name": "setupForm",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => {\n  return new FormGroup({\n    dateField: new FormControl<string>('', Validators.required),\n  });\n}"
+                },
+                {
+                    "name": "WithError",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    props: {\n      form: setupForm(),\n    },\n    template: `\n      <div class=\"govuk-form-group govuk-form-group--error\">\n        <h1 class=\"govuk-heading-l\">When was your passport issued?</h1>\n        <div class=\"govuk-hint\">For example, 27 3 2007</div>\n        <p class=\"govuk-error-message\">\n          <span class=\"govuk-visually-hidden\">Error:</span> The date your passport was issued must include a year\n        </p>\n        <form [formGroup]=\"form\">\n          <ngx-govuk-date-input\n            formControlName=\"dateField\"\n            inputId=\"passport-issued-error\"\n          ></ngx-govuk-date-input>\n        </form>\n      </div>\n    `,\n    moduleMetadata: {\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\n    },\n  }),\n}"
+                }
+            ],
             "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts": [
                 {
                     "name": "Default",
@@ -4742,7 +5123,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <ngx-govuk-accordion [id]=\"id\">\n        <ngx-govuk-accordion-item itemId=\"1\" heading=\"Writing well for the web\">\n          <p class=\"govuk-body\">This is the content for Writing well for the web.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"2\" heading=\"Writing well for specialists\">\n          <p class=\"govuk-body\">This is the content for Writing well for specialists.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"3\" heading=\"Know your audience\">\n          <p class=\"govuk-body\">This is the content for Know your audience.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"4\" heading=\"How people read\">\n          <p class=\"govuk-body\">This is the content for How people read.</p>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div class=\"govuk-frontend-supported\">\n        <ngx-govuk-accordion [id]=\"id\">\n          <ngx-govuk-accordion-item itemId=\"1\" heading=\"Writing well for the web\">\n            <p class=\"govuk-body\">This is the content for Writing well for the web.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"2\" heading=\"Writing well for specialists\">\n            <p class=\"govuk-body\">This is the content for Writing well for specialists.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"3\" heading=\"Know your audience\">\n            <p class=\"govuk-body\">This is the content for Know your audience.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"4\" heading=\"How people read\">\n            <p class=\"govuk-body\">This is the content for How people read.</p>\n          </ngx-govuk-accordion-item>\n        </ngx-govuk-accordion>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "meta",
@@ -4762,7 +5143,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      initialExpanded: ['1', '3'],\n    },\n    template: `\n      <ngx-govuk-accordion [id]=\"id\" [initialExpanded]=\"initialExpanded\">\n        <ngx-govuk-accordion-item itemId=\"1\" heading=\"Section 1 (Initially expanded)\">\n          <p class=\"govuk-body\">This is the content for Section 1.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"2\" heading=\"Section 2\">\n          <p class=\"govuk-body\">This is the content for Section 2.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"3\" heading=\"Section 3 (Initially expanded)\">\n          <p class=\"govuk-body\">This is the content for Section 3.</p>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item itemId=\"4\" heading=\"Section 4\">\n          <p class=\"govuk-body\">This is the content for Section 4.</p>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  render: (args) => ({\n    props: {\n      ...args,\n      initialExpanded: ['1', '3'],\n    },\n    template: `\n      <div class=\"govuk-frontend-supported\">\n        <ngx-govuk-accordion [id]=\"id\" [initialExpanded]=\"initialExpanded\">\n          <ngx-govuk-accordion-item itemId=\"1\" heading=\"Section 1 (Initially expanded)\">\n            <p class=\"govuk-body\">This is the content for Section 1.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"2\" heading=\"Section 2\">\n            <p class=\"govuk-body\">This is the content for Section 2.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"3\" heading=\"Section 3 (Initially expanded)\">\n            <p class=\"govuk-body\">This is the content for Section 3.</p>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item itemId=\"4\" heading=\"Section 4\">\n            <p class=\"govuk-body\">This is the content for Section 4.</p>\n          </ngx-govuk-accordion-item>\n        </ngx-govuk-accordion>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "WithSummary",
@@ -4772,7 +5153,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <ngx-govuk-accordion [id]=\"id\">\n        <ngx-govuk-accordion-item \n          itemId=\"1\" \n          heading=\"Understanding agile project management\"\n          summary=\"Introductions, methods, core features.\"\n        >\n          <ul class=\"govuk-list\">\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile and government services: an introduction</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile methods: an introduction</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Core principles of agile</a>\n            </li>\n          </ul>\n        </ngx-govuk-accordion-item>\n        <ngx-govuk-accordion-item \n          itemId=\"2\" \n          heading=\"Working with agile methods\"\n          summary=\"Workspaces, tools and techniques, user stories, planning.\"\n        >\n          <ul class=\"govuk-list\">\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Creating an agile working environment</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Agile tools and techniques</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Set up a team wall</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Writing user stories</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Planning in agile</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Deciding on priorities</a>\n            </li>\n            <li>\n              <a class=\"govuk-link\" href=\"#\">Developing a roadmap</a>\n            </li>\n          </ul>\n        </ngx-govuk-accordion-item>\n      </ngx-govuk-accordion>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div class=\"govuk-frontend-supported\">\n        <ngx-govuk-accordion [id]=\"id\">\n          <ngx-govuk-accordion-item \n            itemId=\"1\" \n            heading=\"Understanding agile project management\"\n            summary=\"Introductions, methods, core features.\"\n          >\n            <ul class=\"govuk-list\">\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Agile and government services: an introduction</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Agile methods: an introduction</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Core principles of agile</a>\n              </li>\n            </ul>\n          </ngx-govuk-accordion-item>\n          <ngx-govuk-accordion-item \n            itemId=\"2\" \n            heading=\"Working with agile methods\"\n            summary=\"Workspaces, tools and techniques, user stories, planning.\"\n          >\n            <ul class=\"govuk-list\">\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Creating an agile working environment</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Agile tools and techniques</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Set up a team wall</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Writing user stories</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Planning in agile</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Deciding on priorities</a>\n              </li>\n              <li>\n                <a class=\"govuk-link\" href=\"#\">Developing a roadmap</a>\n              </li>\n            </ul>\n          </ngx-govuk-accordion-item>\n        </ngx-govuk-accordion>\n      </div>\n    `,\n  }),\n}"
                 }
             ],
             "libs/ngx-govuk-frontend/header/src/lib/header.component.stories.ts": [
@@ -5786,6 +6167,19 @@
                     "kind": 183
                 }
             ],
+            "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKDateInputComponent>",
+                    "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/ngx-govuk-frontend/details/src/lib/details.component.stories.ts": [
                 {
                     "name": "Story",
@@ -6570,6 +6964,74 @@
                 "name": "GovUKCookieConfirmationComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "setupForm",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithError",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKDateInputComponent",
+                "coveragePercent": 10,
+                "coverageCount": "1/10",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DateInputParts",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
