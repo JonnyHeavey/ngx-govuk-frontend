@@ -26,7 +26,6 @@
         "nrwl.angular-console",
         "esbenp.prettier-vscode",
         "firsttris.vscode-jest-runner",
-        "ms-playwright.playwright",
         "dbaeumer.vscode-eslint",
         "github.vscode-github-actions"
       ]
