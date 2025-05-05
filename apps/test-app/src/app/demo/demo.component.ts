@@ -12,6 +12,7 @@ import { GovUKCookieBannerComponent } from 'ngx-govuk-frontend/cookie-banner';
 import { GovUKDetailsComponent } from 'ngx-govuk-frontend/details';
 import { GovUKInsetTextComponent } from 'ngx-govuk-frontend/inset-text';
 import { GovUKNotificationBannerComponent } from 'ngx-govuk-frontend/notification-banner';
+import { GovUKPaginationComponent } from 'ngx-govuk-frontend/pagination';
 import { GovUKPanelComponent } from 'ngx-govuk-frontend/panel';
 import {
   GovUKTableColumn,
@@ -31,6 +32,7 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
     GovUKDetailsComponent,
     GovUKInsetTextComponent,
     GovUKNotificationBannerComponent,
+    GovUKPaginationComponent,
     GovUKPanelComponent,
     GovUKTagComponent,
     GovUKWarningTextComponent,
@@ -67,4 +69,35 @@ export class DemoComponent {
   ];
 
   readonly initialExpandedItems = ['1', '3'];
+
+  // Dynamic pagination examples
+  currentPage = 1;
+  totalItems = 100;
+  itemsPerPage = 10;
+
+  // First page example
+  firstPageCurrent = 1;
+
+  // Last page example
+  lastPageCurrent = 3;
+  lastPageTotal = 3;
+
+  onPageChange(pageNumber: number): void {
+    console.log('Page changed:', pageNumber);
+    this.currentPage = pageNumber;
+  }
+
+  onPreviousClick(): void {
+    console.log('Previous clicked');
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  onNextClick(): void {
+    console.log('Next clicked');
+    if (this.currentPage < Math.ceil(this.totalItems / this.itemsPerPage)) {
+      this.currentPage++;
+    }
+  }
 }

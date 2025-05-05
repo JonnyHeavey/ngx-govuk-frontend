@@ -90,3 +90,42 @@
     </ngx-govuk-accordion-item>
   </ngx-govuk-accordion>
 </div>
+
+<!-- Pagination Examples -->
+<div class="govuk-frontend-supported">
+  <h2 class="govuk-heading-l">Pagination Examples</h2>
+
+  <h3 class="govuk-heading-m">Dynamic Pagination</h3>
+  <p>Current page: {{ currentPage }}</p>
+  <ngx-govuk-pagination
+    [itemCount]="totalItems"
+    [itemsPerPage]="itemsPerPage"
+    [currentPage]="currentPage"
+    (pageChange)="onPageChange($event)"
+    (previousClick)="onPreviousClick()"
+    (nextClick)="onNextClick()"
+  ></ngx-govuk-pagination>
+
+  <h3 class="govuk-heading-m">Pagination with Custom Labels</h3>
+  <ngx-govuk-pagination
+    [itemCount]="30"
+    [itemsPerPage]="10"
+    [currentPage]="2"
+    previousTitle="Previous step"
+    nextTitle="Next step"
+    (previousClick)="onPreviousClick()"
+    (nextClick)="onNextClick()"
+  ></ngx-govuk-pagination>
+
+  <h3 class="govuk-heading-m">Block Mode Pagination</h3>
+  <ngx-govuk-pagination
+    [itemCount]="totalItems"
+    [itemsPerPage]="1"
+    [currentPage]="currentPage"
+    mode="block"
+    previousLabel="Application details"
+    nextLabel="Check your answers"
+    (previousClick)="onPreviousClick()"
+    (nextClick)="onNextClick()"
+  ></ngx-govuk-pagination>
+</div>

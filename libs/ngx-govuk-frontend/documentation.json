@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "DateInputParts",
-            "id": "interface-DateInputParts-6d349de6638f193437dd65d54fed9ca6707bfde872e9d807ff754bc963f199982c14eeee4ca59f74e8b3bf6ef94969d8161647cdf29c9134f2e5521be9f02979",
+            "id": "interface-DateInputParts-fca99f6078efbb21cb595a7691a5308d224dcfcdcc177e9de10c14cc296c8650fb29a253b5f90114470a233c05b7cca7b0946cd791dfc674d4c13c5cd190ae13",
             "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { NgClass, NgIf } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\ninterface DateInputParts {\n  day?: string;\n  month?: string;\n  year?: string;\n}\n\n/**\n * A form component for date input that follows the GOV.UK Design System styling and behavior.\n *\n * This component provides a set of input fields for day, month, and year with proper validation and styling.\n * It integrates with Angular's form controls and supports accessibility features.\n *\n * @example\n * ```html\n * <ngx-govuk-date-input\n *   formControlName=\"dateOfBirth\"\n *   inputId=\"date-of-birth\"\n * ></ngx-govuk-date-input>\n * ```\n *\n * @property {string} inputId - Optional. The ID prefix for the input elements.\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.\n */\n@Component({\n  selector: 'ngx-govuk-date-input',\n  standalone: true,\n  imports: [NgClass, NgIf, ReactiveFormsModule],\n  templateUrl: './date-input.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKDateInputComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  protected dateForm = new FormGroup({\n    day: new FormControl<string>(''),\n    month: new FormControl<string>(''),\n    year: new FormControl<string>(''),\n  });\n\n  constructor() {\n    // Handle changes in the internal form group\n    this.dateForm.valueChanges.subscribe((value) => {\n      const day = value.day ?? '';\n      const month = value.month ?? '';\n      const year = value.year ?? '';\n      this.onDateFormChange({ day, month, year });\n    });\n\n    // Handle changes from the parent form control\n    this.ngControl.valueChanges?.subscribe((value) => {\n      this.updateDateForm(value);\n    });\n  }\n\n  // Initial value setting from parent form control\n  protected writeValue(value: string | DateInputParts | null): void {\n    if (value) {\n      this.updateDateForm(value);\n    }\n  }\n\n  // Process changes from internal date form\n  private onDateFormChange(value: {\n    day: string;\n    month: string;\n    year: string;\n  }): void {\n    const { day, month, year } = value;\n\n    if (!day && !month && !year) {\n      this.ngControl.control?.setValue(null);\n      return;\n    }\n\n    const paddedDay = day.padStart(2, '0');\n    const paddedMonth = month.padStart(2, '0');\n\n    if (day && month && year) {\n      // Full date is available, use ISO format\n      this.ngControl.control?.setValue(`${year}-${paddedMonth}-${paddedDay}`);\n    } else {\n      // Partial date, pass as object\n      this.ngControl.control?.setValue({\n        day: paddedDay,\n        month: paddedMonth,\n        year,\n      });\n    }\n  }\n\n  // Update internal date form based on parent value\n  private updateDateForm(value: string | DateInputParts | null): void {\n    if (!value) {\n      this.dateForm.reset(\n        { day: '', month: '', year: '' },\n        { emitEvent: false },\n      );\n      return;\n    }\n\n    let day = '';\n    let month = '';\n    let year = '';\n\n    if (typeof value === 'string') {\n      // Handle ISO date format (YYYY-MM-DD)\n      const dateParts = value.split('-');\n      if (dateParts.length === 3) {\n        year = dateParts[0];\n        month = dateParts[1].replace(/^0/, ''); // Remove leading zero\n        day = dateParts[2].replace(/^0/, ''); // Remove leading zero\n      }\n    } else {\n      // Handle object format { day, month, year }\n      day = value.day?.replace(/^0/, '') || '';\n      month = value.month?.replace(/^0/, '') || '';\n      year = value.year || '';\n    }\n\n    this.dateForm.setValue({ day, month, year }, { emitEvent: false });\n  }\n\n  protected getInputId(part: string): string | null {\n    return this.commonFormInput.inputId()\n      ? `${this.commonFormInput.inputId()}-${part}`\n      : null;\n  }\n\n  protected hasError(): boolean {\n    return !!this.ngControl.touched && !!this.ngControl.errors;\n  }\n}\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\r\nimport {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  computed,\r\n  inject,\r\n  input,\r\n} from '@angular/core';\r\nimport {\r\n  AbstractControl,\r\n  FormControl,\r\n  FormGroup,\r\n  ReactiveFormsModule,\r\n  ValidatorFn,\r\n  Validators,\r\n} from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  ValueAccessorDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\ninterface DateInputParts {\r\n  day?: string;\r\n  month?: string;\r\n  year?: string;\r\n}\r\n\r\n/**\r\n * A form component for date input that follows the GOV.UK Design System styling and behavior.\r\n *\r\n * This component provides a set of input fields for day, month, and year with proper validation and styling.\r\n * It integrates with Angular's form controls and supports accessibility features.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-date-input\r\n *   formControlName=\"dateOfBirth\"\r\n *   inputId=\"date-of-birth\"\r\n *   min=\"1900-01-01\"\r\n *   max=\"2050-12-31\"\r\n * ></ngx-govuk-date-input>\r\n * ```\r\n *\r\n * @property {string} inputId - Optional. The ID prefix for the input elements.\r\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.\r\n * @property {string} min - Optional. The minimum valid date in ISO format (YYYY-MM-DD).\r\n * @property {string} max - Optional. The maximum valid date in ISO format (YYYY-MM-DD).\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-date-input',\r\n  standalone: true,\r\n  imports: [NgClass, ReactiveFormsModule],\r\n  templateUrl: './date-input.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKDateInputComponent {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n\r\n  /**\r\n   * The minimum valid date in ISO format (YYYY-MM-DD).\r\n   * Default is 1900-01-01.\r\n   */\r\n  readonly min = input('1900-01-01');\r\n\r\n  /**\r\n   * The maximum valid date in ISO format (YYYY-MM-DD).\r\n   * Default is 100 years from now.\r\n   */\r\n  readonly max = input(\r\n    new Date(new Date().getFullYear() + 100, 11, 31)\r\n      .toISOString()\r\n      .split('T')[0],\r\n  );\r\n\r\n  private readonly minDate = computed(() => {\r\n    try {\r\n      return new Date(this.min());\r\n    } catch (e) {\r\n      return new Date(1900, 0, 1); // January 1, 1900\r\n    }\r\n  });\r\n\r\n  private readonly maxDate = computed(() => {\r\n    try {\r\n      return new Date(this.max());\r\n    } catch (e) {\r\n      // Default to 100 years from now\r\n      return new Date(new Date().getFullYear() + 100, 11, 31); // December 31, current year + 100\r\n    }\r\n  });\r\n\r\n  protected dateForm = new FormGroup(\r\n    {\r\n      day: new FormControl<string>('', [\r\n        Validators.pattern(/^([1-9]|0[1-9]|[12]\\d|3[01])$/),\r\n      ]),\r\n      month: new FormControl<string>('', [\r\n        Validators.pattern(/^([1-9]|0[1-9]|1[012])$/),\r\n      ]),\r\n      year: new FormControl<string>('', [Validators.pattern(/^\\d{4}$/)]),\r\n    },\r\n    { validators: this.dateValidator() },\r\n  );\r\n\r\n  constructor() {\r\n    this.dateForm.valueChanges.subscribe((value) => {\r\n      const day = value.day ?? '';\r\n      const month = value.month ?? '';\r\n      const year = value.year ?? '';\r\n      this.onDateFormChange({ day, month, year });\r\n\r\n      // Collect all errors from the form and individual controls\r\n      const errors: Record<string, unknown> = {};\r\n\r\n      // Add form-level errors (like invalidDate)\r\n      if (this.dateForm.errors) {\r\n        Object.assign(errors, this.dateForm.errors);\r\n      }\r\n\r\n      // Add field-level errors with prefixes\r\n      const dayControl = this.dateForm.get('day');\r\n      const monthControl = this.dateForm.get('month');\r\n      const yearControl = this.dateForm.get('year');\r\n\r\n      if (dayControl?.errors) {\r\n        Object.entries(dayControl.errors).forEach(([key, value]) => {\r\n          errors[`day_${key}`] = value;\r\n        });\r\n      }\r\n\r\n      if (monthControl?.errors) {\r\n        Object.entries(monthControl.errors).forEach(([key, value]) => {\r\n          errors[`month_${key}`] = value;\r\n        });\r\n      }\r\n\r\n      if (yearControl?.errors) {\r\n        Object.entries(yearControl.errors).forEach(([key, value]) => {\r\n          errors[`year_${key}`] = value;\r\n        });\r\n      }\r\n\r\n      // Set errors on the parent control if there are any\r\n      if (Object.keys(errors).length > 0) {\r\n        this.ngControl.control?.setErrors(errors);\r\n      } else {\r\n        // Clear errors if all fields are valid\r\n        this.ngControl.control?.setErrors(null);\r\n      }\r\n    });\r\n\r\n    // Handle changes from the parent form control\r\n    this.ngControl.valueChanges?.subscribe((value) => {\r\n      this.updateDateForm(value);\r\n    });\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    if (isDisabled) {\r\n      this.dateForm.disable();\r\n    } else {\r\n      this.dateForm.enable();\r\n    }\r\n  }\r\n\r\n  // Expose date parts for testing\r\n  getDateParts(): DateInputParts {\r\n    return {\r\n      day: this.dateForm.get('day')?.value || '',\r\n      month: this.dateForm.get('month')?.value || '',\r\n      year: this.dateForm.get('year')?.value || '',\r\n    };\r\n  }\r\n\r\n  // Custom validator to check if a date is valid\r\n  private dateValidator(): ValidatorFn {\r\n    return (control: AbstractControl) => {\r\n      const formGroup = control as FormGroup;\r\n      const day = formGroup.get('day')?.value;\r\n      const month = formGroup.get('month')?.value;\r\n      const year = formGroup.get('year')?.value;\r\n\r\n      // If any field is empty, don't perform validation yet\r\n      if (!day || !month || !year) {\r\n        return null;\r\n      }\r\n\r\n      // Convert string values to numbers\r\n      const dayNum = parseInt(day, 10);\r\n      const monthNum = parseInt(month, 10);\r\n      const yearNum = parseInt(year, 10);\r\n\r\n      // Create a date object - note months are 0-indexed in JS\r\n      const date = new Date(yearNum, monthNum - 1, dayNum);\r\n\r\n      // Check if the date is valid\r\n      // For example, 31/04/2020 (April 31st) is not valid\r\n      if (\r\n        date.getFullYear() !== yearNum ||\r\n        date.getMonth() !== monthNum - 1 ||\r\n        date.getDate() !== dayNum\r\n      ) {\r\n        return { invalidDate: true };\r\n      }\r\n\r\n      // Check min date\r\n      if (this.minDate() && date < this.minDate()) {\r\n        return { dateTooEarly: true, minDate: this.min() };\r\n      }\r\n\r\n      // Check max date\r\n      if (this.maxDate() && date > this.maxDate()) {\r\n        return { dateTooLate: true, maxDate: this.max() };\r\n      }\r\n\r\n      return null;\r\n    };\r\n  }\r\n\r\n  private onDateFormChange(value: {\r\n    day: string;\r\n    month: string;\r\n    year: string;\r\n  }): void {\r\n    const { day, month, year } = value;\r\n\r\n    if (!day && !month && !year) {\r\n      this.ngControl.control?.setValue(null);\r\n      return;\r\n    }\r\n\r\n    const paddedDay = day.padStart(2, '0');\r\n    const paddedMonth = month.padStart(2, '0');\r\n\r\n    if (day && month && year) {\r\n      // Full date is available, use ISO format\r\n      this.ngControl.control?.setValue(`${year}-${paddedMonth}-${paddedDay}`);\r\n    } else {\r\n      // Partial date, pass as object\r\n      this.ngControl.control?.setValue({\r\n        day: paddedDay,\r\n        month: paddedMonth,\r\n        year,\r\n      });\r\n    }\r\n\r\n    this.ngControl.control.markAsTouched();\r\n  }\r\n\r\n  // Update internal date form based on parent value\r\n  private updateDateForm(value: string | DateInputParts | null): void {\r\n    if (!value) {\r\n      this.dateForm.reset(\r\n        { day: '', month: '', year: '' },\r\n        { emitEvent: false },\r\n      );\r\n      return;\r\n    }\r\n\r\n    let day = '';\r\n    let month = '';\r\n    let year = '';\r\n\r\n    if (typeof value === 'string') {\r\n      // Handle ISO date format (YYYY-MM-DD)\r\n      const dateParts = value.split('-');\r\n      if (dateParts.length === 3) {\r\n        year = dateParts[0];\r\n        month = dateParts[1].replace(/^0/, ''); // Remove leading zero\r\n        day = dateParts[2].replace(/^0/, ''); // Remove leading zero\r\n      }\r\n    } else {\r\n      // Handle object format { day, month, year }\r\n      day = value.day?.replace(/^0/, '') || '';\r\n      month = value.month?.replace(/^0/, '') || '';\r\n      year = value.year || '';\r\n    }\r\n\r\n    this.dateForm.setValue({ day, month, year }, { emitEvent: false });\r\n  }\r\n\r\n  protected getInputId(part: string): string | null {\r\n    return this.commonFormInput.inputId()\r\n      ? `${this.commonFormInput.inputId()}-${part}`\r\n      : null;\r\n  }\r\n\r\n  protected hasFieldError(field: string): boolean {\r\n    const control = this.dateForm.get(field);\r\n    return !!control && control.touched && !!control.errors;\r\n  }\r\n}\r\n",
             "properties": [
                 {
                     "name": "day",
@@ -18,7 +18,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 12
+                    "line": 25
                 },
                 {
                     "name": "month",
@@ -28,7 +28,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 13
+                    "line": 26
                 },
                 {
                     "name": "year",
@@ -38,7 +38,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 14
+                    "line": 27
                 }
             ],
             "indexSignatures": [],
@@ -78,6 +78,78 @@
             ],
             "indexSignatures": [],
             "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "PageItem",
+            "id": "interface-PageItem-06e1011e84edf54bc73ec78a908045ee498fb21e9bafc2579b0c91581d99df1145fe8ec2213c29fccdcd6edaa3756a3c7ba346d07603b6696eece4b6af7a1db7",
+            "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n  output,\n} from '@angular/core';\n\n/**\n * Internal interface for pagination items\n */\ninterface PageItem {\n  /** The number/text to display for the item */\n  number: string;\n  /** Whether this is the current active page */\n  current?: boolean;\n  /** Whether to display this item as an ellipsis */\n  ellipsis?: boolean;\n  /** Actual page number for this item */\n  pageNumber?: number;\n  /** Unique identifier for tracking in loops */\n  id: string;\n}\n\n/**\n * Pagination mode - defines layout and behavior\n */\nexport type PaginationMode = 'block' | 'list';\n\n/**\n * A pagination component following the GovUK Design System\n * @component\n *\n * @example\n * <ngx-govuk-pagination\n *   [itemCount]=\"100\"\n *   [itemsPerPage]=\"10\"\n *   [currentPage]=\"1\"\n *   (pageChange)=\"onPageChange($event)\"\n * ></ngx-govuk-pagination>\n */\n@Component({\n  selector: 'ngx-govuk-pagination',\n  standalone: true,\n  templateUrl: './pagination.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKPaginationComponent {\n  /** Total number of items */\n  itemCount = input<number>(0);\n\n  /** Number of items per page */\n  itemsPerPage = input<number>(10);\n\n  /** Current page number (1-based) */\n  currentPage = input<number>(1);\n\n  /** Pagination mode - 'block' or 'list' */\n  mode = input<PaginationMode>('list');\n\n  /** Title for the previous button */\n  previousTitle = input<string>('Previous');\n\n  /** Label for the previous button (additional context) */\n  previousLabel = input<string | null>(null);\n\n  /** Title for the next button */\n  nextTitle = input<string>('Next');\n\n  /** Label for the next button (additional context) */\n  nextLabel = input<string | null>(null);\n\n  /** Output event when a pagination item is clicked */\n  pageChange = output<number>();\n\n  /** Output event when the previous link is clicked */\n  previousClick = output<void>();\n\n  /** Output event when the next link is clicked */\n  nextClick = output<void>();\n\n  /** Computed total number of pages */\n  totalPages = computed(() =>\n    Math.ceil(this.itemCount() / this.itemsPerPage()),\n  );\n\n  /** Computed flag for whether previous button should be shown */\n  hasPreviousPage = computed(() => this.currentPage() > 1);\n\n  /** Computed flag for whether next button should be shown */\n  hasNextPage = computed(() => this.currentPage() < this.totalPages());\n\n  /** Computed check if mode is block */\n  isBlockMode = computed(() => this.mode() === 'block');\n\n  /** Computed pagination items */\n  computedItems = computed(() => {\n    const totalPages = this.totalPages();\n    if (totalPages <= 0) {\n      return [];\n    }\n\n    // Simple case: 7 or fewer pages, show all\n    if (totalPages <= 7) {\n      return this.createSequentialItems(1, totalPages);\n    }\n\n    const currentPage = this.currentPage();\n    const items: PageItem[] = [];\n\n    // Always show first page\n    items.push(this.createPageItem(1));\n\n    // Complex case: more than 7 pages, show ellipses\n    if (currentPage <= 4) {\n      // Near the start: show 1 2 3 4 5 ... 100\n      items.push(...this.createSequentialItems(2, 5));\n      items.push(this.createEllipsisItem());\n      items.push(this.createPageItem(totalPages));\n    } else if (currentPage >= totalPages - 3) {\n      // Near the end: show 1 ... 96 97 98 99 100\n      items.push(this.createEllipsisItem());\n      items.push(...this.createSequentialItems(totalPages - 4, totalPages));\n    } else {\n      // In the middle: show 1 ... 49 50 51 ... 100\n      items.push(this.createEllipsisItem());\n      items.push(\n        ...this.createSequentialItems(currentPage - 1, currentPage + 1),\n      );\n      items.push(this.createEllipsisItem());\n      items.push(this.createPageItem(totalPages));\n    }\n\n    return items;\n  });\n\n  /**\n   * Handle page number click\n   */\n  onPageClick(item: PageItem): void {\n    if (!item.ellipsis && item.pageNumber) {\n      this.pageChange.emit(item.pageNumber);\n    }\n  }\n\n  /**\n   * Creates a page item for the specified page number\n   */\n  private createPageItem(pageNumber: number): PageItem {\n    return {\n      number: String(pageNumber),\n      current: pageNumber === this.currentPage(),\n      pageNumber: pageNumber,\n      id: `page-${pageNumber}`,\n    };\n  }\n\n  /**\n   * Creates an ellipsis item\n   */\n  private createEllipsisItem(): PageItem {\n    return {\n      number: '',\n      ellipsis: true,\n      id: window.crypto.randomUUID(),\n    };\n  }\n\n  /**\n   * Creates an array of sequential page items\n   */\n  private createSequentialItems(start: number, end: number): PageItem[] {\n    const items: PageItem[] = [];\n    for (let i = start; i <= end; i++) {\n      items.push(this.createPageItem(i));\n    }\n    return items;\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "current",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "<p>Whether this is the current active page</p>\n",
+                    "line": 16,
+                    "rawdescription": "\nWhether this is the current active page"
+                },
+                {
+                    "name": "ellipsis",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "<p>Whether to display this item as an ellipsis</p>\n",
+                    "line": 18,
+                    "rawdescription": "\nWhether to display this item as an ellipsis"
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Unique identifier for tracking in loops</p>\n",
+                    "line": 22,
+                    "rawdescription": "\nUnique identifier for tracking in loops"
+                },
+                {
+                    "name": "number",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>The number/text to display for the item</p>\n",
+                    "line": 14,
+                    "rawdescription": "\nThe number/text to display for the item"
+                },
+                {
+                    "name": "pageNumber",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "<p>Actual page number for this item</p>\n",
+                    "line": 20,
+                    "rawdescription": "\nActual page number for this item"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "description": "<p>Internal interface for pagination items</p>\n",
+            "rawdescription": "\n\nInternal interface for pagination items\n",
             "methods": [],
             "extends": []
         }
@@ -1218,7 +1290,7 @@
         },
         {
             "name": "GovUKDateInputComponent",
-            "id": "component-GovUKDateInputComponent-6d349de6638f193437dd65d54fed9ca6707bfde872e9d807ff754bc963f199982c14eeee4ca59f74e8b3bf6ef94969d8161647cdf29c9134f2e5521be9f02979",
+            "id": "component-GovUKDateInputComponent-fca99f6078efbb21cb595a7691a5308d224dcfcdcc177e9de10c14cc296c8650fb29a253b5f90114470a233c05b7cca7b0946cd791dfc674d4c13c5cd190ae13",
             "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1255,23 +1327,83 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 47,
+                    "line": 64,
                     "modifierKind": [
                         148
                     ]
                 },
                 {
                     "name": "dateForm",
-                    "defaultValue": "new FormGroup({\n    day: new FormControl<string>(''),\n    month: new FormControl<string>(''),\n    year: new FormControl<string>(''),\n  })",
+                    "defaultValue": "new FormGroup(\r\n    {\r\n      day: new FormControl<string>('', [\r\n        Validators.pattern(/^([1-9]|0[1-9]|[12]\\d|3[01])$/),\r\n      ]),\r\n      month: new FormControl<string>('', [\r\n        Validators.pattern(/^([1-9]|0[1-9]|1[012])$/),\r\n      ]),\r\n      year: new FormControl<string>('', [Validators.pattern(/^\\d{4}$/)]),\r\n    },\r\n    { validators: this.dateValidator() },\r\n  )",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 49,
+                    "line": 99,
                     "modifierKind": [
                         124
+                    ]
+                },
+                {
+                    "name": "max",
+                    "defaultValue": "input(\r\n    new Date(new Date().getFullYear() + 100, 11, 31)\r\n      .toISOString()\r\n      .split('T')[0],\r\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>The maximum valid date in ISO format (YYYY-MM-DD).\nDefault is 100 years from now.</p>\n",
+                    "line": 76,
+                    "rawdescription": "\n\nThe maximum valid date in ISO format (YYYY-MM-DD).\nDefault is 100 years from now.\n",
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "maxDate",
+                    "defaultValue": "computed(() => {\r\n    try {\r\n      return new Date(this.max());\r\n    } catch (e) {\r\n      // Default to 100 years from now\r\n      return new Date(new Date().getFullYear() + 100, 11, 31); // December 31, current year + 100\r\n    }\r\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 90,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "min",
+                    "defaultValue": "input('1900-01-01')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>The minimum valid date in ISO format (YYYY-MM-DD).\nDefault is 1900-01-01.</p>\n",
+                    "line": 70,
+                    "rawdescription": "\n\nThe minimum valid date in ISO format (YYYY-MM-DD).\nDefault is 1900-01-01.\n",
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "minDate",
+                    "defaultValue": "computed(() => {\r\n    try {\r\n      return new Date(this.min());\r\n    } catch (e) {\r\n      return new Date(1900, 0, 1); // January 1, 1900\r\n    }\r\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 82,
+                    "modifierKind": [
+                        123,
+                        148
                     ]
                 },
                 {
@@ -1283,13 +1415,36 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 46,
+                    "line": 63,
                     "modifierKind": [
                         148
                     ]
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "dateValidator",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "ValidatorFn",
+                    "typeParameters": [],
+                    "line": 183,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "getDateParts",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "DateInputParts",
+                    "typeParameters": [],
+                    "line": 174,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "getInputId",
                     "args": [
@@ -1303,7 +1458,7 @@
                     "optional": false,
                     "returnType": "string | null",
                     "typeParameters": [],
-                    "line": 138,
+                    "line": 289,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1322,16 +1477,34 @@
                     ]
                 },
                 {
-                    "name": "hasError",
-                    "args": [],
+                    "name": "hasFieldError",
+                    "args": [
+                        {
+                            "name": "field",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 295,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
                         124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "field",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
                     ]
                 },
                 {
@@ -1347,7 +1520,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 78,
+                    "line": 227,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1357,6 +1530,34 @@
                         {
                             "name": "value",
                             "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 165,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1378,42 +1579,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 258,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
                         123
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "string | DateInputParts | null",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "writeValue",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "string | DateInputParts | null",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 71,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        124
                     ],
                     "jsdoctags": [
                         {
@@ -1438,17 +1608,14 @@
                     "name": "NgClass"
                 },
                 {
-                    "name": "NgIf"
-                },
-                {
                     "name": "ReactiveFormsModule",
                     "type": "module"
                 }
             ],
-            "description": "<p>A form component for date input that follows the GOV.UK Design System styling and behavior.</p>\n<p>This component provides a set of input fields for day, month, and year with proper validation and styling.\nIt integrates with Angular&#39;s form controls and supports accessibility features.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-date-input\n  formControlName=&quot;dateOfBirth&quot;\n  inputId=&quot;date-of-birth&quot;\n&gt;&lt;/ngx-govuk-date-input&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
-            "rawdescription": "\n\nA form component for date input that follows the GOV.UK Design System styling and behavior.\n\nThis component provides a set of input fields for day, month, and year with proper validation and styling.\nIt integrates with Angular's form controls and supports accessibility features.\n\n```html\n```html\n<ngx-govuk-date-input\n  formControlName=\"dateOfBirth\"\n  inputId=\"date-of-birth\"\n></ngx-govuk-date-input>\n```\n```\n",
+            "description": "<p>A form component for date input that follows the GOV.UK Design System styling and behavior.</p>\n<p>This component provides a set of input fields for day, month, and year with proper validation and styling.\nIt integrates with Angular&#39;s form controls and supports accessibility features.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-date-input\n  formControlName=&quot;dateOfBirth&quot;\n  inputId=&quot;date-of-birth&quot;\n  min=&quot;1900-01-01&quot;\n  max=&quot;2050-12-31&quot;\n&gt;&lt;/ngx-govuk-date-input&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
+            "rawdescription": "\n\nA form component for date input that follows the GOV.UK Design System styling and behavior.\n\nThis component provides a set of input fields for day, month, and year with proper validation and styling.\nIt integrates with Angular's form controls and supports accessibility features.\n\n```html\n```html\n<ngx-govuk-date-input\n  formControlName=\"dateOfBirth\"\n  inputId=\"date-of-birth\"\n  min=\"1900-01-01\"\n  max=\"2050-12-31\"\n></ngx-govuk-date-input>\n```\n```\n",
             "type": "component",
-            "sourceCode": "import { NgClass, NgIf } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\ninterface DateInputParts {\n  day?: string;\n  month?: string;\n  year?: string;\n}\n\n/**\n * A form component for date input that follows the GOV.UK Design System styling and behavior.\n *\n * This component provides a set of input fields for day, month, and year with proper validation and styling.\n * It integrates with Angular's form controls and supports accessibility features.\n *\n * @example\n * ```html\n * <ngx-govuk-date-input\n *   formControlName=\"dateOfBirth\"\n *   inputId=\"date-of-birth\"\n * ></ngx-govuk-date-input>\n * ```\n *\n * @property {string} inputId - Optional. The ID prefix for the input elements.\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.\n */\n@Component({\n  selector: 'ngx-govuk-date-input',\n  standalone: true,\n  imports: [NgClass, NgIf, ReactiveFormsModule],\n  templateUrl: './date-input.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKDateInputComponent {\n  readonly ngControl = injectNgControl();\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  protected dateForm = new FormGroup({\n    day: new FormControl<string>(''),\n    month: new FormControl<string>(''),\n    year: new FormControl<string>(''),\n  });\n\n  constructor() {\n    // Handle changes in the internal form group\n    this.dateForm.valueChanges.subscribe((value) => {\n      const day = value.day ?? '';\n      const month = value.month ?? '';\n      const year = value.year ?? '';\n      this.onDateFormChange({ day, month, year });\n    });\n\n    // Handle changes from the parent form control\n    this.ngControl.valueChanges?.subscribe((value) => {\n      this.updateDateForm(value);\n    });\n  }\n\n  // Initial value setting from parent form control\n  protected writeValue(value: string | DateInputParts | null): void {\n    if (value) {\n      this.updateDateForm(value);\n    }\n  }\n\n  // Process changes from internal date form\n  private onDateFormChange(value: {\n    day: string;\n    month: string;\n    year: string;\n  }): void {\n    const { day, month, year } = value;\n\n    if (!day && !month && !year) {\n      this.ngControl.control?.setValue(null);\n      return;\n    }\n\n    const paddedDay = day.padStart(2, '0');\n    const paddedMonth = month.padStart(2, '0');\n\n    if (day && month && year) {\n      // Full date is available, use ISO format\n      this.ngControl.control?.setValue(`${year}-${paddedMonth}-${paddedDay}`);\n    } else {\n      // Partial date, pass as object\n      this.ngControl.control?.setValue({\n        day: paddedDay,\n        month: paddedMonth,\n        year,\n      });\n    }\n  }\n\n  // Update internal date form based on parent value\n  private updateDateForm(value: string | DateInputParts | null): void {\n    if (!value) {\n      this.dateForm.reset(\n        { day: '', month: '', year: '' },\n        { emitEvent: false },\n      );\n      return;\n    }\n\n    let day = '';\n    let month = '';\n    let year = '';\n\n    if (typeof value === 'string') {\n      // Handle ISO date format (YYYY-MM-DD)\n      const dateParts = value.split('-');\n      if (dateParts.length === 3) {\n        year = dateParts[0];\n        month = dateParts[1].replace(/^0/, ''); // Remove leading zero\n        day = dateParts[2].replace(/^0/, ''); // Remove leading zero\n      }\n    } else {\n      // Handle object format { day, month, year }\n      day = value.day?.replace(/^0/, '') || '';\n      month = value.month?.replace(/^0/, '') || '';\n      year = value.year || '';\n    }\n\n    this.dateForm.setValue({ day, month, year }, { emitEvent: false });\n  }\n\n  protected getInputId(part: string): string | null {\n    return this.commonFormInput.inputId()\n      ? `${this.commonFormInput.inputId()}-${part}`\n      : null;\n  }\n\n  protected hasError(): boolean {\n    return !!this.ngControl.touched && !!this.ngControl.errors;\n  }\n}\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\r\nimport {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  computed,\r\n  inject,\r\n  input,\r\n} from '@angular/core';\r\nimport {\r\n  AbstractControl,\r\n  FormControl,\r\n  FormGroup,\r\n  ReactiveFormsModule,\r\n  ValidatorFn,\r\n  Validators,\r\n} from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  ValueAccessorDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\ninterface DateInputParts {\r\n  day?: string;\r\n  month?: string;\r\n  year?: string;\r\n}\r\n\r\n/**\r\n * A form component for date input that follows the GOV.UK Design System styling and behavior.\r\n *\r\n * This component provides a set of input fields for day, month, and year with proper validation and styling.\r\n * It integrates with Angular's form controls and supports accessibility features.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-date-input\r\n *   formControlName=\"dateOfBirth\"\r\n *   inputId=\"date-of-birth\"\r\n *   min=\"1900-01-01\"\r\n *   max=\"2050-12-31\"\r\n * ></ngx-govuk-date-input>\r\n * ```\r\n *\r\n * @property {string} inputId - Optional. The ID prefix for the input elements.\r\n * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.\r\n * @property {string} min - Optional. The minimum valid date in ISO format (YYYY-MM-DD).\r\n * @property {string} max - Optional. The maximum valid date in ISO format (YYYY-MM-DD).\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-date-input',\r\n  standalone: true,\r\n  imports: [NgClass, ReactiveFormsModule],\r\n  templateUrl: './date-input.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKDateInputComponent {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n\r\n  /**\r\n   * The minimum valid date in ISO format (YYYY-MM-DD).\r\n   * Default is 1900-01-01.\r\n   */\r\n  readonly min = input('1900-01-01');\r\n\r\n  /**\r\n   * The maximum valid date in ISO format (YYYY-MM-DD).\r\n   * Default is 100 years from now.\r\n   */\r\n  readonly max = input(\r\n    new Date(new Date().getFullYear() + 100, 11, 31)\r\n      .toISOString()\r\n      .split('T')[0],\r\n  );\r\n\r\n  private readonly minDate = computed(() => {\r\n    try {\r\n      return new Date(this.min());\r\n    } catch (e) {\r\n      return new Date(1900, 0, 1); // January 1, 1900\r\n    }\r\n  });\r\n\r\n  private readonly maxDate = computed(() => {\r\n    try {\r\n      return new Date(this.max());\r\n    } catch (e) {\r\n      // Default to 100 years from now\r\n      return new Date(new Date().getFullYear() + 100, 11, 31); // December 31, current year + 100\r\n    }\r\n  });\r\n\r\n  protected dateForm = new FormGroup(\r\n    {\r\n      day: new FormControl<string>('', [\r\n        Validators.pattern(/^([1-9]|0[1-9]|[12]\\d|3[01])$/),\r\n      ]),\r\n      month: new FormControl<string>('', [\r\n        Validators.pattern(/^([1-9]|0[1-9]|1[012])$/),\r\n      ]),\r\n      year: new FormControl<string>('', [Validators.pattern(/^\\d{4}$/)]),\r\n    },\r\n    { validators: this.dateValidator() },\r\n  );\r\n\r\n  constructor() {\r\n    this.dateForm.valueChanges.subscribe((value) => {\r\n      const day = value.day ?? '';\r\n      const month = value.month ?? '';\r\n      const year = value.year ?? '';\r\n      this.onDateFormChange({ day, month, year });\r\n\r\n      // Collect all errors from the form and individual controls\r\n      const errors: Record<string, unknown> = {};\r\n\r\n      // Add form-level errors (like invalidDate)\r\n      if (this.dateForm.errors) {\r\n        Object.assign(errors, this.dateForm.errors);\r\n      }\r\n\r\n      // Add field-level errors with prefixes\r\n      const dayControl = this.dateForm.get('day');\r\n      const monthControl = this.dateForm.get('month');\r\n      const yearControl = this.dateForm.get('year');\r\n\r\n      if (dayControl?.errors) {\r\n        Object.entries(dayControl.errors).forEach(([key, value]) => {\r\n          errors[`day_${key}`] = value;\r\n        });\r\n      }\r\n\r\n      if (monthControl?.errors) {\r\n        Object.entries(monthControl.errors).forEach(([key, value]) => {\r\n          errors[`month_${key}`] = value;\r\n        });\r\n      }\r\n\r\n      if (yearControl?.errors) {\r\n        Object.entries(yearControl.errors).forEach(([key, value]) => {\r\n          errors[`year_${key}`] = value;\r\n        });\r\n      }\r\n\r\n      // Set errors on the parent control if there are any\r\n      if (Object.keys(errors).length > 0) {\r\n        this.ngControl.control?.setErrors(errors);\r\n      } else {\r\n        // Clear errors if all fields are valid\r\n        this.ngControl.control?.setErrors(null);\r\n      }\r\n    });\r\n\r\n    // Handle changes from the parent form control\r\n    this.ngControl.valueChanges?.subscribe((value) => {\r\n      this.updateDateForm(value);\r\n    });\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    if (isDisabled) {\r\n      this.dateForm.disable();\r\n    } else {\r\n      this.dateForm.enable();\r\n    }\r\n  }\r\n\r\n  // Expose date parts for testing\r\n  getDateParts(): DateInputParts {\r\n    return {\r\n      day: this.dateForm.get('day')?.value || '',\r\n      month: this.dateForm.get('month')?.value || '',\r\n      year: this.dateForm.get('year')?.value || '',\r\n    };\r\n  }\r\n\r\n  // Custom validator to check if a date is valid\r\n  private dateValidator(): ValidatorFn {\r\n    return (control: AbstractControl) => {\r\n      const formGroup = control as FormGroup;\r\n      const day = formGroup.get('day')?.value;\r\n      const month = formGroup.get('month')?.value;\r\n      const year = formGroup.get('year')?.value;\r\n\r\n      // If any field is empty, don't perform validation yet\r\n      if (!day || !month || !year) {\r\n        return null;\r\n      }\r\n\r\n      // Convert string values to numbers\r\n      const dayNum = parseInt(day, 10);\r\n      const monthNum = parseInt(month, 10);\r\n      const yearNum = parseInt(year, 10);\r\n\r\n      // Create a date object - note months are 0-indexed in JS\r\n      const date = new Date(yearNum, monthNum - 1, dayNum);\r\n\r\n      // Check if the date is valid\r\n      // For example, 31/04/2020 (April 31st) is not valid\r\n      if (\r\n        date.getFullYear() !== yearNum ||\r\n        date.getMonth() !== monthNum - 1 ||\r\n        date.getDate() !== dayNum\r\n      ) {\r\n        return { invalidDate: true };\r\n      }\r\n\r\n      // Check min date\r\n      if (this.minDate() && date < this.minDate()) {\r\n        return { dateTooEarly: true, minDate: this.min() };\r\n      }\r\n\r\n      // Check max date\r\n      if (this.maxDate() && date > this.maxDate()) {\r\n        return { dateTooLate: true, maxDate: this.max() };\r\n      }\r\n\r\n      return null;\r\n    };\r\n  }\r\n\r\n  private onDateFormChange(value: {\r\n    day: string;\r\n    month: string;\r\n    year: string;\r\n  }): void {\r\n    const { day, month, year } = value;\r\n\r\n    if (!day && !month && !year) {\r\n      this.ngControl.control?.setValue(null);\r\n      return;\r\n    }\r\n\r\n    const paddedDay = day.padStart(2, '0');\r\n    const paddedMonth = month.padStart(2, '0');\r\n\r\n    if (day && month && year) {\r\n      // Full date is available, use ISO format\r\n      this.ngControl.control?.setValue(`${year}-${paddedMonth}-${paddedDay}`);\r\n    } else {\r\n      // Partial date, pass as object\r\n      this.ngControl.control?.setValue({\r\n        day: paddedDay,\r\n        month: paddedMonth,\r\n        year,\r\n      });\r\n    }\r\n\r\n    this.ngControl.control.markAsTouched();\r\n  }\r\n\r\n  // Update internal date form based on parent value\r\n  private updateDateForm(value: string | DateInputParts | null): void {\r\n    if (!value) {\r\n      this.dateForm.reset(\r\n        { day: '', month: '', year: '' },\r\n        { emitEvent: false },\r\n      );\r\n      return;\r\n    }\r\n\r\n    let day = '';\r\n    let month = '';\r\n    let year = '';\r\n\r\n    if (typeof value === 'string') {\r\n      // Handle ISO date format (YYYY-MM-DD)\r\n      const dateParts = value.split('-');\r\n      if (dateParts.length === 3) {\r\n        year = dateParts[0];\r\n        month = dateParts[1].replace(/^0/, ''); // Remove leading zero\r\n        day = dateParts[2].replace(/^0/, ''); // Remove leading zero\r\n      }\r\n    } else {\r\n      // Handle object format { day, month, year }\r\n      day = value.day?.replace(/^0/, '') || '';\r\n      month = value.month?.replace(/^0/, '') || '';\r\n      year = value.year || '';\r\n    }\r\n\r\n    this.dateForm.setValue({ day, month, year }, { emitEvent: false });\r\n  }\r\n\r\n  protected getInputId(part: string): string | null {\r\n    return this.commonFormInput.inputId()\r\n      ? `${this.commonFormInput.inputId()}-${part}`\r\n      : null;\r\n  }\r\n\r\n  protected hasFieldError(field: string): boolean {\r\n    const control = this.dateForm.get(field);\r\n    return !!control && control.touched && !!control.errors;\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1458,10 +1625,10 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 53
+                "line": 110
             },
             "extends": [],
-            "templateData": "<div class=\"govuk-date-input\" [id]=\"commonFormInput.inputId()\">\n  <div class=\"govuk-date-input__item\">\n    <div class=\"govuk-form-group\">\n      <label\n        class=\"govuk-label govuk-date-input__label\"\n        [attr.for]=\"getInputId('day')\"\n      >\n        Day\n      </label>\n      <input\n        class=\"govuk-input govuk-date-input__input govuk-input--width-2\"\n        [ngClass]=\"commonFormInput.extraClasses()\"\n        [class.govuk-input--error]=\"hasError()\"\n        [attr.id]=\"getInputId('day')\"\n        type=\"text\"\n        inputmode=\"numeric\"\n        [formControl]=\"dateForm.controls.day\"\n      />\n    </div>\n  </div>\n  <div class=\"govuk-date-input__item\">\n    <div class=\"govuk-form-group\">\n      <label\n        class=\"govuk-label govuk-date-input__label\"\n        [attr.for]=\"getInputId('month')\"\n      >\n        Month\n      </label>\n      <input\n        class=\"govuk-input govuk-date-input__input govuk-input--width-2\"\n        [ngClass]=\"commonFormInput.extraClasses()\"\n        [class.govuk-input--error]=\"hasError()\"\n        [attr.id]=\"getInputId('month')\"\n        type=\"text\"\n        inputmode=\"numeric\"\n        [formControl]=\"dateForm.controls.month\"\n      />\n    </div>\n  </div>\n  <div class=\"govuk-date-input__item\">\n    <div class=\"govuk-form-group\">\n      <label\n        class=\"govuk-label govuk-date-input__label\"\n        [attr.for]=\"getInputId('year')\"\n      >\n        Year\n      </label>\n      <input\n        class=\"govuk-input govuk-date-input__input govuk-input--width-4\"\n        [ngClass]=\"commonFormInput.extraClasses()\"\n        [class.govuk-input--error]=\"hasError()\"\n        [attr.id]=\"getInputId('year')\"\n        type=\"text\"\n        inputmode=\"numeric\"\n        [formControl]=\"dateForm.controls.year\"\n      />\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"govuk-date-input\" [id]=\"commonFormInput.inputId()\">\r\n  <div class=\"govuk-date-input__item\">\r\n    <div class=\"govuk-form-group\">\r\n      <label\r\n        class=\"govuk-label govuk-date-input__label\"\r\n        [attr.for]=\"getInputId('day')\"\r\n      >\r\n        Day\r\n      </label>\r\n      <input\r\n        class=\"govuk-input govuk-date-input__input govuk-input--width-2\"\r\n        [ngClass]=\"commonFormInput.extraClasses()\"\r\n        [class.govuk-input--error]=\"hasFieldError('day')\"\r\n        [attr.id]=\"getInputId('day')\"\r\n        type=\"text\"\r\n        inputmode=\"numeric\"\r\n        [formControl]=\"dateForm.controls.day\"\r\n      />\r\n    </div>\r\n  </div>\r\n  <div class=\"govuk-date-input__item\">\r\n    <div class=\"govuk-form-group\">\r\n      <label\r\n        class=\"govuk-label govuk-date-input__label\"\r\n        [attr.for]=\"getInputId('month')\"\r\n      >\r\n        Month\r\n      </label>\r\n      <input\r\n        class=\"govuk-input govuk-date-input__input govuk-input--width-2\"\r\n        [ngClass]=\"commonFormInput.extraClasses()\"\r\n        [class.govuk-input--error]=\"hasFieldError('month')\"\r\n        [attr.id]=\"getInputId('month')\"\r\n        type=\"text\"\r\n        inputmode=\"numeric\"\r\n        [formControl]=\"dateForm.controls.month\"\r\n      />\r\n    </div>\r\n  </div>\r\n  <div class=\"govuk-date-input__item\">\r\n    <div class=\"govuk-form-group\">\r\n      <label\r\n        class=\"govuk-label govuk-date-input__label\"\r\n        [attr.for]=\"getInputId('year')\"\r\n      >\r\n        Year\r\n      </label>\r\n      <input\r\n        class=\"govuk-input govuk-date-input__input govuk-input--width-4\"\r\n        [ngClass]=\"commonFormInput.extraClasses()\"\r\n        [class.govuk-input--error]=\"hasFieldError('year')\"\r\n        [attr.id]=\"getInputId('year')\"\r\n        type=\"text\"\r\n        inputmode=\"numeric\"\r\n        [formControl]=\"dateForm.controls.year\"\r\n      />\r\n    </div>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "GovUKDetailsComponent",
@@ -2160,6 +2327,444 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<div\n  class=\"govuk-notification-banner\"\n  role=\"region\"\n  aria-labelledby=\"govuk-notification-banner-title\"\n  data-module=\"govuk-notification-banner\"\n>\n  <div class=\"govuk-notification-banner__header\">\n    <h2\n      class=\"govuk-notification-banner__title\"\n      id=\"govuk-notification-banner-title\"\n    >\n      {{ title() }}\n    </h2>\n  </div>\n  <div class=\"govuk-notification-banner__content\">\n    <ng-content></ng-content>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "GovUKPaginationComponent",
+            "id": "component-GovUKPaginationComponent-06e1011e84edf54bc73ec78a908045ee498fb21e9bafc2579b0c91581d99df1145fe8ec2213c29fccdcd6edaa3756a3c7ba346d07603b6696eece4b6af7a1db7",
+            "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ngx-govuk-pagination",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./pagination.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "currentPage",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Current page number (1-based)</p>\n",
+                    "line": 56,
+                    "rawdescription": "\nCurrent page number (1-based)",
+                    "required": false
+                },
+                {
+                    "name": "itemCount",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Total number of items</p>\n",
+                    "line": 50,
+                    "rawdescription": "\nTotal number of items",
+                    "required": false
+                },
+                {
+                    "name": "itemsPerPage",
+                    "defaultValue": "10",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Number of items per page</p>\n",
+                    "line": 53,
+                    "rawdescription": "\nNumber of items per page",
+                    "required": false
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "nextClick",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Output event when the next link is clicked</p>\n",
+                    "line": 80,
+                    "rawdescription": "\nOutput event when the next link is clicked",
+                    "required": false
+                },
+                {
+                    "name": "pageChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Output event when a pagination item is clicked</p>\n",
+                    "line": 74,
+                    "rawdescription": "\nOutput event when a pagination item is clicked",
+                    "required": false
+                },
+                {
+                    "name": "previousClick",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Output event when the previous link is clicked</p>\n",
+                    "line": 77,
+                    "rawdescription": "\nOutput event when the previous link is clicked",
+                    "required": false
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "computedItems",
+                    "defaultValue": "computed(() => {\n    const totalPages = this.totalPages();\n    if (totalPages <= 0) {\n      return [];\n    }\n\n    // Simple case: 7 or fewer pages, show all\n    if (totalPages <= 7) {\n      return this.createSequentialItems(1, totalPages);\n    }\n\n    const currentPage = this.currentPage();\n    const items: PageItem[] = [];\n\n    // Always show first page\n    items.push(this.createPageItem(1));\n\n    // Complex case: more than 7 pages, show ellipses\n    if (currentPage <= 4) {\n      // Near the start: show 1 2 3 4 5 ... 100\n      items.push(...this.createSequentialItems(2, 5));\n      items.push(this.createEllipsisItem());\n      items.push(this.createPageItem(totalPages));\n    } else if (currentPage >= totalPages - 3) {\n      // Near the end: show 1 ... 96 97 98 99 100\n      items.push(this.createEllipsisItem());\n      items.push(...this.createSequentialItems(totalPages - 4, totalPages));\n    } else {\n      // In the middle: show 1 ... 49 50 51 ... 100\n      items.push(this.createEllipsisItem());\n      items.push(\n        ...this.createSequentialItems(currentPage - 1, currentPage + 1),\n      );\n      items.push(this.createEllipsisItem());\n      items.push(this.createPageItem(totalPages));\n    }\n\n    return items;\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Computed pagination items</p>\n",
+                    "line": 97,
+                    "rawdescription": "\nComputed pagination items"
+                },
+                {
+                    "name": "currentPage",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Current page number (1-based)</p>\n",
+                    "line": 56,
+                    "rawdescription": "\nCurrent page number (1-based)",
+                    "required": false
+                },
+                {
+                    "name": "hasNextPage",
+                    "defaultValue": "computed(() => this.currentPage() < this.totalPages())",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Computed flag for whether next button should be shown</p>\n",
+                    "line": 91,
+                    "rawdescription": "\nComputed flag for whether next button should be shown"
+                },
+                {
+                    "name": "hasPreviousPage",
+                    "defaultValue": "computed(() => this.currentPage() > 1)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Computed flag for whether previous button should be shown</p>\n",
+                    "line": 88,
+                    "rawdescription": "\nComputed flag for whether previous button should be shown"
+                },
+                {
+                    "name": "isBlockMode",
+                    "defaultValue": "computed(() => this.mode() === 'block')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Computed check if mode is block</p>\n",
+                    "line": 94,
+                    "rawdescription": "\nComputed check if mode is block"
+                },
+                {
+                    "name": "itemCount",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Total number of items</p>\n",
+                    "line": 50,
+                    "rawdescription": "\nTotal number of items",
+                    "required": false
+                },
+                {
+                    "name": "itemsPerPage",
+                    "defaultValue": "10",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Number of items per page</p>\n",
+                    "line": 53,
+                    "rawdescription": "\nNumber of items per page",
+                    "required": false
+                },
+                {
+                    "name": "mode",
+                    "defaultValue": "input<PaginationMode>('list')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Pagination mode - &#39;block&#39; or &#39;list&#39;</p>\n",
+                    "line": 59,
+                    "rawdescription": "\nPagination mode - 'block' or 'list'"
+                },
+                {
+                    "name": "nextClick",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Output event when the next link is clicked</p>\n",
+                    "line": 80,
+                    "rawdescription": "\nOutput event when the next link is clicked",
+                    "required": false
+                },
+                {
+                    "name": "nextLabel",
+                    "defaultValue": "input<string | null>(null)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Label for the next button (additional context)</p>\n",
+                    "line": 71,
+                    "rawdescription": "\nLabel for the next button (additional context)"
+                },
+                {
+                    "name": "nextTitle",
+                    "defaultValue": "input<string>('Next')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Title for the next button</p>\n",
+                    "line": 68,
+                    "rawdescription": "\nTitle for the next button"
+                },
+                {
+                    "name": "pageChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Output event when a pagination item is clicked</p>\n",
+                    "line": 74,
+                    "rawdescription": "\nOutput event when a pagination item is clicked",
+                    "required": false
+                },
+                {
+                    "name": "previousClick",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Output event when the previous link is clicked</p>\n",
+                    "line": 77,
+                    "rawdescription": "\nOutput event when the previous link is clicked",
+                    "required": false
+                },
+                {
+                    "name": "previousLabel",
+                    "defaultValue": "input<string | null>(null)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Label for the previous button (additional context)</p>\n",
+                    "line": 65,
+                    "rawdescription": "\nLabel for the previous button (additional context)"
+                },
+                {
+                    "name": "previousTitle",
+                    "defaultValue": "input<string>('Previous')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Title for the previous button</p>\n",
+                    "line": 62,
+                    "rawdescription": "\nTitle for the previous button"
+                },
+                {
+                    "name": "totalPages",
+                    "defaultValue": "computed(() =>\n    Math.ceil(this.itemCount() / this.itemsPerPage()),\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Computed total number of pages</p>\n",
+                    "line": 83,
+                    "rawdescription": "\nComputed total number of pages"
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "createEllipsisItem",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "PageItem",
+                    "typeParameters": [],
+                    "line": 161,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCreates an ellipsis item\n",
+                    "description": "<p>Creates an ellipsis item</p>\n",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "createPageItem",
+                    "args": [
+                        {
+                            "name": "pageNumber",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "PageItem",
+                    "typeParameters": [],
+                    "line": 149,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCreates a page item for the specified page number\n",
+                    "description": "<p>Creates a page item for the specified page number</p>\n",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "pageNumber",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "createSequentialItems",
+                    "args": [
+                        {
+                            "name": "start",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "end",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "PageItem[]",
+                    "typeParameters": [],
+                    "line": 172,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCreates an array of sequential page items\n",
+                    "description": "<p>Creates an array of sequential page items</p>\n",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "start",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "end",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onPageClick",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "PageItem",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 140,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHandle page number click\n",
+                    "description": "<p>Handle page number click</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "PageItem",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "<p>A pagination component following the GovUK Design System</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">&lt;ngx-govuk-pagination\n  [itemCount]=&quot;100&quot;\n  [itemsPerPage]=&quot;10&quot;\n  [currentPage]=&quot;1&quot;\n  (pageChange)=&quot;onPageChange($event)&quot;\n&gt;&lt;/ngx-govuk-pagination&gt;</code></pre></div>",
+            "rawdescription": "\n\nA pagination component following the GovUK Design System\n\n```html\n<ngx-govuk-pagination\n  [itemCount]=\"100\"\n  [itemsPerPage]=\"10\"\n  [currentPage]=\"1\"\n  (pageChange)=\"onPageChange($event)\"\n></ngx-govuk-pagination>\n```",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n  output,\n} from '@angular/core';\n\n/**\n * Internal interface for pagination items\n */\ninterface PageItem {\n  /** The number/text to display for the item */\n  number: string;\n  /** Whether this is the current active page */\n  current?: boolean;\n  /** Whether to display this item as an ellipsis */\n  ellipsis?: boolean;\n  /** Actual page number for this item */\n  pageNumber?: number;\n  /** Unique identifier for tracking in loops */\n  id: string;\n}\n\n/**\n * Pagination mode - defines layout and behavior\n */\nexport type PaginationMode = 'block' | 'list';\n\n/**\n * A pagination component following the GovUK Design System\n * @component\n *\n * @example\n * <ngx-govuk-pagination\n *   [itemCount]=\"100\"\n *   [itemsPerPage]=\"10\"\n *   [currentPage]=\"1\"\n *   (pageChange)=\"onPageChange($event)\"\n * ></ngx-govuk-pagination>\n */\n@Component({\n  selector: 'ngx-govuk-pagination',\n  standalone: true,\n  templateUrl: './pagination.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKPaginationComponent {\n  /** Total number of items */\n  itemCount = input<number>(0);\n\n  /** Number of items per page */\n  itemsPerPage = input<number>(10);\n\n  /** Current page number (1-based) */\n  currentPage = input<number>(1);\n\n  /** Pagination mode - 'block' or 'list' */\n  mode = input<PaginationMode>('list');\n\n  /** Title for the previous button */\n  previousTitle = input<string>('Previous');\n\n  /** Label for the previous button (additional context) */\n  previousLabel = input<string | null>(null);\n\n  /** Title for the next button */\n  nextTitle = input<string>('Next');\n\n  /** Label for the next button (additional context) */\n  nextLabel = input<string | null>(null);\n\n  /** Output event when a pagination item is clicked */\n  pageChange = output<number>();\n\n  /** Output event when the previous link is clicked */\n  previousClick = output<void>();\n\n  /** Output event when the next link is clicked */\n  nextClick = output<void>();\n\n  /** Computed total number of pages */\n  totalPages = computed(() =>\n    Math.ceil(this.itemCount() / this.itemsPerPage()),\n  );\n\n  /** Computed flag for whether previous button should be shown */\n  hasPreviousPage = computed(() => this.currentPage() > 1);\n\n  /** Computed flag for whether next button should be shown */\n  hasNextPage = computed(() => this.currentPage() < this.totalPages());\n\n  /** Computed check if mode is block */\n  isBlockMode = computed(() => this.mode() === 'block');\n\n  /** Computed pagination items */\n  computedItems = computed(() => {\n    const totalPages = this.totalPages();\n    if (totalPages <= 0) {\n      return [];\n    }\n\n    // Simple case: 7 or fewer pages, show all\n    if (totalPages <= 7) {\n      return this.createSequentialItems(1, totalPages);\n    }\n\n    const currentPage = this.currentPage();\n    const items: PageItem[] = [];\n\n    // Always show first page\n    items.push(this.createPageItem(1));\n\n    // Complex case: more than 7 pages, show ellipses\n    if (currentPage <= 4) {\n      // Near the start: show 1 2 3 4 5 ... 100\n      items.push(...this.createSequentialItems(2, 5));\n      items.push(this.createEllipsisItem());\n      items.push(this.createPageItem(totalPages));\n    } else if (currentPage >= totalPages - 3) {\n      // Near the end: show 1 ... 96 97 98 99 100\n      items.push(this.createEllipsisItem());\n      items.push(...this.createSequentialItems(totalPages - 4, totalPages));\n    } else {\n      // In the middle: show 1 ... 49 50 51 ... 100\n      items.push(this.createEllipsisItem());\n      items.push(\n        ...this.createSequentialItems(currentPage - 1, currentPage + 1),\n      );\n      items.push(this.createEllipsisItem());\n      items.push(this.createPageItem(totalPages));\n    }\n\n    return items;\n  });\n\n  /**\n   * Handle page number click\n   */\n  onPageClick(item: PageItem): void {\n    if (!item.ellipsis && item.pageNumber) {\n      this.pageChange.emit(item.pageNumber);\n    }\n  }\n\n  /**\n   * Creates a page item for the specified page number\n   */\n  private createPageItem(pageNumber: number): PageItem {\n    return {\n      number: String(pageNumber),\n      current: pageNumber === this.currentPage(),\n      pageNumber: pageNumber,\n      id: `page-${pageNumber}`,\n    };\n  }\n\n  /**\n   * Creates an ellipsis item\n   */\n  private createEllipsisItem(): PageItem {\n    return {\n      number: '',\n      ellipsis: true,\n      id: window.crypto.randomUUID(),\n    };\n  }\n\n  /**\n   * Creates an array of sequential page items\n   */\n  private createSequentialItems(start: number, end: number): PageItem[] {\n    const items: PageItem[] = [];\n    for (let i = start; i <= end; i++) {\n      items.push(this.createPageItem(i));\n    }\n    return items;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<nav class=\"govuk-pagination\" [class.govuk-pagination--block]=\"isBlockMode()\">\n  @if (hasPreviousPage()) {\n    <div class=\"govuk-pagination__prev\">\n      <a\n        class=\"govuk-link govuk-pagination__link\"\n        href=\"javascript:void(0)\"\n        rel=\"prev\"\n        (click)=\"$event.preventDefault(); previousClick.emit()\"\n      >\n        <svg\n          class=\"govuk-pagination__icon govuk-pagination__icon--prev\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          height=\"13\"\n          width=\"15\"\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          viewBox=\"0 0 15 13\"\n        >\n          <path\n            d=\"m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z\"\n          ></path>\n        </svg>\n        <span class=\"govuk-pagination__link-title\">\n          {{ previousTitle() }}<span class=\"govuk-visually-hidden\"> page</span>\n        </span>\n        @if (isBlockMode() && previousLabel()) {\n          <span class=\"govuk-pagination__link-label\">\n            {{ previousLabel() }}\n          </span>\n        }\n      </a>\n    </div>\n  }\n\n  @if (!isBlockMode()) {\n    @let items = computedItems();\n    @if (items && items.length > 0) {\n      <ul class=\"govuk-pagination__list\">\n        @for (item of items; track item.id) {\n          <li\n            class=\"govuk-pagination__item\"\n            [class.govuk-pagination__item--current]=\"item.current\"\n          >\n            @if (!item.ellipsis) {\n              <a\n                class=\"govuk-link govuk-pagination__link\"\n                href=\"javascript:void(0)\"\n                [attr.aria-label]=\"'Page ' + item.number\"\n                [attr.aria-current]=\"item.current ? 'page' : null\"\n                (click)=\"$event.preventDefault(); onPageClick(item)\"\n              >\n                {{ item.number }}\n              </a>\n            } @else {\n              <span class=\"govuk-pagination__ellipsis\">&hellip;</span>\n            }\n          </li>\n        }\n      </ul>\n    }\n  }\n\n  @if (hasNextPage()) {\n    <div class=\"govuk-pagination__next\">\n      <a\n        class=\"govuk-link govuk-pagination__link\"\n        href=\"javascript:void(0)\"\n        rel=\"next\"\n        (click)=\"$event.preventDefault(); nextClick.emit()\"\n      >\n        <span class=\"govuk-pagination__link-title\">\n          {{ nextTitle() }}<span class=\"govuk-visually-hidden\"> page</span>\n        </span>\n        @if (isBlockMode() && nextLabel()) {\n          <span class=\"govuk-pagination__link-label\">\n            {{ nextLabel() }}\n          </span>\n        }\n        <svg\n          class=\"govuk-pagination__icon govuk-pagination__icon--next\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          height=\"13\"\n          width=\"15\"\n          aria-hidden=\"true\"\n          focusable=\"false\"\n          viewBox=\"0 0 15 13\"\n        >\n          <path\n            d=\"m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z\"\n          ></path>\n        </svg>\n      </a>\n    </div>\n  }\n</nav>\n"
         },
         {
             "name": "GovUKPanelComponent",
@@ -3669,6 +4274,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "BlockMode",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 30,\n    itemsPerPage: 10,\n    currentPage: 2,\n    mode: 'block',\n    previousTitle: 'Previous',\n    previousLabel: 'Application details',\n    nextTitle: 'Next',\n    nextLabel: 'Check your answers',\n  },\n}"
+            },
+            {
                 "name": "config",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3677,6 +4292,16 @@
                 "deprecationMessage": "",
                 "type": "StorybookConfig",
                 "defaultValue": "{\n  stories: ['../**/*.stories.@(js|jsx|ts|tsx|mdx)'],\n  addons: ['@storybook/addon-essentials'],\n  framework: {\n    name: '@storybook/angular',\n    options: {},\n  },\n}"
+            },
+            {
+                "name": "CustomLabels",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 30,\n    itemsPerPage: 10,\n    currentPage: 2,\n    previousTitle: 'Previous step',\n    nextTitle: 'Next step',\n  },\n}"
             },
             {
                 "name": "CustomTarget",
@@ -3696,7 +4321,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: () => ({\n    props: {\n      form: setupForm(),\n    },\n    template: `\n      <div class=\"govuk-form-group\">\n        <h1 class=\"govuk-heading-l\">When was your passport issued?</h1>\n        <div class=\"govuk-hint\">For example, 27 3 2007</div>\n        <form [formGroup]=\"form\">\n          <ngx-govuk-date-input\n            formControlName=\"dateField\"\n            inputId=\"passport-issued\"\n          ></ngx-govuk-date-input>\n        </form>\n      </div>\n    `,\n    moduleMetadata: {\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\n    },\n  }),\n}"
+                "defaultValue": "{\r\n  render: () => ({\r\n    props: {\r\n      form: setupForm(),\r\n    },\r\n    template: `\r\n        <form [formGroup]=\"form\">\r\n          <ngx-govuk-date-input\r\n            formControlName=\"dateField\"\r\n            inputId=\"passport-issued\"\r\n          ></ngx-govuk-date-input>\r\n        </form>\r\n    `,\r\n    moduleMetadata: {\r\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\r\n    },\r\n  }),\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 100,\n    itemsPerPage: 10,\n    currentPage: 5,\n  },\n}"
             },
             {
                 "name": "Default",
@@ -3727,6 +4362,36 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  logoLink: '/',\n}"
+            },
+            {
+                "name": "FewPages",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 35,\n    itemsPerPage: 10,\n    currentPage: 2,\n  },\n}"
+            },
+            {
+                "name": "FirstPage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 100,\n    itemsPerPage: 10,\n    currentPage: 1,\n  },\n}"
+            },
+            {
+                "name": "LastPage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 100,\n    itemsPerPage: 10,\n    currentPage: 10,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3766,7 +4431,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<GovUKDateInputComponent>",
-                "defaultValue": "{\n  title: 'Components/Date Input',\n  component: GovUKDateInputComponent,\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n  tags: ['autodocs'],\n}"
+                "defaultValue": "{\r\n  title: 'Forms/GovUKDateInputComponent',\r\n  component: GovUKDateInputComponent,\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n  tags: ['autodocs'],\r\n}"
             },
             {
                 "name": "meta",
@@ -3847,6 +4512,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<GovUKNotificationBannerComponent>",
                 "defaultValue": "{\n  component: GovUKNotificationBannerComponent,\n  title: 'Notification Banner/GovUKNotificationBannerComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<GovUKPaginationComponent>",
+                "defaultValue": "{\n  component: GovUKPaginationComponent,\n  title: 'Navigation/GovUKPaginationComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKPaginationComponent],\n    }),\n  ],\n  argTypes: {\n    mode: {\n      control: 'radio',\n      options: ['list', 'block'],\n      description: 'Display mode for pagination',\n    },\n    itemCount: {\n      control: { type: 'number', min: 0 },\n      description: 'Total number of items to paginate',\n    },\n    itemsPerPage: {\n      control: { type: 'number', min: 1 },\n      description: 'Number of items to display per page',\n    },\n    currentPage: {\n      control: { type: 'number', min: 1 },\n      description: 'Current active page',\n    },\n    previousTitle: {\n      control: 'text',\n      description: 'Text for the previous button',\n    },\n    previousLabel: {\n      control: 'text',\n      description:\n        'Additional context label for previous button (displayed in block mode)',\n    },\n    nextTitle: {\n      control: 'text',\n      description: 'Text for the next button',\n    },\n    nextLabel: {\n      control: 'text',\n      description:\n        'Additional context label for next button (displayed in block mode)',\n    },\n    pageChange: { action: 'pageChange' },\n    previousClick: { action: 'previousClick' },\n    nextClick: { action: 'nextClick' },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -4326,7 +5001,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => {\n  return new FormGroup({\n    dateField: new FormControl<string>('', Validators.required),\n  });\n}"
+                "defaultValue": "() => {\r\n  return new FormGroup({\r\n    dateField: new FormControl<string>('', Validators.required),\r\n  });\r\n}"
             },
             {
                 "name": "Template",
@@ -4437,6 +5112,16 @@
                 "deprecationMessage": "",
                 "type": "StoryFn<GovUKNotificationBannerComponent>",
                 "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `<ngx-govuk-notification-banner ${argsToTemplate(args)}>\n    <p class=\"govuk-notification-banner__heading\">\n      You have 7 days left to send your application.\n      <a class=\"govuk-notification-banner__link\" href=\"#\">View application</a>.\n    </p>\n  </ngx-govuk-notification-banner>`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryFn<GovUKPaginationComponent>",
+                "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n  <div class=\"govuk-frontend-supported\">\n    <ngx-govuk-pagination ${argsToTemplate(args)}></ngx-govuk-pagination>\n  </div>\n  `,\n})"
             },
             {
                 "name": "Template",
@@ -4619,16 +5304,6 @@
                 "defaultValue": "{\r\n  render: (args) => ({\r\n    props: {\r\n      ...args,\r\n      form: new FormGroup({\r\n        input: new FormControl(\r\n          'This is some initial text to demonstrate the character count functionality.',\r\n        ),\r\n      }),\r\n    },\r\n    template: `<form [formGroup]=\"form\">\r\n      <ngx-govuk-textarea\r\n        formControlName=\"input\"\r\n         ${argsToTemplate(args)}\r\n      ></ngx-govuk-textarea>\r\n    </form>`,\r\n  }),\r\n  args: {\r\n    inputId: 'story3',\r\n    autocomplete: 'off',\r\n    extraClasses: '',\r\n    rows: 5,\r\n    maxLength: 100,\r\n    showCharacterCount: true,\r\n  },\r\n}"
             },
             {
-                "name": "WithError",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: () => ({\n    props: {\n      form: setupForm(),\n    },\n    template: `\n      <div class=\"govuk-form-group govuk-form-group--error\">\n        <h1 class=\"govuk-heading-l\">When was your passport issued?</h1>\n        <div class=\"govuk-hint\">For example, 27 3 2007</div>\n        <p class=\"govuk-error-message\">\n          <span class=\"govuk-visually-hidden\">Error:</span> The date your passport was issued must include a year\n        </p>\n        <form [formGroup]=\"form\">\n          <ngx-govuk-date-input\n            formControlName=\"dateField\"\n            inputId=\"passport-issued-error\"\n          ></ngx-govuk-date-input>\n        </form>\n      </div>\n    `,\n    moduleMetadata: {\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\n    },\n  }),\n}"
-            },
-            {
                 "name": "WithInitiallyExpandedItems",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4693,6 +5368,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
+                "kind": 192
+            },
+            {
+                "name": "PaginationMode",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"block\" | \"list\"",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "<p>Pagination mode - defines layout and behavior</p>\n",
                 "kind": 192
             },
             {
@@ -4822,6 +5508,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<GovUKNotificationBannerComponent>",
                 "file": "libs/ngx-govuk-frontend/notification-banner/src/lib/notification-banner.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<GovUKPaginationComponent>",
+                "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -5028,6 +5725,88 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts": [
+                {
+                    "name": "BlockMode",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 30,\n    itemsPerPage: 10,\n    currentPage: 2,\n    mode: 'block',\n    previousTitle: 'Previous',\n    previousLabel: 'Application details',\n    nextTitle: 'Next',\n    nextLabel: 'Check your answers',\n  },\n}"
+                },
+                {
+                    "name": "CustomLabels",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 30,\n    itemsPerPage: 10,\n    currentPage: 2,\n    previousTitle: 'Previous step',\n    nextTitle: 'Next step',\n  },\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 100,\n    itemsPerPage: 10,\n    currentPage: 5,\n  },\n}"
+                },
+                {
+                    "name": "FewPages",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 35,\n    itemsPerPage: 10,\n    currentPage: 2,\n  },\n}"
+                },
+                {
+                    "name": "FirstPage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 100,\n    itemsPerPage: 10,\n    currentPage: 1,\n  },\n}"
+                },
+                {
+                    "name": "LastPage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: Template,\n  args: {\n    itemCount: 100,\n    itemsPerPage: 10,\n    currentPage: 10,\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<GovUKPaginationComponent>",
+                    "defaultValue": "{\n  component: GovUKPaginationComponent,\n  title: 'Navigation/GovUKPaginationComponent',\n  decorators: [\n    moduleMetadata({\n      imports: [GovUKPaginationComponent],\n    }),\n  ],\n  argTypes: {\n    mode: {\n      control: 'radio',\n      options: ['list', 'block'],\n      description: 'Display mode for pagination',\n    },\n    itemCount: {\n      control: { type: 'number', min: 0 },\n      description: 'Total number of items to paginate',\n    },\n    itemsPerPage: {\n      control: { type: 'number', min: 1 },\n      description: 'Number of items to display per page',\n    },\n    currentPage: {\n      control: { type: 'number', min: 1 },\n      description: 'Current active page',\n    },\n    previousTitle: {\n      control: 'text',\n      description: 'Text for the previous button',\n    },\n    previousLabel: {\n      control: 'text',\n      description:\n        'Additional context label for previous button (displayed in block mode)',\n    },\n    nextTitle: {\n      control: 'text',\n      description: 'Text for the next button',\n    },\n    nextLabel: {\n      control: 'text',\n      description:\n        'Additional context label for next button (displayed in block mode)',\n    },\n    pageChange: { action: 'pageChange' },\n    previousClick: { action: 'previousClick' },\n    nextClick: { action: 'nextClick' },\n  },\n}"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryFn<GovUKPaginationComponent>",
+                    "defaultValue": "(args) => ({\n  props: { ...args },\n  template: `\n  <div class=\"govuk-frontend-supported\">\n    <ngx-govuk-pagination ${argsToTemplate(args)}></ngx-govuk-pagination>\n  </div>\n  `,\n})"
+                }
+            ],
             "libs/ngx-govuk-frontend/.storybook/main.ts": [
                 {
                     "name": "config",
@@ -5081,7 +5860,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: () => ({\n    props: {\n      form: setupForm(),\n    },\n    template: `\n      <div class=\"govuk-form-group\">\n        <h1 class=\"govuk-heading-l\">When was your passport issued?</h1>\n        <div class=\"govuk-hint\">For example, 27 3 2007</div>\n        <form [formGroup]=\"form\">\n          <ngx-govuk-date-input\n            formControlName=\"dateField\"\n            inputId=\"passport-issued\"\n          ></ngx-govuk-date-input>\n        </form>\n      </div>\n    `,\n    moduleMetadata: {\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\n    },\n  }),\n}"
+                    "defaultValue": "{\r\n  render: () => ({\r\n    props: {\r\n      form: setupForm(),\r\n    },\r\n    template: `\r\n        <form [formGroup]=\"form\">\r\n          <ngx-govuk-date-input\r\n            formControlName=\"dateField\"\r\n            inputId=\"passport-issued\"\r\n          ></ngx-govuk-date-input>\r\n        </form>\r\n    `,\r\n    moduleMetadata: {\r\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\r\n    },\r\n  }),\r\n}"
                 },
                 {
                     "name": "meta",
@@ -5091,7 +5870,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<GovUKDateInputComponent>",
-                    "defaultValue": "{\n  title: 'Components/Date Input',\n  component: GovUKDateInputComponent,\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n  tags: ['autodocs'],\n}"
+                    "defaultValue": "{\r\n  title: 'Forms/GovUKDateInputComponent',\r\n  component: GovUKDateInputComponent,\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n  tags: ['autodocs'],\r\n}"
                 },
                 {
                     "name": "setupForm",
@@ -5101,17 +5880,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => {\n  return new FormGroup({\n    dateField: new FormControl<string>('', Validators.required),\n  });\n}"
-                },
-                {
-                    "name": "WithError",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: () => ({\n    props: {\n      form: setupForm(),\n    },\n    template: `\n      <div class=\"govuk-form-group govuk-form-group--error\">\n        <h1 class=\"govuk-heading-l\">When was your passport issued?</h1>\n        <div class=\"govuk-hint\">For example, 27 3 2007</div>\n        <p class=\"govuk-error-message\">\n          <span class=\"govuk-visually-hidden\">Error:</span> The date your passport was issued must include a year\n        </p>\n        <form [formGroup]=\"form\">\n          <ngx-govuk-date-input\n            formControlName=\"dateField\"\n            inputId=\"passport-issued-error\"\n          ></ngx-govuk-date-input>\n        </form>\n      </div>\n    `,\n    moduleMetadata: {\n      imports: [ReactiveFormsModule, GovUKDateInputComponent],\n    },\n  }),\n}"
+                    "defaultValue": "() => {\r\n  return new FormGroup({\r\n    dateField: new FormControl<string>('', Validators.required),\r\n  });\r\n}"
                 }
             ],
             "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.stories.ts": [
@@ -6128,6 +6897,19 @@
                     "kind": 192
                 }
             ],
+            "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.ts": [
+                {
+                    "name": "PaginationMode",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"block\" | \"list\"",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "<p>Pagination mode - defines layout and behavior</p>\n",
+                    "kind": 192
+                }
+            ],
             "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.stories.ts": [
                 {
                     "name": "Story",
@@ -6278,6 +7060,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<GovUKNotificationBannerComponent>",
                     "file": "libs/ngx-govuk-frontend/notification-banner/src/lib/notification-banner.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<GovUKPaginationComponent>",
+                    "file": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -6522,7 +7317,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 2,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -6998,16 +7793,6 @@
             },
             {
                 "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithError",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/ngx-govuk-frontend/date-input/src/lib/date-input.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -7021,8 +7806,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "GovUKDateInputComponent",
-                "coveragePercent": 10,
-                "coverageCount": "1/10",
+                "coveragePercent": 18,
+                "coverageCount": "3/16",
                 "status": "low"
             },
             {
@@ -7445,6 +8230,124 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BlockMode",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CustomLabels",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FewPages",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FirstPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LastPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GovUKPaginationComponent",
+                "coveragePercent": 100,
+                "coverageCount": "27/27",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "PageItem",
+                "coveragePercent": 100,
+                "coverageCount": "6/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/ngx-govuk-frontend/pagination/src/lib/pagination.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "PaginationMode",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
             },
             {
                 "filePath": "libs/ngx-govuk-frontend/panel/src/lib/panel.component.stories.ts",
