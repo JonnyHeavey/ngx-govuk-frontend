@@ -50,15 +50,14 @@ import {
  * @property {boolean} showCharacterCount - Optional. Whether to show the character count. Defaults to false.
  */
 @Component({
-  selector: 'ngx-govuk-textarea',
-  standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
-  templateUrl: './textarea.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [
-    ValueAccessorDirective,
-    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-  ],
+    selector: 'ngx-govuk-textarea',
+    imports: [NgClass, ReactiveFormsModule],
+    templateUrl: './textarea.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        ValueAccessorDirective,
+        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+    ]
 })
 export class GovUKTextareaComponent implements OnInit {
   readonly ngControl = injectNgControl();

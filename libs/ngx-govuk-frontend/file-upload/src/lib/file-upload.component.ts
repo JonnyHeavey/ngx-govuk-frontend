@@ -24,15 +24,14 @@ import {
  * @property {string} inputId - Optional. The ID attribute for the input element.
  */
 @Component({
-  selector: 'ngx-govuk-file-upload',
-  standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
-  templateUrl: './file-upload.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [
-    ValueAccessorDirective,
-    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-  ],
+    selector: 'ngx-govuk-file-upload',
+    imports: [NgClass, ReactiveFormsModule],
+    templateUrl: './file-upload.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        ValueAccessorDirective,
+        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+    ]
 })
 export class GovUKFileUploadComponent {
   readonly ngControl = injectNgControl();

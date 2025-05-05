@@ -9,11 +9,10 @@ import {
 import { GovUKTabComponent } from '../tab/tab.component';
 
 @Component({
-  selector: 'ngx-govuk-tabs',
-  standalone: true,
-  imports: [NgTemplateOutlet],
-  templateUrl: './tabs.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ngx-govuk-tabs',
+    imports: [NgTemplateOutlet],
+    templateUrl: './tabs.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GovUKTabsComponent {
   readonly title = input.required<string>();

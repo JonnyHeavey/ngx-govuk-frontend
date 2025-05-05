@@ -23,27 +23,26 @@ import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
 import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
 
 @Component({
-  standalone: true,
-  imports: [
-    RouterModule,
-    GovUKButtonGroupComponent,
-    GovUKButtonComponent,
-    GovUKCookieBannerComponent,
-    GovUKDetailsComponent,
-    GovUKInsetTextComponent,
-    GovUKNotificationBannerComponent,
-    GovUKPaginationComponent,
-    GovUKPanelComponent,
-    GovUKTagComponent,
-    GovUKWarningTextComponent,
-    GovUKTabsComponent,
-    GovUKTabComponent,
-    GovUKTableComponent,
-    GovUKAccordionComponent,
-    GovUKAccordionItemComponent,
-  ],
-  selector: 'ngx-govuk-frontend-demo',
-  templateUrl: './demo.component.html',
+    imports: [
+        RouterModule,
+        GovUKButtonGroupComponent,
+        GovUKButtonComponent,
+        GovUKCookieBannerComponent,
+        GovUKDetailsComponent,
+        GovUKInsetTextComponent,
+        GovUKNotificationBannerComponent,
+        GovUKPaginationComponent,
+        GovUKPanelComponent,
+        GovUKTagComponent,
+        GovUKWarningTextComponent,
+        GovUKTabsComponent,
+        GovUKTabComponent,
+        GovUKTableComponent,
+        GovUKAccordionComponent,
+        GovUKAccordionItemComponent,
+    ],
+    selector: 'ngx-govuk-frontend-demo',
+    templateUrl: './demo.component.html'
 })
 export class DemoComponent {
   readonly columns: GovUKTableColumn[] = [

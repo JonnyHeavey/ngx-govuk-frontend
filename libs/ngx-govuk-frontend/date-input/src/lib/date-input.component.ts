@@ -49,15 +49,14 @@ interface DateInputParts {
  * @property {string} max - Optional. The maximum valid date in ISO format (YYYY-MM-DD).
  */
 @Component({
-  selector: 'ngx-govuk-date-input',
-  standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
-  templateUrl: './date-input.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [
-    ValueAccessorDirective,
-    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-  ],
+    selector: 'ngx-govuk-date-input',
+    imports: [NgClass, ReactiveFormsModule],
+    templateUrl: './date-input.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        ValueAccessorDirective,
+        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+    ]
 })
 export class GovUKDateInputComponent {
   readonly ngControl = injectNgControl();

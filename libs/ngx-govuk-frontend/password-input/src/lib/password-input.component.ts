@@ -26,15 +26,14 @@ import {
  * @property {string} inputId - The ID attribute for the input element.
  */
 @Component({
-  selector: 'ngx-govuk-password-input',
-  standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
-  templateUrl: './password-input.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [
-    ValueAccessorDirective,
-    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-  ],
+    selector: 'ngx-govuk-password-input',
+    imports: [NgClass, ReactiveFormsModule],
+    templateUrl: './password-input.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        ValueAccessorDirective,
+        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+    ]
 })
 export class GovUKPasswordInputComponent {
   readonly ngControl = injectNgControl();

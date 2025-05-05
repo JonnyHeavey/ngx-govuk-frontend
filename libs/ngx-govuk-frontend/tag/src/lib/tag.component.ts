@@ -19,11 +19,10 @@ export type GovUKTagColor =
   | 'yellow';
 
 @Component({
-  selector: 'ngx-govuk-tag',
-  standalone: true,
-  imports: [NgClass],
-  templateUrl: './tag.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ngx-govuk-tag',
+    imports: [NgClass],
+    templateUrl: './tag.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GovUKTagComponent {
   color = input<GovUKTagColor>('blue');

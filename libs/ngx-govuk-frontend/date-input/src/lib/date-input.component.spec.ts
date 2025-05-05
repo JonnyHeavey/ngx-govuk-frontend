@@ -20,8 +20,12 @@ describe('GovUKDateInputComponent', () => {
 
     beforeEach(async () => {
       await TestBed.configureTestingModule({
-        imports: [ReactiveFormsModule, FormsModule, GovUKDateInputComponent],
-        declarations: [TestHostComponent],
+        imports: [
+          ReactiveFormsModule,
+          FormsModule,
+          GovUKDateInputComponent,
+          TestHostComponent,
+        ],
       }).compileComponents();
 
       fixture = TestBed.createComponent(TestHostComponent);
@@ -96,17 +100,14 @@ describe('GovUKDateInputComponent', () => {
       // Parent form control should have an object with parts
       const value = hostComponent.form.get('date')?.value;
       expect(value).toEqual(
-        expect.objectContaining({
-          day: '15',
-          month: '06',
-          year: '',
-        }),
+        expect.objectContaining({ day: '15', month: '06', year: '' }),
       );
     }));
   });
 });
 
 @Component({
+  imports: [ReactiveFormsModule, GovUKDateInputComponent],
   template: `
     <div class="govuk-form-group">
       <form [formGroup]="form">
@@ -122,9 +123,7 @@ describe('GovUKDateInputComponent', () => {
 class TestHostComponent {
   @ViewChild('dateInput') dateInputComponent!: GovUKDateInputComponent;
 
-  form = new FormGroup({
-    date: new FormControl<string>(''),
-  });
+  form = new FormGroup({ date: new FormControl<string>('') });
 
   inputId = 'test-date';
 }

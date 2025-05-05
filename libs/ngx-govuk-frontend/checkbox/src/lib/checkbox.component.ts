@@ -6,12 +6,11 @@ import {
 } from 'ngx-govuk-frontend/form-utils';
 
 @Component({
-  selector: 'ngx-govuk-checkbox',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './checkbox.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [ValueAccessorDirective],
+    selector: 'ngx-govuk-checkbox',
+    imports: [ReactiveFormsModule],
+    templateUrl: './checkbox.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [ValueAccessorDirective]
 })
 export class GovUKCheckboxComponent {
   readonly ngControl = injectNgControl();
