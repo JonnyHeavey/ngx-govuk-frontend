@@ -19,23 +19,22 @@ import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
 import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
 
 @Component({
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    GovUKFormGroupComponent,
-    GovUKFieldsetComponent,
-    GovUKBackLinkComponent,
-    GovUKTextInputComponent,
-    GovUKTextareaComponent,
-    GovUKSelectComponent,
-    GovUKPasswordInputComponent,
-    GovUKCheckboxComponent,
-    GovUKRadioGroupComponent,
-    GovUKFileUploadComponent,
-    GovUKRadioOptionDirective,
-    GovUKDateInputComponent,
-  ],
-  templateUrl: './forms.component.html',
+    imports: [
+        ReactiveFormsModule,
+        GovUKFormGroupComponent,
+        GovUKFieldsetComponent,
+        GovUKBackLinkComponent,
+        GovUKTextInputComponent,
+        GovUKTextareaComponent,
+        GovUKSelectComponent,
+        GovUKPasswordInputComponent,
+        GovUKCheckboxComponent,
+        GovUKRadioGroupComponent,
+        GovUKFileUploadComponent,
+        GovUKRadioOptionDirective,
+        GovUKDateInputComponent,
+    ],
+    templateUrl: './forms.component.html'
 })
 export class FormsComponent {
   readonly form = inject(FormBuilder).nonNullable.group({

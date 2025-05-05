@@ -18,15 +18,14 @@ export interface GovUKSelectOption {
 }
 
 @Component({
-  selector: 'ngx-govuk-select',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './select.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [
-    ValueAccessorDirective,
-    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-  ],
+    selector: 'ngx-govuk-select',
+    imports: [ReactiveFormsModule],
+    templateUrl: './select.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        ValueAccessorDirective,
+        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+    ]
 })
 export class GovUKSelectComponent {
   readonly ngControl = injectNgControl();

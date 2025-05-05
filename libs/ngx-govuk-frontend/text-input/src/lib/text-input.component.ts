@@ -35,15 +35,14 @@ import {
  * @property {string} suffix - Optional. Text or symbol displayed after the input field (e.g., 'per day').
  */
 @Component({
-  selector: 'ngx-govuk-text-input',
-  standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
-  templateUrl: './text-input.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [
-    ValueAccessorDirective,
-    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-  ],
+    selector: 'ngx-govuk-text-input',
+    imports: [NgClass, ReactiveFormsModule],
+    templateUrl: './text-input.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        ValueAccessorDirective,
+        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+    ]
 })
 export class GovUKTextInputComponent {
   readonly ngControl = injectNgControl();

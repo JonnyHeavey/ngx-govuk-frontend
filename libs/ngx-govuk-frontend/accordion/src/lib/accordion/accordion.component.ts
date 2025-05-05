@@ -12,12 +12,11 @@ import {
 import { GovUKAccordionItemComponent } from '../accordion-item/accordion-item.component';
 
 @Component({
-  standalone: true,
-  imports: [NgTemplateOutlet],
-  selector: 'ngx-govuk-accordion',
-  templateUrl: './accordion.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [CdkAccordion],
+    imports: [NgTemplateOutlet],
+    selector: 'ngx-govuk-accordion',
+    templateUrl: './accordion.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [CdkAccordion]
 })
 export class GovUKAccordionComponent {
   readonly id = input.required<string>();

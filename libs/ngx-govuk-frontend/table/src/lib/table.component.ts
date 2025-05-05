@@ -15,11 +15,10 @@ export type GovUKTableColumn = {
 };
 
 @Component({
-  selector: 'ngx-govuk-table',
-  standalone: true,
-  imports: [CdkTableModule],
-  templateUrl: './table.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ngx-govuk-table',
+    imports: [CdkTableModule],
+    templateUrl: './table.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GovUKTableComponent {
   readonly columns = input.required<GovUKTableColumn[]>();

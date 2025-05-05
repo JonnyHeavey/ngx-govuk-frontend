@@ -14,19 +14,18 @@ import {
 import { GovUKSkipLinkComponent } from 'ngx-govuk-frontend/skip-link';
 
 @Component({
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    GovUKHeaderComponent,
-    GovUKFooterComponent,
-    GovUKPhaseBannerComponent,
-    GovUKBreadcrumbsComponent,
-    GovUKBreadcrumbDirective,
-    GovUKServiceNavigationComponent,
-    GovUKServiceNavigationItemDirective,
-    GovUKSkipLinkComponent,
-  ],
-  selector: 'ngx-govuk-frontend-root',
-  templateUrl: './app.component.html',
+    imports: [
+        RouterOutlet,
+        GovUKHeaderComponent,
+        GovUKFooterComponent,
+        GovUKPhaseBannerComponent,
+        GovUKBreadcrumbsComponent,
+        GovUKBreadcrumbDirective,
+        GovUKServiceNavigationComponent,
+        GovUKServiceNavigationItemDirective,
+        GovUKSkipLinkComponent,
+    ],
+    selector: 'ngx-govuk-frontend-root',
+    templateUrl: './app.component.html'
 })
 export class AppComponent {}

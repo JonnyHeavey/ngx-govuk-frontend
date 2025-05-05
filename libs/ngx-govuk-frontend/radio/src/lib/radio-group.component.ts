@@ -13,12 +13,11 @@ import {
 import { GovUKRadioOptionDirective } from './radio-option.directive';
 
 @Component({
-  selector: 'ngx-govuk-radio-group',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './radio-group.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  hostDirectives: [ValueAccessorDirective],
+    selector: 'ngx-govuk-radio-group',
+    imports: [ReactiveFormsModule],
+    templateUrl: './radio-group.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [ValueAccessorDirective]
 })
 export class GovUKRadioGroupComponent {
   readonly ngControl = injectNgControl();
