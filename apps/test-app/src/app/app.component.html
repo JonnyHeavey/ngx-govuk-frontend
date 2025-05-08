@@ -24,5 +24,22 @@
     <router-outlet></router-outlet>
   </main>
 
-  <ngx-govuk-footer />
+  <ngx-govuk-footer>
+    <ngx-govuk-footer-links>
+      <ngx-govuk-footer-link href="https://www.gov.uk"
+        >GOV.UK</ngx-govuk-footer-link
+      >
+      <ngx-govuk-footer-link routerLink="/forms">Forms</ngx-govuk-footer-link>
+      <ngx-govuk-footer-link href="https://design-system.service.gov.uk"
+        >Design System</ngx-govuk-footer-link
+      >
+      <ngx-govuk-footer-link href="https://www.gov.wales" lang="cy"
+        >Cymraeg</ngx-govuk-footer-link
+      >
+    </ngx-govuk-footer-links>
+    <ngx-govuk-footer-meta>
+      Built with
+      <a href="https://angular.dev" class="govuk-footer__link">Angular</a>
+    </ngx-govuk-footer-meta>
+  </ngx-govuk-footer>
 </div>

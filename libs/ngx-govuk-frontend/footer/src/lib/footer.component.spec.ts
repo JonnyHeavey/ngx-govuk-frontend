@@ -29,7 +29,7 @@ describe('FooterComponent', () => {
     const testContent = '<div>Test Footer Content</div>';
     fixture.nativeElement.innerHTML = testContent;
     fixture.detectChanges();
-    
+
     const contentElement = fixture.nativeElement.querySelector('div');
     expect(contentElement).toBeTruthy();
     expect(contentElement.textContent).toBe('Test Footer Content');
