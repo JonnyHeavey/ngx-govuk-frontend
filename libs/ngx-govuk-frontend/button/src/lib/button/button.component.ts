@@ -16,7 +16,7 @@ export type GovUKButtonColorType =
   | 'inverse';
 
 /**
- * A button component following the GovUK Design System
+ * A button component following the GovUK Design System (see: https://design-system.service.gov.uk/components/button/)
  * @component
  *
  * @example
@@ -25,7 +25,7 @@ export type GovUKButtonColorType =
  * @property {boolean} disabled - Whether the button is disabled
  * @property {boolean} start - Whether to show the start icon (forward arrow)
  * @property {GovUKButtonColorType} color - The color variant of the button
- *   - 'primary' (default) - Blue button for primary actions
+ *   - 'primary' (default) - Green button for primary actions
  *   - 'secondary' - Grey button for secondary actions
  *   - 'warning' - Red button for destructive actions
  *   - 'inverse' - White button for use on dark backgrounds
