@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 /**
- * Footer component that displays standard GOV.UK footer
+ * Footer links component for use within the GOV.UK footer
+ * Provides a container for footer link components
  *
  * @example
  * ```html
@@ -15,9 +16,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  * ```
  */
 @Component({
-  selector: 'ngx-govuk-footer',
+  selector: 'ngx-govuk-footer-links',
   standalone: true,
-  templateUrl: './footer.component.html',
+  template: `<ul class="govuk-footer__inline-list">
+    <ng-content />
+  </ul>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GovUKFooterComponent {}
+export class GovUKFooterLinksComponent {}

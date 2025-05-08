@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import {
   GovUKBreadcrumbDirective,
   GovUKBreadcrumbsComponent,
 } from 'ngx-govuk-frontend/breadcrumbs';
-import { GovUKFooterComponent } from 'ngx-govuk-frontend/footer';
+import {
+  GovUKFooterComponent,
+  GovUKFooterLinkComponent,
+  GovUKFooterLinksComponent,
+  GovUKFooterMetaComponent,
+} from 'ngx-govuk-frontend/footer';
 import { GovUKHeaderComponent } from 'ngx-govuk-frontend/header';
 import { GovUKPhaseBannerComponent } from 'ngx-govuk-frontend/phase-banner';
 import {
@@ -14,18 +19,22 @@ import {
 import { GovUKSkipLinkComponent } from 'ngx-govuk-frontend/skip-link';
 
 @Component({
-    imports: [
-        RouterOutlet,
-        GovUKHeaderComponent,
-        GovUKFooterComponent,
-        GovUKPhaseBannerComponent,
-        GovUKBreadcrumbsComponent,
-        GovUKBreadcrumbDirective,
-        GovUKServiceNavigationComponent,
-        GovUKServiceNavigationItemDirective,
-        GovUKSkipLinkComponent,
-    ],
-    selector: 'ngx-govuk-frontend-root',
-    templateUrl: './app.component.html'
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    GovUKHeaderComponent,
+    GovUKFooterComponent,
+    GovUKFooterLinkComponent,
+    GovUKFooterLinksComponent,
+    GovUKFooterMetaComponent,
+    GovUKPhaseBannerComponent,
+    GovUKBreadcrumbsComponent,
+    GovUKBreadcrumbDirective,
+    GovUKServiceNavigationComponent,
+    GovUKServiceNavigationItemDirective,
+    GovUKSkipLinkComponent,
+  ],
+  selector: 'ngx-govuk-frontend-root',
+  templateUrl: './app.component.html',
 })
 export class AppComponent {}
