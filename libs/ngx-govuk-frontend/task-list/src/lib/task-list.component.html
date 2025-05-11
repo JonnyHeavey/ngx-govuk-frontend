@@ -1,0 +1,37 @@
+<ul class="govuk-task-list">
+  @for (item of taskItems(); track item) {
+    <li
+      class="govuk-task-list__item"
+      [class.govuk-task-list__item--with-link]="!item.noLink()"
+    >
+      <div class="govuk-task-list__name-and-hint">
+        @if (item.noLink()) {
+          <span>{{ item.title() }}</span>
+        } @else {
+          <a
+            class="govuk-link govuk-task-list__link"
+            [attr.href]="item.href() ? item.href() : null"
+          >
+            {{ item.title() }}
+          </a>
+        }
+
+        @if (item.hint()) {
+          <div class="govuk-task-list__hint">
+            {{ item.hint() }}
+          </div>
+        }
+      </div>
+      <div class="govuk-task-list__status">
+        @let tagColor = item.tagColor();
+        @if (tagColor) {
+          <ngx-govuk-tag [color]="tagColor">
+            {{ item.statusText() }}
+          </ngx-govuk-tag>
+        } @else {
+          {{ item.statusText() }}
+        }
+      </div>
+    </li>
+  }
+</ul>

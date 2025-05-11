@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
@@ -19,30 +20,37 @@ import {
   GovUKTableComponent,
 } from 'ngx-govuk-frontend/table';
 import { GovUKTabComponent, GovUKTabsComponent } from 'ngx-govuk-frontend/tabs';
-import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
+import { GovUKTagColor, GovUKTagComponent } from 'ngx-govuk-frontend/tag';
+import {
+  GovUKTaskListComponent,
+  GovUKTaskListItemDirective,
+} from 'ngx-govuk-frontend/task-list';
 import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
 
 @Component({
-    imports: [
-        RouterModule,
-        GovUKButtonGroupComponent,
-        GovUKButtonComponent,
-        GovUKCookieBannerComponent,
-        GovUKDetailsComponent,
-        GovUKInsetTextComponent,
-        GovUKNotificationBannerComponent,
-        GovUKPaginationComponent,
-        GovUKPanelComponent,
-        GovUKTagComponent,
-        GovUKWarningTextComponent,
-        GovUKTabsComponent,
-        GovUKTabComponent,
-        GovUKTableComponent,
-        GovUKAccordionComponent,
-        GovUKAccordionItemComponent,
-    ],
-    selector: 'ngx-govuk-frontend-demo',
-    templateUrl: './demo.component.html'
+  imports: [
+    CommonModule,
+    RouterModule,
+    GovUKButtonGroupComponent,
+    GovUKButtonComponent,
+    GovUKCookieBannerComponent,
+    GovUKDetailsComponent,
+    GovUKInsetTextComponent,
+    GovUKNotificationBannerComponent,
+    GovUKPaginationComponent,
+    GovUKPanelComponent,
+    GovUKTagComponent,
+    GovUKWarningTextComponent,
+    GovUKTabsComponent,
+    GovUKTabComponent,
+    GovUKTableComponent,
+    GovUKAccordionComponent,
+    GovUKAccordionItemComponent,
+    GovUKTaskListComponent,
+    GovUKTaskListItemDirective,
+  ],
+  selector: 'ngx-govuk-frontend-demo',
+  templateUrl: './demo.component.html',
 })
 export class DemoComponent {
   readonly columns: GovUKTableColumn[] = [
@@ -80,6 +88,34 @@ export class DemoComponent {
   // Last page example
   lastPageCurrent = 3;
   lastPageTotal = 3;
+
+  // Task list examples
+  readonly taskItems = [
+    {
+      title: 'Personal details',
+      href: '#',
+      statusText: 'Completed',
+    },
+    {
+      title: 'Contact information',
+      href: '#',
+      statusText: 'In progress',
+      color: 'blue' as GovUKTagColor,
+    },
+    {
+      title: 'Financial history',
+      href: '#',
+      hint: 'Include 5 years of financial information',
+      statusText: 'Incomplete',
+      color: 'grey' as GovUKTagColor,
+    },
+    {
+      title: 'Confirmation',
+      statusText: 'Not started',
+      color: 'grey' as GovUKTagColor,
+      noLink: true,
+    },
+  ];
 
   onPageChange(pageNumber: number): void {
     console.log('Page changed:', pageNumber);
