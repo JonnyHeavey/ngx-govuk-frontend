@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -32,7 +31,7 @@ import { GovUKTaskListItemDirective } from './task-list-item.directive';
 @Component({
   selector: 'ngx-govuk-task-list',
   templateUrl: './task-list.component.html',
-  imports: [NgClass, GovUKTagComponent],
+  imports: [GovUKTagComponent],
   styles: [
     `
       a {
