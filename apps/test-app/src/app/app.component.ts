@@ -9,6 +9,9 @@ import {
   GovUKFooterLinkComponent,
   GovUKFooterLinksComponent,
   GovUKFooterMetaComponent,
+  GovUKFooterNavigationComponent,
+  GovUKFooterNavigationItemComponent,
+  GovUKFooterNavigationSectionComponent,
 } from 'ngx-govuk-frontend/footer';
 import { GovUKHeaderComponent } from 'ngx-govuk-frontend/header';
 import { GovUKPhaseBannerComponent } from 'ngx-govuk-frontend/phase-banner';
@@ -33,6 +36,9 @@ import { GovUKSkipLinkComponent } from 'ngx-govuk-frontend/skip-link';
     GovUKServiceNavigationComponent,
     GovUKServiceNavigationItemDirective,
     GovUKSkipLinkComponent,
+    GovUKFooterNavigationComponent,
+    GovUKFooterNavigationSectionComponent,
+    GovUKFooterNavigationItemComponent,
   ],
   selector: 'ngx-govuk-frontend-root',
   templateUrl: './app.component.html',

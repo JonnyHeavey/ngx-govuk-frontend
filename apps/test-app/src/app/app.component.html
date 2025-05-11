@@ -25,6 +25,55 @@
   </main>
 
   <ngx-govuk-footer>
+    <ngx-govuk-footer-navigation>
+      <ngx-govuk-footer-navigation-section
+        title="Services and information"
+        width="two-thirds"
+        [columns]="2"
+      >
+        <ngx-govuk-footer-navigation-item [routerLink]="['/benefits']"
+          >Benefits</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/births-deaths-marriages"
+          >Births, deaths, marriages and care</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/business"
+          >Business and self-employed</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/childcare-parenting"
+          >Childcare and parenting</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/citizenship"
+          >Citizenship and living in the UK</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/crime"
+          >Crime, justice and the law</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/disabled"
+          >Disabled people</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/driving"
+          >Driving and transport</ngx-govuk-footer-navigation-item
+        >
+      </ngx-govuk-footer-navigation-section>
+      <ngx-govuk-footer-navigation-section
+        title="Government departments"
+        width="one-third"
+      >
+        <ngx-govuk-footer-navigation-item href="/how-government-works"
+          >How government works</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/departments"
+          >Departments</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/worldwide"
+          >Worldwide</ngx-govuk-footer-navigation-item
+        >
+        <ngx-govuk-footer-navigation-item href="/policies"
+          >Policies</ngx-govuk-footer-navigation-item
+        >
+      </ngx-govuk-footer-navigation-section>
+    </ngx-govuk-footer-navigation>
     <ngx-govuk-footer-links>
       <ngx-govuk-footer-link href="https://www.gov.uk"
         >GOV.UK</ngx-govuk-footer-link
