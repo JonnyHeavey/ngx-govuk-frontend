@@ -1,0 +1,12 @@
+<ng-template #actionTemplate>
+  <a
+    class="govuk-link"
+    [attr.href]="href() ? href() : null"
+    [routerLink]="routerLink()"
+  >
+    <ng-content />
+    @if (visuallyHiddenText()) {
+      <span class="govuk-visually-hidden"> {{ visuallyHiddenText() }}</span>
+    }
+  </a>
+</ng-template>
