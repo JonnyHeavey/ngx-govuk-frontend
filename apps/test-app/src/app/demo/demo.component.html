@@ -129,3 +129,65 @@
     (nextClick)="onNextClick()"
   ></ngx-govuk-pagination>
 </div>
+
+<!-- Task List Examples -->
+<div class="govuk-frontend-supported">
+  <h2 class="govuk-heading-l">Task List Examples</h2>
+
+  <h3 class="govuk-heading-m">Static Task List</h3>
+  <ngx-govuk-task-list>
+    <ngx-govuk-task-list-item
+      title="Company information"
+      routerLink="/company-information"
+      statusText="Completed"
+    ></ngx-govuk-task-list-item>
+    <ngx-govuk-task-list-item
+      title="Personal details"
+      href="#"
+      statusText="In progress"
+      color="blue"
+    ></ngx-govuk-task-list-item>
+    <ngx-govuk-task-list-item
+      title="Financial history"
+      href="#"
+      hint="Provide financial information for the last 3 years"
+      statusText="Not started"
+      color="grey"
+    ></ngx-govuk-task-list-item>
+  </ngx-govuk-task-list>
+
+  <h3 class="govuk-heading-m">Dynamic Task List</h3>
+  <ngx-govuk-task-list>
+    <ngx-govuk-task-list-item
+      *ngFor="let task of taskItems"
+      [title]="task.title"
+      [href]="task.href"
+      [hint]="task.hint"
+      [statusText]="task.statusText"
+      [tagColor]="task.color"
+      [noLink]="task.noLink"
+    ></ngx-govuk-task-list-item>
+  </ngx-govuk-task-list>
+
+  <h3 class="govuk-heading-m">Task List With noLink Property</h3>
+  <ngx-govuk-task-list>
+    <ngx-govuk-task-list-item
+      title="Read the guidance"
+      statusText="Completed"
+    ></ngx-govuk-task-list-item>
+    <ngx-govuk-task-list-item
+      title="Application unavailable"
+      href="#"
+      noLink="true"
+      hint="This section cannot be started until a later date"
+      statusText="Cannot start yet"
+      color="grey"
+    ></ngx-govuk-task-list-item>
+    <ngx-govuk-task-list-item
+      title="Required section"
+      href="#"
+      statusText="Not started"
+      color="grey"
+    ></ngx-govuk-task-list-item>
+  </ngx-govuk-task-list>
+</div>
