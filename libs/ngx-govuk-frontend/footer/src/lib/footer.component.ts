@@ -1,10 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GovUKFooterLinkComponent } from './footer-link.component';
-import { GovUKFooterLinksComponent } from './footer-links.component';
-import { GovUKFooterMetaComponent } from './footer-meta.component';
-import { GovUKFooterNavigationItemComponent } from './footer-navigation-item.component';
-import { GovUKFooterNavigationSectionComponent } from './footer-navigation-section.component';
-import { GovUKFooterNavigationComponent } from './footer-navigation.component';
 
 /**
  * Footer component that displays standard GOV.UK footer
@@ -33,14 +27,6 @@ import { GovUKFooterNavigationComponent } from './footer-navigation.component';
 @Component({
   selector: 'ngx-govuk-footer',
   standalone: true,
-  imports: [
-    GovUKFooterLinksComponent,
-    GovUKFooterMetaComponent,
-    GovUKFooterNavigationComponent,
-    GovUKFooterNavigationSectionComponent,
-    GovUKFooterNavigationItemComponent,
-    GovUKFooterLinkComponent,
-  ],
   templateUrl: './footer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
