@@ -11,6 +11,7 @@
           <a
             class="govuk-link govuk-task-list__link"
             [attr.href]="item.href() ? item.href() : null"
+            [routerLink]="item.routerLink()"
           >
             {{ item.title() }}
           </a>
