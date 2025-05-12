@@ -66,24 +66,6 @@ export const WithNoBorder: Story = {
   },
 };
 
-const metaCard: Meta<GovUKSummaryListCardComponent> = {
-  title: 'Components/Summary List Card',
-  component: GovUKSummaryListCardComponent,
-  decorators: [
-    moduleMetadata({
-      imports: [
-        GovUKSummaryListComponent,
-        GovUKSummaryListItemComponent,
-        GovUKSummaryListActionComponent,
-        GovUKSummaryListActionsComponent,
-        GovUKSummaryListCardComponent,
-        GovUKSummaryListCardActionsComponent,
-        GovUKSummaryListValueDirective,
-      ],
-    }),
-  ],
-};
-
 export const WithCard: StoryObj<GovUKSummaryListCardComponent> = {
   render: () => ({
     template: `
