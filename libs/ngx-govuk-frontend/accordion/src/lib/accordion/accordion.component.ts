@@ -12,11 +12,11 @@ import {
 import { GovUKAccordionItemComponent } from '../accordion-item/accordion-item.component';
 
 @Component({
-    imports: [NgTemplateOutlet],
-    selector: 'ngx-govuk-accordion',
-    templateUrl: './accordion.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [CdkAccordion]
+  imports: [NgTemplateOutlet],
+  selector: 'ngx-govuk-accordion',
+  templateUrl: './accordion.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  hostDirectives: [CdkAccordion],
 })
 export class GovUKAccordionComponent {
   readonly id = input.required<string>();
@@ -36,17 +36,14 @@ export class GovUKAccordionComponent {
   });
 
   constructor() {
-    effect(
-      () => {
-        const initialExpandedItems = this.expandedItems();
-        const initialExpanded = this.initialExpanded();
+    effect(() => {
+      const initialExpandedItems = this.expandedItems();
+      const initialExpanded = this.initialExpanded();
 
-        if (initialExpandedItems.length === 0 && initialExpanded.length > 0) {
-          this.expandedItems.set([...initialExpanded]);
-        }
-      },
-      { allowSignalWrites: true },
-    );
+      if (initialExpandedItems.length === 0 && initialExpanded.length > 0) {
+        this.expandedItems.set([...initialExpanded]);
+      }
+    });
   }
 
   isExpanded(itemId: string): boolean {
