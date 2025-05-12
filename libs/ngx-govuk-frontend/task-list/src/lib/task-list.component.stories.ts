@@ -5,7 +5,7 @@ import { GovUKTaskListComponent } from './task-list.component';
 
 const meta: Meta<GovUKTaskListComponent> = {
   component: GovUKTaskListComponent,
-  title: 'Components/Task List',
+  title: 'Task List/GovUKTaskListComponent',
   decorators: [
     moduleMetadata({
       imports: [
