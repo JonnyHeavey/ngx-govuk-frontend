@@ -37,6 +37,12 @@ export class GovUKTaskListItemDirective {
   readonly href = input<string>();
 
   /**
+   * Optional Angular router link for the task
+   * If provided and noLink is false, the task title will be rendered as a link to this URL
+   */
+  readonly routerLink = input<string>();
+
+  /**
    * Color of the tag to use for the status
    * If provided, the status will be shown as a tag with this color
    * If not provided, the status will be shown as plain text

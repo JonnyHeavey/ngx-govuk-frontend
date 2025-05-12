@@ -1,0 +1,17 @@
+<div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <h2 class="govuk-summary-card__title">{{ title() }}</h2>
+    @if (cardActions()) {
+      <ul class="govuk-summary-card__actions">
+        @for (action of cardActions()?.actions(); track action) {
+          <li class="govuk-summary-card__action">
+            <ng-template [ngTemplateOutlet]="action.actionTemplate()" />
+          </li>
+        }
+      </ul>
+    }
+  </div>
+  <div class="govuk-summary-card__content">
+    <ng-content select="ngx-govuk-summary-list" />
+  </div>
+</div>

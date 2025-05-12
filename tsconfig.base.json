@@ -88,6 +88,9 @@
       "ngx-govuk-frontend/skip-link": [
         "libs/ngx-govuk-frontend/skip-link/src/index.ts"
       ],
+      "ngx-govuk-frontend/summary-list": [
+        "libs/ngx-govuk-frontend/summary-list/src/index.ts"
+      ],
       "ngx-govuk-frontend/table": [
         "libs/ngx-govuk-frontend/table/src/index.ts"
       ],

@@ -1,0 +1,25 @@
+<ng-template #itemTemplate>
+  <div
+    class="govuk-summary-list__row"
+    [class.govuk-summary-list__row--no-actions]="!actions()"
+  >
+    <dt class="govuk-summary-list__key">
+      {{ key() }}
+    </dt>
+    <dd class="govuk-summary-list__value">
+      @let valueTpl = valueTemplate();
+      @if (valueTpl) {
+        @if (valueTpl.templateRef) {
+          <ng-template [ngTemplateOutlet]="valueTpl.templateRef" />
+        }
+      } @else {
+        {{ value() }}
+      }
+    </dd>
+    @if (actions()) {
+      <dd class="govuk-summary-list__actions">
+        <ng-content select="ngx-govuk-summary-list-actions" />
+      </dd>
+    }
+  </div>
+</ng-template>

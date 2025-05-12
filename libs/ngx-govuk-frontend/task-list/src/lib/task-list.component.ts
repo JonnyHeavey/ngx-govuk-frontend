@@ -3,6 +3,7 @@ import {
   Component,
   contentChildren,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
 import { GovUKTaskListItemDirective } from './task-list-item.directive';
 
@@ -31,7 +32,7 @@ import { GovUKTaskListItemDirective } from './task-list-item.directive';
 @Component({
   selector: 'ngx-govuk-task-list',
   templateUrl: './task-list.component.html',
-  imports: [GovUKTagComponent],
+  imports: [GovUKTagComponent, RouterLink],
   styles: [
     `
       a {

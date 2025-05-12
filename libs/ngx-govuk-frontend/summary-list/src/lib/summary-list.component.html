@@ -1,0 +1,8 @@
+<dl
+  class="govuk-summary-list"
+  [class.govuk-summary-list--no-border]="noBorder()"
+>
+  @for (item of listItems(); track item) {
+    <ng-template [ngTemplateOutlet]="item.itemTemplate()" />
+  }
+</dl>

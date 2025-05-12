@@ -16,6 +16,15 @@ import { GovUKNotificationBannerComponent } from 'ngx-govuk-frontend/notificatio
 import { GovUKPaginationComponent } from 'ngx-govuk-frontend/pagination';
 import { GovUKPanelComponent } from 'ngx-govuk-frontend/panel';
 import {
+  GovUKSummaryListActionComponent,
+  GovUKSummaryListActionsComponent,
+  GovUKSummaryListCardActionsComponent,
+  GovUKSummaryListCardComponent,
+  GovUKSummaryListComponent,
+  GovUKSummaryListItemComponent,
+  GovUKSummaryListValueDirective,
+} from 'ngx-govuk-frontend/summary-list';
+import {
   GovUKTableColumn,
   GovUKTableComponent,
 } from 'ngx-govuk-frontend/table';
@@ -48,6 +57,13 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
     GovUKAccordionItemComponent,
     GovUKTaskListComponent,
     GovUKTaskListItemDirective,
+    GovUKSummaryListComponent,
+    GovUKSummaryListItemComponent,
+    GovUKSummaryListActionComponent,
+    GovUKSummaryListActionsComponent,
+    GovUKSummaryListCardComponent,
+    GovUKSummaryListCardActionsComponent,
+    GovUKSummaryListValueDirective,
   ],
   selector: 'ngx-govuk-frontend-demo',
   templateUrl: './demo.component.html',

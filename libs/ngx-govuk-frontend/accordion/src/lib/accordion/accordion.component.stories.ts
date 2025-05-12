@@ -3,7 +3,7 @@ import { GovUKAccordionItemComponent } from '../accordion-item/accordion-item.co
 import { GovUKAccordionComponent } from './accordion.component';
 
 const meta: Meta<GovUKAccordionComponent> = {
-  title: 'Components/Accordion',
+  title: 'Accordion/GovUKAccordionComponent',
   component: GovUKAccordionComponent,
   decorators: [
     moduleMetadata({
