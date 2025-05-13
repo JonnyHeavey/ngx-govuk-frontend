@@ -1,0 +1,22 @@
+<div
+  class="govuk-error-summary"
+  data-module="govuk-error-summary"
+  [attr.tabindex]="-1"
+>
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      {{ title() }}
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        @for (item of errorItems(); track item) {
+          <li>
+            <a routerLink="." [fragment]="item.targetId()">
+              {{ item.text() }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>

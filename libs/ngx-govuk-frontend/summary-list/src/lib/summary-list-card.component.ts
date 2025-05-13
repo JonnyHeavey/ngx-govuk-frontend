@@ -5,7 +5,6 @@ import {
   contentChild,
   input,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { GovUKSummaryListCardActionsComponent } from './summary-list-card-actions.component';
 
 /**
@@ -36,7 +35,7 @@ import { GovUKSummaryListCardActionsComponent } from './summary-list-card-action
 @Component({
   selector: 'ngx-govuk-summary-list-card',
   standalone: true,
-  imports: [NgTemplateOutlet, RouterLink],
+  imports: [NgTemplateOutlet],
   templateUrl: './summary-list-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -40,6 +40,9 @@
       "ngx-govuk-frontend/details": [
         "libs/ngx-govuk-frontend/details/src/index.ts"
       ],
+      "ngx-govuk-frontend/error-summary": [
+        "libs/ngx-govuk-frontend/error-summary/src/index.ts"
+      ],
       "ngx-govuk-frontend/fieldset": [
         "libs/ngx-govuk-frontend/fieldset/src/index.ts"
       ],
