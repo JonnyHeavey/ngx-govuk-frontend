@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
 import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
 import { GovUKErrorSummaryComponent } from './error-summary.component';
 
@@ -17,6 +18,7 @@ import { GovUKErrorSummaryComponent } from './error-summary.component';
       ></ngx-govuk-error-summary-item>
     </ngx-govuk-error-summary>
   `,
+  imports: [GovUKErrorSummaryComponent, GovUKErrorSummaryItemDirective],
 })
 class TestHostComponent {
   title = 'There is a problem';
@@ -34,6 +36,7 @@ describe('GovUKErrorSummaryComponent', () => {
         GovUKErrorSummaryComponent,
         GovUKErrorSummaryItemDirective,
       ],
+      providers: [provideRouter([])],
     }).compileComponents();
   });
 
@@ -68,9 +71,9 @@ describe('GovUKErrorSummaryComponent', () => {
       By.css('.govuk-error-summary__list a'),
     );
     expect(errorItems.length).toBe(2);
-    expect(errorItems[0].nativeElement.getAttribute('href')).toBe('#error-1');
+    expect(errorItems[0].nativeElement.getAttribute('href')).toBe('/#error-1');
     expect(errorItems[0].nativeElement.textContent.trim()).toBe('Error 1');
-    expect(errorItems[1].nativeElement.getAttribute('href')).toBe('#error-2');
+    expect(errorItems[1].nativeElement.getAttribute('href')).toBe('/#error-2');
     expect(errorItems[1].nativeElement.textContent.trim()).toBe('Error 2');
   });
 });
