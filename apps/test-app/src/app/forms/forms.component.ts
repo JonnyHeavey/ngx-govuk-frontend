@@ -3,6 +3,10 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GovUKBackLinkComponent } from 'ngx-govuk-frontend/back-link';
 import { GovUKCheckboxComponent } from 'ngx-govuk-frontend/checkbox';
 import { GovUKDateInputComponent } from 'ngx-govuk-frontend/date-input';
+import {
+  GovUKErrorSummaryComponent,
+  GovUKErrorSummaryItemDirective,
+} from 'ngx-govuk-frontend/error-summary';
 import { GovUKFieldsetComponent } from 'ngx-govuk-frontend/fieldset';
 import { GovUKFileUploadComponent } from 'ngx-govuk-frontend/file-upload';
 import { GovUKFormGroupComponent } from 'ngx-govuk-frontend/form-group';
@@ -19,22 +23,24 @@ import { GovUKTextInputComponent } from 'ngx-govuk-frontend/text-input';
 import { GovUKTextareaComponent } from 'ngx-govuk-frontend/textarea';
 
 @Component({
-    imports: [
-        ReactiveFormsModule,
-        GovUKFormGroupComponent,
-        GovUKFieldsetComponent,
-        GovUKBackLinkComponent,
-        GovUKTextInputComponent,
-        GovUKTextareaComponent,
-        GovUKSelectComponent,
-        GovUKPasswordInputComponent,
-        GovUKCheckboxComponent,
-        GovUKRadioGroupComponent,
-        GovUKFileUploadComponent,
-        GovUKRadioOptionDirective,
-        GovUKDateInputComponent,
-    ],
-    templateUrl: './forms.component.html'
+  imports: [
+    ReactiveFormsModule,
+    GovUKFormGroupComponent,
+    GovUKFieldsetComponent,
+    GovUKBackLinkComponent,
+    GovUKTextInputComponent,
+    GovUKTextareaComponent,
+    GovUKSelectComponent,
+    GovUKPasswordInputComponent,
+    GovUKCheckboxComponent,
+    GovUKRadioGroupComponent,
+    GovUKFileUploadComponent,
+    GovUKRadioOptionDirective,
+    GovUKDateInputComponent,
+    GovUKErrorSummaryComponent,
+    GovUKErrorSummaryItemDirective,
+  ],
+  templateUrl: './forms.component.html',
 })
 export class FormsComponent {
   readonly form = inject(FormBuilder).nonNullable.group({

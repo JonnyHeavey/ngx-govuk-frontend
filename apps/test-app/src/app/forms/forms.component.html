@@ -2,12 +2,35 @@
   <ngx-govuk-back-link link="../" />
 
   <form [formGroup]="form">
+    <ngx-govuk-error-summary title="There is a problem">
+      <ngx-govuk-error-summary-item
+        text="Enter a valid colour"
+        targetId="colour"
+      ></ngx-govuk-error-summary-item>
+      <ngx-govuk-error-summary-item
+        text="Enter more details"
+        targetId="detail"
+      ></ngx-govuk-error-summary-item>
+      <ngx-govuk-error-summary-item
+        text="Enter a password"
+        targetId="password"
+      ></ngx-govuk-error-summary-item>
+      <ngx-govuk-error-summary-item
+        text="Enter your date of birth"
+        targetId="dateOfBirth"
+      ></ngx-govuk-error-summary-item>
+      <ngx-govuk-error-summary-item
+        text="Comment is too long"
+        targetId="shortComment"
+      ></ngx-govuk-error-summary-item>
+    </ngx-govuk-error-summary>
+
     <ngx-govuk-form-group
       label="What is your favourite colour?"
       labelFor="colour"
       isPageTitle="true"
       hint="Testing 123"
-      errorMessage="Green is actually the best color"
+      errorMessage="Enter a valid colour"
     >
       <ngx-govuk-text-input
         formControlName="colour"
@@ -42,6 +65,7 @@
     <ngx-govuk-form-group
       label="Can you provide more detail?"
       labelFor="detail"
+      errorMessage="Enter more details"
     >
       <ngx-govuk-textarea
         formControlName="detail"
@@ -54,7 +78,11 @@
       />
     </ngx-govuk-form-group>
 
-    <ngx-govuk-form-group label="Password" labelFor="password">
+    <ngx-govuk-form-group
+      label="Password"
+      labelFor="password"
+      errorMessage="Enter a password"
+    >
       <ngx-govuk-password-input
         formControlName="password"
         label="Password"
@@ -99,7 +127,7 @@
       label="What is your date of birth?"
       labelFor="dateOfBirth"
       hint="For example, 31 3 1980"
-      [errorMessage]="getDateErrorMessage()"
+      errorMessage="Enter your date of birth"
     >
       <ngx-govuk-date-input
         formControlName="dateOfBirth"
@@ -120,6 +148,7 @@
     <ngx-govuk-form-group
       label="Short comment (max 50 characters)"
       labelFor="shortComment"
+      errorMessage="Comment is too long"
     >
       <ngx-govuk-textarea
         formControlName="shortComment"
