@@ -21,7 +21,6 @@ import { GovUKFooterNavigationSectionComponent } from './footer-navigation-secti
  */
 @Component({
   selector: 'ngx-govuk-footer-navigation',
-  standalone: true,
   template: `<div class="govuk-footer__navigation">
     <ng-content select="ngx-govuk-footer-navigation-section" />
   </div>`,

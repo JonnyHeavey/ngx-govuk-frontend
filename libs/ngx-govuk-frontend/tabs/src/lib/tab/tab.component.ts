@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 
 @Component({
-  standalone: true,
   selector: 'ngx-govuk-tab',
   templateUrl: './tab.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -17,7 +17,6 @@ import {
  */
 @Component({
   selector: 'ngx-govuk-footer-navigation-item',
-  standalone: true,
   template: `<ng-template #content><ng-content /></ng-template>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

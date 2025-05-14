@@ -21,7 +21,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  */
 @Component({
   selector: 'ngx-govuk-button-group',
-  standalone: true,
   templateUrl: './button-group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

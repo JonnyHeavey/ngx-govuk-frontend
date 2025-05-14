@@ -15,7 +15,6 @@ import { Directive, TemplateRef } from '@angular/core';
  */
 @Directive({
   selector: '[ngxGovUkSummaryListValue]',
-  standalone: true,
 })
 export class GovUKSummaryListValueDirective {
   constructor(public templateRef: TemplateRef<unknown>) {}

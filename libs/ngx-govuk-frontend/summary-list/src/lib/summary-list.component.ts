@@ -44,7 +44,6 @@ import { GovUKSummaryListItemComponent } from './summary-list-item.component';
  */
 @Component({
   selector: 'ngx-govuk-summary-list',
-  standalone: true,
   imports: [NgTemplateOutlet],
   templateUrl: './summary-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -41,7 +41,6 @@ export type PaginationMode = 'block' | 'list';
  */
 @Component({
   selector: 'ngx-govuk-pagination',
-  standalone: true,
   templateUrl: './pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

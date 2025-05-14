@@ -32,7 +32,6 @@ interface GovUKRadioOption {
       </ngx-govuk-radio-group>
     </form>
   `,
-  standalone: true,
   imports: [
     GovUKRadioGroupComponent,
     GovUKRadioOptionDirective,

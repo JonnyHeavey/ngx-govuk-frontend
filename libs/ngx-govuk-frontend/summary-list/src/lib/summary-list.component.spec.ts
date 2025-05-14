@@ -10,7 +10,6 @@ import { GovUKSummaryListComponent } from './summary-list.component';
 
 // Test host component
 @Component({
-  standalone: true,
   imports: [
     GovUKSummaryListComponent,
     GovUKSummaryListItemComponent,

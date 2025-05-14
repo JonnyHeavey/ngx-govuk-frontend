@@ -14,7 +14,6 @@ import { GovUKAccordionComponent } from './accordion.component';
       </ngx-govuk-accordion-item>
     </ngx-govuk-accordion>
   `,
-  standalone: true,
   imports: [GovUKAccordionComponent, GovUKAccordionItemComponent],
 })
 class TestComponent {}

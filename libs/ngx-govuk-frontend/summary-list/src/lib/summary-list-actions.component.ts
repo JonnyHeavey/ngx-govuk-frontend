@@ -40,7 +40,6 @@ import { GovUKSummaryListActionComponent } from './summary-list-action.component
  */
 @Component({
   selector: 'ngx-govuk-summary-list-actions',
-  standalone: true,
   imports: [NgTemplateOutlet],
   templateUrl: './summary-list-actions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

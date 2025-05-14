@@ -30,7 +30,6 @@ import { GovUKSummaryListValueDirective } from './summary-list-value.directive';
  */
 @Component({
   selector: 'ngx-govuk-summary-list-item',
-  standalone: true,
   imports: [NgTemplateOutlet],
   templateUrl: './summary-list-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

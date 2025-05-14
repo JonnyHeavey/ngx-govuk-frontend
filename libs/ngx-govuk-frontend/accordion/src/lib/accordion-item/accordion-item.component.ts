@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 
 @Component({
-  standalone: true,
   selector: 'ngx-govuk-accordion-item',
   templateUrl: './accordion-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

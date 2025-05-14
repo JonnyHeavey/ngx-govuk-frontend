@@ -7,7 +7,6 @@ import { GovUKTaskListComponent } from './task-list.component';
 
 // Test host component
 @Component({
-  standalone: true,
   imports: [GovUKTaskListComponent, GovUKTaskListItemDirective],
   template: `
     <ngx-govuk-task-list>

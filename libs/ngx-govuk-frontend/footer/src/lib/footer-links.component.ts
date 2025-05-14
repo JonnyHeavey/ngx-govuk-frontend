@@ -17,7 +17,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  */
 @Component({
   selector: 'ngx-govuk-footer-links',
-  standalone: true,
   template: `<ul class="govuk-footer__inline-list">
     <ng-content />
   </ul>`,

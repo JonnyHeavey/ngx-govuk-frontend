@@ -16,7 +16,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       ></ngx-govuk-password-input>
     </form>
   `,
-  standalone: true,
   imports: [GovUKPasswordInputComponent, ReactiveFormsModule],
 })
 class TestHostComponent {

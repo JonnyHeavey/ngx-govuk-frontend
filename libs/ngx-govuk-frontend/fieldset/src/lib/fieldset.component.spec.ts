@@ -13,7 +13,6 @@ import { GovUKFieldsetComponent } from './fieldset.component';
       <input type="text" id="test-input" />
     </ngx-govuk-fieldset>
   `,
-  standalone: true,
   imports: [GovUKFieldsetComponent],
 })
 class TestHostComponent {

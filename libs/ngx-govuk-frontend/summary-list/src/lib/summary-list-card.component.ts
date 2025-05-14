@@ -34,7 +34,6 @@ import { GovUKSummaryListCardActionsComponent } from './summary-list-card-action
  */
 @Component({
   selector: 'ngx-govuk-summary-list-card',
-  standalone: true,
   imports: [NgTemplateOutlet],
   templateUrl: './summary-list-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

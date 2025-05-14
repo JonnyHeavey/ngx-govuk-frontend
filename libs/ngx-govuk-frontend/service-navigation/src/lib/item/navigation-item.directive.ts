@@ -4,7 +4,6 @@ import { RouterLink } from '@angular/router';
 
 @Directive({
   selector: 'ngx-govuk-service-navigaiton-item',
-  standalone: true,
 })
 export class GovUKServiceNavigationItemDirective {
   readonly label = input.required<string>();

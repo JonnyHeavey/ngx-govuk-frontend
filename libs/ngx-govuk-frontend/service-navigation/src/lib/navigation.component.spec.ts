@@ -15,7 +15,6 @@ import { GovUKServiceNavigationComponent } from './navigation.component';
       }
     </ngx-govuk-service-navigation>
   `,
-  standalone: true,
   imports: [
     GovUKServiceNavigationComponent,
     GovUKServiceNavigationItemDirective,

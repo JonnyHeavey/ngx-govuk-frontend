@@ -7,7 +7,6 @@ import {
 
 @Component({
   selector: 'ngx-govuk-fieldset',
-  standalone: true,
   templateUrl: './fieldset.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

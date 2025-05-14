@@ -19,7 +19,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       ></ngx-govuk-textarea>
     </form>
   `,
-  standalone: true,
   imports: [GovUKTextareaComponent, ReactiveFormsModule],
 })
 class TestHostComponent {

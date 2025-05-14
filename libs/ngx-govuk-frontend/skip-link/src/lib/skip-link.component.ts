@@ -20,7 +20,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
  */
 @Component({
   selector: 'ngx-govuk-skip-link',
-  standalone: true,
   templateUrl: './skip-link.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

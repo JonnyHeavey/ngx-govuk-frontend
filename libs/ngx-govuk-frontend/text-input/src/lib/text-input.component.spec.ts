@@ -18,7 +18,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       ></ngx-govuk-text-input>
     </form>
   `,
-  standalone: true,
   imports: [GovUKTextInputComponent, ReactiveFormsModule],
 })
 class TestHostComponent {

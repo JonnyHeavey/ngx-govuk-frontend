@@ -54,7 +54,6 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
   selector: 'ngx-govuk-error-summary',
   templateUrl: './error-summary.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [CommonModule, RouterLink],
 })
 export class GovUKErrorSummaryComponent {

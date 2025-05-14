@@ -28,7 +28,6 @@ import {
  */
 @Component({
   selector: 'ngx-govuk-form-group',
-  standalone: true,
   templateUrl: './form-group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
