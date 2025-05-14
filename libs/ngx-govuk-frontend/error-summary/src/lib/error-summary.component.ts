@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -54,7 +53,7 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
   selector: 'ngx-govuk-error-summary',
   templateUrl: './error-summary.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
 })
 export class GovUKErrorSummaryComponent {
   /**
