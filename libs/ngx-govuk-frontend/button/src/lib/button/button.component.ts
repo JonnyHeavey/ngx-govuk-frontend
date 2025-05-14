@@ -31,13 +31,13 @@ export type GovUKButtonColorType =
  *   - 'inverse' - White button for use on dark backgrounds
  */
 @Component({
-    selector: 'ngx-govuk-button',
-    imports: [NgClass],
-    templateUrl: './button.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-govuk-button',
+  imports: [NgClass],
+  templateUrl: './button.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKButtonComponent {
-  disabled = input(false);
-  start = input(false);
-  color = input<GovUKButtonColorType>('primary');
+  readonly disabled = input(false);
+  readonly start = input(false);
+  readonly color = input<GovUKButtonColorType>('primary');
 }

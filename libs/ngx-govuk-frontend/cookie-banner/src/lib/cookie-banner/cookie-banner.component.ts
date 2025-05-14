@@ -10,15 +10,15 @@ import {
 } from 'ngx-govuk-frontend/button';
 
 @Component({
-    selector: 'ngx-govuk-cookie-banner',
-    imports: [GovUKButtonComponent, GovUKButtonGroupComponent],
-    templateUrl: './cookie-banner.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-govuk-cookie-banner',
+  imports: [GovUKButtonComponent, GovUKButtonGroupComponent],
+  templateUrl: './cookie-banner.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKCookieBannerComponent {
-  appName = input.required<string>();
+  readonly appName = input.required<string>();
 
-  accept = output<void>();
-  reject = output<void>();
-  view = output<void>();
+  readonly accept = output<void>();
+  readonly reject = output<void>();
+  readonly view = output<void>();
 }

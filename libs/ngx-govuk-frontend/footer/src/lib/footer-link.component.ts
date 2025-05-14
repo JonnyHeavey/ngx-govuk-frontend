@@ -28,7 +28,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  })
+})
 export class GovUKFooterLinkComponent {
-  href = input<string>();
+  readonly href = input<string>();
 }

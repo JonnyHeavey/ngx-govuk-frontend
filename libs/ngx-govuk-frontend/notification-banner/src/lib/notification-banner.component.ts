@@ -6,5 +6,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKNotificationBannerComponent {
-  title = input.required<string>();
+  readonly title = input.required<string>();
 }

@@ -30,5 +30,7 @@ export class GovUKFooterNavigationComponent {
   /**
    * Query for all navigation section components using signal-based query
    */
-  navigationSections = contentChildren(GovUKFooterNavigationSectionComponent);
+  readonly navigationSections = contentChildren(
+    GovUKFooterNavigationSectionComponent,
+  );
 }

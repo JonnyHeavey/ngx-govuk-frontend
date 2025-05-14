@@ -46,57 +46,57 @@ export type PaginationMode = 'block' | 'list';
 })
 export class GovUKPaginationComponent {
   /** Total number of items */
-  itemCount = input<number>(0);
+  readonly itemCount = input<number>(0);
 
   /** Number of items per page */
-  itemsPerPage = input<number>(10);
+  readonly itemsPerPage = input<number>(10);
 
   /** Current page number (1-based) */
-  currentPage = input<number>(1);
+  readonly currentPage = input<number>(1);
 
   /** Pagination mode - 'block' or 'list' */
-  mode = input<PaginationMode>('list');
+  readonly mode = input<PaginationMode>('list');
 
   /** Title for the previous button */
-  previousTitle = input<string>('Previous');
+  readonly previousTitle = input<string>('Previous');
 
   /** Label for the previous button (additional context) */
-  previousLabel = input<string | null>(null);
+  readonly previousLabel = input<string | null>(null);
 
   /** Title for the next button */
-  nextTitle = input<string>('Next');
+  readonly nextTitle = input<string>('Next');
 
   /** Label for the next button (additional context) */
-  nextLabel = input<string | null>(null);
+  readonly nextLabel = input<string | null>(null);
 
   /** Output event when a pagination item is clicked */
-  pageChange = output<number>();
+  readonly pageChange = output<number>();
 
   /** Output event when the previous link is clicked */
-  previousClick = output<void>();
+  readonly previousClick = output<void>();
 
   /** Output event when the next link is clicked */
-  nextClick = output<void>();
+  readonly nextClick = output<void>();
 
   /** Counter for generating unique IDs */
   private ellipsisCounter = 0;
 
   /** Computed total number of pages */
-  totalPages = computed(() =>
+  readonly totalPages = computed(() =>
     Math.ceil(this.itemCount() / this.itemsPerPage()),
   );
 
   /** Computed flag for whether previous button should be shown */
-  hasPreviousPage = computed(() => this.currentPage() > 1);
+  readonly hasPreviousPage = computed(() => this.currentPage() > 1);
 
   /** Computed flag for whether next button should be shown */
-  hasNextPage = computed(() => this.currentPage() < this.totalPages());
+  readonly hasNextPage = computed(() => this.currentPage() < this.totalPages());
 
   /** Computed check if mode is block */
-  isBlockMode = computed(() => this.mode() === 'block');
+  readonly isBlockMode = computed(() => this.mode() === 'block');
 
   /** Computed pagination items */
-  computedItems = computed(() => {
+  readonly computedItems = computed(() => {
     const totalPages = this.totalPages();
     if (totalPages <= 0) {
       return [];

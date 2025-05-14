@@ -19,17 +19,17 @@ export type GovUKTagColor =
   | 'yellow';
 
 @Component({
-    selector: 'ngx-govuk-tag',
-    imports: [NgClass],
-    templateUrl: './tag.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-govuk-tag',
+  imports: [NgClass],
+  templateUrl: './tag.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKTagComponent {
-  color = input<GovUKTagColor>('blue');
-  extraClasses = input<string>();
+  readonly color = input<GovUKTagColor>('blue');
+  readonly extraClasses = input<string>();
 
   readonly classes = computed(
-    () => `${this.colorClasses[this.color()]} ${this.extraClasses()}`
+    () => `${this.colorClasses[this.color()]} ${this.extraClasses()}`,
   );
 
   private readonly colorClasses: Record<GovUKTagColor, string> = {

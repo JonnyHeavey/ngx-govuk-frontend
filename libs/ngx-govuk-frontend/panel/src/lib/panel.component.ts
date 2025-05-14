@@ -6,5 +6,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKPanelComponent {
-  title = input.required<string>();
+  readonly title = input.required<string>();
 }
