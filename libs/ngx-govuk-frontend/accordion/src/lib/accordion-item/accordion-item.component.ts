@@ -1,4 +1,5 @@
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   input,
@@ -15,7 +16,7 @@ export class GovUKAccordionItemComponent {
   readonly itemId = input.required<string>();
   readonly heading = input.required<string>();
   readonly summary = input<string>();
-  readonly expanded = input(false);
+  readonly expanded = input(false, { transform: booleanAttribute });
 
   readonly content = viewChild.required<TemplateRef<unknown>>('content');
 }

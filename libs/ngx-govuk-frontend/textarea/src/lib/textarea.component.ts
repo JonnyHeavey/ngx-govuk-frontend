@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -50,14 +51,14 @@ import {
  * @property {boolean} showCharacterCount - Optional. Whether to show the character count. Defaults to false.
  */
 @Component({
-    selector: 'ngx-govuk-textarea',
-    imports: [NgClass, ReactiveFormsModule],
-    templateUrl: './textarea.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [
-        ValueAccessorDirective,
-        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-    ]
+  selector: 'ngx-govuk-textarea',
+  imports: [NgClass, ReactiveFormsModule],
+  templateUrl: './textarea.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  hostDirectives: [
+    ValueAccessorDirective,
+    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+  ],
 })
 export class GovUKTextareaComponent implements OnInit {
   readonly ngControl = injectNgControl();
@@ -67,7 +68,7 @@ export class GovUKTextareaComponent implements OnInit {
 
   readonly rows = input(2);
   readonly maxLength = input<number | null>(null);
-  readonly showCharacterCount = input(false);
+  readonly showCharacterCount = input(false, { transform: booleanAttribute });
 
   private readonly currentLength: WritableSignal<number> = signal(0);
   private readonly remainingCharacters = computed(() => {

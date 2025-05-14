@@ -1,5 +1,6 @@
 import { CdkTableModule } from '@angular/cdk/table';
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -15,17 +16,17 @@ export type GovUKTableColumn = {
 };
 
 @Component({
-    selector: 'ngx-govuk-table',
-    imports: [CdkTableModule],
-    templateUrl: './table.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-govuk-table',
+  imports: [CdkTableModule],
+  templateUrl: './table.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKTableComponent {
   readonly columns = input.required<GovUKTableColumn[]>();
   readonly dataSource = input.required<unknown[]>();
 
   readonly caption = input<string>();
-  readonly small = input(false);
+  readonly small = input(false, { transform: booleanAttribute });
 
   readonly columnKeys = computed(() =>
     this.columns().map((column) => column.key),

@@ -1,5 +1,10 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  input,
+} from '@angular/core';
 
 /**
  * The color type for GovUK buttons
@@ -37,7 +42,7 @@ export type GovUKButtonColorType =
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKButtonComponent {
-  readonly disabled = input(false);
-  readonly start = input(false);
+  readonly disabled = input(false, { transform: booleanAttribute });
+  readonly start = input(false, { transform: booleanAttribute });
   readonly color = input<GovUKButtonColorType>('primary');
 }
