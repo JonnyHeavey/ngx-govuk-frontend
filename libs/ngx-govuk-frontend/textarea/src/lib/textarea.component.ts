@@ -21,8 +21,6 @@ import {
 } from 'ngx-govuk-frontend/form-utils';
 
 /**
- * A textarea component that follows the GOV.UK Design System guidelines.
- *
  * @example
  * ```html
  * <ngx-govuk-textarea

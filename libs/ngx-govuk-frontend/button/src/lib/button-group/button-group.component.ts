@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 /**
- * A component that groups GOV.UK buttons together with consistent spacing.
- *
  * This component implements the GOV.UK Design System button group pattern.
  * It provides consistent spacing between multiple buttons or links that are grouped together.
  *
