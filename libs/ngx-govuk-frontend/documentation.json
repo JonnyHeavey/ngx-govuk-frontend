@@ -48,12 +48,12 @@
         },
         {
             "name": "GovUKSelectOption",
-            "id": "interface-GovUKSelectOption-00944a4ff2b4cbda656ef8cc271f76f54a4f65b918de558cce8fb2162e84ef3544d155124b802ab78c8a560c83a2cd6c6125efda5387b32b369305211155fb87",
+            "id": "interface-GovUKSelectOption-23319c5ef88ebd77e4d2dfa97505bff91d435ca907847c44567705a5b4d62567e4504d9bb74f52bda66ed4143a44d39558d7b7ef63695a939c263b2f9bffa910",
             "file": "libs/ngx-govuk-frontend/select/src/lib/select.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  inject,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * Interface defining an option in the select dropdown.\n */\nexport interface GovUKSelectOption {\n  /** The displayed text for the option */\n  label: string;\n  /** The value that will be submitted when the option is selected */\n  value: string;\n}\n\n/**\n * A component that renders a GOV.UK select dropdown.\n *\n * This component implements the GOV.UK Design System select component.\n * It allows users to choose an option from a dropdown list.\n *\n * @example\n * ```html\n * <ngx-govuk-select\n *   [options]=\"[\n *     { value: 'england', label: 'England' },\n *     { value: 'scotland', label: 'Scotland' },\n *     { value: 'wales', label: 'Wales' },\n *     { value: 'northern-ireland', label: 'Northern Ireland' }\n *   ]\"\n *   formControlName=\"country\"\n *   inputId=\"country\"\n *   label=\"Country\"\n * ></ngx-govuk-select>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/select/ GOV.UK Select}\n */\n@Component({\n  selector: 'ngx-govuk-select',\n  imports: [ReactiveFormsModule],\n  templateUrl: './select.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKSelectComponent {\n  /** The Angular form control associated with this select input. */\n  readonly ngControl = injectNgControl();\n\n  /** Reference to the common form input directive that provides shared functionality. */\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  /** The list of options to display in the select dropdown. This input is required. */\n  readonly options = input.required<GovUKSelectOption[]>();\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  inject,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * Interface defining an option in the select dropdown.\n */\nexport interface GovUKSelectOption {\n  /** The displayed text for the option */\n  label: string;\n  /** The value that will be submitted when the option is selected */\n  value: string;\n}\n\n/**\n * This component implements the GOV.UK Design System select component.\n * It allows users to choose an option from a dropdown list.\n *\n * @example\n * ```html\n * <ngx-govuk-select\n *   [options]=\"[\n *     { value: 'england', label: 'England' },\n *     { value: 'scotland', label: 'Scotland' },\n *     { value: 'wales', label: 'Wales' },\n *     { value: 'northern-ireland', label: 'Northern Ireland' }\n *   ]\"\n *   formControlName=\"country\"\n *   inputId=\"country\"\n *   label=\"Country\"\n * ></ngx-govuk-select>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/select/ GOV.UK Select}\n */\n@Component({\n  selector: 'ngx-govuk-select',\n  imports: [ReactiveFormsModule],\n  templateUrl: './select.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKSelectComponent {\n  /** The Angular form control associated with this select input. */\n  readonly ngControl = injectNgControl();\n\n  /** Reference to the common form input directive that provides shared functionality. */\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  /** The list of options to display in the select dropdown. This input is required. */\n  readonly options = input.required<GovUKSelectOption[]>();\n}\n",
             "properties": [
                 {
                     "name": "label",
@@ -289,7 +289,7 @@
     "components": [
         {
             "name": "GovUKAccordionComponent",
-            "id": "component-GovUKAccordionComponent-3a8295b9808124349831c24a1ff5d44221378d2bc63c08f56a82b81182172b9b2d27de0f4e296055b05b65b5de2a505be913d2ecdc6788320a865824c490298b",
+            "id": "component-GovUKAccordionComponent-84750b9bd6df9829f33424647741cf66e485e5b4810ee6e2804bbf7134f4c64aae43ec73b6465e7ffe19faed567292edccfedd7b0f2ebaedc1c20871f6e3ef0f",
             "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion/accordion.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -318,7 +318,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The unique identifier for the accordion. This input is required.</p>\n",
-                    "line": 43,
+                    "line": 41,
                     "rawdescription": "\nThe unique identifier for the accordion. This input is required.",
                     "modifierKind": [
                         148
@@ -337,7 +337,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Computed property that determines if all accordion items are currently expanded.\nReturns true only if there are items and all of them are expanded.</p>\n",
-                    "line": 64,
+                    "line": 62,
                     "rawdescription": "\n\nComputed property that determines if all accordion items are currently expanded.\nReturns true only if there are items and all of them are expanded.\n",
                     "modifierKind": [
                         148
@@ -352,7 +352,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Two-way binding model for the currently expanded accordion items.\nContains an array of item IDs that are expanded.</p>\n",
-                    "line": 55,
+                    "line": 53,
                     "rawdescription": "\n\nTwo-way binding model for the currently expanded accordion items.\nContains an array of item IDs that are expanded.\n",
                     "modifierKind": [
                         148
@@ -366,7 +366,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The unique identifier for the accordion. This input is required.</p>\n",
-                    "line": 43,
+                    "line": 41,
                     "rawdescription": "\nThe unique identifier for the accordion. This input is required.",
                     "modifierKind": [
                         148
@@ -382,7 +382,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>IDs of accordion items that should be expanded when the accordion first renders.\nDefaults to an empty array (all items collapsed).</p>\n",
-                    "line": 49,
+                    "line": 47,
                     "rawdescription": "\n\nIDs of accordion items that should be expanded when the accordion first renders.\nDefaults to an empty array (all items collapsed).\n",
                     "modifierKind": [
                         148
@@ -397,7 +397,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Collection of accordion item components that are children of this accordion.</p>\n",
-                    "line": 58,
+                    "line": 56,
                     "rawdescription": "\nCollection of accordion item components that are children of this accordion.",
                     "modifierKind": [
                         148
@@ -418,7 +418,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 89,
+                    "line": 87,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nChecks if a specific accordion item is expanded.\n",
@@ -426,8 +426,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2828,
-                                "end": 2834,
+                                "pos": 2771,
+                                "end": 2777,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -438,8 +438,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 2822,
-                                "end": 2827,
+                                "pos": 2765,
+                                "end": 2770,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -450,8 +450,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 2880,
-                                "end": 2887,
+                                "pos": 2823,
+                                "end": 2830,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -468,7 +468,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 116,
+                    "line": 114,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nToggles all accordion items between expanded and collapsed states.\nIf all items are currently expanded, collapses all items.\nIf any items are collapsed, expands all items.\n",
@@ -487,7 +487,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nToggles the expanded state of a specific accordion item.\nIf the item is collapsed, it will be expanded, and vice versa.\n",
@@ -495,8 +495,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3192,
-                                "end": 3198,
+                                "pos": 3135,
+                                "end": 3141,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -507,8 +507,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 3186,
-                                "end": 3191,
+                                "pos": 3129,
+                                "end": 3134,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -530,10 +530,10 @@
                     "name": "NgTemplateOutlet"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK accordion.</p>\n<p>This component implements the GOV.UK Design System accordion component.\nIt allows users to show and hide sections of related content on a page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-accordion id=&quot;accordion-default&quot;&gt;\n  &lt;ngx-govuk-accordion-item heading=&quot;Section 1&quot; id=&quot;section-1&quot;&gt;\n    &lt;p&gt;This is the content for section 1.&lt;/p&gt;\n  &lt;/ngx-govuk-accordion-item&gt;\n  &lt;ngx-govuk-accordion-item heading=&quot;Section 2&quot; id=&quot;section-2&quot;&gt;\n    &lt;p&gt;This is the content for section 2.&lt;/p&gt;\n  &lt;/ngx-govuk-accordion-item&gt;\n&lt;/ngx-govuk-accordion&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK accordion.\n\nThis component implements the GOV.UK Design System accordion component.\nIt allows users to show and hide sections of related content on a page.\n\n```html\n```html\n<ngx-govuk-accordion id=\"accordion-default\">\n  <ngx-govuk-accordion-item heading=\"Section 1\" id=\"section-1\">\n    <p>This is the content for section 1.</p>\n  </ngx-govuk-accordion-item>\n  <ngx-govuk-accordion-item heading=\"Section 2\" id=\"section-2\">\n    <p>This is the content for section 2.</p>\n  </ngx-govuk-accordion-item>\n</ngx-govuk-accordion>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\n",
+            "description": "<p>This component implements the GOV.UK Design System accordion component.\nIt allows users to show and hide sections of related content on a page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\"></code></pre></div><ngx-govuk-accordion id=\"accordion-default\">\n  <ngx-govuk-accordion-item heading=\"Section 1\" id=\"section-1\">\n    <p>This is the content for section 1.</p>\n  </ngx-govuk-accordion-item>\n  <ngx-govuk-accordion-item heading=\"Section 2\" id=\"section-2\">\n    <p>This is the content for section 2.</p>\n  </ngx-govuk-accordion-item>\n</ngx-govuk-accordion>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\n",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System accordion component.\nIt allows users to show and hide sections of related content on a page.\n\n```html\n```\n<ngx-govuk-accordion id=\"accordion-default\">\n  <ngx-govuk-accordion-item heading=\"Section 1\" id=\"section-1\">\n    <p>This is the content for section 1.</p>\n  </ngx-govuk-accordion-item>\n  <ngx-govuk-accordion-item heading=\"Section 2\" id=\"section-2\">\n    <p>This is the content for section 2.</p>\n  </ngx-govuk-accordion-item>\n</ngx-govuk-accordion>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\n",
             "type": "component",
-            "sourceCode": "import { CdkAccordion } from '@angular/cdk/accordion';\r\nimport { NgTemplateOutlet } from '@angular/common';\r\nimport {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  computed,\r\n  contentChildren,\r\n  effect,\r\n  input,\r\n  model,\r\n} from '@angular/core';\r\nimport { GovUKAccordionItemComponent } from '../accordion-item/accordion-item.component';\r\n\r\n/**\r\n * A component that renders a GOV.UK accordion.\r\n *\r\n * This component implements the GOV.UK Design System accordion component.\r\n * It allows users to show and hide sections of related content on a page.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-accordion id=\"accordion-default\">\r\n *   <ngx-govuk-accordion-item heading=\"Section 1\" id=\"section-1\">\r\n *     <p>This is the content for section 1.</p>\r\n *   </ngx-govuk-accordion-item>\r\n *   <ngx-govuk-accordion-item heading=\"Section 2\" id=\"section-2\">\r\n *     <p>This is the content for section 2.</p>\r\n *   </ngx-govuk-accordion-item>\r\n * </ngx-govuk-accordion>\r\n * ```\r\n *\r\n * @see {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\r\n */\r\n@Component({\r\n  imports: [NgTemplateOutlet],\r\n  selector: 'ngx-govuk-accordion',\r\n  templateUrl: './accordion.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [CdkAccordion],\r\n})\r\nexport class GovUKAccordionComponent {\r\n  /** The unique identifier for the accordion. This input is required. */\r\n  readonly id = input.required<string>();\r\n\r\n  /**\r\n   * IDs of accordion items that should be expanded when the accordion first renders.\r\n   * Defaults to an empty array (all items collapsed).\r\n   */\r\n  readonly initialExpanded = input<string[]>([]);\r\n\r\n  /**\r\n   * Two-way binding model for the currently expanded accordion items.\r\n   * Contains an array of item IDs that are expanded.\r\n   */\r\n  readonly expandedItems = model<string[]>([]);\r\n\r\n  /** Collection of accordion item components that are children of this accordion. */\r\n  readonly items = contentChildren(GovUKAccordionItemComponent);\r\n\r\n  /**\r\n   * Computed property that determines if all accordion items are currently expanded.\r\n   * Returns true only if there are items and all of them are expanded.\r\n   */\r\n  readonly allExpanded = computed(() => {\r\n    const allItems = this.items();\r\n    const expandedItems = this.expandedItems();\r\n    return (\r\n      allItems.length > 0 &&\r\n      allItems.every((item) => expandedItems.includes(item.itemId()))\r\n    );\r\n  });\r\n\r\n  constructor() {\r\n    effect(() => {\r\n      const initialExpandedItems = this.expandedItems();\r\n      const initialExpanded = this.initialExpanded();\r\n\r\n      if (initialExpandedItems.length === 0 && initialExpanded.length > 0) {\r\n        this.expandedItems.set([...initialExpanded]);\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n   * Checks if a specific accordion item is expanded.\r\n   * @param itemId The ID of the accordion item to check\r\n   * @returns True if the item is expanded, false otherwise\r\n   */\r\n  isExpanded(itemId: string): boolean {\r\n    return this.expandedItems().includes(itemId);\r\n  }\r\n\r\n  /**\r\n   * Toggles the expanded state of a specific accordion item.\r\n   * If the item is collapsed, it will be expanded, and vice versa.\r\n   * @param itemId The ID of the accordion item to toggle\r\n   */\r\n  toggleItem(itemId: string): void {\r\n    const currentExpanded = this.expandedItems();\r\n    const index = currentExpanded.indexOf(itemId);\r\n\r\n    if (index === -1) {\r\n      this.expandedItems.set([...currentExpanded, itemId]);\r\n    } else {\r\n      const newExpanded = [...currentExpanded];\r\n      newExpanded.splice(index, 1);\r\n      this.expandedItems.set(newExpanded);\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Toggles all accordion items between expanded and collapsed states.\r\n   * If all items are currently expanded, collapses all items.\r\n   * If any items are collapsed, expands all items.\r\n   */\r\n  toggleAll(): void {\r\n    if (this.allExpanded()) {\r\n      this.expandedItems.set([]);\r\n    } else {\r\n      this.expandedItems.set(this.items().map((item) => item.itemId()));\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CdkAccordion } from '@angular/cdk/accordion';\r\nimport { NgTemplateOutlet } from '@angular/common';\r\nimport {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  computed,\r\n  contentChildren,\r\n  effect,\r\n  input,\r\n  model,\r\n} from '@angular/core';\r\nimport { GovUKAccordionItemComponent } from '../accordion-item/accordion-item.component';\r\n\r\n/**\r\n * This component implements the GOV.UK Design System accordion component.\r\n * It allows users to show and hide sections of related content on a page.\r\n *\r\n * @example\r\n * ```\r\n * <ngx-govuk-accordion id=\"accordion-default\">\r\n *   <ngx-govuk-accordion-item heading=\"Section 1\" id=\"section-1\">\r\n *     <p>This is the content for section 1.</p>\r\n *   </ngx-govuk-accordion-item>\r\n *   <ngx-govuk-accordion-item heading=\"Section 2\" id=\"section-2\">\r\n *     <p>This is the content for section 2.</p>\r\n *   </ngx-govuk-accordion-item>\r\n * </ngx-govuk-accordion>\r\n * ```\r\n *\r\n * @see {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\r\n */\r\n@Component({\r\n  imports: [NgTemplateOutlet],\r\n  selector: 'ngx-govuk-accordion',\r\n  templateUrl: './accordion.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [CdkAccordion],\r\n})\r\nexport class GovUKAccordionComponent {\r\n  /** The unique identifier for the accordion. This input is required. */\r\n  readonly id = input.required<string>();\r\n\r\n  /**\r\n   * IDs of accordion items that should be expanded when the accordion first renders.\r\n   * Defaults to an empty array (all items collapsed).\r\n   */\r\n  readonly initialExpanded = input<string[]>([]);\r\n\r\n  /**\r\n   * Two-way binding model for the currently expanded accordion items.\r\n   * Contains an array of item IDs that are expanded.\r\n   */\r\n  readonly expandedItems = model<string[]>([]);\r\n\r\n  /** Collection of accordion item components that are children of this accordion. */\r\n  readonly items = contentChildren(GovUKAccordionItemComponent);\r\n\r\n  /**\r\n   * Computed property that determines if all accordion items are currently expanded.\r\n   * Returns true only if there are items and all of them are expanded.\r\n   */\r\n  readonly allExpanded = computed(() => {\r\n    const allItems = this.items();\r\n    const expandedItems = this.expandedItems();\r\n    return (\r\n      allItems.length > 0 &&\r\n      allItems.every((item) => expandedItems.includes(item.itemId()))\r\n    );\r\n  });\r\n\r\n  constructor() {\r\n    effect(() => {\r\n      const initialExpandedItems = this.expandedItems();\r\n      const initialExpanded = this.initialExpanded();\r\n\r\n      if (initialExpandedItems.length === 0 && initialExpanded.length > 0) {\r\n        this.expandedItems.set([...initialExpanded]);\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n   * Checks if a specific accordion item is expanded.\r\n   * @param itemId The ID of the accordion item to check\r\n   * @returns True if the item is expanded, false otherwise\r\n   */\r\n  isExpanded(itemId: string): boolean {\r\n    return this.expandedItems().includes(itemId);\r\n  }\r\n\r\n  /**\r\n   * Toggles the expanded state of a specific accordion item.\r\n   * If the item is collapsed, it will be expanded, and vice versa.\r\n   * @param itemId The ID of the accordion item to toggle\r\n   */\r\n  toggleItem(itemId: string): void {\r\n    const currentExpanded = this.expandedItems();\r\n    const index = currentExpanded.indexOf(itemId);\r\n\r\n    if (index === -1) {\r\n      this.expandedItems.set([...currentExpanded, itemId]);\r\n    } else {\r\n      const newExpanded = [...currentExpanded];\r\n      newExpanded.splice(index, 1);\r\n      this.expandedItems.set(newExpanded);\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Toggles all accordion items between expanded and collapsed states.\r\n   * If all items are currently expanded, collapses all items.\r\n   * If any items are collapsed, expands all items.\r\n   */\r\n  toggleAll(): void {\r\n    if (this.allExpanded()) {\r\n      this.expandedItems.set([]);\r\n    } else {\r\n      this.expandedItems.set(this.items().map((item) => item.itemId()));\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -543,14 +543,14 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 71
+                "line": 69
             },
             "extends": [],
             "templateData": "<div class=\"govuk-accordion\" [attr.id]=\"id()\">\n  <div class=\"govuk-accordion__controls\">\n    <button\n      type=\"button\"\n      class=\"govuk-accordion__show-all\"\n      [attr.aria-expanded]=\"allExpanded()\"\n      (click)=\"toggleAll()\"\n    >\n      <span\n        class=\"govuk-accordion-nav__chevron\"\n        [class.govuk-accordion-nav__chevron--down]=\"!allExpanded()\"\n      ></span>\n      <span class=\"govuk-accordion__show-all-text\">\n        {{ allExpanded() ? 'Hide all sections' : 'Show all sections' }}\n      </span>\n    </button>\n  </div>\n  @for (item of items(); track item.itemId()) {\n    <div\n      class=\"govuk-accordion__section\"\n      [class.govuk-accordion__section--expanded]=\"isExpanded(item.itemId())\"\n    >\n      <div class=\"govuk-accordion__section-header\">\n        <h2 class=\"govuk-accordion__section-heading\">\n          <button\n            type=\"button\"\n            class=\"govuk-accordion__section-button\"\n            [attr.aria-expanded]=\"isExpanded(item.itemId())\"\n            [attr.aria-controls]=\"id() + '-content-' + item.itemId()\"\n            [attr.aria-label]=\"\n              item.heading() +\n              (item.summary() ? ', ' + item.summary() + ', ' : ', ') +\n              (isExpanded(item.itemId()) ? 'Hide' : 'Show') +\n              ' this section'\n            \"\n            (click)=\"toggleItem(item.itemId())\"\n          >\n            <span\n              class=\"govuk-accordion__section-heading-text\"\n              [attr.id]=\"id() + '-heading-' + item.itemId()\"\n            >\n              <span class=\"govuk-accordion__section-heading-text-focus\">\n                {{ item.heading() }}\n              </span>\n            </span>\n\n            @if (item.summary()) {\n              <span\n                class=\"govuk-visually-hidden govuk-accordion__section-heading-divider\"\n                >,\n              </span>\n              <span\n                class=\"govuk-accordion__section-summary govuk-body\"\n                [attr.id]=\"id() + '-summary-' + item.itemId()\"\n              >\n                <span class=\"govuk-accordion__section-summary-focus\">\n                  {{ item.summary() }}\n                </span>\n              </span>\n            }\n\n            <span\n              class=\"govuk-visually-hidden govuk-accordion__section-heading-divider\"\n              >,\n            </span>\n            <span class=\"govuk-accordion__section-toggle\" data-nosnippet=\"\">\n              <span class=\"govuk-accordion__section-toggle-focus\">\n                <span\n                  class=\"govuk-accordion-nav__chevron\"\n                  [class.govuk-accordion-nav__chevron--down]=\"\n                    !isExpanded(item.itemId())\n                  \"\n                ></span>\n                <span class=\"govuk-accordion__section-toggle-text\">{{\n                  isExpanded(item.itemId()) ? 'Hide' : 'Show'\n                }}</span>\n              </span>\n            </span>\n          </button>\n        </h2>\n      </div>\n      <div\n        [attr.id]=\"id() + '-content-' + item.itemId()\"\n        class=\"govuk-accordion__section-content\"\n        [attr.aria-labelledby]=\"id() + '-heading-' + item.itemId()\"\n        [hidden]=\"!isExpanded(item.itemId())\"\n      >\n        <ng-container [ngTemplateOutlet]=\"item.content()\"></ng-container>\n      </div>\n    </div>\n  }\n</div>\n"
         },
         {
             "name": "GovUKAccordionItemComponent",
-            "id": "component-GovUKAccordionItemComponent-c7ad28d743201e1672de5aac937971cba92c959cdffcd8324b9268d848def8acd3aa65037e238d1a5e804d57792b8b821234a080880e69e38b8def2de6cc9c8b",
+            "id": "component-GovUKAccordionItemComponent-f921f509b3d87fa3d12b80b73b5d5175d62451916a89b801b8b2f741689b29199582ae70b5d89312e3769a298686ca8107f59e3607fe8265a1b059fba00a683a",
             "file": "libs/ngx-govuk-frontend/accordion/src/lib/accordion-item/accordion-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -575,7 +575,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The text displayed in the accordion item heading. This input is required.</p>\n",
-                    "line": 39,
+                    "line": 37,
                     "rawdescription": "\nThe text displayed in the accordion item heading. This input is required.",
                     "modifierKind": [
                         148
@@ -590,7 +590,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The unique identifier for the accordion item. This input is required.</p>\n",
-                    "line": 36,
+                    "line": 34,
                     "rawdescription": "\nThe unique identifier for the accordion item. This input is required.",
                     "modifierKind": [
                         148
@@ -605,7 +605,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Optional summary text displayed below the heading.</p>\n",
-                    "line": 42,
+                    "line": 40,
                     "rawdescription": "\nOptional summary text displayed below the heading.",
                     "modifierKind": [
                         148
@@ -624,7 +624,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Reference to the template containing the accordion item&#39;s content.</p>\n",
-                    "line": 48,
+                    "line": 46,
                     "rawdescription": "\nReference to the template containing the accordion item's content.",
                     "modifierKind": [
                         148
@@ -639,7 +639,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether the accordion item is expanded. Defaults to false.</p>\n",
-                    "line": 45,
+                    "line": 43,
                     "rawdescription": "\nWhether the accordion item is expanded. Defaults to false.",
                     "modifierKind": [
                         148
@@ -653,7 +653,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The text displayed in the accordion item heading. This input is required.</p>\n",
-                    "line": 39,
+                    "line": 37,
                     "rawdescription": "\nThe text displayed in the accordion item heading. This input is required.",
                     "modifierKind": [
                         148
@@ -668,7 +668,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The unique identifier for the accordion item. This input is required.</p>\n",
-                    "line": 36,
+                    "line": 34,
                     "rawdescription": "\nThe unique identifier for the accordion item. This input is required.",
                     "modifierKind": [
                         148
@@ -683,7 +683,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Optional summary text displayed below the heading.</p>\n",
-                    "line": 42,
+                    "line": 40,
                     "rawdescription": "\nOptional summary text displayed below the heading.",
                     "modifierKind": [
                         148
@@ -698,10 +698,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that represents a single item within a GovUKAccordionComponent.</p>\n<p>This component implements a section in the GOV.UK Design System accordion component.\nIt contains the heading, optional summary, and content for an accordion section.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-accordion-item\n  itemId=&quot;section-1&quot;\n  heading=&quot;Section 1&quot;\n  summary=&quot;This section contains information about...&quot;\n  [expanded]=&quot;true&quot;&gt;\n  &lt;p&gt;Content for section 1&lt;/p&gt;\n&lt;/ngx-govuk-accordion-item&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}</code></pre></div>",
-            "rawdescription": "\n\nA component that represents a single item within a GovUKAccordionComponent.\n\nThis component implements a section in the GOV.UK Design System accordion component.\nIt contains the heading, optional summary, and content for an accordion section.\n\n```html\n```html\n<ngx-govuk-accordion-item\n  itemId=\"section-1\"\n  heading=\"Section 1\"\n  summary=\"This section contains information about...\"\n  [expanded]=\"true\">\n  <p>Content for section 1</p>\n</ngx-govuk-accordion-item>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\n",
+            "description": "<p>This component implements a section in the GOV.UK Design System accordion component.\nIt contains the heading, optional summary, and content for an accordion section.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-accordion-item\n  itemId=&quot;section-1&quot;\n  heading=&quot;Section 1&quot;\n  summary=&quot;This section contains information about...&quot;\n  [expanded]=&quot;true&quot;&gt;\n  &lt;p&gt;Content for section 1&lt;/p&gt;\n&lt;/ngx-govuk-accordion-item&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements a section in the GOV.UK Design System accordion component.\nIt contains the heading, optional summary, and content for an accordion section.\n\n```html\n```html\n<ngx-govuk-accordion-item\n  itemId=\"section-1\"\n  heading=\"Section 1\"\n  summary=\"This section contains information about...\"\n  [expanded]=\"true\">\n  <p>Content for section 1</p>\n</ngx-govuk-accordion-item>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\n",
             "type": "component",
-            "sourceCode": "import {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n/**\n * A component that represents a single item within a GovUKAccordionComponent.\n *\n * This component implements a section in the GOV.UK Design System accordion component.\n * It contains the heading, optional summary, and content for an accordion section.\n *\n * @example\n * ```html\n * <ngx-govuk-accordion-item\n *   itemId=\"section-1\"\n *   heading=\"Section 1\"\n *   summary=\"This section contains information about...\"\n *   [expanded]=\"true\">\n *   <p>Content for section 1</p>\n * </ngx-govuk-accordion-item>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\n */\n@Component({\n  selector: 'ngx-govuk-accordion-item',\n  templateUrl: './accordion-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKAccordionItemComponent {\n  /** The unique identifier for the accordion item. This input is required. */\n  readonly itemId = input.required<string>();\n\n  /** The text displayed in the accordion item heading. This input is required. */\n  readonly heading = input.required<string>();\n\n  /** Optional summary text displayed below the heading. */\n  readonly summary = input<string>();\n\n  /** Whether the accordion item is expanded. Defaults to false. */\n  readonly expanded = input(false, { transform: booleanAttribute });\n\n  /** Reference to the template containing the accordion item's content. */\n  readonly content = viewChild.required<TemplateRef<unknown>>('content');\n}\n",
+            "sourceCode": "import {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n/**\n * This component implements a section in the GOV.UK Design System accordion component.\n * It contains the heading, optional summary, and content for an accordion section.\n *\n * @example\n * ```html\n * <ngx-govuk-accordion-item\n *   itemId=\"section-1\"\n *   heading=\"Section 1\"\n *   summary=\"This section contains information about...\"\n *   [expanded]=\"true\">\n *   <p>Content for section 1</p>\n * </ngx-govuk-accordion-item>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}\n */\n@Component({\n  selector: 'ngx-govuk-accordion-item',\n  templateUrl: './accordion-item.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKAccordionItemComponent {\n  /** The unique identifier for the accordion item. This input is required. */\n  readonly itemId = input.required<string>();\n\n  /** The text displayed in the accordion item heading. This input is required. */\n  readonly heading = input.required<string>();\n\n  /** Optional summary text displayed below the heading. */\n  readonly summary = input<string>();\n\n  /** Whether the accordion item is expanded. Defaults to false. */\n  readonly expanded = input(false, { transform: booleanAttribute });\n\n  /** Reference to the template containing the accordion item's content. */\n  readonly content = viewChild.required<TemplateRef<unknown>>('content');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -710,7 +710,7 @@
         },
         {
             "name": "GovUKBackLinkComponent",
-            "id": "component-GovUKBackLinkComponent-1419d56f6bd6e725f75fdd7a6ecb7898eb83e5ca69c87377f856cf07f2304f45d9e28d6ba5f6a53c1707650a234ade0e10bad0a8a206e39aff3c9f50479e7d00",
+            "id": "component-GovUKBackLinkComponent-a7da082d4f2303a2496948c5b646a244d16f53a28e1d2a0836beec8a3fb7eaa64b4b432586b01c986240bf95f66459a8313d2fc0925ca84d5d69cc7abd58053c",
             "file": "libs/ngx-govuk-frontend/back-link/src/lib/back-link.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -738,7 +738,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36,
+                    "line": 34,
                     "modifierKind": [
                         148
                     ]
@@ -752,7 +752,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34,
+                    "line": 32,
                     "modifierKind": [
                         148
                     ]
@@ -769,10 +769,10 @@
                     "name": "RouterLink"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK back link.</p>\n<p>This component implements the GOV.UK Design System back link component.\nIt provides a consistent way to help users navigate back to the previous page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-back-link&gt;&lt;/ngx-govuk-back-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-back-link [inverse]=&quot;true&quot;&gt;&lt;/ngx-govuk-back-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK back link.\n\nThis component implements the GOV.UK Design System back link component.\nIt provides a consistent way to help users navigate back to the previous page.\n\n```html\n```html\n<ngx-govuk-back-link></ngx-govuk-back-link>\n```\n```\n```html\n```html\n<ngx-govuk-back-link [inverse]=\"true\"></ngx-govuk-back-link>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}\n",
+            "description": "<p>This component implements the GOV.UK Design System back link component.\nIt provides a consistent way to help users navigate back to the previous page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-back-link&gt;&lt;/ngx-govuk-back-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-back-link [inverse]=&quot;true&quot;&gt;&lt;/ngx-govuk-back-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System back link component.\nIt provides a consistent way to help users navigate back to the previous page.\n\n```html\n```html\n<ngx-govuk-back-link></ngx-govuk-back-link>\n```\n```\n```html\n```html\n<ngx-govuk-back-link [inverse]=\"true\"></ngx-govuk-back-link>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}\n",
             "type": "component",
-            "sourceCode": "import {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  input,\n} from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\n/**\n * A component that renders a GOV.UK back link.\n *\n * This component implements the GOV.UK Design System back link component.\n * It provides a consistent way to help users navigate back to the previous page.\n *\n * @example\n * ```html\n * <ngx-govuk-back-link></ngx-govuk-back-link>\n * ```\n *\n * @example With inverse color scheme\n * ```html\n * <ngx-govuk-back-link [inverse]=\"true\"></ngx-govuk-back-link>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}\n */\n@Component({\n  selector: 'ngx-govuk-back-link',\n  imports: [RouterLink],\n  templateUrl: './back-link.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKBackLinkComponent {\n  readonly link = input.required<RouterLink['routerLink']>();\n\n  readonly inverse = input(false, { transform: booleanAttribute });\n}\n",
+            "sourceCode": "import {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  input,\n} from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\n/**\n * This component implements the GOV.UK Design System back link component.\n * It provides a consistent way to help users navigate back to the previous page.\n *\n * @example\n * ```html\n * <ngx-govuk-back-link></ngx-govuk-back-link>\n * ```\n *\n * @example With inverse color scheme\n * ```html\n * <ngx-govuk-back-link [inverse]=\"true\"></ngx-govuk-back-link>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/back-link/ GOV.UK Back link}\n */\n@Component({\n  selector: 'ngx-govuk-back-link',\n  imports: [RouterLink],\n  templateUrl: './back-link.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKBackLinkComponent {\n  readonly link = input.required<RouterLink['routerLink']>();\n\n  readonly inverse = input(false, { transform: booleanAttribute });\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -781,7 +781,7 @@
         },
         {
             "name": "GovUKBreadcrumbsComponent",
-            "id": "component-GovUKBreadcrumbsComponent-9efce93ae01db9a701e2da854c5294bcba3606e4a82255f32165a8e55dc730f252ebf6fa7c040519f212428e23fa323a185cee4dff90a1774f1f16930160bf3c",
+            "id": "component-GovUKBreadcrumbsComponent-1a8b60b02019f08a459caf2f84acd69df7157e13260a3e18eb2485389d112ed68e0f3b9e17bd23bac717d4130aa5c54e97b4d822d55ede54bbb876448a2f9441",
             "file": "libs/ngx-govuk-frontend/breadcrumbs/src/lib/breadcrumbs.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -809,7 +809,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Collection of breadcrumb items that are children of this component.</p>\n",
-                    "line": 34,
+                    "line": 32,
                     "rawdescription": "\nCollection of breadcrumb items that are children of this component.",
                     "modifierKind": [
                         148
@@ -827,10 +827,10 @@
                     "name": "RouterLink"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK breadcrumbs navigation.</p>\n<p>This component implements the GOV.UK Design System breadcrumbs component.\nIt helps users understand where they are in a website&#39;s structure and navigate back to previous pages.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-breadcrumbs&gt;\n  &lt;a govukBreadcrumb routerLink=&quot;/&quot;&gt;Home&lt;/a&gt;\n  &lt;a govukBreadcrumb routerLink=&quot;/benefits&quot;&gt;Benefits&lt;/a&gt;\n  &lt;a govukBreadcrumb&gt;Eligibility&lt;/a&gt;\n&lt;/ngx-govuk-breadcrumbs&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/breadcrumbs/ GOV.UK Breadcrumbs}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK breadcrumbs navigation.\n\nThis component implements the GOV.UK Design System breadcrumbs component.\nIt helps users understand where they are in a website's structure and navigate back to previous pages.\n\n```html\n```html\n<ngx-govuk-breadcrumbs>\n  <a govukBreadcrumb routerLink=\"/\">Home</a>\n  <a govukBreadcrumb routerLink=\"/benefits\">Benefits</a>\n  <a govukBreadcrumb>Eligibility</a>\n</ngx-govuk-breadcrumbs>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/breadcrumbs/ GOV.UK Breadcrumbs}\n",
+            "description": "<p>This component implements the GOV.UK Design System breadcrumbs component.\nIt helps users understand where they are in a website&#39;s structure and navigate back to previous pages.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-breadcrumbs&gt;\n  &lt;a govukBreadcrumb routerLink=&quot;/&quot;&gt;Home&lt;/a&gt;\n  &lt;a govukBreadcrumb routerLink=&quot;/benefits&quot;&gt;Benefits&lt;/a&gt;\n  &lt;a govukBreadcrumb&gt;Eligibility&lt;/a&gt;\n&lt;/ngx-govuk-breadcrumbs&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/breadcrumbs/ GOV.UK Breadcrumbs}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System breadcrumbs component.\nIt helps users understand where they are in a website's structure and navigate back to previous pages.\n\n```html\n```html\n<ngx-govuk-breadcrumbs>\n  <a govukBreadcrumb routerLink=\"/\">Home</a>\n  <a govukBreadcrumb routerLink=\"/benefits\">Benefits</a>\n  <a govukBreadcrumb>Eligibility</a>\n</ngx-govuk-breadcrumbs>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/breadcrumbs/ GOV.UK Breadcrumbs}\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  contentChildren,\n} from '@angular/core';\nimport { RouterLink } from '@angular/router';\nimport { GovUKBreadcrumbDirective } from './breadcrumb/breadcrumb.directive';\n\n/**\n * A component that renders a GOV.UK breadcrumbs navigation.\n *\n * This component implements the GOV.UK Design System breadcrumbs component.\n * It helps users understand where they are in a website's structure and navigate back to previous pages.\n *\n * @example\n * ```html\n * <ngx-govuk-breadcrumbs>\n *   <a govukBreadcrumb routerLink=\"/\">Home</a>\n *   <a govukBreadcrumb routerLink=\"/benefits\">Benefits</a>\n *   <a govukBreadcrumb>Eligibility</a>\n * </ngx-govuk-breadcrumbs>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/breadcrumbs/ GOV.UK Breadcrumbs}\n */\n@Component({\n  selector: 'ngx-govuk-breadcrumbs',\n  imports: [RouterLink],\n  templateUrl: './breadcrumbs.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKBreadcrumbsComponent {\n  /** Collection of breadcrumb items that are children of this component. */\n  readonly items = contentChildren(GovUKBreadcrumbDirective);\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  contentChildren,\n} from '@angular/core';\nimport { RouterLink } from '@angular/router';\nimport { GovUKBreadcrumbDirective } from './breadcrumb/breadcrumb.directive';\n\n/**\n * This component implements the GOV.UK Design System breadcrumbs component.\n * It helps users understand where they are in a website's structure and navigate back to previous pages.\n *\n * @example\n * ```html\n * <ngx-govuk-breadcrumbs>\n *   <a govukBreadcrumb routerLink=\"/\">Home</a>\n *   <a govukBreadcrumb routerLink=\"/benefits\">Benefits</a>\n *   <a govukBreadcrumb>Eligibility</a>\n * </ngx-govuk-breadcrumbs>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/breadcrumbs/ GOV.UK Breadcrumbs}\n */\n@Component({\n  selector: 'ngx-govuk-breadcrumbs',\n  imports: [RouterLink],\n  templateUrl: './breadcrumbs.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKBreadcrumbsComponent {\n  /** Collection of breadcrumb items that are children of this component. */\n  readonly items = contentChildren(GovUKBreadcrumbDirective);\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -839,7 +839,7 @@
         },
         {
             "name": "GovUKButtonComponent",
-            "id": "component-GovUKButtonComponent-9831b3672d067e55e6d8849df2b0503440a0030f55510f02d6f02b14fd3e17e4b4ef3aca947b6c5dfdc1999367eadd4c1cc3b206272a9bb6f9127ca4a73db40f",
+            "id": "component-GovUKButtonComponent-9dae11ffbfde4ff251309d3148f72103a5bcd3d0701c5166fb299ae11d7270c89f757ab95e4c295a3207c52e56b782d7c8ff76bc8bb62907ca5fa9c699401339",
             "file": "libs/ngx-govuk-frontend/button/src/lib/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -867,7 +867,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The color variant of the button. Defaults to &#39;primary&#39;.\nCan be &#39;primary&#39;, &#39;secondary&#39;, &#39;warning&#39;, or &#39;inverse&#39;.</p>\n",
-                    "line": 63,
+                    "line": 61,
                     "rawdescription": "\n\nThe color variant of the button. Defaults to 'primary'.\nCan be 'primary', 'secondary', 'warning', or 'inverse'.\n",
                     "modifierKind": [
                         148
@@ -882,7 +882,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether the button is disabled. Defaults to false.</p>\n",
-                    "line": 54,
+                    "line": 52,
                     "rawdescription": "\nWhether the button is disabled. Defaults to false.",
                     "modifierKind": [
                         148
@@ -897,7 +897,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether to show the start icon (forward arrow). Defaults to false.</p>\n",
-                    "line": 57,
+                    "line": 55,
                     "rawdescription": "\nWhether to show the start icon (forward arrow). Defaults to false.",
                     "modifierKind": [
                         148
@@ -915,10 +915,10 @@
                     "name": "NgClass"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK button.</p>\n<p>This component implements the GOV.UK Design System button component.\nIt allows users to take actions, submit forms, or navigate to a new page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-button&gt;Save and continue&lt;/ngx-govuk-button&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-button color=&quot;secondary&quot;&gt;Cancel&lt;/ngx-govuk-button&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-button [start]=&quot;true&quot;&gt;Start now&lt;/ngx-govuk-button&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/button/ GOV.UK Button}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK button.\n\nThis component implements the GOV.UK Design System button component.\nIt allows users to take actions, submit forms, or navigate to a new page.\n\n```html\n```html\n<ngx-govuk-button>Save and continue</ngx-govuk-button>\n```\n```\n```html\n```html\n<ngx-govuk-button color=\"secondary\">Cancel</ngx-govuk-button>\n```\n```\n```html\n```html\n<ngx-govuk-button [start]=\"true\">Start now</ngx-govuk-button>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/button/ GOV.UK Button}\n",
+            "description": "<p>This component implements the GOV.UK Design System button component.\nIt allows users to take actions, submit forms, or navigate to a new page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-button&gt;Save and continue&lt;/ngx-govuk-button&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-button color=&quot;secondary&quot;&gt;Cancel&lt;/ngx-govuk-button&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-button [start]=&quot;true&quot;&gt;Start now&lt;/ngx-govuk-button&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/button/ GOV.UK Button}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System button component.\nIt allows users to take actions, submit forms, or navigate to a new page.\n\n```html\n```html\n<ngx-govuk-button>Save and continue</ngx-govuk-button>\n```\n```\n```html\n```html\n<ngx-govuk-button color=\"secondary\">Cancel</ngx-govuk-button>\n```\n```\n```html\n```html\n<ngx-govuk-button [start]=\"true\">Start now</ngx-govuk-button>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/button/ GOV.UK Button}\n",
             "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\nimport {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  input,\n} from '@angular/core';\n\n/**\n * The color type for GovUK buttons\n * @typedef {('primary'|'secondary'|'warning'|'inverse')} GovUKButtonColorType\n * - 'primary' - Default blue button\n * - 'secondary' - Grey button for secondary actions\n * - 'warning' - Red warning button\n * - 'inverse' - White button on dark background\n */\nexport type GovUKButtonColorType =\n  | 'primary'\n  | 'secondary'\n  | 'warning'\n  | 'inverse';\n\n/**\n * A component that renders a GOV.UK button.\n *\n * This component implements the GOV.UK Design System button component.\n * It allows users to take actions, submit forms, or navigate to a new page.\n *\n * @example\n * ```html\n * <ngx-govuk-button>Save and continue</ngx-govuk-button>\n * ```\n *\n * @example With secondary style\n * ```html\n * <ngx-govuk-button color=\"secondary\">Cancel</ngx-govuk-button>\n * ```\n *\n * @example With start icon\n * ```html\n * <ngx-govuk-button [start]=\"true\">Start now</ngx-govuk-button>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/button/ GOV.UK Button}\n */\n@Component({\n  selector: 'ngx-govuk-button',\n  imports: [NgClass],\n  templateUrl: './button.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKButtonComponent {\n  /** Whether the button is disabled. Defaults to false. */\n  readonly disabled = input(false, { transform: booleanAttribute });\n\n  /** Whether to show the start icon (forward arrow). Defaults to false. */\n  readonly start = input(false, { transform: booleanAttribute });\n\n  /**\n   * The color variant of the button. Defaults to 'primary'.\n   * Can be 'primary', 'secondary', 'warning', or 'inverse'.\n   */\n  readonly color = input<GovUKButtonColorType>('primary');\n}\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\nimport {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  input,\n} from '@angular/core';\n\n/**\n * The color type for GovUK buttons\n * @typedef {('primary'|'secondary'|'warning'|'inverse')} GovUKButtonColorType\n * - 'primary' - Default blue button\n * - 'secondary' - Grey button for secondary actions\n * - 'warning' - Red warning button\n * - 'inverse' - White button on dark background\n */\nexport type GovUKButtonColorType =\n  | 'primary'\n  | 'secondary'\n  | 'warning'\n  | 'inverse';\n\n/**\n * This component implements the GOV.UK Design System button component.\n * It allows users to take actions, submit forms, or navigate to a new page.\n *\n * @example\n * ```html\n * <ngx-govuk-button>Save and continue</ngx-govuk-button>\n * ```\n *\n * @example With secondary style\n * ```html\n * <ngx-govuk-button color=\"secondary\">Cancel</ngx-govuk-button>\n * ```\n *\n * @example With start icon\n * ```html\n * <ngx-govuk-button [start]=\"true\">Start now</ngx-govuk-button>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/button/ GOV.UK Button}\n */\n@Component({\n  selector: 'ngx-govuk-button',\n  imports: [NgClass],\n  templateUrl: './button.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKButtonComponent {\n  /** Whether the button is disabled. Defaults to false. */\n  readonly disabled = input(false, { transform: booleanAttribute });\n\n  /** Whether to show the start icon (forward arrow). Defaults to false. */\n  readonly start = input(false, { transform: booleanAttribute });\n\n  /**\n   * The color variant of the button. Defaults to 'primary'.\n   * Can be 'primary', 'secondary', 'warning', or 'inverse'.\n   */\n  readonly color = input<GovUKButtonColorType>('primary');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -927,7 +927,7 @@
         },
         {
             "name": "GovUKButtonGroupComponent",
-            "id": "component-GovUKButtonGroupComponent-a59ba652ed89ea6a4b256423ed76c2a68df5a1671352935661d08ea8e508248198210a0a7bb6d9e35af15f30868c738c3c842d2533ace4f72c158fd35ebab6db",
+            "id": "component-GovUKButtonGroupComponent-afa3f2bfbfcb597d02ec3bc864d709819e8a5231735bb4a08f6bfe9d93b815736f6a48302ddc00fb461f57c7c2737ef954b814c3159f18a0e591e7bdf3096d55",
             "file": "libs/ngx-govuk-frontend/button/src/lib/button-group/button-group.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -953,10 +953,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that groups GOV.UK buttons together with consistent spacing.</p>\n<p>This component implements the GOV.UK Design System button group pattern.\nIt provides consistent spacing between multiple buttons or links that are grouped together.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-button-group&gt;\n  &lt;ngx-govuk-button&gt;Save and continue&lt;/ngx-govuk-button&gt;\n  &lt;ngx-govuk-button color=&quot;secondary&quot;&gt;Cancel&lt;/ngx-govuk-button&gt;\n&lt;/ngx-govuk-button-group&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">The component accepts `ngx-govuk-button` components and elements with the `govuk-link` class\nas content through content projection.\n\nSee {&#64;link https://design-system.service.gov.uk/components/button/#button-group GOV.UK Button group}</code></pre></div>",
-            "rawdescription": "\n\nA component that groups GOV.UK buttons together with consistent spacing.\n\nThis component implements the GOV.UK Design System button group pattern.\nIt provides consistent spacing between multiple buttons or links that are grouped together.\n\n```html\n```html\n<ngx-govuk-button-group>\n  <ngx-govuk-button>Save and continue</ngx-govuk-button>\n  <ngx-govuk-button color=\"secondary\">Cancel</ngx-govuk-button>\n</ngx-govuk-button-group>\n```\n```\nThe component accepts `ngx-govuk-button` components and elements with the `govuk-link` class\nas content through content projection.\n\nSee {@link https://design-system.service.gov.uk/components/button/#button-group GOV.UK Button group}\n",
+            "description": "<p>This component implements the GOV.UK Design System button group pattern.\nIt provides consistent spacing between multiple buttons or links that are grouped together.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-button-group&gt;\n  &lt;ngx-govuk-button&gt;Save and continue&lt;/ngx-govuk-button&gt;\n  &lt;ngx-govuk-button color=&quot;secondary&quot;&gt;Cancel&lt;/ngx-govuk-button&gt;\n&lt;/ngx-govuk-button-group&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">The component accepts `ngx-govuk-button` components and elements with the `govuk-link` class\nas content through content projection.\n\nSee {&#64;link https://design-system.service.gov.uk/components/button/#button-group GOV.UK Button group}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System button group pattern.\nIt provides consistent spacing between multiple buttons or links that are grouped together.\n\n```html\n```html\n<ngx-govuk-button-group>\n  <ngx-govuk-button>Save and continue</ngx-govuk-button>\n  <ngx-govuk-button color=\"secondary\">Cancel</ngx-govuk-button>\n</ngx-govuk-button-group>\n```\n```\nThe component accepts `ngx-govuk-button` components and elements with the `govuk-link` class\nas content through content projection.\n\nSee {@link https://design-system.service.gov.uk/components/button/#button-group GOV.UK Button group}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\n\n/**\n * A component that groups GOV.UK buttons together with consistent spacing.\n *\n * This component implements the GOV.UK Design System button group pattern.\n * It provides consistent spacing between multiple buttons or links that are grouped together.\n *\n * @example\n * ```html\n * <ngx-govuk-button-group>\n *   <ngx-govuk-button>Save and continue</ngx-govuk-button>\n *   <ngx-govuk-button color=\"secondary\">Cancel</ngx-govuk-button>\n * </ngx-govuk-button-group>\n * ```\n *\n * The component accepts `ngx-govuk-button` components and elements with the `govuk-link` class\n * as content through content projection.\n *\n * @see {@link https://design-system.service.gov.uk/components/button/#button-group GOV.UK Button group}\n */\n@Component({\n  selector: 'ngx-govuk-button-group',\n  templateUrl: './button-group.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKButtonGroupComponent {}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\n\n/**\n * This component implements the GOV.UK Design System button group pattern.\n * It provides consistent spacing between multiple buttons or links that are grouped together.\n *\n * @example\n * ```html\n * <ngx-govuk-button-group>\n *   <ngx-govuk-button>Save and continue</ngx-govuk-button>\n *   <ngx-govuk-button color=\"secondary\">Cancel</ngx-govuk-button>\n * </ngx-govuk-button-group>\n * ```\n *\n * The component accepts `ngx-govuk-button` components and elements with the `govuk-link` class\n * as content through content projection.\n *\n * @see {@link https://design-system.service.gov.uk/components/button/#button-group GOV.UK Button group}\n */\n@Component({\n  selector: 'ngx-govuk-button-group',\n  templateUrl: './button-group.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKButtonGroupComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -965,7 +965,7 @@
         },
         {
             "name": "GovUKCheckboxComponent",
-            "id": "component-GovUKCheckboxComponent-b1427850eff36b84e5e71172df8f4e86c5f1f0db9455d6ff543b3a855c52f4d29c51a61a18d26fb777f955cf07950ce9b77c11eafc2a6bc290f24efde3a1ee9f",
+            "id": "component-GovUKCheckboxComponent-f4adbc0974ce09c8496cbcaa05a08497a26cfdf9f6a4c238e4f367cba87e31a71ff1b83150da42acfd61bd15fddf8309668ab0f0de651a633409eb46224bc59e",
             "file": "libs/ngx-govuk-frontend/checkbox/src/lib/checkbox.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -994,7 +994,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The unique ID for the checkbox input element. This input is required.</p>\n",
-                    "line": 34,
+                    "line": 32,
                     "rawdescription": "\nThe unique ID for the checkbox input element. This input is required.",
                     "modifierKind": [
                         148
@@ -1009,7 +1009,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The text label displayed next to the checkbox. This input is required.</p>\n",
-                    "line": 37,
+                    "line": 35,
                     "rawdescription": "\nThe text label displayed next to the checkbox. This input is required.",
                     "modifierKind": [
                         148
@@ -1027,7 +1027,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The unique ID for the checkbox input element. This input is required.</p>\n",
-                    "line": 34,
+                    "line": 32,
                     "rawdescription": "\nThe unique ID for the checkbox input element. This input is required.",
                     "modifierKind": [
                         148
@@ -1042,7 +1042,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The text label displayed next to the checkbox. This input is required.</p>\n",
-                    "line": 37,
+                    "line": 35,
                     "rawdescription": "\nThe text label displayed next to the checkbox. This input is required.",
                     "modifierKind": [
                         148
@@ -1058,7 +1058,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The Angular form control associated with this checkbox.</p>\n",
-                    "line": 31,
+                    "line": 29,
                     "rawdescription": "\nThe Angular form control associated with this checkbox.",
                     "modifierKind": [
                         148
@@ -1072,7 +1072,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nToggles the checkbox state between checked and unchecked.\n",
@@ -1090,10 +1090,10 @@
                     "type": "module"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK checkbox.</p>\n<p>This component implements the GOV.UK Design System checkbox component.\nIt allows users to select one or more options by ticking a box.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-checkbox inputId=&quot;terms&quot; label=&quot;I agree to the terms and conditions&quot; formControlName=&quot;terms&quot;&gt;\n&lt;/ngx-govuk-checkbox&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/checkboxes/ GOV.UK Checkboxes}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK checkbox.\n\nThis component implements the GOV.UK Design System checkbox component.\nIt allows users to select one or more options by ticking a box.\n\n```html\n```html\n<ngx-govuk-checkbox inputId=\"terms\" label=\"I agree to the terms and conditions\" formControlName=\"terms\">\n</ngx-govuk-checkbox>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/checkboxes/ GOV.UK Checkboxes}\n",
+            "description": "<p>This component implements the GOV.UK Design System checkbox component.\nIt allows users to select one or more options by ticking a box.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-checkbox inputId=&quot;terms&quot; label=&quot;I agree to the terms and conditions&quot; formControlName=&quot;terms&quot;&gt;\n&lt;/ngx-govuk-checkbox&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/checkboxes/ GOV.UK Checkboxes}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System checkbox component.\nIt allows users to select one or more options by ticking a box.\n\n```html\n```html\n<ngx-govuk-checkbox inputId=\"terms\" label=\"I agree to the terms and conditions\" formControlName=\"terms\">\n</ngx-govuk-checkbox>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/checkboxes/ GOV.UK Checkboxes}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  ValueAccessorDirective,\n  injectNgControl,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * A component that renders a GOV.UK checkbox.\n *\n * This component implements the GOV.UK Design System checkbox component.\n * It allows users to select one or more options by ticking a box.\n *\n * @example\n * ```html\n * <ngx-govuk-checkbox inputId=\"terms\" label=\"I agree to the terms and conditions\" formControlName=\"terms\">\n * </ngx-govuk-checkbox>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/checkboxes/ GOV.UK Checkboxes}\n */\n@Component({\n  selector: 'ngx-govuk-checkbox',\n  imports: [ReactiveFormsModule],\n  templateUrl: './checkbox.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [ValueAccessorDirective],\n})\nexport class GovUKCheckboxComponent {\n  /** The Angular form control associated with this checkbox. */\n  readonly ngControl = injectNgControl();\n\n  /** The unique ID for the checkbox input element. This input is required. */\n  readonly inputId = input.required<string>();\n\n  /** The text label displayed next to the checkbox. This input is required. */\n  readonly label = input.required<string>();\n\n  /**\n   * Toggles the checkbox state between checked and unchecked.\n   */\n  toggle() {\n    this.ngControl.control?.setValue(!this.ngControl.control?.value);\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  ValueAccessorDirective,\n  injectNgControl,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * This component implements the GOV.UK Design System checkbox component.\n * It allows users to select one or more options by ticking a box.\n *\n * @example\n * ```html\n * <ngx-govuk-checkbox inputId=\"terms\" label=\"I agree to the terms and conditions\" formControlName=\"terms\">\n * </ngx-govuk-checkbox>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/checkboxes/ GOV.UK Checkboxes}\n */\n@Component({\n  selector: 'ngx-govuk-checkbox',\n  imports: [ReactiveFormsModule],\n  templateUrl: './checkbox.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [ValueAccessorDirective],\n})\nexport class GovUKCheckboxComponent {\n  /** The Angular form control associated with this checkbox. */\n  readonly ngControl = injectNgControl();\n\n  /** The unique ID for the checkbox input element. This input is required. */\n  readonly inputId = input.required<string>();\n\n  /** The text label displayed next to the checkbox. This input is required. */\n  readonly label = input.required<string>();\n\n  /**\n   * Toggles the checkbox state between checked and unchecked.\n   */\n  toggle() {\n    this.ngControl.control?.setValue(!this.ngControl.control?.value);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1711,7 +1711,7 @@
         },
         {
             "name": "GovUKDetailsComponent",
-            "id": "component-GovUKDetailsComponent-3b0b4f0e0d640e74700a5f609eb2ee56992b1db74f35a2de30253a79feb274f9927ed239b34a916441c123a0123341df3589a1628c454d6739555d056516d749",
+            "id": "component-GovUKDetailsComponent-f6f3cb4f1089d1ae9c58c07b11df2d5a6b2c3c3127042ce0988652caecd9665268d22e5a51a7bd923dda22da9fb38f9689fc055220e85896550790a840f85038",
             "file": "libs/ngx-govuk-frontend/details/src/lib/details.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1736,7 +1736,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The text shown in the details summary element. This input is required.</p>\n",
-                    "line": 25,
+                    "line": 23,
                     "rawdescription": "\nThe text shown in the details summary element. This input is required.",
                     "modifierKind": [
                         148
@@ -1754,7 +1754,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The text shown in the details summary element. This input is required.</p>\n",
-                    "line": 25,
+                    "line": 23,
                     "rawdescription": "\nThe text shown in the details summary element. This input is required.",
                     "modifierKind": [
                         148
@@ -1769,10 +1769,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that renders a GOV.UK details element.</p>\n<p>This component implements the GOV.UK Design System details component.\nIt makes a page easier to scan by letting users reveal more detailed information only if they need it.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-details summary=&quot;Help with nationality&quot;&gt;\n  &lt;p&gt;If you&#39;re not sure about your nationality, try to find out from an official document like a passport or national ID card.&lt;/p&gt;\n&lt;/ngx-govuk-details&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/details/ GOV.UK Details}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK details element.\n\nThis component implements the GOV.UK Design System details component.\nIt makes a page easier to scan by letting users reveal more detailed information only if they need it.\n\n```html\n```html\n<ngx-govuk-details summary=\"Help with nationality\">\n  <p>If you're not sure about your nationality, try to find out from an official document like a passport or national ID card.</p>\n</ngx-govuk-details>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/details/ GOV.UK Details}\n",
+            "description": "<p>This component implements the GOV.UK Design System details component.\nIt makes a page easier to scan by letting users reveal more detailed information only if they need it.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-details summary=&quot;Help with nationality&quot;&gt;\n  &lt;p&gt;If you&#39;re not sure about your nationality, try to find out from an official document like a passport or national ID card.&lt;/p&gt;\n&lt;/ngx-govuk-details&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/details/ GOV.UK Details}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System details component.\nIt makes a page easier to scan by letting users reveal more detailed information only if they need it.\n\n```html\n```html\n<ngx-govuk-details summary=\"Help with nationality\">\n  <p>If you're not sure about your nationality, try to find out from an official document like a passport or national ID card.</p>\n</ngx-govuk-details>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/details/ GOV.UK Details}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * A component that renders a GOV.UK details element.\n *\n * This component implements the GOV.UK Design System details component.\n * It makes a page easier to scan by letting users reveal more detailed information only if they need it.\n *\n * @example\n * ```html\n * <ngx-govuk-details summary=\"Help with nationality\">\n *   <p>If you're not sure about your nationality, try to find out from an official document like a passport or national ID card.</p>\n * </ngx-govuk-details>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/details/ GOV.UK Details}\n */\n@Component({\n  selector: 'ngx-govuk-details',\n  templateUrl: './details.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKDetailsComponent {\n  /** The text shown in the details summary element. This input is required. */\n  readonly summary = input.required<string>();\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * This component implements the GOV.UK Design System details component.\n * It makes a page easier to scan by letting users reveal more detailed information only if they need it.\n *\n * @example\n * ```html\n * <ngx-govuk-details summary=\"Help with nationality\">\n *   <p>If you're not sure about your nationality, try to find out from an official document like a passport or national ID card.</p>\n * </ngx-govuk-details>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/details/ GOV.UK Details}\n */\n@Component({\n  selector: 'ngx-govuk-details',\n  templateUrl: './details.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKDetailsComponent {\n  /** The text shown in the details summary element. This input is required. */\n  readonly summary = input.required<string>();\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2022,7 +2022,7 @@
         },
         {
             "name": "GovUKFileUploadComponent",
-            "id": "component-GovUKFileUploadComponent-15fb2ea4a44bbda67fba51145b083c2798ed9c6ae71b4d7bb73196747734280514389a4482380d21d6b25fc2d5c4030ee43a3c87f9769d77a879852416dd7435",
+            "id": "component-GovUKFileUploadComponent-35bd48dc9cba262e958820bfcfdeaf8536f4155d2ad3627ed05dd1f6b9d78e1a4f3166a07f004503bb32b06ec9aafd2bc5f46517722c3f683f7cfb87b06ee1f2",
             "file": "libs/ngx-govuk-frontend/file-upload/src/lib/file-upload.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2059,7 +2059,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Reference to the common form input directive that provides shared functionality.</p>\n",
-                    "line": 39,
+                    "line": 37,
                     "rawdescription": "\nReference to the common form input directive that provides shared functionality.",
                     "modifierKind": [
                         148
@@ -2074,7 +2074,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The Angular form control associated with this file upload input.</p>\n",
-                    "line": 36,
+                    "line": 34,
                     "rawdescription": "\nThe Angular form control associated with this file upload input.",
                     "modifierKind": [
                         148
@@ -2096,10 +2096,10 @@
                     "type": "module"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK file upload input.</p>\n<p>This component implements the GOV.UK Design System file upload component.\nIt allows users to select and upload files to a service.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-file-upload formControlName=&quot;photo&quot; inputId=&quot;photo-upload&quot; /&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File upload}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK file upload input.\n\nThis component implements the GOV.UK Design System file upload component.\nIt allows users to select and upload files to a service.\n\n```html\n```html\n<ngx-govuk-file-upload formControlName=\"photo\" inputId=\"photo-upload\" />\n```\n```\nSee {@link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File upload}\n",
+            "description": "<p>This component implements the GOV.UK Design System file upload component.\nIt allows users to select and upload files to a service.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-file-upload formControlName=&quot;photo&quot; inputId=&quot;photo-upload&quot; /&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File upload}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System file upload component.\nIt allows users to select and upload files to a service.\n\n```html\n```html\n<ngx-govuk-file-upload formControlName=\"photo\" inputId=\"photo-upload\" />\n```\n```\nSee {@link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File upload}\n",
             "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * A component that renders a GOV.UK file upload input.\n *\n * This component implements the GOV.UK Design System file upload component.\n * It allows users to select and upload files to a service.\n *\n * @example\n * ```html\n * <ngx-govuk-file-upload formControlName=\"photo\" inputId=\"photo-upload\" />\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File upload}\n */\n@Component({\n  selector: 'ngx-govuk-file-upload',\n  imports: [NgClass, ReactiveFormsModule],\n  templateUrl: './file-upload.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKFileUploadComponent {\n  /** The Angular form control associated with this file upload input. */\n  readonly ngControl = injectNgControl();\n\n  /** Reference to the common form input directive that provides shared functionality. */\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n}\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, inject } from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * This component implements the GOV.UK Design System file upload component.\n * It allows users to select and upload files to a service.\n *\n * @example\n * ```html\n * <ngx-govuk-file-upload formControlName=\"photo\" inputId=\"photo-upload\" />\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File upload}\n */\n@Component({\n  selector: 'ngx-govuk-file-upload',\n  imports: [NgClass, ReactiveFormsModule],\n  templateUrl: './file-upload.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKFileUploadComponent {\n  /** The Angular form control associated with this file upload input. */\n  readonly ngControl = injectNgControl();\n\n  /** Reference to the common form input directive that provides shared functionality. */\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2816,7 +2816,7 @@
         },
         {
             "name": "GovUKHeaderComponent",
-            "id": "component-GovUKHeaderComponent-e91ab6938271a2d029dfa9552afc3cb45aa11c164f36823bdf578c89b1410fa021c42c8ae05977bfae0d46e47ae11ba7f0ec3ba9bd7f041be9c2d38c08f42a7e",
+            "id": "component-GovUKHeaderComponent-f1f5e02a00c950cdc27735808a50af2c59fee55d7f4be91aeb15e6a53cf4e794b404573e650ae538e3683bc95f03bd9f78bfc9f3499d6d0ac890d807dfa6acd5",
             "file": "libs/ngx-govuk-frontend/header/src/lib/header.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2841,7 +2841,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The URL that the service name links to. Optional.</p>\n",
-                    "line": 40,
+                    "line": 38,
                     "rawdescription": "\nThe URL that the service name links to. Optional.",
                     "modifierKind": [
                         148
@@ -2856,7 +2856,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The name of the service or application using this header. Optional.</p>\n",
-                    "line": 37,
+                    "line": 35,
                     "rawdescription": "\nThe name of the service or application using this header. Optional.",
                     "modifierKind": [
                         148
@@ -2871,7 +2871,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The URL for the GOV.UK logo to link to. This input is required.</p>\n",
-                    "line": 34,
+                    "line": 32,
                     "rawdescription": "\nThe URL for the GOV.UK logo to link to. This input is required.",
                     "modifierKind": [
                         148
@@ -2889,7 +2889,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The URL that the service name links to. Optional.</p>\n",
-                    "line": 40,
+                    "line": 38,
                     "rawdescription": "\nThe URL that the service name links to. Optional.",
                     "modifierKind": [
                         148
@@ -2904,7 +2904,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The name of the service or application using this header. Optional.</p>\n",
-                    "line": 37,
+                    "line": 35,
                     "rawdescription": "\nThe name of the service or application using this header. Optional.",
                     "modifierKind": [
                         148
@@ -2919,7 +2919,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The URL for the GOV.UK logo to link to. This input is required.</p>\n",
-                    "line": 34,
+                    "line": 32,
                     "rawdescription": "\nThe URL for the GOV.UK logo to link to. This input is required.",
                     "modifierKind": [
                         148
@@ -2938,10 +2938,10 @@
                     "name": "RouterLink"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK header.</p>\n<p>This component implements the GOV.UK Design System header component.\nIt helps users identify what service they are using and navigate between pages.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-header logoLink=&quot;/&quot;&gt;\n  My Service\n&lt;/ngx-govuk-header&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-header logoLink=&quot;/&quot; appName=&quot;Service Name&quot; appLink=&quot;/dashboard&quot;&gt;\n  GOV.UK\n&lt;/ngx-govuk-header&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/header/ GOV.UK Header}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK header.\n\nThis component implements the GOV.UK Design System header component.\nIt helps users identify what service they are using and navigate between pages.\n\n```html\n```html\n<ngx-govuk-header logoLink=\"/\">\n  My Service\n</ngx-govuk-header>\n```\n```\n```html\n```html\n<ngx-govuk-header logoLink=\"/\" appName=\"Service Name\" appLink=\"/dashboard\">\n  GOV.UK\n</ngx-govuk-header>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/header/ GOV.UK Header}\n",
+            "description": "<p>This component implements the GOV.UK Design System header component.\nIt helps users identify what service they are using and navigate between pages.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-header logoLink=&quot;/&quot;&gt;\n  My Service\n&lt;/ngx-govuk-header&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-header logoLink=&quot;/&quot; appName=&quot;Service Name&quot; appLink=&quot;/dashboard&quot;&gt;\n  GOV.UK\n&lt;/ngx-govuk-header&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/header/ GOV.UK Header}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System header component.\nIt helps users identify what service they are using and navigate between pages.\n\n```html\n```html\n<ngx-govuk-header logoLink=\"/\">\n  My Service\n</ngx-govuk-header>\n```\n```\n```html\n```html\n<ngx-govuk-header logoLink=\"/\" appName=\"Service Name\" appLink=\"/dashboard\">\n  GOV.UK\n</ngx-govuk-header>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/header/ GOV.UK Header}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\n/**\n * A component that renders a GOV.UK header.\n *\n * This component implements the GOV.UK Design System header component.\n * It helps users identify what service they are using and navigate between pages.\n *\n * @example\n * ```html\n * <ngx-govuk-header logoLink=\"/\">\n *   My Service\n * </ngx-govuk-header>\n * ```\n *\n * @example With service name\n * ```html\n * <ngx-govuk-header logoLink=\"/\" appName=\"Service Name\" appLink=\"/dashboard\">\n *   GOV.UK\n * </ngx-govuk-header>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/header/ GOV.UK Header}\n */\n@Component({\n  selector: 'ngx-govuk-header',\n  imports: [RouterLink],\n  templateUrl: './header.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKHeaderComponent {\n  /** The URL for the GOV.UK logo to link to. This input is required. */\n  readonly logoLink = input.required<string>();\n\n  /** The name of the service or application using this header. Optional. */\n  readonly appName = input<string>();\n\n  /** The URL that the service name links to. Optional. */\n  readonly appLink = input<string>();\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\n/**\n * This component implements the GOV.UK Design System header component.\n * It helps users identify what service they are using and navigate between pages.\n *\n * @example\n * ```html\n * <ngx-govuk-header logoLink=\"/\">\n *   My Service\n * </ngx-govuk-header>\n * ```\n *\n * @example With service name\n * ```html\n * <ngx-govuk-header logoLink=\"/\" appName=\"Service Name\" appLink=\"/dashboard\">\n *   GOV.UK\n * </ngx-govuk-header>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/header/ GOV.UK Header}\n */\n@Component({\n  selector: 'ngx-govuk-header',\n  imports: [RouterLink],\n  templateUrl: './header.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKHeaderComponent {\n  /** The URL for the GOV.UK logo to link to. This input is required. */\n  readonly logoLink = input.required<string>();\n\n  /** The name of the service or application using this header. Optional. */\n  readonly appName = input<string>();\n\n  /** The URL that the service name links to. Optional. */\n  readonly appLink = input<string>();\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2950,7 +2950,7 @@
         },
         {
             "name": "GovUKInsetTextComponent",
-            "id": "component-GovUKInsetTextComponent-97818a96885f1029aeef426e4ad39863cc25e771f416a4a8c629c8ad93497e342a07c09bef6d217012af6c4b90fa2e64b2676ea85bb4b7f6527120fd855bff6d",
+            "id": "component-GovUKInsetTextComponent-1ddc5f0029dc99321697b66329e371b7ea5fcb416dbf8964fb6e0200f7c4e23cd241a5b6a8d2aada5276b3317dc0b13fc5426298538dd2e91e20e37b68d0e4d7",
             "file": "libs/ngx-govuk-frontend/inset-text/src/lib/inset-text.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2976,10 +2976,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that renders a GOV.UK inset text.</p>\n<p>This component implements the GOV.UK Design System inset text component.\nIt provides a way to visually distinguish certain text from the content that surrounds it.\nIt&#39;s typically used for quotes, examples, or additional information that supplement the main content.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-inset-text&gt;\n  You may be eligible for additional benefits if you have children.\n&lt;/ngx-govuk-inset-text&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/inset-text/ GOV.UK Inset text}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK inset text.\n\nThis component implements the GOV.UK Design System inset text component.\nIt provides a way to visually distinguish certain text from the content that surrounds it.\nIt's typically used for quotes, examples, or additional information that supplement the main content.\n\n```html\n```html\n<ngx-govuk-inset-text>\n  You may be eligible for additional benefits if you have children.\n</ngx-govuk-inset-text>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/inset-text/ GOV.UK Inset text}\n",
+            "description": "<p>This component implements the GOV.UK Design System inset text component.\nIt provides a way to visually distinguish certain text from the content that surrounds it.\nIt&#39;s typically used for quotes, examples, or additional information that supplement the main content.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-inset-text&gt;\n  You may be eligible for additional benefits if you have children.\n&lt;/ngx-govuk-inset-text&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/inset-text/ GOV.UK Inset text}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System inset text component.\nIt provides a way to visually distinguish certain text from the content that surrounds it.\nIt's typically used for quotes, examples, or additional information that supplement the main content.\n\n```html\n```html\n<ngx-govuk-inset-text>\n  You may be eligible for additional benefits if you have children.\n</ngx-govuk-inset-text>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/inset-text/ GOV.UK Inset text}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\n\n/**\n * A component that renders a GOV.UK inset text.\n *\n * This component implements the GOV.UK Design System inset text component.\n * It provides a way to visually distinguish certain text from the content that surrounds it.\n * It's typically used for quotes, examples, or additional information that supplement the main content.\n *\n * @example\n * ```html\n * <ngx-govuk-inset-text>\n *   You may be eligible for additional benefits if you have children.\n * </ngx-govuk-inset-text>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/inset-text/ GOV.UK Inset text}\n */\n@Component({\n  selector: 'ngx-govuk-inset-text',\n  templateUrl: './inset-text.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKInsetTextComponent {}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\n\n/**\n * This component implements the GOV.UK Design System inset text component.\n * It provides a way to visually distinguish certain text from the content that surrounds it.\n * It's typically used for quotes, examples, or additional information that supplement the main content.\n *\n * @example\n * ```html\n * <ngx-govuk-inset-text>\n *   You may be eligible for additional benefits if you have children.\n * </ngx-govuk-inset-text>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/inset-text/ GOV.UK Inset text}\n */\n@Component({\n  selector: 'ngx-govuk-inset-text',\n  templateUrl: './inset-text.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKInsetTextComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2988,7 +2988,7 @@
         },
         {
             "name": "GovUKNotificationBannerComponent",
-            "id": "component-GovUKNotificationBannerComponent-05201d6958847ea2631a92f69743688428803cb0d18a260d26b59df09803dba93b9341f860757d2d65b492c6bb8f254564e6934c09f683dcab3ad79f586e3dcc",
+            "id": "component-GovUKNotificationBannerComponent-68582ac67527fdd2a6453181b1d815f4bb61614f00c23d60e08df0ac8c721305061d36935e5bf3dfb8d0b30f4bff6f44c2ef232fd69e32eeecff335097da675b",
             "file": "libs/ngx-govuk-frontend/notification-banner/src/lib/notification-banner.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -3013,7 +3013,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The title of the notification banner. This input is required.</p>\n",
-                    "line": 25,
+                    "line": 23,
                     "rawdescription": "\nThe title of the notification banner. This input is required.",
                     "modifierKind": [
                         148
@@ -3031,7 +3031,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The title of the notification banner. This input is required.</p>\n",
-                    "line": 25,
+                    "line": 23,
                     "rawdescription": "\nThe title of the notification banner. This input is required.",
                     "modifierKind": [
                         148
@@ -3046,10 +3046,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that renders a GOV.UK notification banner.</p>\n<p>This component implements the GOV.UK Design System notification banner component.\nIt provides a way to display important information or updates that users need to know about.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-notification-banner title=&quot;Important&quot;&gt;\n  There is a planned outage on Sunday from 2am to 4am.\n&lt;/ngx-govuk-notification-banner&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification banner}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK notification banner.\n\nThis component implements the GOV.UK Design System notification banner component.\nIt provides a way to display important information or updates that users need to know about.\n\n```html\n```html\n<ngx-govuk-notification-banner title=\"Important\">\n  There is a planned outage on Sunday from 2am to 4am.\n</ngx-govuk-notification-banner>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification banner}\n",
+            "description": "<p>This component implements the GOV.UK Design System notification banner component.\nIt provides a way to display important information or updates that users need to know about.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-notification-banner title=&quot;Important&quot;&gt;\n  There is a planned outage on Sunday from 2am to 4am.\n&lt;/ngx-govuk-notification-banner&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification banner}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System notification banner component.\nIt provides a way to display important information or updates that users need to know about.\n\n```html\n```html\n<ngx-govuk-notification-banner title=\"Important\">\n  There is a planned outage on Sunday from 2am to 4am.\n</ngx-govuk-notification-banner>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification banner}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * A component that renders a GOV.UK notification banner.\n *\n * This component implements the GOV.UK Design System notification banner component.\n * It provides a way to display important information or updates that users need to know about.\n *\n * @example\n * ```html\n * <ngx-govuk-notification-banner title=\"Important\">\n *   There is a planned outage on Sunday from 2am to 4am.\n * </ngx-govuk-notification-banner>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification banner}\n */\n@Component({\n  selector: 'ngx-govuk-notification-banner',\n  templateUrl: './notification-banner.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKNotificationBannerComponent {\n  /** The title of the notification banner. This input is required. */\n  readonly title = input.required<string>();\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * This component implements the GOV.UK Design System notification banner component.\n * It provides a way to display important information or updates that users need to know about.\n *\n * @example\n * ```html\n * <ngx-govuk-notification-banner title=\"Important\">\n *   There is a planned outage on Sunday from 2am to 4am.\n * </ngx-govuk-notification-banner>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification banner}\n */\n@Component({\n  selector: 'ngx-govuk-notification-banner',\n  templateUrl: './notification-banner.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKNotificationBannerComponent {\n  /** The title of the notification banner. This input is required. */\n  readonly title = input.required<string>();\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3577,7 +3577,7 @@
         },
         {
             "name": "GovUKPanelComponent",
-            "id": "component-GovUKPanelComponent-7232ee685faae38375fb27848855a692fd20350b02c8f5a57adfb10de472631622b696c1dfe439e32dadd6f98104309b3b1940431181cbb1bcb86387e4c4a1f6",
+            "id": "component-GovUKPanelComponent-4f1dc14bd941abdf1bb8fdb6f065144bf110d01774833c82a83870c0687a4f43f59f7425b3120572f8399cb3d4ea24493de33583b3bf53f88a8d3948a2ab9c4b",
             "file": "libs/ngx-govuk-frontend/panel/src/lib/panel.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -3602,7 +3602,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The title text displayed in the panel. This input is required.</p>\n",
-                    "line": 26,
+                    "line": 24,
                     "rawdescription": "\nThe title text displayed in the panel. This input is required.",
                     "modifierKind": [
                         148
@@ -3620,7 +3620,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The title text displayed in the panel. This input is required.</p>\n",
-                    "line": 26,
+                    "line": 24,
                     "rawdescription": "\nThe title text displayed in the panel. This input is required.",
                     "modifierKind": [
                         148
@@ -3635,10 +3635,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that renders a GOV.UK panel.</p>\n<p>This component implements the GOV.UK Design System panel component.\nIt provides a visually prominent box used to highlight important content.\nIt&#39;s typically used for transaction end pages or other important information.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-panel title=&quot;Application complete&quot;&gt;\n  Your reference number: HDJ2123F\n&lt;/ngx-govuk-panel&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/panel/ GOV.UK Panel}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK panel.\n\nThis component implements the GOV.UK Design System panel component.\nIt provides a visually prominent box used to highlight important content.\nIt's typically used for transaction end pages or other important information.\n\n```html\n```html\n<ngx-govuk-panel title=\"Application complete\">\n  Your reference number: HDJ2123F\n</ngx-govuk-panel>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/panel/ GOV.UK Panel}\n",
+            "description": "<p>This component implements the GOV.UK Design System panel component.\nIt provides a visually prominent box used to highlight important content.\nIt&#39;s typically used for transaction end pages or other important information.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-panel title=&quot;Application complete&quot;&gt;\n  Your reference number: HDJ2123F\n&lt;/ngx-govuk-panel&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/panel/ GOV.UK Panel}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System panel component.\nIt provides a visually prominent box used to highlight important content.\nIt's typically used for transaction end pages or other important information.\n\n```html\n```html\n<ngx-govuk-panel title=\"Application complete\">\n  Your reference number: HDJ2123F\n</ngx-govuk-panel>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/panel/ GOV.UK Panel}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * A component that renders a GOV.UK panel.\n *\n * This component implements the GOV.UK Design System panel component.\n * It provides a visually prominent box used to highlight important content.\n * It's typically used for transaction end pages or other important information.\n *\n * @example\n * ```html\n * <ngx-govuk-panel title=\"Application complete\">\n *   Your reference number: HDJ2123F\n * </ngx-govuk-panel>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/panel/ GOV.UK Panel}\n */\n@Component({\n  selector: 'ngx-govuk-panel',\n  templateUrl: './panel.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKPanelComponent {\n  /** The title text displayed in the panel. This input is required. */\n  readonly title = input.required<string>();\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\n\n/**\n * This component implements the GOV.UK Design System panel component.\n * It provides a visually prominent box used to highlight important content.\n * It's typically used for transaction end pages or other important information.\n *\n * @example\n * ```html\n * <ngx-govuk-panel title=\"Application complete\">\n *   Your reference number: HDJ2123F\n * </ngx-govuk-panel>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/panel/ GOV.UK Panel}\n */\n@Component({\n  selector: 'ngx-govuk-panel',\n  templateUrl: './panel.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKPanelComponent {\n  /** The title text displayed in the panel. This input is required. */\n  readonly title = input.required<string>();\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3756,7 +3756,7 @@
         },
         {
             "name": "GovUKPhaseBannerComponent",
-            "id": "component-GovUKPhaseBannerComponent-c65c141f443082d17e4a84752f799adc656dfe30c758325f52772e9676968e2d73b0ec33a304c4e0e2f5f8d6d5095f1b8525878e37cb831f51196eae36d9e8aa",
+            "id": "component-GovUKPhaseBannerComponent-2c8c81bef7fdec1b878ef032361c69251ef69c6c18ac0e90bd511b689053bb68b644a99e1692f7015801acace7f009ae590eedcb4afe2c7e4d95e98e0adc85e2",
             "file": "libs/ngx-govuk-frontend/phase-banner/src/lib/phase-banner.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -3784,7 +3784,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The phase of the service. Can be &#39;alpha&#39; or &#39;beta&#39;. Defaults to &#39;beta&#39;.</p>\n",
-                    "line": 30,
+                    "line": 28,
                     "rawdescription": "\nThe phase of the service. Can be 'alpha' or 'beta'. Defaults to 'beta'.",
                     "modifierKind": [
                         148
@@ -3807,10 +3807,10 @@
                     "type": "component"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK phase banner.</p>\n<p>This component implements the GOV.UK Design System phase banner component.\nIt helps users understand when a service is new and likely to change.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-phase-banner phase=&quot;alpha&quot;&gt;\n  This is a new service – your &lt;a href=&quot;#&quot;&gt;feedback&lt;/a&gt; will help us improve it.\n&lt;/ngx-govuk-phase-banner&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/phase-banner/ GOV.UK Phase banner}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK phase banner.\n\nThis component implements the GOV.UK Design System phase banner component.\nIt helps users understand when a service is new and likely to change.\n\n```html\n```html\n<ngx-govuk-phase-banner phase=\"alpha\">\n  This is a new service – your <a href=\"#\">feedback</a> will help us improve it.\n</ngx-govuk-phase-banner>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/phase-banner/ GOV.UK Phase banner}\n",
+            "description": "<p>This component implements the GOV.UK Design System phase banner component.\nIt helps users understand when a service is new and likely to change.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-phase-banner phase=&quot;alpha&quot;&gt;\n  This is a new service – your &lt;a href=&quot;#&quot;&gt;feedback&lt;/a&gt; will help us improve it.\n&lt;/ngx-govuk-phase-banner&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/phase-banner/ GOV.UK Phase banner}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System phase banner component.\nIt helps users understand when a service is new and likely to change.\n\n```html\n```html\n<ngx-govuk-phase-banner phase=\"alpha\">\n  This is a new service – your <a href=\"#\">feedback</a> will help us improve it.\n</ngx-govuk-phase-banner>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/phase-banner/ GOV.UK Phase banner}\n",
             "type": "component",
-            "sourceCode": "import { TitleCasePipe } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, input } from '@angular/core';\nimport { GovUKTagComponent } from 'ngx-govuk-frontend/tag';\n\nexport type GovUKPhase = 'alpha' | 'beta';\n\n/**\n * A component that renders a GOV.UK phase banner.\n *\n * This component implements the GOV.UK Design System phase banner component.\n * It helps users understand when a service is new and likely to change.\n *\n * @example\n * ```html\n * <ngx-govuk-phase-banner phase=\"alpha\">\n *   This is a new service – your <a href=\"#\">feedback</a> will help us improve it.\n * </ngx-govuk-phase-banner>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/phase-banner/ GOV.UK Phase banner}\n */\n@Component({\n  selector: 'ngx-govuk-phase-banner',\n  imports: [TitleCasePipe, GovUKTagComponent],\n  templateUrl: './phase-banner.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKPhaseBannerComponent {\n  /** The phase of the service. Can be 'alpha' or 'beta'. Defaults to 'beta'. */\n  readonly phase = input<GovUKPhase>('beta');\n}\n",
+            "sourceCode": "import { TitleCasePipe } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, input } from '@angular/core';\nimport { GovUKTagComponent } from 'ngx-govuk-frontend/tag';\n\nexport type GovUKPhase = 'alpha' | 'beta';\n\n/**\n * This component implements the GOV.UK Design System phase banner component.\n * It helps users understand when a service is new and likely to change.\n *\n * @example\n * ```html\n * <ngx-govuk-phase-banner phase=\"alpha\">\n *   This is a new service – your <a href=\"#\">feedback</a> will help us improve it.\n * </ngx-govuk-phase-banner>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/phase-banner/ GOV.UK Phase banner}\n */\n@Component({\n  selector: 'ngx-govuk-phase-banner',\n  imports: [TitleCasePipe, GovUKTagComponent],\n  templateUrl: './phase-banner.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKPhaseBannerComponent {\n  /** The phase of the service. Can be 'alpha' or 'beta'. Defaults to 'beta'. */\n  readonly phase = input<GovUKPhase>('beta');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3952,7 +3952,7 @@
         },
         {
             "name": "GovUKSelectComponent",
-            "id": "component-GovUKSelectComponent-00944a4ff2b4cbda656ef8cc271f76f54a4f65b918de558cce8fb2162e84ef3544d155124b802ab78c8a560c83a2cd6c6125efda5387b32b369305211155fb87",
+            "id": "component-GovUKSelectComponent-23319c5ef88ebd77e4d2dfa97505bff91d435ca907847c44567705a5b4d62567e4504d9bb74f52bda66ed4143a44d39558d7b7ef63695a939c263b2f9bffa910",
             "file": "libs/ngx-govuk-frontend/select/src/lib/select.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -3989,7 +3989,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Reference to the common form input directive that provides shared functionality.</p>\n",
-                    "line": 63,
+                    "line": 61,
                     "rawdescription": "\nReference to the common form input directive that provides shared functionality.",
                     "modifierKind": [
                         148
@@ -4004,7 +4004,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The Angular form control associated with this select input.</p>\n",
-                    "line": 60,
+                    "line": 58,
                     "rawdescription": "\nThe Angular form control associated with this select input.",
                     "modifierKind": [
                         148
@@ -4019,7 +4019,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The list of options to display in the select dropdown. This input is required.</p>\n",
-                    "line": 66,
+                    "line": 64,
                     "rawdescription": "\nThe list of options to display in the select dropdown. This input is required.",
                     "modifierKind": [
                         148
@@ -4038,10 +4038,10 @@
                     "type": "module"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK select dropdown.</p>\n<p>This component implements the GOV.UK Design System select component.\nIt allows users to choose an option from a dropdown list.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-select\n  [options]=&quot;[\n    { value: &#39;england&#39;, label: &#39;England&#39; },\n    { value: &#39;scotland&#39;, label: &#39;Scotland&#39; },\n    { value: &#39;wales&#39;, label: &#39;Wales&#39; },\n    { value: &#39;northern-ireland&#39;, label: &#39;Northern Ireland&#39; }\n  ]&quot;\n  formControlName=&quot;country&quot;\n  inputId=&quot;country&quot;\n  label=&quot;Country&quot;\n&gt;&lt;/ngx-govuk-select&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/select/ GOV.UK Select}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK select dropdown.\n\nThis component implements the GOV.UK Design System select component.\nIt allows users to choose an option from a dropdown list.\n\n```html\n```html\n<ngx-govuk-select\n  [options]=\"[\n    { value: 'england', label: 'England' },\n    { value: 'scotland', label: 'Scotland' },\n    { value: 'wales', label: 'Wales' },\n    { value: 'northern-ireland', label: 'Northern Ireland' }\n  ]\"\n  formControlName=\"country\"\n  inputId=\"country\"\n  label=\"Country\"\n></ngx-govuk-select>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/select/ GOV.UK Select}\n",
+            "description": "<p>This component implements the GOV.UK Design System select component.\nIt allows users to choose an option from a dropdown list.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-select\n  [options]=&quot;[\n    { value: &#39;england&#39;, label: &#39;England&#39; },\n    { value: &#39;scotland&#39;, label: &#39;Scotland&#39; },\n    { value: &#39;wales&#39;, label: &#39;Wales&#39; },\n    { value: &#39;northern-ireland&#39;, label: &#39;Northern Ireland&#39; }\n  ]&quot;\n  formControlName=&quot;country&quot;\n  inputId=&quot;country&quot;\n  label=&quot;Country&quot;\n&gt;&lt;/ngx-govuk-select&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/select/ GOV.UK Select}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System select component.\nIt allows users to choose an option from a dropdown list.\n\n```html\n```html\n<ngx-govuk-select\n  [options]=\"[\n    { value: 'england', label: 'England' },\n    { value: 'scotland', label: 'Scotland' },\n    { value: 'wales', label: 'Wales' },\n    { value: 'northern-ireland', label: 'Northern Ireland' }\n  ]\"\n  formControlName=\"country\"\n  inputId=\"country\"\n  label=\"Country\"\n></ngx-govuk-select>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/select/ GOV.UK Select}\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  inject,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * Interface defining an option in the select dropdown.\n */\nexport interface GovUKSelectOption {\n  /** The displayed text for the option */\n  label: string;\n  /** The value that will be submitted when the option is selected */\n  value: string;\n}\n\n/**\n * A component that renders a GOV.UK select dropdown.\n *\n * This component implements the GOV.UK Design System select component.\n * It allows users to choose an option from a dropdown list.\n *\n * @example\n * ```html\n * <ngx-govuk-select\n *   [options]=\"[\n *     { value: 'england', label: 'England' },\n *     { value: 'scotland', label: 'Scotland' },\n *     { value: 'wales', label: 'Wales' },\n *     { value: 'northern-ireland', label: 'Northern Ireland' }\n *   ]\"\n *   formControlName=\"country\"\n *   inputId=\"country\"\n *   label=\"Country\"\n * ></ngx-govuk-select>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/select/ GOV.UK Select}\n */\n@Component({\n  selector: 'ngx-govuk-select',\n  imports: [ReactiveFormsModule],\n  templateUrl: './select.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKSelectComponent {\n  /** The Angular form control associated with this select input. */\n  readonly ngControl = injectNgControl();\n\n  /** Reference to the common form input directive that provides shared functionality. */\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  /** The list of options to display in the select dropdown. This input is required. */\n  readonly options = input.required<GovUKSelectOption[]>();\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  inject,\n  input,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport {\n  GovUKCommonFormInputDirective,\n  ValueAccessorDirective,\n  injectNgControl,\n  inputCommonInputs,\n} from 'ngx-govuk-frontend/form-utils';\n\n/**\n * Interface defining an option in the select dropdown.\n */\nexport interface GovUKSelectOption {\n  /** The displayed text for the option */\n  label: string;\n  /** The value that will be submitted when the option is selected */\n  value: string;\n}\n\n/**\n * This component implements the GOV.UK Design System select component.\n * It allows users to choose an option from a dropdown list.\n *\n * @example\n * ```html\n * <ngx-govuk-select\n *   [options]=\"[\n *     { value: 'england', label: 'England' },\n *     { value: 'scotland', label: 'Scotland' },\n *     { value: 'wales', label: 'Wales' },\n *     { value: 'northern-ireland', label: 'Northern Ireland' }\n *   ]\"\n *   formControlName=\"country\"\n *   inputId=\"country\"\n *   label=\"Country\"\n * ></ngx-govuk-select>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/select/ GOV.UK Select}\n */\n@Component({\n  selector: 'ngx-govuk-select',\n  imports: [ReactiveFormsModule],\n  templateUrl: './select.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  hostDirectives: [\n    ValueAccessorDirective,\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\n  ],\n})\nexport class GovUKSelectComponent {\n  /** The Angular form control associated with this select input. */\n  readonly ngControl = injectNgControl();\n\n  /** Reference to the common form input directive that provides shared functionality. */\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\n\n  /** The list of options to display in the select dropdown. This input is required. */\n  readonly options = input.required<GovUKSelectOption[]>();\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4110,7 +4110,7 @@
         },
         {
             "name": "GovUKSkipLinkComponent",
-            "id": "component-GovUKSkipLinkComponent-17bb789d037764cd8083e9cfe4e7f32d742b428ec7b3e36765c42c8cff484e7d8968c0694f4f65d3e14e94fb8e8ba4d14491bc0a27029f39ee4794300be73b99",
+            "id": "component-GovUKSkipLinkComponent-d11d1522950b1b5095e34eeee5549bd6bc1279d7f819000c028002de7ff652ecf17ca3a5acdf1f8a1309db5deb81e3984254c699b9a08fa5ed987fb688dcb1ba",
             "file": "libs/ngx-govuk-frontend/skip-link/src/lib/skip-link.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -4138,7 +4138,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The target ID to skip to. Defaults to &quot;#content&quot; if not provided.</p>\n",
-                    "line": 26,
+                    "line": 24,
                     "rawdescription": "\nThe target ID to skip to. Defaults to \"#content\" if not provided.",
                     "modifierKind": [
                         148
@@ -4152,10 +4152,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that renders a GOV.UK skip link.</p>\n<p>This component implements the GOV.UK Design System skip link component.\nIt provides a way for keyboard users to bypass the top-level navigation links\nand jump to the main content on a page.</p>\n<p>The skip link component is visually hidden until a keyboard press activates it.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-skip-link href=&quot;#main-content&quot;&gt;Skip to main content&lt;/ngx-govuk-skip-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK skip link.\n\nThis component implements the GOV.UK Design System skip link component.\nIt provides a way for keyboard users to bypass the top-level navigation links\nand jump to the main content on a page.\n\nThe skip link component is visually hidden until a keyboard press activates it.\n\n```html\n```html\n<ngx-govuk-skip-link href=\"#main-content\">Skip to main content</ngx-govuk-skip-link>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}\n",
+            "description": "<p>This component implements the GOV.UK Design System skip link component.\nIt provides a way for keyboard users to bypass the top-level navigation links\nand jump to the main content on a page.</p>\n<p>The skip link component is visually hidden until a keyboard press activates it.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-skip-link href=&quot;#main-content&quot;&gt;Skip to main content&lt;/ngx-govuk-skip-link&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System skip link component.\nIt provides a way for keyboard users to bypass the top-level navigation links\nand jump to the main content on a page.\n\nThe skip link component is visually hidden until a keyboard press activates it.\n\n```html\n```html\n<ngx-govuk-skip-link href=\"#main-content\">Skip to main content</ngx-govuk-skip-link>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\r\n\r\n/**\r\n * A component that renders a GOV.UK skip link.\r\n *\r\n * This component implements the GOV.UK Design System skip link component.\r\n * It provides a way for keyboard users to bypass the top-level navigation links\r\n * and jump to the main content on a page.\r\n *\r\n * The skip link component is visually hidden until a keyboard press activates it.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-skip-link href=\"#main-content\">Skip to main content</ngx-govuk-skip-link>\r\n * ```\r\n *\r\n * @see {@link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-skip-link',\r\n  templateUrl: './skip-link.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class GovUKSkipLinkComponent {\r\n  /** The target ID to skip to. Defaults to \"#content\" if not provided. */\r\n  readonly href = input<string>('#content');\r\n}\r\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, input } from '@angular/core';\r\n\r\n/**\r\n * This component implements the GOV.UK Design System skip link component.\r\n * It provides a way for keyboard users to bypass the top-level navigation links\r\n * and jump to the main content on a page.\r\n *\r\n * The skip link component is visually hidden until a keyboard press activates it.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-skip-link href=\"#main-content\">Skip to main content</ngx-govuk-skip-link>\r\n * ```\r\n *\r\n * @see {@link https://design-system.service.gov.uk/components/skip-link/ GOV.UK Skip link}\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-skip-link',\r\n  templateUrl: './skip-link.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class GovUKSkipLinkComponent {\r\n  /** The target ID to skip to. Defaults to \"#content\" if not provided. */\r\n  readonly href = input<string>('#content');\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4741,7 +4741,7 @@
         },
         {
             "name": "GovUKTabComponent",
-            "id": "component-GovUKTabComponent-7dfc17c8824c025726f04e08e525073d98a58cbb1b708100b73634ec2344b8c39155162b26e21875927a5f76f8eb521867b210be47852d4aae9acdd2bcd150d0",
+            "id": "component-GovUKTabComponent-8d880be76c1e6366a8416ed730e3662188d11e35854955a98c90b7231a0e9f91f77a8a31135ce5bc4074c1e76525de7c0d736eeb8fea7af0ddcb2ed26026f532",
             "file": "libs/ngx-govuk-frontend/tabs/src/lib/tab/tab.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -4766,7 +4766,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The unique identifier for the tab. This input is required.</p>\n",
-                    "line": 31,
+                    "line": 29,
                     "rawdescription": "\nThe unique identifier for the tab. This input is required.",
                     "modifierKind": [
                         148
@@ -4781,7 +4781,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The text displayed in the tab. This input is required.</p>\n",
-                    "line": 34,
+                    "line": 32,
                     "rawdescription": "\nThe text displayed in the tab. This input is required.",
                     "modifierKind": [
                         148
@@ -4799,7 +4799,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The unique identifier for the tab. This input is required.</p>\n",
-                    "line": 31,
+                    "line": 29,
                     "rawdescription": "\nThe unique identifier for the tab. This input is required.",
                     "modifierKind": [
                         148
@@ -4815,7 +4815,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Reference to the template containing the tab&#39;s content.</p>\n",
-                    "line": 37,
+                    "line": 35,
                     "rawdescription": "\nReference to the template containing the tab's content.",
                     "modifierKind": [
                         148
@@ -4829,7 +4829,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The text displayed in the tab. This input is required.</p>\n",
-                    "line": 34,
+                    "line": 32,
                     "rawdescription": "\nThe text displayed in the tab. This input is required.",
                     "modifierKind": [
                         148
@@ -4844,10 +4844,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that represents a single tab within a GovUKTabsComponent.</p>\n<p>This component implements a single tab panel in the GOV.UK Design System tabs component.\nIt contains the content to display when a tab is selected.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-tab id=&quot;past-day&quot; title=&quot;Past day&quot;&gt;\n  &lt;p&gt;Content for the past day tab panel&lt;/p&gt;\n&lt;/ngx-govuk-tab&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}</code></pre></div>",
-            "rawdescription": "\n\nA component that represents a single tab within a GovUKTabsComponent.\n\nThis component implements a single tab panel in the GOV.UK Design System tabs component.\nIt contains the content to display when a tab is selected.\n\n```html\n```html\n<ngx-govuk-tab id=\"past-day\" title=\"Past day\">\n  <p>Content for the past day tab panel</p>\n</ngx-govuk-tab>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}\n",
+            "description": "<p>This component implements a single tab panel in the GOV.UK Design System tabs component.\nIt contains the content to display when a tab is selected.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-tab id=&quot;past-day&quot; title=&quot;Past day&quot;&gt;\n  &lt;p&gt;Content for the past day tab panel&lt;/p&gt;\n&lt;/ngx-govuk-tab&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements a single tab panel in the GOV.UK Design System tabs component.\nIt contains the content to display when a tab is selected.\n\n```html\n```html\n<ngx-govuk-tab id=\"past-day\" title=\"Past day\">\n  <p>Content for the past day tab panel</p>\n</ngx-govuk-tab>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n/**\n * A component that represents a single tab within a GovUKTabsComponent.\n *\n * This component implements a single tab panel in the GOV.UK Design System tabs component.\n * It contains the content to display when a tab is selected.\n *\n * @example\n * ```html\n * <ngx-govuk-tab id=\"past-day\" title=\"Past day\">\n *   <p>Content for the past day tab panel</p>\n * </ngx-govuk-tab>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}\n */\n@Component({\n  selector: 'ngx-govuk-tab',\n  templateUrl: './tab.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTabComponent {\n  /** The unique identifier for the tab. This input is required. */\n  readonly id = input.required<string>();\n\n  /** The text displayed in the tab. This input is required. */\n  readonly title = input.required<string>();\n\n  /** Reference to the template containing the tab's content. */\n  readonly tabContent = viewChild.required<TemplateRef<unknown>>('tabContent');\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  input,\n  TemplateRef,\n  viewChild,\n} from '@angular/core';\n\n/**\n * This component implements a single tab panel in the GOV.UK Design System tabs component.\n * It contains the content to display when a tab is selected.\n *\n * @example\n * ```html\n * <ngx-govuk-tab id=\"past-day\" title=\"Past day\">\n *   <p>Content for the past day tab panel</p>\n * </ngx-govuk-tab>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}\n */\n@Component({\n  selector: 'ngx-govuk-tab',\n  templateUrl: './tab.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTabComponent {\n  /** The unique identifier for the tab. This input is required. */\n  readonly id = input.required<string>();\n\n  /** The text displayed in the tab. This input is required. */\n  readonly title = input.required<string>();\n\n  /** Reference to the template containing the tab's content. */\n  readonly tabContent = viewChild.required<TemplateRef<unknown>>('tabContent');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4856,7 +4856,7 @@
         },
         {
             "name": "GovUKTableComponent",
-            "id": "component-GovUKTableComponent-38a63c74d6f3d0a0a32f2775878aeb01fe107b3d8aee36b99d8c6ce96b76225e7c1c3cf18c7a21a8ed5d66f7a58b9b8f0f62104300741984fcde0b58bf09a6a5",
+            "id": "component-GovUKTableComponent-2125431b06cddce7d2f8d0deafbdc0413e00d4e96acb37b8d9fed052ebc1fc89d37dd2bc6de389f08bb42ca980134008ef10a99a32dfb4940d4ce64c262453f5",
             "file": "libs/ngx-govuk-frontend/table/src/lib/table.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -4881,7 +4881,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Optional caption for the table to describe its contents.</p>\n",
-                    "line": 55,
+                    "line": 53,
                     "rawdescription": "\nOptional caption for the table to describe its contents.",
                     "modifierKind": [
                         148
@@ -4899,7 +4899,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Optional caption for the table to describe its contents.</p>\n",
-                    "line": 55,
+                    "line": 53,
                     "rawdescription": "\nOptional caption for the table to describe its contents.",
                     "modifierKind": [
                         148
@@ -4915,7 +4915,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Computed array of column keys used to access data from the data source.\nCreated from the keys in the columns array.</p>\n",
-                    "line": 64,
+                    "line": 62,
                     "rawdescription": "\n\nComputed array of column keys used to access data from the data source.\nCreated from the keys in the columns array.\n",
                     "modifierKind": [
                         148
@@ -4930,7 +4930,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The columns configuration for the table. This input is required.</p>\n",
-                    "line": 49,
+                    "line": 47,
                     "rawdescription": "\nThe columns configuration for the table. This input is required.",
                     "modifierKind": [
                         148
@@ -4945,7 +4945,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The data to display in the table. This input is required.</p>\n",
-                    "line": 52,
+                    "line": 50,
                     "rawdescription": "\nThe data to display in the table. This input is required.",
                     "modifierKind": [
                         148
@@ -4960,7 +4960,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether to use a smaller font size for the table. Defaults to false.</p>\n",
-                    "line": 58,
+                    "line": 56,
                     "rawdescription": "\nWhether to use a smaller font size for the table. Defaults to false.",
                     "modifierKind": [
                         148
@@ -4979,10 +4979,10 @@
                     "type": "module"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK table.</p>\n<p>This component implements the GOV.UK Design System table component.\nIt provides a way to make information easier to compare and scan for users.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-table\n  [columns]=&quot;[\n    { header: &#39;Month&#39;, key: &#39;month&#39;, isRowHeader: true },\n    { header: &#39;Rate&#39;, key: &#39;rate&#39;, isNumeric: true }\n  ]&quot;\n  [dataSource]=&quot;[\n    { month: &#39;January&#39;, rate: &#39;£3.50&#39; },\n    { month: &#39;February&#39;, rate: &#39;£5.00&#39; }\n  ]&quot;\n  caption=&quot;Payment rates&quot;&gt;\n&lt;/ngx-govuk-table&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/table/ GOV.UK Table}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK table.\n\nThis component implements the GOV.UK Design System table component.\nIt provides a way to make information easier to compare and scan for users.\n\n```html\n```html\n<ngx-govuk-table\n  [columns]=\"[\n    { header: 'Month', key: 'month', isRowHeader: true },\n    { header: 'Rate', key: 'rate', isNumeric: true }\n  ]\"\n  [dataSource]=\"[\n    { month: 'January', rate: '£3.50' },\n    { month: 'February', rate: '£5.00' }\n  ]\"\n  caption=\"Payment rates\">\n</ngx-govuk-table>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/table/ GOV.UK Table}\n",
+            "description": "<p>This component implements the GOV.UK Design System table component.\nIt provides a way to make information easier to compare and scan for users.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-table\n  [columns]=&quot;[\n    { header: &#39;Month&#39;, key: &#39;month&#39;, isRowHeader: true },\n    { header: &#39;Rate&#39;, key: &#39;rate&#39;, isNumeric: true }\n  ]&quot;\n  [dataSource]=&quot;[\n    { month: &#39;January&#39;, rate: &#39;£3.50&#39; },\n    { month: &#39;February&#39;, rate: &#39;£5.00&#39; }\n  ]&quot;\n  caption=&quot;Payment rates&quot;&gt;\n&lt;/ngx-govuk-table&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/table/ GOV.UK Table}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System table component.\nIt provides a way to make information easier to compare and scan for users.\n\n```html\n```html\n<ngx-govuk-table\n  [columns]=\"[\n    { header: 'Month', key: 'month', isRowHeader: true },\n    { header: 'Rate', key: 'rate', isNumeric: true }\n  ]\"\n  [dataSource]=\"[\n    { month: 'January', rate: '£3.50' },\n    { month: 'February', rate: '£5.00' }\n  ]\"\n  caption=\"Payment rates\">\n</ngx-govuk-table>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/table/ GOV.UK Table}\n",
             "type": "component",
-            "sourceCode": "import { CdkTableModule } from '@angular/cdk/table';\nimport {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n} from '@angular/core';\n\nexport type GovUKTableColumn = {\n  header: string;\n  key: string;\n  isRowHeader?: boolean;\n  isNumeric?: boolean;\n  customClass?: string;\n};\n\n/**\n * A component that renders a GOV.UK table.\n *\n * This component implements the GOV.UK Design System table component.\n * It provides a way to make information easier to compare and scan for users.\n *\n * @example\n * ```html\n * <ngx-govuk-table\n *   [columns]=\"[\n *     { header: 'Month', key: 'month', isRowHeader: true },\n *     { header: 'Rate', key: 'rate', isNumeric: true }\n *   ]\"\n *   [dataSource]=\"[\n *     { month: 'January', rate: '£3.50' },\n *     { month: 'February', rate: '£5.00' }\n *   ]\"\n *   caption=\"Payment rates\">\n * </ngx-govuk-table>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/table/ GOV.UK Table}\n */\n@Component({\n  selector: 'ngx-govuk-table',\n  imports: [CdkTableModule],\n  templateUrl: './table.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTableComponent {\n  /** The columns configuration for the table. This input is required. */\n  readonly columns = input.required<GovUKTableColumn[]>();\n\n  /** The data to display in the table. This input is required. */\n  readonly dataSource = input.required<unknown[]>();\n\n  /** Optional caption for the table to describe its contents. */\n  readonly caption = input<string>();\n\n  /** Whether to use a smaller font size for the table. Defaults to false. */\n  readonly small = input(false, { transform: booleanAttribute });\n\n  /**\n   * Computed array of column keys used to access data from the data source.\n   * Created from the keys in the columns array.\n   */\n  readonly columnKeys = computed(() =>\n    this.columns().map((column) => column.key),\n  );\n}\n",
+            "sourceCode": "import { CdkTableModule } from '@angular/cdk/table';\nimport {\n  booleanAttribute,\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n} from '@angular/core';\n\nexport type GovUKTableColumn = {\n  header: string;\n  key: string;\n  isRowHeader?: boolean;\n  isNumeric?: boolean;\n  customClass?: string;\n};\n\n/**\n * This component implements the GOV.UK Design System table component.\n * It provides a way to make information easier to compare and scan for users.\n *\n * @example\n * ```html\n * <ngx-govuk-table\n *   [columns]=\"[\n *     { header: 'Month', key: 'month', isRowHeader: true },\n *     { header: 'Rate', key: 'rate', isNumeric: true }\n *   ]\"\n *   [dataSource]=\"[\n *     { month: 'January', rate: '£3.50' },\n *     { month: 'February', rate: '£5.00' }\n *   ]\"\n *   caption=\"Payment rates\">\n * </ngx-govuk-table>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/table/ GOV.UK Table}\n */\n@Component({\n  selector: 'ngx-govuk-table',\n  imports: [CdkTableModule],\n  templateUrl: './table.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTableComponent {\n  /** The columns configuration for the table. This input is required. */\n  readonly columns = input.required<GovUKTableColumn[]>();\n\n  /** The data to display in the table. This input is required. */\n  readonly dataSource = input.required<unknown[]>();\n\n  /** Optional caption for the table to describe its contents. */\n  readonly caption = input<string>();\n\n  /** Whether to use a smaller font size for the table. Defaults to false. */\n  readonly small = input(false, { transform: booleanAttribute });\n\n  /**\n   * Computed array of column keys used to access data from the data source.\n   * Created from the keys in the columns array.\n   */\n  readonly columnKeys = computed(() =>\n    this.columns().map((column) => column.key),\n  );\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4991,7 +4991,7 @@
         },
         {
             "name": "GovUKTabsComponent",
-            "id": "component-GovUKTabsComponent-e5d815cb8ae2b411e3dd04549cf445d9142e580c0cfd0526b763755f5d2f586e77051302eb5d5147e7426b3f7355221f1ccf9a6da68b992a51c39954477e0657",
+            "id": "component-GovUKTabsComponent-1ca359da5b684d4709c335a88de2dfd6e98a9ef0918343587ba9e595c5d1f81419931a445d79edfdc759531cec53c5da772cf2d180b12f1f346cd1e06e158e84",
             "file": "libs/ngx-govuk-frontend/tabs/src/lib/tabs/tabs.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -5017,7 +5017,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Two-way binding model for the currently active tab index. Defaults to 0 (first tab).</p>\n",
-                    "line": 45,
+                    "line": 43,
                     "rawdescription": "\nTwo-way binding model for the currently active tab index. Defaults to 0 (first tab).",
                     "modifierKind": [
                         148
@@ -5032,7 +5032,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The title for the tabs component. This input is required.</p>\n",
-                    "line": 39,
+                    "line": 37,
                     "rawdescription": "\nThe title for the tabs component. This input is required.",
                     "modifierKind": [
                         148
@@ -5051,7 +5051,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Two-way binding model for the currently active tab index. Defaults to 0 (first tab).</p>\n",
-                    "line": 45,
+                    "line": 43,
                     "rawdescription": "\nTwo-way binding model for the currently active tab index. Defaults to 0 (first tab).",
                     "modifierKind": [
                         148
@@ -5067,7 +5067,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Collection of tab components that are children of this tabs component.</p>\n",
-                    "line": 42,
+                    "line": 40,
                     "rawdescription": "\nCollection of tab components that are children of this tabs component.",
                     "modifierKind": [
                         148
@@ -5081,7 +5081,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The title for the tabs component. This input is required.</p>\n",
-                    "line": 39,
+                    "line": 37,
                     "rawdescription": "\nThe title for the tabs component. This input is required.",
                     "modifierKind": [
                         148
@@ -5109,7 +5109,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 50,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSelects a tab at the specified index.\n",
@@ -5117,8 +5117,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1474,
-                                "end": 1479,
+                                "pos": 1418,
+                                "end": 1423,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -5129,8 +5129,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 1468,
-                                "end": 1473,
+                                "pos": 1412,
+                                "end": 1417,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -5141,8 +5141,8 @@
                         },
                         {
                             "name": {
-                                "pos": 1523,
-                                "end": 1528,
+                                "pos": 1467,
+                                "end": 1472,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -5153,8 +5153,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 1517,
-                                "end": 1522,
+                                "pos": 1461,
+                                "end": 1466,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -5176,10 +5176,10 @@
                     "name": "NgTemplateOutlet"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK tabs interface.</p>\n<p>This component implements the GOV.UK Design System tabs component.\nIt lets users navigate between related sections of content on the same page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-tabs title=&quot;Contents&quot;&gt;\n  &lt;ngx-govuk-tab heading=&quot;Past day&quot;&gt;\n    &lt;p&gt;Content for the past day tab panel&lt;/p&gt;\n  &lt;/ngx-govuk-tab&gt;\n  &lt;ngx-govuk-tab heading=&quot;Past week&quot;&gt;\n    &lt;p&gt;Content for the past week tab panel&lt;/p&gt;\n  &lt;/ngx-govuk-tab&gt;\n&lt;/ngx-govuk-tabs&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK tabs interface.\n\nThis component implements the GOV.UK Design System tabs component.\nIt lets users navigate between related sections of content on the same page.\n\n```html\n```html\n<ngx-govuk-tabs title=\"Contents\">\n  <ngx-govuk-tab heading=\"Past day\">\n    <p>Content for the past day tab panel</p>\n  </ngx-govuk-tab>\n  <ngx-govuk-tab heading=\"Past week\">\n    <p>Content for the past week tab panel</p>\n  </ngx-govuk-tab>\n</ngx-govuk-tabs>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}\n",
+            "description": "<p>This component implements the GOV.UK Design System tabs component.\nIt lets users navigate between related sections of content on the same page.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-tabs title=&quot;Contents&quot;&gt;\n  &lt;ngx-govuk-tab heading=&quot;Past day&quot;&gt;\n    &lt;p&gt;Content for the past day tab panel&lt;/p&gt;\n  &lt;/ngx-govuk-tab&gt;\n  &lt;ngx-govuk-tab heading=&quot;Past week&quot;&gt;\n    &lt;p&gt;Content for the past week tab panel&lt;/p&gt;\n  &lt;/ngx-govuk-tab&gt;\n&lt;/ngx-govuk-tabs&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System tabs component.\nIt lets users navigate between related sections of content on the same page.\n\n```html\n```html\n<ngx-govuk-tabs title=\"Contents\">\n  <ngx-govuk-tab heading=\"Past day\">\n    <p>Content for the past day tab panel</p>\n  </ngx-govuk-tab>\n  <ngx-govuk-tab heading=\"Past week\">\n    <p>Content for the past week tab panel</p>\n  </ngx-govuk-tab>\n</ngx-govuk-tabs>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}\n",
             "type": "component",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  contentChildren,\n  input,\n  model,\n} from '@angular/core';\nimport { GovUKTabComponent } from '../tab/tab.component';\n\n/**\n * A component that renders a GOV.UK tabs interface.\n *\n * This component implements the GOV.UK Design System tabs component.\n * It lets users navigate between related sections of content on the same page.\n *\n * @example\n * ```html\n * <ngx-govuk-tabs title=\"Contents\">\n *   <ngx-govuk-tab heading=\"Past day\">\n *     <p>Content for the past day tab panel</p>\n *   </ngx-govuk-tab>\n *   <ngx-govuk-tab heading=\"Past week\">\n *     <p>Content for the past week tab panel</p>\n *   </ngx-govuk-tab>\n * </ngx-govuk-tabs>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}\n */\n@Component({\n  selector: 'ngx-govuk-tabs',\n  imports: [NgTemplateOutlet],\n  templateUrl: './tabs.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTabsComponent {\n  /** The title for the tabs component. This input is required. */\n  readonly title = input.required<string>();\n\n  /** Collection of tab components that are children of this tabs component. */\n  readonly tabs = contentChildren(GovUKTabComponent);\n\n  /** Two-way binding model for the currently active tab index. Defaults to 0 (first tab). */\n  readonly activeTab = model(0);\n\n  /**\n   * Selects a tab at the specified index.\n   * @param index The index of the tab to select\n   * @param event The event that triggered the selection\n   */\n  selectTab(index: number, event: Event): void {\n    event.preventDefault();\n    this.activeTab.set(index);\n  }\n}\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  contentChildren,\n  input,\n  model,\n} from '@angular/core';\nimport { GovUKTabComponent } from '../tab/tab.component';\n\n/**\n * This component implements the GOV.UK Design System tabs component.\n * It lets users navigate between related sections of content on the same page.\n *\n * @example\n * ```html\n * <ngx-govuk-tabs title=\"Contents\">\n *   <ngx-govuk-tab heading=\"Past day\">\n *     <p>Content for the past day tab panel</p>\n *   </ngx-govuk-tab>\n *   <ngx-govuk-tab heading=\"Past week\">\n *     <p>Content for the past week tab panel</p>\n *   </ngx-govuk-tab>\n * </ngx-govuk-tabs>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}\n */\n@Component({\n  selector: 'ngx-govuk-tabs',\n  imports: [NgTemplateOutlet],\n  templateUrl: './tabs.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTabsComponent {\n  /** The title for the tabs component. This input is required. */\n  readonly title = input.required<string>();\n\n  /** Collection of tab components that are children of this tabs component. */\n  readonly tabs = contentChildren(GovUKTabComponent);\n\n  /** Two-way binding model for the currently active tab index. Defaults to 0 (first tab). */\n  readonly activeTab = model(0);\n\n  /**\n   * Selects a tab at the specified index.\n   * @param index The index of the tab to select\n   * @param event The event that triggered the selection\n   */\n  selectTab(index: number, event: Event): void {\n    event.preventDefault();\n    this.activeTab.set(index);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5188,7 +5188,7 @@
         },
         {
             "name": "GovUKTagComponent",
-            "id": "component-GovUKTagComponent-f1275c7b8aaa346a3f6f46078a2a84f9c5e80e68258ce5b4ef231d92a7449750f4e7faaf26248912cb55a3a123ff4c1a76516da68b531fd7fa52ea67c9684fa9",
+            "id": "component-GovUKTagComponent-d84cc7fa88047e1e2ce5b093667362e1fb6026d12879ba56f25418d362b1b911916fe94be92fad609456c14edec950fe24f35a5653593e4311c3ff2dbcc476c6",
             "file": "libs/ngx-govuk-frontend/tag/src/lib/tag.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -5213,7 +5213,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Additional CSS classes to apply to the tag.</p>\n",
-                    "line": 50,
+                    "line": 48,
                     "rawdescription": "\nAdditional CSS classes to apply to the tag.",
                     "modifierKind": [
                         148
@@ -5232,7 +5232,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Computed CSS classes based on the color and any extra classes provided.</p>\n",
-                    "line": 53,
+                    "line": 51,
                     "rawdescription": "\nComputed CSS classes based on the color and any extra classes provided.",
                     "modifierKind": [
                         148
@@ -5247,7 +5247,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The color of the tag. Defaults to &#39;blue&#39;.</p>\n",
-                    "line": 47,
+                    "line": 45,
                     "rawdescription": "\nThe color of the tag. Defaults to 'blue'.",
                     "modifierKind": [
                         148
@@ -5262,7 +5262,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 57,
+                    "line": 55,
                     "modifierKind": [
                         123,
                         148
@@ -5276,7 +5276,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Additional CSS classes to apply to the tag.</p>\n",
-                    "line": 50,
+                    "line": 48,
                     "rawdescription": "\nAdditional CSS classes to apply to the tag.",
                     "modifierKind": [
                         148
@@ -5295,10 +5295,10 @@
                     "name": "NgClass"
                 }
             ],
-            "description": "<p>A component that renders a GOV.UK tag.</p>\n<p>This component implements the GOV.UK Design System tag component.\nIt provides a way to highlight the status of something, such as a project phase or content status.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-tag&gt;Active&lt;/ngx-govuk-tag&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-tag color=&quot;red&quot;&gt;Rejected&lt;/ngx-govuk-tag&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/tag/ GOV.UK Tag}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK tag.\n\nThis component implements the GOV.UK Design System tag component.\nIt provides a way to highlight the status of something, such as a project phase or content status.\n\n```html\n```html\n<ngx-govuk-tag>Active</ngx-govuk-tag>\n```\n```\n```html\n```html\n<ngx-govuk-tag color=\"red\">Rejected</ngx-govuk-tag>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/tag/ GOV.UK Tag}\n",
+            "description": "<p>This component implements the GOV.UK Design System tag component.\nIt provides a way to highlight the status of something, such as a project phase or content status.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-tag&gt;Active&lt;/ngx-govuk-tag&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-tag color=&quot;red&quot;&gt;Rejected&lt;/ngx-govuk-tag&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/tag/ GOV.UK Tag}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System tag component.\nIt provides a way to highlight the status of something, such as a project phase or content status.\n\n```html\n```html\n<ngx-govuk-tag>Active</ngx-govuk-tag>\n```\n```\n```html\n```html\n<ngx-govuk-tag color=\"red\">Rejected</ngx-govuk-tag>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/tag/ GOV.UK Tag}\n",
             "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n} from '@angular/core';\n\nexport type GovUKTagColor =\n  | 'grey'\n  | 'green'\n  | 'turquoise'\n  | 'blue'\n  | 'light-blue'\n  | 'purple'\n  | 'pink'\n  | 'red'\n  | 'orange'\n  | 'yellow';\n\n/**\n * A component that renders a GOV.UK tag.\n *\n * This component implements the GOV.UK Design System tag component.\n * It provides a way to highlight the status of something, such as a project phase or content status.\n *\n * @example\n * ```html\n * <ngx-govuk-tag>Active</ngx-govuk-tag>\n * ```\n *\n * @example With custom color\n * ```html\n * <ngx-govuk-tag color=\"red\">Rejected</ngx-govuk-tag>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/tag/ GOV.UK Tag}\n */\n@Component({\n  selector: 'ngx-govuk-tag',\n  imports: [NgClass],\n  templateUrl: './tag.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTagComponent {\n  /** The color of the tag. Defaults to 'blue'. */\n  readonly color = input<GovUKTagColor>('blue');\n\n  /** Additional CSS classes to apply to the tag. */\n  readonly extraClasses = input<string>();\n\n  /** Computed CSS classes based on the color and any extra classes provided. */\n  readonly classes = computed(\n    () => `${this.colorClasses[this.color()]} ${this.extraClasses()}`,\n  );\n\n  private readonly colorClasses: Record<GovUKTagColor, string> = {\n    grey: 'govuk-tag--grey',\n    green: 'govuk-tag--green',\n    turquoise: 'govuk-tag--turquoise',\n    blue: 'govuk-tag--blue',\n    'light-blue': 'govuk-tag--light-blue',\n    purple: 'govuk-tag--purple',\n    pink: 'govuk-tag--pink',\n    red: 'govuk-tag--red',\n    orange: 'govuk-tag--orange',\n    yellow: 'govuk-tag--yellow',\n  };\n}\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\nimport {\n  ChangeDetectionStrategy,\n  Component,\n  computed,\n  input,\n} from '@angular/core';\n\nexport type GovUKTagColor =\n  | 'grey'\n  | 'green'\n  | 'turquoise'\n  | 'blue'\n  | 'light-blue'\n  | 'purple'\n  | 'pink'\n  | 'red'\n  | 'orange'\n  | 'yellow';\n\n/**\n * This component implements the GOV.UK Design System tag component.\n * It provides a way to highlight the status of something, such as a project phase or content status.\n *\n * @example\n * ```html\n * <ngx-govuk-tag>Active</ngx-govuk-tag>\n * ```\n *\n * @example With custom color\n * ```html\n * <ngx-govuk-tag color=\"red\">Rejected</ngx-govuk-tag>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/tag/ GOV.UK Tag}\n */\n@Component({\n  selector: 'ngx-govuk-tag',\n  imports: [NgClass],\n  templateUrl: './tag.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKTagComponent {\n  /** The color of the tag. Defaults to 'blue'. */\n  readonly color = input<GovUKTagColor>('blue');\n\n  /** Additional CSS classes to apply to the tag. */\n  readonly extraClasses = input<string>();\n\n  /** Computed CSS classes based on the color and any extra classes provided. */\n  readonly classes = computed(\n    () => `${this.colorClasses[this.color()]} ${this.extraClasses()}`,\n  );\n\n  private readonly colorClasses: Record<GovUKTagColor, string> = {\n    grey: 'govuk-tag--grey',\n    green: 'govuk-tag--green',\n    turquoise: 'govuk-tag--turquoise',\n    blue: 'govuk-tag--blue',\n    'light-blue': 'govuk-tag--light-blue',\n    purple: 'govuk-tag--purple',\n    pink: 'govuk-tag--pink',\n    red: 'govuk-tag--red',\n    orange: 'govuk-tag--orange',\n    yellow: 'govuk-tag--yellow',\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5371,7 +5371,7 @@
         },
         {
             "name": "GovUKTextareaComponent",
-            "id": "component-GovUKTextareaComponent-a4acb1cdd44bd7ae2b55cc93e57f842961f012fd70408c55f5f326f536cc6d82c1a36c7f09add567f4c528eeb7ab690b8dd130dd554c12725fb761577d08ad64",
+            "id": "component-GovUKTextareaComponent-ce6ca606e27be5fc1f84c837ccf4d18df9b0d42320d3034681ce56a3e1bae2d9a26c219785a6566dba4030af53a2c895799facf276b16bbee8db22aad5356ad0",
             "file": "libs/ngx-govuk-frontend/textarea/src/lib/textarea.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -5406,7 +5406,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 69,
+                    "line": 67,
                     "modifierKind": [
                         148
                     ],
@@ -5424,7 +5424,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 79,
+                    "line": 77,
                     "modifierKind": [
                         148
                     ]
@@ -5438,7 +5438,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 65,
+                    "line": 63,
                     "modifierKind": [
                         148
                     ]
@@ -5452,7 +5452,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 73,
+                    "line": 71,
                     "modifierKind": [
                         123,
                         148
@@ -5467,7 +5467,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 67,
+                    "line": 65,
                     "modifierKind": [
                         123,
                         148
@@ -5482,7 +5482,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 70,
+                    "line": 68,
                     "modifierKind": [
                         148
                     ]
@@ -5496,7 +5496,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 64,
+                    "line": 62,
                     "modifierKind": [
                         148
                     ]
@@ -5510,7 +5510,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 74,
+                    "line": 72,
                     "modifierKind": [
                         123,
                         148
@@ -5525,7 +5525,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 69,
+                    "line": 67,
                     "modifierKind": [
                         148
                     ],
@@ -5540,7 +5540,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 71,
+                    "line": 69,
                     "modifierKind": [
                         148
                     ]
@@ -5553,7 +5553,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 94,
+                    "line": 92,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -5572,10 +5572,10 @@
                     "type": "module"
                 }
             ],
-            "description": "<p>A textarea component that follows the GOV.UK Design System guidelines.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-textarea\n  formControlName=&quot;detail&quot;\n  inputId=&quot;detail&quot;\n  [rows]=&quot;5&quot;\n&gt;&lt;/ngx-govuk-textarea&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-textarea\n  formControlName=&quot;detail&quot;\n  inputId=&quot;detail&quot;\n  [rows]=&quot;5&quot;\n  [maxLength]=&quot;200&quot;\n  [showCharacterCount]=&quot;true&quot;\n&gt;&lt;/ngx-govuk-textarea&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
-            "rawdescription": "\n\nA textarea component that follows the GOV.UK Design System guidelines.\n\n```html\n```html\n<ngx-govuk-textarea\n  formControlName=\"detail\"\n  inputId=\"detail\"\n  [rows]=\"5\"\n></ngx-govuk-textarea>\n```\n```\n```html\n```html\n<ngx-govuk-textarea\n  formControlName=\"detail\"\n  inputId=\"detail\"\n  [rows]=\"5\"\n  [maxLength]=\"200\"\n  [showCharacterCount]=\"true\"\n></ngx-govuk-textarea>\n```\n```\n",
+            "description": "<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-textarea\n  formControlName=&quot;detail&quot;\n  inputId=&quot;detail&quot;\n  [rows]=&quot;5&quot;\n&gt;&lt;/ngx-govuk-textarea&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">```html\n```html\n&lt;ngx-govuk-textarea\n  formControlName=&quot;detail&quot;\n  inputId=&quot;detail&quot;\n  [rows]=&quot;5&quot;\n  [maxLength]=&quot;200&quot;\n  [showCharacterCount]=&quot;true&quot;\n&gt;&lt;/ngx-govuk-textarea&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
+            "rawdescription": "\n\n```html\n```html\n<ngx-govuk-textarea\n  formControlName=\"detail\"\n  inputId=\"detail\"\n  [rows]=\"5\"\n></ngx-govuk-textarea>\n```\n```\n```html\n```html\n<ngx-govuk-textarea\n  formControlName=\"detail\"\n  inputId=\"detail\"\n  [rows]=\"5\"\n  [maxLength]=\"200\"\n  [showCharacterCount]=\"true\"\n></ngx-govuk-textarea>\n```\n```\n",
             "type": "component",
-            "sourceCode": "import { NgClass } from '@angular/common';\r\nimport {\r\n  booleanAttribute,\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  computed,\r\n  DestroyRef,\r\n  inject,\r\n  input,\r\n  OnInit,\r\n  signal,\r\n  WritableSignal,\r\n} from '@angular/core';\r\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n  ValueAccessorDirective,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\n/**\r\n * A textarea component that follows the GOV.UK Design System guidelines.\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-textarea\r\n *   formControlName=\"detail\"\r\n *   inputId=\"detail\"\r\n *   [rows]=\"5\"\r\n * ></ngx-govuk-textarea>\r\n * ```\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-textarea\r\n *   formControlName=\"detail\"\r\n *   inputId=\"detail\"\r\n *   [rows]=\"5\"\r\n *   [maxLength]=\"200\"\r\n *   [showCharacterCount]=\"true\"\r\n * ></ngx-govuk-textarea>\r\n * ```\r\n *\r\n * @property {string} autocomplete - HTML autocomplete attribute value\r\n * @property {string} extraClasses - Additional CSS classes to apply to the textarea\r\n * @property {string} inputId - Required. The ID attribute for the input element.\r\n * @property {number} rows - Number of visible text rows for the textarea. Defaults to 2.\r\n * @property {number} maxLength - Optional. Maximum number of characters allowed in the textarea.\r\n * @property {boolean} showCharacterCount - Optional. Whether to show the character count. Defaults to false.\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-textarea',\r\n  imports: [NgClass, ReactiveFormsModule],\r\n  templateUrl: './textarea.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKTextareaComponent implements OnInit {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n\r\n  private readonly destroyRef = inject(DestroyRef);\r\n\r\n  readonly rows = input(2);\r\n  readonly maxLength = input<number | null>(null);\r\n  readonly showCharacterCount = input(false, { transform: booleanAttribute });\r\n\r\n  private readonly currentLength: WritableSignal<number> = signal(0);\r\n  private readonly remainingCharacters = computed(() => {\r\n    const maxLength = this.maxLength();\r\n    return maxLength === null ? null : maxLength - this.currentLength();\r\n  });\r\n\r\n  readonly characterCountMessage = computed(() => {\r\n    const remaining = this.remainingCharacters();\r\n\r\n    if (this.maxLength() === null || remaining === null) {\r\n      return null;\r\n    }\r\n\r\n    if (remaining < 0) {\r\n      const overLimit = Math.abs(remaining);\r\n      return `You have ${overLimit} ${overLimit === 1 ? 'character' : 'characters'} too many`;\r\n    }\r\n\r\n    return `You have ${remaining} ${remaining === 1 ? 'character' : 'characters'} remaining`;\r\n  });\r\n\r\n  ngOnInit(): void {\r\n    this.ngControl.valueChanges\r\n      ?.pipe(takeUntilDestroyed(this.destroyRef))\r\n      .subscribe((value) => this.currentLength.set(value.length));\r\n  }\r\n}\r\n",
+            "sourceCode": "import { NgClass } from '@angular/common';\r\nimport {\r\n  booleanAttribute,\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  computed,\r\n  DestroyRef,\r\n  inject,\r\n  input,\r\n  OnInit,\r\n  signal,\r\n  WritableSignal,\r\n} from '@angular/core';\r\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  GovUKCommonFormInputDirective,\r\n  injectNgControl,\r\n  inputCommonInputs,\r\n  ValueAccessorDirective,\r\n} from 'ngx-govuk-frontend/form-utils';\r\n\r\n/**\r\n * @example\r\n * ```html\r\n * <ngx-govuk-textarea\r\n *   formControlName=\"detail\"\r\n *   inputId=\"detail\"\r\n *   [rows]=\"5\"\r\n * ></ngx-govuk-textarea>\r\n * ```\r\n *\r\n * @example\r\n * ```html\r\n * <ngx-govuk-textarea\r\n *   formControlName=\"detail\"\r\n *   inputId=\"detail\"\r\n *   [rows]=\"5\"\r\n *   [maxLength]=\"200\"\r\n *   [showCharacterCount]=\"true\"\r\n * ></ngx-govuk-textarea>\r\n * ```\r\n *\r\n * @property {string} autocomplete - HTML autocomplete attribute value\r\n * @property {string} extraClasses - Additional CSS classes to apply to the textarea\r\n * @property {string} inputId - Required. The ID attribute for the input element.\r\n * @property {number} rows - Number of visible text rows for the textarea. Defaults to 2.\r\n * @property {number} maxLength - Optional. Maximum number of characters allowed in the textarea.\r\n * @property {boolean} showCharacterCount - Optional. Whether to show the character count. Defaults to false.\r\n */\r\n@Component({\r\n  selector: 'ngx-govuk-textarea',\r\n  imports: [NgClass, ReactiveFormsModule],\r\n  templateUrl: './textarea.component.html',\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  hostDirectives: [\r\n    ValueAccessorDirective,\r\n    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },\r\n  ],\r\n})\r\nexport class GovUKTextareaComponent implements OnInit {\r\n  readonly ngControl = injectNgControl();\r\n  readonly commonFormInput = inject(GovUKCommonFormInputDirective);\r\n\r\n  private readonly destroyRef = inject(DestroyRef);\r\n\r\n  readonly rows = input(2);\r\n  readonly maxLength = input<number | null>(null);\r\n  readonly showCharacterCount = input(false, { transform: booleanAttribute });\r\n\r\n  private readonly currentLength: WritableSignal<number> = signal(0);\r\n  private readonly remainingCharacters = computed(() => {\r\n    const maxLength = this.maxLength();\r\n    return maxLength === null ? null : maxLength - this.currentLength();\r\n  });\r\n\r\n  readonly characterCountMessage = computed(() => {\r\n    const remaining = this.remainingCharacters();\r\n\r\n    if (this.maxLength() === null || remaining === null) {\r\n      return null;\r\n    }\r\n\r\n    if (remaining < 0) {\r\n      const overLimit = Math.abs(remaining);\r\n      return `You have ${overLimit} ${overLimit === 1 ? 'character' : 'characters'} too many`;\r\n    }\r\n\r\n    return `You have ${remaining} ${remaining === 1 ? 'character' : 'characters'} remaining`;\r\n  });\r\n\r\n  ngOnInit(): void {\r\n    this.ngControl.valueChanges\r\n      ?.pipe(takeUntilDestroyed(this.destroyRef))\r\n      .subscribe((value) => this.currentLength.set(value.length));\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5728,7 +5728,7 @@
         },
         {
             "name": "GovUKWarningTextComponent",
-            "id": "component-GovUKWarningTextComponent-0b835c940a67211586bde1820349f1b749f7a75227a2de39808b67e77eb7d32860a49b00711decd39db3278459cf3cfcf6d50172d53fc77f3963e6c4c6f1dde6",
+            "id": "component-GovUKWarningTextComponent-b4d96fe00e35a9060ff952d0d6c238da7eb6cb6dcd18b593df3f958569742fd07131f62ef0d6104f0eef6de7b30f936375d4c5e95dd5b9c47391b9c05eac915f",
             "file": "libs/ngx-govuk-frontend/warning-text/src/lib/warning-text.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -5754,10 +5754,10 @@
             "hostListeners": [],
             "standalone": false,
             "imports": [],
-            "description": "<p>A component that renders a GOV.UK warning text.</p>\n<p>This component implements the GOV.UK Design System warning text component.\nIt helps make users aware of important information that could affect their application or journey.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-warning-text&gt;\n  You can be fined up to £5,000 if you don&#39;t register.\n&lt;/ngx-govuk-warning-text&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/warning-text/ GOV.UK Warning text}</code></pre></div>",
-            "rawdescription": "\n\nA component that renders a GOV.UK warning text.\n\nThis component implements the GOV.UK Design System warning text component.\nIt helps make users aware of important information that could affect their application or journey.\n\n```html\n```html\n<ngx-govuk-warning-text>\n  You can be fined up to £5,000 if you don't register.\n</ngx-govuk-warning-text>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/warning-text/ GOV.UK Warning text}\n",
+            "description": "<p>This component implements the GOV.UK Design System warning text component.\nIt helps make users aware of important information that could affect their application or journey.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">```html\n&lt;ngx-govuk-warning-text&gt;\n  You can be fined up to £5,000 if you don&#39;t register.\n&lt;/ngx-govuk-warning-text&gt;</code></pre></div><b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-none\">See {&#64;link https://design-system.service.gov.uk/components/warning-text/ GOV.UK Warning text}</code></pre></div>",
+            "rawdescription": "\n\nThis component implements the GOV.UK Design System warning text component.\nIt helps make users aware of important information that could affect their application or journey.\n\n```html\n```html\n<ngx-govuk-warning-text>\n  You can be fined up to £5,000 if you don't register.\n</ngx-govuk-warning-text>\n```\n```\nSee {@link https://design-system.service.gov.uk/components/warning-text/ GOV.UK Warning text}\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\n\n/**\n * A component that renders a GOV.UK warning text.\n *\n * This component implements the GOV.UK Design System warning text component.\n * It helps make users aware of important information that could affect their application or journey.\n *\n * @example\n * ```html\n * <ngx-govuk-warning-text>\n *   You can be fined up to £5,000 if you don't register.\n * </ngx-govuk-warning-text>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/warning-text/ GOV.UK Warning text}\n */\n@Component({\n  selector: 'ngx-govuk-warning-text',\n  templateUrl: './warning-text.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKWarningTextComponent {}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component } from '@angular/core';\n\n/**\n * This component implements the GOV.UK Design System warning text component.\n * It helps make users aware of important information that could affect their application or journey.\n *\n * @example\n * ```html\n * <ngx-govuk-warning-text>\n *   You can be fined up to £5,000 if you don't register.\n * </ngx-govuk-warning-text>\n * ```\n *\n * @see {@link https://design-system.service.gov.uk/components/warning-text/ GOV.UK Warning text}\n */\n@Component({\n  selector: 'ngx-govuk-warning-text',\n  templateUrl: './warning-text.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class GovUKWarningTextComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
