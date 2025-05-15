@@ -18,10 +18,6 @@ import {
  * It allows users to enter a password with the option to show or hide the entered text.
  *
  * @see https://design-system.service.gov.uk/components/password-input/
- *
- * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.
- * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.
- * @property {string} inputId - The ID attribute for the input element.
  */
 @Component({
   selector: 'ngx-govuk-password-input',

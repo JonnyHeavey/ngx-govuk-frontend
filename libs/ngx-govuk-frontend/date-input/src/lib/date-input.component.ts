@@ -32,11 +32,6 @@ interface DateInputParts {
  * It helps users enter a date by splitting it into day, month and year fields.
  *
  * @see https://design-system.service.gov.uk/components/date-input/
- *
- * @property {string} inputId - Optional. The ID prefix for the input elements.
- * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.
- * @property {string} min - Optional. The minimum valid date in ISO format (YYYY-MM-DD).
- * @property {string} max - Optional. The maximum valid date in ISO format (YYYY-MM-DD).
  */
 @Component({
   selector: 'ngx-govuk-date-input',

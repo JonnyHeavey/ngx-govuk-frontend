@@ -25,13 +25,6 @@ import {
  * It allows users to enter multiple lines of text.
  *
  * @see https://design-system.service.gov.uk/components/textarea/
- *
- * @property {string} autocomplete - HTML autocomplete attribute value
- * @property {string} extraClasses - Additional CSS classes to apply to the textarea
- * @property {string} inputId - Required. The ID attribute for the input element.
- * @property {number} rows - Number of visible text rows for the textarea. Defaults to 2.
- * @property {number} maxLength - Optional. Maximum number of characters allowed in the textarea.
- * @property {boolean} showCharacterCount - Optional. Whether to show the character count. Defaults to false.
  */
 @Component({
   selector: 'ngx-govuk-textarea',

@@ -18,12 +18,6 @@ import {
  * It allows users to enter text that's a single line.
  *
  * @see https://design-system.service.gov.uk/components/text-input/
- *
- * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.
- * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.
- * @property {string} inputId - Optional. The ID attribute for the input element.
- * @property {string} prefix - Optional. Text or symbol displayed before the input field (e.g., '£').
- * @property {string} suffix - Optional. Text or symbol displayed after the input field (e.g., 'per day').
  */
 @Component({
   selector: 'ngx-govuk-text-input',
