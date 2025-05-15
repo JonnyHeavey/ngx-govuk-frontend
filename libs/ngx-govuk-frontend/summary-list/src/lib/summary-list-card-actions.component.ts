@@ -9,7 +9,7 @@ import { GovUKSummaryListActionComponent } from './summary-list-action.component
  * This component implements the actions container in a GOV.UK Design System summary list card.
  * It provides a container for action links in a summary list card.
  *
- * @see {@link https://design-system.service.gov.uk/components/summary-list/ GOV.UK Summary List}
+ * @see https://design-system.service.gov.uk/components/summary-list/
  */
 @Component({
   selector: 'ngx-govuk-summary-list-card-actions',

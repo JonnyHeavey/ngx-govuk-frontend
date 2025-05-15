@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  * This component implements the links section of the GOV.UK Design System footer component.
  * It provides a container for footer links.
  *
- * @see {@link https://design-system.service.gov.uk/components/footer/ GOV.UK Footer}
+ * @see https://design-system.service.gov.uk/components/footer/
  */
 @Component({
   selector: 'ngx-govuk-footer-links',

@@ -22,7 +22,7 @@ export type GovUKTagColor =
  * This component implements the GOV.UK Design System tag component.
  * It provides a way to highlight the status of something, such as a project phase or content status.
  *
- * @see {@link https://design-system.service.gov.uk/components/tag/ GOV.UK Tag}
+ * @see https://design-system.service.gov.uk/components/tag/
  */
 @Component({
   selector: 'ngx-govuk-tag',

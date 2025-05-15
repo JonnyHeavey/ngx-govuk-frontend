@@ -8,7 +8,7 @@ import {
  * This component implements the confirmation message within the GOV.UK Design System cookie banner.
  * It displays after the user accepts or rejects cookies.
  *
- * @see {@link https://design-system.service.gov.uk/components/cookie-banner/ GOV.UK Cookie Banner}
+ * @see https://design-system.service.gov.uk/components/cookie-banner/
  */
 @Component({
   selector: 'ngx-govuk-cookie-confirmation',

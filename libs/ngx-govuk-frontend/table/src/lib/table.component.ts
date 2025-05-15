@@ -19,7 +19,7 @@ export type GovUKTableColumn = {
  * This component implements the GOV.UK Design System table component.
  * It makes information easier to compare and scan for users.
  *
- * @see {@link https://design-system.service.gov.uk/components/table/ GOV.UK Table}
+ * @see https://design-system.service.gov.uk/components/table/
  */
 @Component({
   selector: 'ngx-govuk-table',

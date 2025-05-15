@@ -12,7 +12,7 @@ import {
  * This component implements the GOV.UK Design System file upload component.
  * It allows users to select and upload files.
  *
- * @see {@link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File Upload}
+ * @see https://design-system.service.gov.uk/components/file-upload/
  */
 @Component({
   selector: 'ngx-govuk-file-upload',

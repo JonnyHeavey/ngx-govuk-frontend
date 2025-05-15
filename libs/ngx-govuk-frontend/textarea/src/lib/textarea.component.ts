@@ -24,7 +24,7 @@ import {
  * This component implements the GOV.UK Design System textarea component.
  * It allows users to enter multiple lines of text.
  *
- * @see {@link https://design-system.service.gov.uk/components/textarea/ GOV.UK Textarea}
+ * @see https://design-system.service.gov.uk/components/textarea/
  *
  * @property {string} autocomplete - HTML autocomplete attribute value
  * @property {string} extraClasses - Additional CSS classes to apply to the textarea

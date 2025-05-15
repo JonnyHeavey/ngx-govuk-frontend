@@ -10,7 +10,7 @@ import { GovUKBreadcrumbDirective } from './breadcrumb/breadcrumb.directive';
  * This component implements the GOV.UK Design System breadcrumbs component.
  * It helps users understand where they are in a website's structure and navigate back to previous pages.
  *
- * @see {@link https://design-system.service.gov.uk/components/breadcrumbs/ GOV.UK Breadcrumbs}
+ * @see https://design-system.service.gov.uk/components/breadcrumbs/
  */
 @Component({
   selector: 'ngx-govuk-breadcrumbs',

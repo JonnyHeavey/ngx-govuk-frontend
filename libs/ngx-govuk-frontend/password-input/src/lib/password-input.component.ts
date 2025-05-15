@@ -17,7 +17,7 @@ import {
  * This component implements the GOV.UK Design System password input component.
  * It allows users to enter a password with the option to show or hide the entered text.
  *
- * @see {@link https://design-system.service.gov.uk/components/password-input/ GOV.UK Password Input}
+ * @see https://design-system.service.gov.uk/components/password-input/
  *
  * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.
  * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.

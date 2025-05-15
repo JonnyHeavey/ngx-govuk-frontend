@@ -12,7 +12,7 @@ import { GovUKTabComponent } from '../tab/tab.component';
  * This component implements the GOV.UK Design System tabs component.
  * It lets users navigate between related sections of content on the same page.
  *
- * @see {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}
+ * @see https://design-system.service.gov.uk/components/tabs/
  */
 @Component({
   selector: 'ngx-govuk-tabs',

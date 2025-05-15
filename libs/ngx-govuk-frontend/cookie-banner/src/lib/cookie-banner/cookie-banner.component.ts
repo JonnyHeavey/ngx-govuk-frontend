@@ -13,7 +13,7 @@ import {
  * This component implements the GOV.UK Design System cookie banner component.
  * It informs users that your service uses cookies and allows them to accept or reject cookies.
  *
- * @see {@link https://design-system.service.gov.uk/components/cookie-banner/ GOV.UK Cookie Banner}
+ * @see https://design-system.service.gov.uk/components/cookie-banner/
  */
 @Component({
   selector: 'ngx-govuk-cookie-banner',

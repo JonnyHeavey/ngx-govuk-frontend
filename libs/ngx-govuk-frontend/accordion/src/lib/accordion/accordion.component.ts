@@ -15,7 +15,7 @@ import { GovUKAccordionItemComponent } from '../accordion-item/accordion-item.co
  * This component implements the GOV.UK Design System accordion component.
  * It allows users to show and hide sections of related content on a page.
  *
- * @see {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}
+ * @see https://design-system.service.gov.uk/components/accordion/
  */
 @Component({
   imports: [NgTemplateOutlet],

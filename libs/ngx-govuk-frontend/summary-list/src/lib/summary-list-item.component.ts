@@ -14,7 +14,7 @@ import { GovUKSummaryListValueDirective } from './summary-list-value.directive';
  * This component implements an item in the GOV.UK Design System summary list component.
  * It represents a key/value pair with optional actions in a summary list.
  *
- * @see {@link https://design-system.service.gov.uk/components/summary-list/ GOV.UK Summary List}
+ * @see https://design-system.service.gov.uk/components/summary-list/
  */
 @Component({
   selector: 'ngx-govuk-summary-list-item',

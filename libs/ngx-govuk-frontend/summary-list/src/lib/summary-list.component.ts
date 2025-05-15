@@ -16,7 +16,7 @@ import { GovUKSummaryListItemComponent } from './summary-list-item.component';
  * This component implements the GOV.UK Design System summary list component.
  * It displays information as a list of key/value pairs with optional actions.
  *
- * @see {@link https://design-system.service.gov.uk/components/summary-list/ GOV.UK Summary List}
+ * @see https://design-system.service.gov.uk/components/summary-list/
  */
 @Component({
   selector: 'ngx-govuk-summary-list',

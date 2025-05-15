@@ -10,7 +10,7 @@ import {
  * This component implements a navigation item in the GOV.UK Design System footer component.
  * It provides a link within a footer navigation section.
  *
- * @see {@link https://design-system.service.gov.uk/components/footer/ GOV.UK Footer}
+ * @see https://design-system.service.gov.uk/components/footer/
  */
 @Component({
   selector: 'ngx-govuk-footer-navigation-item',

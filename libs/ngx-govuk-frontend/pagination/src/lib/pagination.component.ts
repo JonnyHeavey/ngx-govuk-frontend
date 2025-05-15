@@ -31,7 +31,7 @@ export type PaginationMode = 'block' | 'list';
  * This component implements the GOV.UK Design System pagination component.
  * It helps users navigate between pages in a collection of content.
  *
- * @see {@link https://design-system.service.gov.uk/components/pagination/ GOV.UK Pagination}
+ * @see https://design-system.service.gov.uk/components/pagination/
  */
 @Component({
   selector: 'ngx-govuk-pagination',

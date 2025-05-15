@@ -9,7 +9,7 @@ import { GovUKFooterNavigationSectionComponent } from './footer-navigation-secti
  * This component implements the navigation section of the GOV.UK Design System footer component.
  * It provides structured navigation for the footer.
  *
- * @see {@link https://design-system.service.gov.uk/components/footer/ GOV.UK Footer}
+ * @see https://design-system.service.gov.uk/components/footer/
  */
 @Component({
   selector: 'ngx-govuk-footer-navigation',

@@ -9,7 +9,7 @@ import {
  * This component implements the GOV.UK Design System form group wrapper.
  * It provides the GOV.UK form group styling and layout for form controls.
  *
- * @see {@link https://design-system.service.gov.uk/components/text-input/ GOV.UK Text Input}
+ * @see https://design-system.service.gov.uk/components/text-input/
  *
  * @property {string} inputId - Required. The ID attribute for the input element.
  * @property {string} label - Required. The label text for the input field.

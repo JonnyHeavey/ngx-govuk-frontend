@@ -19,7 +19,7 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
  * This component implements the GOV.UK Design System error summary component.
  * It helps users understand what went wrong and how to fix it.
  *
- * @see {@link https://design-system.service.gov.uk/components/error-summary/ GOV.UK Error Summary}
+ * @see https://design-system.service.gov.uk/components/error-summary/
  *
  * ## Router Configuration
  *

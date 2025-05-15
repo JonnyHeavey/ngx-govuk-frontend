@@ -10,7 +10,7 @@ import {
  * This component implements a single tab panel in the GOV.UK Design System tabs component.
  * It contains the content to display when a tab is selected.
  *
- * @see {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}
+ * @see https://design-system.service.gov.uk/components/tabs/
  */
 @Component({
   selector: 'ngx-govuk-tab',

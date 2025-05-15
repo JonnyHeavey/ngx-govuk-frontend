@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
  * This component implements the GOV.UK Design System notification banner component.
  * It provides users with important information relating to their task.
  *
- * @see {@link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification Banner}
+ * @see https://design-system.service.gov.uk/components/notification-banner/
  */
 @Component({
   selector: 'ngx-govuk-notification-banner',

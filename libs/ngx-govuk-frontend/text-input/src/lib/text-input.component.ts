@@ -17,7 +17,7 @@ import {
  * This component implements the GOV.UK Design System text input component.
  * It allows users to enter text that's a single line.
  *
- * @see {@link https://design-system.service.gov.uk/components/text-input/ GOV.UK Text Input}
+ * @see https://design-system.service.gov.uk/components/text-input/
  *
  * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.
  * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.

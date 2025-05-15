@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
  * This component implements an action link in a GOV.UK Design System summary list component.
  * It provides a link for changing information in a summary list item.
  *
- * @see {@link https://design-system.service.gov.uk/components/summary-list/ GOV.UK Summary List}
+ * @see https://design-system.service.gov.uk/components/summary-list/
  */
 @Component({
   selector: 'ngx-govuk-summary-list-action',

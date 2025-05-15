@@ -24,7 +24,7 @@ export type GovUKButtonColorType =
  * This component implements the GOV.UK Design System button component.
  * It allows users to take actions, submit forms, or navigate to a new page.
  *
- * @see {@link https://design-system.service.gov.uk/components/button/ GOV.UK Button}
+ * @see https://design-system.service.gov.uk/components/button/
  */
 @Component({
   selector: 'ngx-govuk-button',

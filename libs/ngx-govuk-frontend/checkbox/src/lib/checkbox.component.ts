@@ -9,7 +9,7 @@ import {
  * This component implements the GOV.UK Design System checkbox component.
  * It allows users to select one or more options by ticking a box.
  *
- * @see {@link https://design-system.service.gov.uk/components/checkboxes/ GOV.UK Checkboxes}
+ * @see https://design-system.service.gov.uk/components/checkboxes/
  */
 @Component({
   selector: 'ngx-govuk-checkbox',

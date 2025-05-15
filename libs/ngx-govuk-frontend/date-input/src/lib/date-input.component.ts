@@ -31,7 +31,7 @@ interface DateInputParts {
  * This component implements the GOV.UK Design System date input component.
  * It helps users enter a date by splitting it into day, month and year fields.
  *
- * @see {@link https://design-system.service.gov.uk/components/date-input/ GOV.UK Date Input}
+ * @see https://design-system.service.gov.uk/components/date-input/
  *
  * @property {string} inputId - Optional. The ID prefix for the input elements.
  * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.

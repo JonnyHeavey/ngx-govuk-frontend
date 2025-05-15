@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
  * This component implements the GOV.UK Design System header component.
  * It helps users identify what service they are using and navigate between pages.
  *
- * @see {@link https://design-system.service.gov.uk/components/header/ GOV.UK Header}
+ * @see https://design-system.service.gov.uk/components/header/
  */
 @Component({
   selector: 'ngx-govuk-header',

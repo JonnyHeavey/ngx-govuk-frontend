@@ -26,7 +26,7 @@ export interface GovUKSelectOption {
  * This component implements the GOV.UK Design System select component.
  * It allows users to choose an option from a dropdown list.
  *
- * @see {@link https://design-system.service.gov.uk/components/select/ GOV.UK Select}
+ * @see https://design-system.service.gov.uk/components/select/
  */
 @Component({
   selector: 'ngx-govuk-select',

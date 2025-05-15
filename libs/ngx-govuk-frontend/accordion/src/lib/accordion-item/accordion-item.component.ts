@@ -11,7 +11,7 @@ import {
  * This component implements a section in the GOV.UK Design System accordion component.
  * It contains the heading, optional summary, and content for an accordion section.
  *
- * @see {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}
+ * @see https://design-system.service.gov.uk/components/accordion/
  */
 @Component({
   selector: 'ngx-govuk-accordion-item',
