@@ -2,15 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /**
  * This component implements the GOV.UK Design System panel component.
- * It provides a visually prominent box used to highlight important content.
- * It's typically used for transaction end pages or other important information.
- *
- * @example
- * ```html
- * <ngx-govuk-panel title="Application complete">
- *   Your reference number: HDJ2123F
- * </ngx-govuk-panel>
- * ```
+ * It displays important content on a page, typically a confirmation or summary.
  *
  * @see {@link https://design-system.service.gov.uk/components/panel/ GOV.UK Panel}
  */

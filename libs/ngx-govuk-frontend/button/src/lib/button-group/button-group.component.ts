@@ -1,21 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 /**
- * This component implements the GOV.UK Design System button group pattern.
- * It provides consistent spacing between multiple buttons or links that are grouped together.
+ * This component implements the GOV.UK Design System button group component.
+ * It provides a way to group buttons together in a form with consistent spacing.
  *
- * @example
- * ```html
- * <ngx-govuk-button-group>
- *   <ngx-govuk-button>Save and continue</ngx-govuk-button>
- *   <ngx-govuk-button color="secondary">Cancel</ngx-govuk-button>
- * </ngx-govuk-button-group>
- * ```
- *
- * The component accepts `ngx-govuk-button` components and elements with the `govuk-link` class
- * as content through content projection.
- *
- * @see {@link https://design-system.service.gov.uk/components/button/#button-group GOV.UK Button group}
+ * @see {@link https://design-system.service.gov.uk/components/button/ GOV.UK Button}
  */
 @Component({
   selector: 'ngx-govuk-button-group',

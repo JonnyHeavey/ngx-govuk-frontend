@@ -28,16 +28,10 @@ interface PageItem {
 export type PaginationMode = 'block' | 'list';
 
 /**
- * A pagination component following the GovUK Design System
- * @component
+ * This component implements the GOV.UK Design System pagination component.
+ * It helps users navigate between pages in a collection of content.
  *
- * @example
- * <ngx-govuk-pagination
- *   [itemCount]="100"
- *   [itemsPerPage]="10"
- *   [currentPage]="1"
- *   (pageChange)="onPageChange($event)"
- * ></ngx-govuk-pagination>
+ * @see {@link https://design-system.service.gov.uk/components/pagination/ GOV.UK Pagination}
  */
 @Component({
   selector: 'ngx-govuk-pagination',

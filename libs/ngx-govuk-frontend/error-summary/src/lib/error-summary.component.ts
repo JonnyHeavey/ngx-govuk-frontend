@@ -16,7 +16,10 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
  * When a user makes an error, you should show both an error summary and an error message
  * next to each answer that contains an error.
  *
- * This component implements the GOV.UK error summary component.
+ * This component implements the GOV.UK Design System error summary component.
+ * It helps users understand what went wrong and how to fix it.
+ *
+ * @see {@link https://design-system.service.gov.uk/components/error-summary/ GOV.UK Error Summary}
  *
  * ## Router Configuration
  *
@@ -31,22 +34,6 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
  *
  * // Option 2: Using Standalone API
  * provideRouter(routes, withInMemoryScrolling({ anchorScrolling: 'enabled' }))
- * ```
- *
- * @example
- * ```html
- * <ngx-govuk-error-summary
- *   title="There is a problem"
- * >
- *   <ngx-govuk-error-summary-item
- *     text="Enter your full name"
- *     targetId="full-name"
- *   ></ngx-govuk-error-summary-item>
- *   <ngx-govuk-error-summary-item
- *     text="The date your passport was issued must be in the past"
- *     targetId="passport-issued-year"
- *   ></ngx-govuk-error-summary-item>
- * </ngx-govuk-error-summary>
  * ```
  */
 @Component({

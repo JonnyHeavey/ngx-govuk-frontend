@@ -22,16 +22,6 @@ export type GovUKTagColor =
  * This component implements the GOV.UK Design System tag component.
  * It provides a way to highlight the status of something, such as a project phase or content status.
  *
- * @example
- * ```html
- * <ngx-govuk-tag>Active</ngx-govuk-tag>
- * ```
- *
- * @example With custom color
- * ```html
- * <ngx-govuk-tag color="red">Rejected</ngx-govuk-tag>
- * ```
- *
  * @see {@link https://design-system.service.gov.uk/components/tag/ GOV.UK Tag}
  */
 @Component({

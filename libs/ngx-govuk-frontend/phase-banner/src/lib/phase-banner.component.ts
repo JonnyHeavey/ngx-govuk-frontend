@@ -6,16 +6,9 @@ export type GovUKPhase = 'alpha' | 'beta';
 
 /**
  * This component implements the GOV.UK Design System phase banner component.
- * It helps users understand when a service is new and likely to change.
+ * It shows users that the service is still being worked on and in a particular phase.
  *
- * @example
- * ```html
- * <ngx-govuk-phase-banner phase="alpha">
- *   This is a new service – your <a href="#">feedback</a> will help us improve it.
- * </ngx-govuk-phase-banner>
- * ```
- *
- * @see {@link https://design-system.service.gov.uk/components/phase-banner/ GOV.UK Phase banner}
+ * @see {@link https://design-system.service.gov.uk/components/phase-banner/ GOV.UK Phase Banner}
  */
 @Component({
   selector: 'ngx-govuk-phase-banner',

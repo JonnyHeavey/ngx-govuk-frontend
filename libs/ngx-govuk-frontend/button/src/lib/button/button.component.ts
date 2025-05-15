@@ -24,21 +24,6 @@ export type GovUKButtonColorType =
  * This component implements the GOV.UK Design System button component.
  * It allows users to take actions, submit forms, or navigate to a new page.
  *
- * @example
- * ```html
- * <ngx-govuk-button>Save and continue</ngx-govuk-button>
- * ```
- *
- * @example With secondary style
- * ```html
- * <ngx-govuk-button color="secondary">Cancel</ngx-govuk-button>
- * ```
- *
- * @example With start icon
- * ```html
- * <ngx-govuk-button [start]="true">Start now</ngx-govuk-button>
- * ```
- *
  * @see {@link https://design-system.service.gov.uk/components/button/ GOV.UK Button}
  */
 @Component({

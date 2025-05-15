@@ -5,19 +5,10 @@ import {
 } from 'ngx-govuk-frontend/button';
 
 /**
- * This component implements the confirmation banner for the GOV.UK Design System cookie banner component.
- * It provides confirmation to users after they've accepted or rejected cookies, with options to change
- * their preferences or hide the banner.
+ * This component implements the confirmation message within the GOV.UK Design System cookie banner.
+ * It displays after the user accepts or rejects cookies.
  *
- * @example
- * ```html
- * <ngx-govuk-cookie-confirmation
- *   (changeSettings)="onChangeCookieSettings()"
- *   (hide)="onHideBanner()">
- * </ngx-govuk-cookie-confirmation>
- * ```
- *
- * @see {@link https://design-system.service.gov.uk/components/cookie-banner/ GOV.UK Cookie banner}
+ * @see {@link https://design-system.service.gov.uk/components/cookie-banner/ GOV.UK Cookie Banner}
  */
 @Component({
   selector: 'ngx-govuk-cookie-confirmation',

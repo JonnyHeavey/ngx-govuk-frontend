@@ -1,17 +1,10 @@
 import { Directive, TemplateRef } from '@angular/core';
 
 /**
- * Directive for the value content of a summary list item
+ * This directive implements the value in a GOV.UK Design System summary list component.
+ * It applies the appropriate styling for a summary list value.
  *
- * This directive allows you to define the value content as a template
- * which can include complex HTML.
- *
- * @example
- * ```html
- * <ng-template ngxGovUkSummaryListValue>
- *   <p>72 Guild Street<br>London<br>SE23 6FH</p>
- * </ng-template>
- * ```
+ * @see {@link https://design-system.service.gov.uk/components/summary-list/ GOV.UK Summary List}
  */
 @Directive({
   selector: '[ngxGovUkSummaryListValue]',

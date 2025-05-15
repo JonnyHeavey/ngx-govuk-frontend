@@ -21,25 +21,10 @@ import {
 } from 'ngx-govuk-frontend/form-utils';
 
 /**
- * @example
- * ```html
- * <ngx-govuk-textarea
- *   formControlName="detail"
- *   inputId="detail"
- *   [rows]="5"
- * ></ngx-govuk-textarea>
- * ```
+ * This component implements the GOV.UK Design System textarea component.
+ * It allows users to enter multiple lines of text.
  *
- * @example
- * ```html
- * <ngx-govuk-textarea
- *   formControlName="detail"
- *   inputId="detail"
- *   [rows]="5"
- *   [maxLength]="200"
- *   [showCharacterCount]="true"
- * ></ngx-govuk-textarea>
- * ```
+ * @see {@link https://design-system.service.gov.uk/components/textarea/ GOV.UK Textarea}
  *
  * @property {string} autocomplete - HTML autocomplete attribute value
  * @property {string} extraClasses - Additional CSS classes to apply to the textarea

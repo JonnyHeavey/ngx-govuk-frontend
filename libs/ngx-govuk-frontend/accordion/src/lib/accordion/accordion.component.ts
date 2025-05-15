@@ -15,18 +15,6 @@ import { GovUKAccordionItemComponent } from '../accordion-item/accordion-item.co
  * This component implements the GOV.UK Design System accordion component.
  * It allows users to show and hide sections of related content on a page.
  *
- * @example
- * ```html
- * <ngx-govuk-accordion id="accordion-default">
- *   <ngx-govuk-accordion-item heading="Section 1" id="section-1">
- *     <p>This is the content for section 1.</p>
- *   </ngx-govuk-accordion-item>
- *   <ngx-govuk-accordion-item heading="Section 2" id="section-2">
- *     <p>This is the content for section 2.</p>
- *   </ngx-govuk-accordion-item>
- * </ngx-govuk-accordion>
- * ```
- *
  * @see {@link https://design-system.service.gov.uk/components/accordion/ GOV.UK Accordion}
  */
 @Component({

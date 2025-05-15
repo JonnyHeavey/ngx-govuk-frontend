@@ -2,16 +2,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /**
  * This component implements the GOV.UK Design System notification banner component.
- * It provides a way to display important information or updates that users need to know about.
+ * It provides users with important information relating to their task.
  *
- * @example
- * ```html
- * <ngx-govuk-notification-banner title="Important">
- *   There is a planned outage on Sunday from 2am to 4am.
- * </ngx-govuk-notification-banner>
- * ```
- *
- * @see {@link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification banner}
+ * @see {@link https://design-system.service.gov.uk/components/notification-banner/ GOV.UK Notification Banner}
  */
 @Component({
   selector: 'ngx-govuk-notification-banner',

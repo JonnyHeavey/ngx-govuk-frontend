@@ -11,19 +11,9 @@ import {
 
 /**
  * This component implements the GOV.UK Design System cookie banner component.
- * It helps users understand how their data is being used and gives them the option to accept or reject cookies.
+ * It informs users that your service uses cookies and allows them to accept or reject cookies.
  *
- * @example
- * ```html
- * <ngx-govuk-cookie-banner
- *   appName="My Service"
- *   (accept)="onAcceptCookies()"
- *   (reject)="onRejectCookies()"
- *   (view)="onViewCookieSettings()">
- * </ngx-govuk-cookie-banner>
- * ```
- *
- * @see {@link https://design-system.service.gov.uk/components/cookie-banner/ GOV.UK Cookie banner}
+ * @see {@link https://design-system.service.gov.uk/components/cookie-banner/ GOV.UK Cookie Banner}
  */
 @Component({
   selector: 'ngx-govuk-cookie-banner',

@@ -16,17 +16,6 @@ import { GovUKTaskListItemDirective } from './task-list-item.directive';
  * - when they have completed a task
  *
  * This component implements the GOV.UK task list pattern.
- *
- * @example
- * ```html
- * <ngx-govuk-task-list>
- *   <ngx-govuk-task-list-item
- *     [title]="'Complete task'"
- *     [href]="'/task-url'"
- *     [statusText]="'Completed'"
- *   ></ngx-govuk-task-list-item>
- * </ngx-govuk-task-list>
- * ```
  */
 
 @Component({

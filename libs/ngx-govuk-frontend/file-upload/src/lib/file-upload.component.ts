@@ -10,14 +10,9 @@ import {
 
 /**
  * This component implements the GOV.UK Design System file upload component.
- * It allows users to select and upload files to a service.
+ * It allows users to select and upload files.
  *
- * @example
- * ```html
- * <ngx-govuk-file-upload formControlName="photo" inputId="photo-upload" />
- * ```
- *
- * @see {@link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File upload}
+ * @see {@link https://design-system.service.gov.uk/components/file-upload/ GOV.UK File Upload}
  */
 @Component({
   selector: 'ngx-govuk-file-upload',

@@ -6,20 +6,10 @@ import {
 } from '@angular/core';
 
 /**
- * A form group component that wraps form controls with a label and optional hint text.
- * Follows the GOV.UK Design System form group pattern.
+ * This component implements the GOV.UK Design System form group wrapper.
+ * It provides the GOV.UK form group styling and layout for form controls.
  *
- * @example
- * ```html
- * <ngx-govuk-form-group
- *   inputId="example-input"
- *   label="Enter your name"
- *   hint="As shown on your passport"
- *   [isPageTitle]="true"
- * >
- *   <input type="text" />
- * </ngx-govuk-form-group>
- * ```
+ * @see {@link https://design-system.service.gov.uk/components/text-input/ GOV.UK Text Input}
  *
  * @property {string} inputId - Required. The ID attribute for the input element.
  * @property {string} label - Required. The label text for the input field.

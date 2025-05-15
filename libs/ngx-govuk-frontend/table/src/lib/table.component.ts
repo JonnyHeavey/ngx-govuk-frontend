@@ -17,22 +17,7 @@ export type GovUKTableColumn = {
 
 /**
  * This component implements the GOV.UK Design System table component.
- * It provides a way to make information easier to compare and scan for users.
- *
- * @example
- * ```html
- * <ngx-govuk-table
- *   [columns]="[
- *     { header: 'Month', key: 'month', isRowHeader: true },
- *     { header: 'Rate', key: 'rate', isNumeric: true }
- *   ]"
- *   [dataSource]="[
- *     { month: 'January', rate: '£3.50' },
- *     { month: 'February', rate: '£5.00' }
- *   ]"
- *   caption="Payment rates">
- * </ngx-govuk-table>
- * ```
+ * It makes information easier to compare and scan for users.
  *
  * @see {@link https://design-system.service.gov.uk/components/table/ GOV.UK Table}
  */

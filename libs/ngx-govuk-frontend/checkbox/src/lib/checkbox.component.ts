@@ -9,12 +9,6 @@ import {
  * This component implements the GOV.UK Design System checkbox component.
  * It allows users to select one or more options by ticking a box.
  *
- * @example
- * ```html
- * <ngx-govuk-checkbox inputId="terms" label="I agree to the terms and conditions" formControlName="terms">
- * </ngx-govuk-checkbox>
- * ```
- *
  * @see {@link https://design-system.service.gov.uk/components/checkboxes/ GOV.UK Checkboxes}
  */
 @Component({

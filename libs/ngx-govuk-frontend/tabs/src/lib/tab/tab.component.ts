@@ -10,13 +10,6 @@ import {
  * This component implements a single tab panel in the GOV.UK Design System tabs component.
  * It contains the content to display when a tab is selected.
  *
- * @example
- * ```html
- * <ngx-govuk-tab id="past-day" title="Past day">
- *   <p>Content for the past day tab panel</p>
- * </ngx-govuk-tab>
- * ```
- *
  * @see {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}
  */
 @Component({

@@ -12,18 +12,6 @@ import { GovUKTabComponent } from '../tab/tab.component';
  * This component implements the GOV.UK Design System tabs component.
  * It lets users navigate between related sections of content on the same page.
  *
- * @example
- * ```html
- * <ngx-govuk-tabs title="Contents">
- *   <ngx-govuk-tab heading="Past day">
- *     <p>Content for the past day tab panel</p>
- *   </ngx-govuk-tab>
- *   <ngx-govuk-tab heading="Past week">
- *     <p>Content for the past week tab panel</p>
- *   </ngx-govuk-tab>
- * </ngx-govuk-tabs>
- * ```
- *
  * @see {@link https://design-system.service.gov.uk/components/tabs/ GOV.UK Tabs}
  */
 @Component({
