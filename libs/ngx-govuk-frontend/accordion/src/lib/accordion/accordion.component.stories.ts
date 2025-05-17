@@ -22,7 +22,7 @@ const meta: Meta<GovUKAccordionComponent> = {
 export default meta;
 type Story = StoryObj<GovUKAccordionComponent>;
 
-export const Default: Story = {
+export const Primary: Story = {
   render: (args) => ({
     props: args,
     template: `

@@ -27,7 +27,7 @@ const meta: Meta<GovUKSkipLinkComponent> = {
 export default meta;
 type Story = StoryObj<GovUKSkipLinkComponent>;
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {},
   parameters: {
     docs: {

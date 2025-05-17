@@ -26,15 +26,6 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
  * The component uses Angular Router's fragment navigation for scrolling to error elements.
  * You must enable anchor scrolling in your application's router configuration for proper
  * scrolling behavior when users click on error links.
- *
- * Configure your router using one of these methods:
- * ```typescript
- * // Option 1: Using RouterModule (NgModule approach)
- * RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })
- *
- * // Option 2: Using Standalone API
- * provideRouter(routes, withInMemoryScrolling({ anchorScrolling: 'enabled' }))
- * ```
  */
 @Component({
   selector: 'ngx-govuk-error-summary',

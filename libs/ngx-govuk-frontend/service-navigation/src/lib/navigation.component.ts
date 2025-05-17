@@ -10,7 +10,7 @@ import { GovUKServiceNavigationItemDirective } from './item/navigation-item.dire
  * This component implements the GOV.UK Design System service navigation component.
  * It provides a way for users to navigate between different sections of a service.
  *
- * @see https://design-system.service.gov.uk/components/header/
+ * @see https://design-system.service.gov.uk/components/service-navigation/
  */
 @Component({
   selector: 'ngx-govuk-service-navigation',

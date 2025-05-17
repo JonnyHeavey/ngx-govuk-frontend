@@ -69,7 +69,7 @@ const Template: StoryFn<GovUKPaginationComponent> = (args) => ({
   `,
 });
 
-export const Default: Story = {
+export const Primary: Story = {
   render: Template,
   args: {
     itemCount: 100,

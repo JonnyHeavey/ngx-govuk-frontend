@@ -30,7 +30,7 @@ const setupForm = () => {
 };
 
 // Basic date input
-export const Default: Story = {
+export const Primary: Story = {
   render: () => ({
     props: {
       form: setupForm(),

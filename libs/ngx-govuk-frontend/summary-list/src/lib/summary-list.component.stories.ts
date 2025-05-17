@@ -1,3 +1,4 @@
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
 import { GovUKSummaryListActionComponent } from './summary-list-action.component';
 import { GovUKSummaryListActionsComponent } from './summary-list-actions.component';
@@ -8,7 +9,7 @@ import { GovUKSummaryListValueDirective } from './summary-list-value.directive';
 import { GovUKSummaryListComponent } from './summary-list.component';
 
 const meta: Meta<GovUKSummaryListComponent> = {
-  title: 'Components/Summary List',
+  title: 'Summary List/GovUKSummaryListComponent',
   component: GovUKSummaryListComponent,
   decorators: [
     moduleMetadata({
@@ -20,7 +21,9 @@ const meta: Meta<GovUKSummaryListComponent> = {
         GovUKSummaryListCardComponent,
         GovUKSummaryListCardActionsComponent,
         GovUKSummaryListValueDirective,
+        RouterModule.forChild([]),
       ],
+      providers: [{ provide: ActivatedRoute, useValue: {} }],
     }),
   ],
   render: (args) => ({
@@ -56,7 +59,7 @@ const meta: Meta<GovUKSummaryListComponent> = {
 export default meta;
 type Story = StoryObj<GovUKSummaryListComponent>;
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {},
 };
 
@@ -84,13 +87,12 @@ export const WithCard: StoryObj<GovUKSummaryListCardComponent> = {
 };
 
 export const WithMultipleActions: Story = {
-  args: {},
   render: () => ({
     template: `
       <ngx-govuk-summary-list>
         <ngx-govuk-summary-list-item key="Contact details">
           <ng-template ngxGovUkSummaryListValue>
-            <p>Email: sarah.phillips@example.com</p>
+            <p>Email: sarah.phillips&#64;example.com</p>
             <p>Phone: 07700 900457</p>
           </ng-template>
           <ngx-govuk-summary-list-actions>
