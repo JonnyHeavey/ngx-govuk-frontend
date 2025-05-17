@@ -4,13 +4,22 @@ import {
   GovUKButtonGroupComponent,
 } from 'ngx-govuk-frontend/button';
 
+/**
+ * This component implements the confirmation message within the GOV.UK Design System cookie banner.
+ * It displays after the user accepts or rejects cookies.
+ *
+ * @see https://design-system.service.gov.uk/components/cookie-banner/
+ */
 @Component({
-    selector: 'ngx-govuk-cookie-confirmation',
-    imports: [GovUKButtonComponent, GovUKButtonGroupComponent],
-    templateUrl: './cookie-confirmation.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-govuk-cookie-confirmation',
+  imports: [GovUKButtonComponent, GovUKButtonGroupComponent],
+  templateUrl: './cookie-confirmation.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKCookieConfirmationComponent {
-  changeSettings = output<void>();
-  hide = output<void>();
+  /** Event emitted when the user wants to change their cookie settings. */
+  readonly changeSettings = output<void>();
+
+  /** Event emitted when the user wants to hide the confirmation banner. */
+  readonly hide = output<void>();
 }

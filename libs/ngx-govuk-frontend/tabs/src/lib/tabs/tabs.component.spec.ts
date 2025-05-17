@@ -19,7 +19,6 @@ interface GovUKTab {
       }
     </ngx-govuk-tabs>
   `,
-  standalone: true,
   imports: [GovUKTabsComponent, GovUKTabComponent],
 })
 class TestHostComponent {

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
 import { GovUKTaskListItemDirective } from './task-list-item.directive';
@@ -13,6 +14,7 @@ const meta: Meta<GovUKTaskListComponent> = {
         GovUKTaskListItemDirective,
         GovUKTagComponent,
       ],
+      providers: [{ provide: ActivatedRoute, useValue: {} }],
     }),
   ],
   parameters: {
@@ -24,7 +26,7 @@ export default meta;
 type Story = StoryObj<GovUKTaskListComponent>;
 
 // Default example
-export const Default: Story = {
+export const Primary: Story = {
   render: () => ({
     component: GovUKTaskListComponent,
     props: {},

@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -17,45 +16,22 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
  * When a user makes an error, you should show both an error summary and an error message
  * next to each answer that contains an error.
  *
- * This component implements the GOV.UK error summary component.
+ * This component implements the GOV.UK Design System error summary component.
+ * It helps users understand what went wrong and how to fix it.
+ *
+ * @see https://design-system.service.gov.uk/components/error-summary/
  *
  * ## Router Configuration
  *
  * The component uses Angular Router's fragment navigation for scrolling to error elements.
  * You must enable anchor scrolling in your application's router configuration for proper
  * scrolling behavior when users click on error links.
- *
- * Configure your router using one of these methods:
- * ```typescript
- * // Option 1: Using RouterModule (NgModule approach)
- * RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })
- *
- * // Option 2: Using Standalone API
- * provideRouter(routes, withInMemoryScrolling({ anchorScrolling: 'enabled' }))
- * ```
- *
- * @example
- * ```html
- * <ngx-govuk-error-summary
- *   title="There is a problem"
- * >
- *   <ngx-govuk-error-summary-item
- *     text="Enter your full name"
- *     targetId="full-name"
- *   ></ngx-govuk-error-summary-item>
- *   <ngx-govuk-error-summary-item
- *     text="The date your passport was issued must be in the past"
- *     targetId="passport-issued-year"
- *   ></ngx-govuk-error-summary-item>
- * </ngx-govuk-error-summary>
- * ```
  */
 @Component({
   selector: 'ngx-govuk-error-summary',
   templateUrl: './error-summary.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
 })
 export class GovUKErrorSummaryComponent {
   /**

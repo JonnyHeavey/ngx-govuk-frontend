@@ -4,12 +4,19 @@ import { GovUKTagComponent } from 'ngx-govuk-frontend/tag';
 
 export type GovUKPhase = 'alpha' | 'beta';
 
+/**
+ * This component implements the GOV.UK Design System phase banner component.
+ * It shows users that the service is still being worked on and in a particular phase.
+ *
+ * @see https://design-system.service.gov.uk/components/phase-banner/
+ */
 @Component({
-    selector: 'ngx-govuk-phase-banner',
-    imports: [TitleCasePipe, GovUKTagComponent],
-    templateUrl: './phase-banner.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-govuk-phase-banner',
+  imports: [TitleCasePipe, GovUKTagComponent],
+  templateUrl: './phase-banner.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKPhaseBannerComponent {
-  phase = input<GovUKPhase>('beta');
+  /** The phase of the service. Can be 'alpha' or 'beta'. Defaults to 'beta'. */
+  readonly phase = input<GovUKPhase>('beta');
 }

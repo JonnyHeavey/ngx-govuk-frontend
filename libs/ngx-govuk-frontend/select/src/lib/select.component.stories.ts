@@ -27,7 +27,7 @@ const Template: StoryFn<GovUKSelectComponent> = (args) => ({
       <ngx-govuk-select
         formControlName="input"
          ${argsToTemplate(args)}
-      ></ngx-govuk-radio-group>
+      ></ngx-govuk-select>
     </form>`,
 });
 

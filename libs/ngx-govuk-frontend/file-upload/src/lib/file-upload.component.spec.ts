@@ -15,7 +15,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       />
     </form>
   `,
-  standalone: true,
   imports: [GovUKFileUploadComponent, ReactiveFormsModule],
 })
 class TestHostComponent {

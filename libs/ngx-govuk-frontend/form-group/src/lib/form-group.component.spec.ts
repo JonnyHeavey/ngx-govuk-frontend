@@ -14,7 +14,6 @@ import { Component } from '@angular/core';
       <input type="text" id="test-input">
     </ngx-govuk-form-group>
   `,
-  standalone: true,
   imports: [GovUKFormGroupComponent],
 })
 class TestHostComponent {

@@ -15,7 +15,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       ></ngx-govuk-checkbox>
     </form>
   `,
-  standalone: true,
   imports: [GovUKCheckboxComponent, ReactiveFormsModule],
 })
 class TestHostComponent {

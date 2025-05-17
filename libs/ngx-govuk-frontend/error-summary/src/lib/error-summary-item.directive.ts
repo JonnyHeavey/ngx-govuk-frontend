@@ -16,7 +16,6 @@ import { Directive, input } from '@angular/core';
  */
 @Directive({
   selector: 'ngx-govuk-error-summary-item',
-  standalone: true,
 })
 export class GovUKErrorSummaryItemDirective {
   /**

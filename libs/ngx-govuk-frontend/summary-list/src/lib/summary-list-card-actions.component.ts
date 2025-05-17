@@ -6,26 +6,10 @@ import {
 import { GovUKSummaryListActionComponent } from './summary-list-action.component';
 
 /**
- * Component for actions in a summary list card
+ * This component implements the actions container in a GOV.UK Design System summary list card.
+ * It provides a container for action links in a summary list card.
  *
- * This component is used as a container for action links in a summary list card header.
- * It projects the action components directly but also collects them using a signal-based
- * query to make them available to the parent card component for rendering in the card header.
- *
- * The signal-based query ensures that the parent component always has an up-to-date list
- * of actions without requiring manual subscription management.
- *
- * @example
- * ```html
- * <ngx-govuk-summary-list-card-actions>
- *   <ngx-govuk-summary-list-action href="#" visuallyHiddenText="of University of Gloucestershire">
- *     Delete choice
- *   </ngx-govuk-summary-list-action>
- *   <ngx-govuk-summary-list-action href="#" visuallyHiddenText="from University of Gloucestershire">
- *     Withdraw
- *   </ngx-govuk-summary-list-action>
- * </ngx-govuk-summary-list-card-actions>
- * ```
+ * @see https://design-system.service.gov.uk/components/summary-list/
  */
 @Component({
   selector: 'ngx-govuk-summary-list-card-actions',

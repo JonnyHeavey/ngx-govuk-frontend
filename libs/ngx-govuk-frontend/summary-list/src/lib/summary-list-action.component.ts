@@ -8,27 +8,10 @@ import {
 import { RouterLink } from '@angular/router';
 
 /**
- * Component for an action link in a summary list item
+ * This component implements an action link in a GOV.UK Design System summary list component.
+ * It provides a link for changing information in a summary list item.
  *
- * This component renders a link that can be used for actions like "Change" or "Remove"
- * in a summary list item. The text for the action is provided via content projection.
- *
- * The component uses a view child to expose its template for use by parent components,
- * allowing for flexible rendering in different contexts.
- *
- * @example
- * ```html
- * <ngx-govuk-summary-list-action href="#" visuallyHiddenText="name">
- *   Change
- * </ngx-govuk-summary-list-action>
- * ```
- *
- * With RouterLink:
- * ```html
- * <ngx-govuk-summary-list-action routerLink="/edit" visuallyHiddenText="name">
- *   Change
- * </ngx-govuk-summary-list-action>
- * ```
+ * @see https://design-system.service.gov.uk/components/summary-list/
  */
 @Component({
   selector: 'ngx-govuk-summary-list-action',

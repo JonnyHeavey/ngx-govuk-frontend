@@ -14,7 +14,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
       ></ngx-govuk-select>
     </form>
   `,
-  standalone: true,
   imports: [GovUKSelectComponent, ReactiveFormsModule],
 })
 class TestHostComponent {

@@ -8,16 +8,10 @@ import {
 } from '@angular/core';
 import { GovUKFooterNavigationItemComponent } from './footer-navigation-item.component';
 /**
- * Footer navigation section component for use within the GOV.UK footer navigation
- * Provides a section for navigation items with a title
+ * This component implements a navigation section in the GOV.UK Design System footer component.
+ * It provides a grouped set of links with a title.
  *
- * @example
- * ```html
- * <ngx-govuk-footer-navigation-section title="Services and information" columns="2" width="two-thirds">
- *   <ngx-govuk-footer-navigation-item routerLink="/benefits">Benefits</ngx-govuk-footer-navigation-item>
- *   <ngx-govuk-footer-navigation-item href="/business">Business and self-employed</ngx-govuk-footer-navigation-item>
- * </ngx-govuk-footer-navigation-section>
- * ```
+ * @see https://design-system.service.gov.uk/components/footer/
  */
 @Component({
   selector: 'ngx-govuk-footer-navigation-section',

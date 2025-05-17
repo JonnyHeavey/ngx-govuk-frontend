@@ -1,5 +1,10 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  input,
+} from '@angular/core';
 
 /**
  * The color type for GovUK buttons
@@ -16,28 +21,27 @@ export type GovUKButtonColorType =
   | 'inverse';
 
 /**
- * A button component following the GovUK Design System
- * @component
+ * This component implements the GOV.UK Design System button component.
+ * It allows users to take actions, submit forms, or navigate to a new page.
  *
- * @example
- * <ngx-govuk-button color="primary">Save and continue</ngx-govuk-button>
- *
- * @property {boolean} disabled - Whether the button is disabled
- * @property {boolean} start - Whether to show the start icon (forward arrow)
- * @property {GovUKButtonColorType} color - The color variant of the button
- *   - 'primary' (default) - Blue button for primary actions
- *   - 'secondary' - Grey button for secondary actions
- *   - 'warning' - Red button for destructive actions
- *   - 'inverse' - White button for use on dark backgrounds
+ * @see https://design-system.service.gov.uk/components/button/
  */
 @Component({
-    selector: 'ngx-govuk-button',
-    imports: [NgClass],
-    templateUrl: './button.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-govuk-button',
+  imports: [NgClass],
+  templateUrl: './button.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKButtonComponent {
-  disabled = input(false);
-  start = input(false);
-  color = input<GovUKButtonColorType>('primary');
+  /** Whether the button is disabled. Defaults to false. */
+  readonly disabled = input(false, { transform: booleanAttribute });
+
+  /** Whether to show the start icon (forward arrow). Defaults to false. */
+  readonly start = input(false, { transform: booleanAttribute });
+
+  /**
+   * The color variant of the button. Defaults to 'primary'.
+   * Can be 'primary', 'secondary', 'warning', or 'inverse'.
+   */
+  readonly color = input<GovUKButtonColorType>('primary');
 }

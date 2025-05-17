@@ -18,18 +18,28 @@ export type GovUKTagColor =
   | 'orange'
   | 'yellow';
 
+/**
+ * This component implements the GOV.UK Design System tag component.
+ * It provides a way to highlight the status of something, such as a project phase or content status.
+ *
+ * @see https://design-system.service.gov.uk/components/tag/
+ */
 @Component({
-    selector: 'ngx-govuk-tag',
-    imports: [NgClass],
-    templateUrl: './tag.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ngx-govuk-tag',
+  imports: [NgClass],
+  templateUrl: './tag.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GovUKTagComponent {
-  color = input<GovUKTagColor>('blue');
-  extraClasses = input<string>();
+  /** The color of the tag. Defaults to 'blue'. */
+  readonly color = input<GovUKTagColor>('blue');
 
+  /** Additional CSS classes to apply to the tag. */
+  readonly extraClasses = input<string>();
+
+  /** Computed CSS classes based on the color and any extra classes provided. */
   readonly classes = computed(
-    () => `${this.colorClasses[this.color()]} ${this.extraClasses()}`
+    () => `${this.colorClasses[this.color()]} ${this.extraClasses()}`,
   );
 
   private readonly colorClasses: Record<GovUKTagColor, string> = {

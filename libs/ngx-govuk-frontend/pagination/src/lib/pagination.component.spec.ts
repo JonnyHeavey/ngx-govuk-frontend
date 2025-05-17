@@ -18,7 +18,6 @@ import { GovUKPaginationComponent } from './pagination.component';
       (nextClick)="onNextClick()"
     ></ngx-govuk-pagination>
   `,
-  standalone: true,
   imports: [GovUKPaginationComponent],
 })
 class TestHostComponent {

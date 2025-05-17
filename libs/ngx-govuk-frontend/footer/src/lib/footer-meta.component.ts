@@ -1,13 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 /**
- * Footer meta component for use within the GOV.UK footer
- * Provides a way to add custom content to the meta section
+ * This component implements the meta section of the GOV.UK Design System footer component.
+ * It provides a container for additional information in the footer.
  *
- * @example
- * ```html
- * <ngx-govuk-footer-meta>Built by the Government Digital Service</ngx-govuk-footer-meta>
- * ```
+ * @see https://design-system.service.gov.uk/components/footer/
  */
 @Component({
   selector: 'ngx-govuk-footer-meta',

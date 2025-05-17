@@ -7,17 +7,13 @@ import {
 } from '@angular/core';
 
 /**
- * Footer navigation item component for use within the GOV.UK footer navigation section
- * Provides a navigation link within a section
+ * This component implements a navigation item in the GOV.UK Design System footer component.
+ * It provides a link within a footer navigation section.
  *
- * @example
- * ```html
- * <ngx-govuk-footer-navigation-item href="/benefits">Benefits</ngx-govuk-footer-navigation-item>
- * ```
+ * @see https://design-system.service.gov.uk/components/footer/
  */
 @Component({
   selector: 'ngx-govuk-footer-navigation-item',
-  standalone: true,
   template: `<ng-template #content><ng-content /></ng-template>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

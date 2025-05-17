@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -20,44 +21,20 @@ import {
 } from 'ngx-govuk-frontend/form-utils';
 
 /**
- * A textarea component that follows the GOV.UK Design System guidelines.
+ * This component implements the GOV.UK Design System textarea component.
+ * It allows users to enter multiple lines of text.
  *
- * @example
- * ```html
- * <ngx-govuk-textarea
- *   formControlName="detail"
- *   inputId="detail"
- *   [rows]="5"
- * ></ngx-govuk-textarea>
- * ```
- *
- * @example
- * ```html
- * <ngx-govuk-textarea
- *   formControlName="detail"
- *   inputId="detail"
- *   [rows]="5"
- *   [maxLength]="200"
- *   [showCharacterCount]="true"
- * ></ngx-govuk-textarea>
- * ```
- *
- * @property {string} autocomplete - HTML autocomplete attribute value
- * @property {string} extraClasses - Additional CSS classes to apply to the textarea
- * @property {string} inputId - Required. The ID attribute for the input element.
- * @property {number} rows - Number of visible text rows for the textarea. Defaults to 2.
- * @property {number} maxLength - Optional. Maximum number of characters allowed in the textarea.
- * @property {boolean} showCharacterCount - Optional. Whether to show the character count. Defaults to false.
+ * @see https://design-system.service.gov.uk/components/textarea/
  */
 @Component({
-    selector: 'ngx-govuk-textarea',
-    imports: [NgClass, ReactiveFormsModule],
-    templateUrl: './textarea.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [
-        ValueAccessorDirective,
-        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-    ]
+  selector: 'ngx-govuk-textarea',
+  imports: [NgClass, ReactiveFormsModule],
+  templateUrl: './textarea.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  hostDirectives: [
+    ValueAccessorDirective,
+    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+  ],
 })
 export class GovUKTextareaComponent implements OnInit {
   readonly ngControl = injectNgControl();
@@ -67,7 +44,7 @@ export class GovUKTextareaComponent implements OnInit {
 
   readonly rows = input(2);
   readonly maxLength = input<number | null>(null);
-  readonly showCharacterCount = input(false);
+  readonly showCharacterCount = input(false, { transform: booleanAttribute });
 
   private readonly currentLength: WritableSignal<number> = signal(0);
   private readonly remainingCharacters = computed(() => {

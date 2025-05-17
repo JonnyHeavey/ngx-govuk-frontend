@@ -9,31 +9,25 @@ import {
 } from 'ngx-govuk-frontend/form-utils';
 
 /**
- * A form file upload input component that follows the GOV.UK Design System styling and behavior.
+ * This component implements the GOV.UK Design System file upload component.
+ * It allows users to select and upload files.
  *
- * This component provides a file upload input field.
- * It integrates with Angular's form controls.
- *
- * @example
- * ```html
- * <ngx-govuk-file-upload formControlName="photo" inputId="photo-upload" />
- * ```
- *
- * @property {string} autocomplete - Optional. The HTML autocomplete attribute value. Defaults to 'off'.
- * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input element.
- * @property {string} inputId - Optional. The ID attribute for the input element.
+ * @see https://design-system.service.gov.uk/components/file-upload/
  */
 @Component({
-    selector: 'ngx-govuk-file-upload',
-    imports: [NgClass, ReactiveFormsModule],
-    templateUrl: './file-upload.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [
-        ValueAccessorDirective,
-        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-    ]
+  selector: 'ngx-govuk-file-upload',
+  imports: [NgClass, ReactiveFormsModule],
+  templateUrl: './file-upload.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  hostDirectives: [
+    ValueAccessorDirective,
+    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+  ],
 })
 export class GovUKFileUploadComponent {
+  /** The Angular form control associated with this file upload input. */
   readonly ngControl = injectNgControl();
+
+  /** Reference to the common form input directive that provides shared functionality. */
   readonly commonFormInput = inject(GovUKCommonFormInputDirective);
 }

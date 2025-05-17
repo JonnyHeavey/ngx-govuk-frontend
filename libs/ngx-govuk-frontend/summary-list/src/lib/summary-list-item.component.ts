@@ -11,26 +11,13 @@ import { GovUKSummaryListActionsComponent } from './summary-list-actions.compone
 import { GovUKSummaryListValueDirective } from './summary-list-value.directive';
 
 /**
- * Component for an individual item in a summary list
+ * This component implements an item in the GOV.UK Design System summary list component.
+ * It represents a key/value pair with optional actions in a summary list.
  *
- * This component represents a single row in a summary list with a key, value, and optional actions.
- * The value and actions can be either provided as inputs or as content via directives.
- *
- * @example
- * ```html
- * <ngx-govuk-summary-list-item key="Name">
- *   <ng-template ngxGovUkSummaryListValue>
- *     Sarah Philips
- *   </ng-template>
- *   <ngx-govuk-summary-list-actions>
- *     <ngx-govuk-summary-list-action href="#" text="Change" visuallyHiddenText="name"></ngx-govuk-summary-list-action>
- *   </ngx-govuk-summary-list-actions>
- * </ngx-govuk-summary-list-item>
- * ```
+ * @see https://design-system.service.gov.uk/components/summary-list/
  */
 @Component({
   selector: 'ngx-govuk-summary-list-item',
-  standalone: true,
   imports: [NgTemplateOutlet],
   templateUrl: './summary-list-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

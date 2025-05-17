@@ -28,35 +28,20 @@ interface DateInputParts {
 }
 
 /**
- * A form component for date input that follows the GOV.UK Design System styling and behavior.
+ * This component implements the GOV.UK Design System date input component.
+ * It helps users enter a date by splitting it into day, month and year fields.
  *
- * This component provides a set of input fields for day, month, and year with proper validation and styling.
- * It integrates with Angular's form controls and supports accessibility features.
- *
- * @example
- * ```html
- * <ngx-govuk-date-input
- *   formControlName="dateOfBirth"
- *   inputId="date-of-birth"
- *   min="1900-01-01"
- *   max="2050-12-31"
- * ></ngx-govuk-date-input>
- * ```
- *
- * @property {string} inputId - Optional. The ID prefix for the input elements.
- * @property {string} extraClasses - Optional. Additional CSS classes to apply to the input elements.
- * @property {string} min - Optional. The minimum valid date in ISO format (YYYY-MM-DD).
- * @property {string} max - Optional. The maximum valid date in ISO format (YYYY-MM-DD).
+ * @see https://design-system.service.gov.uk/components/date-input/
  */
 @Component({
-    selector: 'ngx-govuk-date-input',
-    imports: [NgClass, ReactiveFormsModule],
-    templateUrl: './date-input.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [
-        ValueAccessorDirective,
-        { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
-    ]
+  selector: 'ngx-govuk-date-input',
+  imports: [NgClass, ReactiveFormsModule],
+  templateUrl: './date-input.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  hostDirectives: [
+    ValueAccessorDirective,
+    { directive: GovUKCommonFormInputDirective, inputs: inputCommonInputs },
+  ],
 })
 export class GovUKDateInputComponent {
   readonly ngControl = injectNgControl();

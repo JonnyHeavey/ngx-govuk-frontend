@@ -4,7 +4,7 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
 import { GovUKErrorSummaryComponent } from './error-summary.component';
 
 const meta: Meta<GovUKErrorSummaryComponent> = {
-  title: 'Components/Error Summary',
+  title: 'Error Summary/GovUKErrorSummaryComponent',
   component: GovUKErrorSummaryComponent,
   tags: ['autodocs'],
   decorators: [
@@ -34,7 +34,7 @@ const meta: Meta<GovUKErrorSummaryComponent> = {
 export default meta;
 type Story = StoryObj<GovUKErrorSummaryComponent>;
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {
     title: 'There is a problem',
   },

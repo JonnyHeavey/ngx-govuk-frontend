@@ -4,7 +4,6 @@ import { RouterLink } from '@angular/router';
 
 @Directive({
   selector: 'ngx-govuk-breadcrumb',
-  standalone: true,
 })
 export class GovUKBreadcrumbDirective {
   readonly label = input.required<string>();

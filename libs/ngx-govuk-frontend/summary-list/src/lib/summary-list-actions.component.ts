@@ -7,40 +7,13 @@ import {
 import { GovUKSummaryListActionComponent } from './summary-list-action.component';
 
 /**
- * Component for the actions container of a summary list item
+ * This component implements the actions container in a GOV.UK Design System summary list item.
+ * It provides a container for action links in a summary list item.
  *
- * This component is used as a container for action links in a summary list item.
- * It will collect all the action components and render them appropriately using
- * their templates. If there is more than one action, they will be rendered as a list
- * according to the GOV.UK Design System specifications.
- *
- * The component uses a signal-based query to efficiently track and render child
- * action components without manual subscription management.
- *
- * @example
- * ```html
- * <ngx-govuk-summary-list-actions>
- *   <ngx-govuk-summary-list-action href="#" visuallyHiddenText="name">
- *     Change
- *   </ngx-govuk-summary-list-action>
- * </ngx-govuk-summary-list-actions>
- * ```
- *
- * With multiple actions:
- * ```html
- * <ngx-govuk-summary-list-actions>
- *   <ngx-govuk-summary-list-action href="#" visuallyHiddenText="contact details">
- *     Change
- *   </ngx-govuk-summary-list-action>
- *   <ngx-govuk-summary-list-action href="#" visuallyHiddenText="contact details">
- *     Remove
- *   </ngx-govuk-summary-list-action>
- * </ngx-govuk-summary-list-actions>
- * ```
+ * @see https://design-system.service.gov.uk/components/summary-list/
  */
 @Component({
   selector: 'ngx-govuk-summary-list-actions',
-  standalone: true,
   imports: [NgTemplateOutlet],
   templateUrl: './summary-list-actions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

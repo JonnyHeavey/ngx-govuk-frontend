@@ -11,7 +11,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
  * The multi: true option allows multiple value accessors to be registered for a single form control.
  */
 @Directive({
-  standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

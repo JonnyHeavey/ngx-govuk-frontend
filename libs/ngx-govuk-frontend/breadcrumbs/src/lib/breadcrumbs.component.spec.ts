@@ -12,7 +12,6 @@ import { GovUKBreadcrumbsComponent } from './breadcrumbs.component';
       }
     </ngx-govuk-breadcrumbs>
   `,
-  standalone: true,
   imports: [
     GovUKBreadcrumbsComponent,
     GovUKBreadcrumbDirective,
