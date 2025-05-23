@@ -154,6 +154,73 @@ After installation, you can use the components in your templates:
 </govuk-error-summary>
 ```
 
+## Components
+
+NgxGovUKFrontend provides a comprehensive set of components implementing the GOV.UK Design System. Each component is standalone and can be imported individually.
+
+### Navigation & Layout
+
+| Component              | Description                                    | Documentation                            |
+| ---------------------- | ---------------------------------------------- | ---------------------------------------- |
+| **Header**             | Service header with logo and navigation        | [README](./header/README.md)             |
+| **Footer**             | Service footer with links and meta information | [README](./footer/README.md)             |
+| **Breadcrumbs**        | Breadcrumb navigation trail                    | [README](./breadcrumbs/README.md)        |
+| **Service Navigation** | Service-level navigation menu                  | [README](./service-navigation/README.md) |
+| **Skip Link**          | Skip to main content accessibility link        | [README](./skip-link/README.md)          |
+| **Phase Banner**       | Alpha/Beta phase indicator banner              | [README](./phase-banner/README.md)       |
+
+### Content & Information
+
+| Component               | Description                                 | Documentation                             |
+| ----------------------- | ------------------------------------------- | ----------------------------------------- |
+| **Panel**               | Highlighted content panel for confirmations | [README](./panel/README.md)               |
+| **Details**             | Collapsible content disclosure widget       | [README](./details/README.md)             |
+| **Inset Text**          | Highlighted text content                    | [README](./inset-text/README.md)          |
+| **Warning Text**        | Important warning messages                  | [README](./warning-text/README.md)        |
+| **Notification Banner** | Important notifications and alerts          | [README](./notification-banner/README.md) |
+| **Tag**                 | Status and category tags                    | [README](./tag/README.md)                 |
+| **Accordion**           | Collapsible content sections                | [README](./accordion/README.md)           |
+| **Tabs**                | Tabbed content navigation                   | [README](./tabs/README.md)                |
+
+### Forms & Input
+
+| Component          | Description                                       | Documentation                        |
+| ------------------ | ------------------------------------------------- | ------------------------------------ |
+| **Button**         | Primary, secondary, and warning buttons           | [README](./button/README.md)         |
+| **Text Input**     | Single-line text input with prefix/suffix support | [README](./text-input/README.md)     |
+| **Textarea**       | Multi-line text input                             | [README](./textarea/README.md)       |
+| **Password Input** | Password input with show/hide toggle              | [README](./password-input/README.md) |
+| **Select**         | Dropdown selection input                          | [README](./select/README.md)         |
+| **Radio**          | Radio button selection                            | [README](./radio/README.md)          |
+| **Checkbox**       | Checkbox selection                                | [README](./checkbox/README.md)       |
+| **File Upload**    | File upload input                                 | [README](./file-upload/README.md)    |
+| **Date Input**     | Date input with day/month/year fields             | [README](./date-input/README.md)     |
+| **Fieldset**       | Form field grouping                               | [README](./fieldset/README.md)       |
+| **Form Group**     | Form control wrapper with labels and hints        | [README](./form-group/README.md)     |
+
+### Data Display
+
+| Component        | Description                             | Documentation                      |
+| ---------------- | --------------------------------------- | ---------------------------------- |
+| **Table**        | Data tables with sorting and formatting | [README](./table/README.md)        |
+| **Summary List** | Key-value pair summaries                | [README](./summary-list/README.md) |
+| **Task List**    | Task progress tracking lists            | [README](./task-list/README.md)    |
+| **Pagination**   | Page navigation controls                | [README](./pagination/README.md)   |
+
+### Error Handling
+
+| Component         | Description                    | Documentation                       |
+| ----------------- | ------------------------------ | ----------------------------------- |
+| **Error Summary** | Form error summary at page top | [README](./error-summary/README.md) |
+
+### Utilities
+
+| Component         | Description                           | Documentation                       |
+| ----------------- | ------------------------------------- | ----------------------------------- |
+| **Cookie Banner** | Cookie consent management             | [README](./cookie-banner/README.md) |
+| **Back Link**     | Navigation back to previous page      | [README](./back-link/README.md)     |
+| **Form Utils**    | Form utilities and validation helpers | [README](./form-utils/README.md)    |
+
 ## Contributing
 
 We welcome contributions to NgxGovUKFrontend! Please follow these steps to contribute:
