@@ -73,5 +73,14 @@
     }
   ],
   "nxCloudId": "677ecd1b56a1a452bf34e66d",
-  "useLegacyCache": true
+  "useLegacyCache": true,
+  "release": {
+    "projectsRelationship": "independent",
+    "changelog": {
+      "projectChangelogs": {
+        "file": false,
+        "createRelease": "github"
+      }
+    }
+  }
 }
