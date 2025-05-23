@@ -1,6 +1,14 @@
 {
   "name": "ngx-govuk-frontend",
-  "version": "0.0.1",
+  "version": "0.0.0",
+  "description": "Angular components for the GOV.UK Design System",
+  "keywords": ["angular", "govuk", "design-system", "components"],
+  "author": "Jonny Heavey <@jonnyheavey>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonnyHeavey/ngx-govuk-frontend.git"
+  },
   "peerDependencies": {
     "@angular/common": "^19.0.0 || ^20.0.0",
     "@angular/core": "^19.0.0 || ^20.0.0",
