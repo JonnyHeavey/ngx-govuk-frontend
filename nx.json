@@ -29,9 +29,7 @@
       "cache": true
     },
     "nx-release-publish": {
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "options": {
         "packageRoot": "dist/{projectRoot}"
       }
@@ -81,7 +79,6 @@
     }
   ],
   "nxCloudId": "677ecd1b56a1a452bf34e66d",
-  "useLegacyCache": true,
   "release": {
     "projectsRelationship": "independent",
     "changelog": {
