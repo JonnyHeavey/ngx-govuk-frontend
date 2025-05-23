@@ -19,7 +19,8 @@
     "@angular/core": "^19.0.0 || ^20.0.0",
     "@angular/forms": "^19.0.0 || ^20.0.0",
     "@angular/router": "^19.0.0 || ^20.0.0",
-    "@angular/cdk": "^19.0.0 || ^20.0.0"
+    "@angular/cdk": "^19.0.0 || ^20.0.0",
+    "govuk-frontend": "^5.8.0"
   },
   "sideEffects": false
 }
