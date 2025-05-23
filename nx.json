@@ -27,6 +27,14 @@
         "{workspaceRoot}/eslint.config.js"
       ],
       "cache": true
+    },
+    "nx-release-publish": {
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "packageRoot": "dist/libs/{projectRoot}"
+      }
     }
   },
   "namedInputs": {
