@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'test-app',
+  displayName: 'govuk-service',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/test-app',
+  coverageDirectory: '../../coverage/apps/govuk-service',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

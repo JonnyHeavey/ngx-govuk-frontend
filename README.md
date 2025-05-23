@@ -32,7 +32,7 @@ A comprehensive implementation of the [GOV.UK Design System](https://design-syst
    ```
 3. Run the development server:
    ```bash
-   nx serve test-app
+   nx serve govuk-service
    ```
 
 ### Running Tests
