@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JonnyHeavey/ngx-govuk-frontend.git"
+    "url": "https://github.com/JonnyHeavey/ngx-uk-frontend.git"
   },
   "peerDependencies": {
     "@angular/common": "^19.0.0 || ^20.0.0",
