@@ -64,7 +64,35 @@ Alternatively, you can add the styles directly in your project's configuration f
 ],
 ```
 
-#### Importing Components
+#### Assets Configuration
+
+You'll also need to include the GOV.UK assets in your project configuration:
+
+```json
+"assets": [
+  "src/favicon.ico",
+  "src/assets",
+  {
+    "glob": "**/*",
+    "input": "node_modules/govuk-frontend/dist/govuk/assets/images",
+    "output": "/assets/images"
+  },
+  {
+    "glob": "**/*",
+    "input": "node_modules/govuk-frontend/dist/govuk/assets/fonts",
+    "output": "/assets/fonts"
+  },
+  {
+    "glob": "**/*",
+    "input": "node_modules/govuk-frontend/dist/govuk/assets",
+    "output": "/assets"
+  }
+]
+```
+
+## Usage
+
+### Components Imports
 
 All components in NgxGovUKFrontend are standalone, allowing you to import only what you need:
 
@@ -105,35 +133,9 @@ import { GovukPanelComponent } from 'ngx-govuk-frontend/panel';
 export class MyModule {}
 ```
 
-#### Assets Configuration
+### Templates
 
-You'll also need to include the GOV.UK assets in your project configuration:
-
-```json
-"assets": [
-  "src/favicon.ico",
-  "src/assets",
-  {
-    "glob": "**/*",
-    "input": "node_modules/govuk-frontend/dist/govuk/assets/images",
-    "output": "/assets/images"
-  },
-  {
-    "glob": "**/*",
-    "input": "node_modules/govuk-frontend/dist/govuk/assets/fonts",
-    "output": "/assets/fonts"
-  },
-  {
-    "glob": "**/*",
-    "input": "node_modules/govuk-frontend/dist/govuk/assets",
-    "output": "/assets"
-  }
-]
-```
-
-## Usage
-
-After installation, you can use the components in your templates:
+After import, you can reference the component selectors in your templates:
 
 ```html
 <govuk-button>Save and continue</govuk-button>
@@ -155,8 +157,6 @@ After installation, you can use the components in your templates:
 ```
 
 ## Components
-
-NgxGovUKFrontend provides a comprehensive set of components implementing the GOV.UK Design System. Each component is standalone and can be imported individually.
 
 ### Navigation & Layout
 
@@ -225,7 +225,7 @@ NgxGovUKFrontend provides a comprehensive set of components implementing the GOV
 
 We welcome contributions to NgxGovUKFrontend! Please follow these steps to contribute:
 
-1. Check the [issues page](https://github.com/JonnyHeavey/ngx-govuk-frontend/issues) for open issues or create a new one to discuss your proposed changes
+1. Check the [issues page](https://github.com/JonnyHeavey/ngx-uk-frontend/issues) for open issues or create a new one to discuss your proposed changes
 2. Fork the repository
 3. Create a new branch for your feature or bugfix
 4. Make your changes
