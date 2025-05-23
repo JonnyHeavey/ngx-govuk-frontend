@@ -1,7 +1,7 @@
 # NgxGovUKFrontend
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Documentation](https://img.shields.io/badge/docs-website-blue)](https://jonnyheavey.github.io/ngx-govuk-frontend)
+[![Documentation](https://img.shields.io/badge/docs-website-blue)](https://jonnyheavey.github.io/ngx-uk-frontend)
 
 ## Introduction
 
