@@ -15,7 +15,7 @@ The library is designed to:
 
 ## Documentation
 
-**[View the full NgxGovUKFrontend documentation](https://jonnyheavey.github.io/ngx-govuk-frontend)**
+**[View the full NgxGovUKFrontend documentation](https://jonnyheavey.github.io/ngx-uk-frontend)**
 
 For documentation on the GOV.UK Design System that this library implements, please visit:
 
@@ -25,11 +25,6 @@ For documentation on the GOV.UK Design System that this library implements, plea
 - [GOV.UK Styles](https://design-system.service.gov.uk/styles/)
 
 ## Installation
-
-### Prerequisites
-
-- Node.js (LTS version recommended)
-- Angular 19+ project
 
 ### Install the package
 

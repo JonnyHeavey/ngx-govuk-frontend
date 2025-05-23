@@ -1,24 +1,19 @@
-# UK Government Angular Libraries
+# UK Public Service Angular Libraries
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Introduction
 
-This monorepo contains a collection of Angular libraries designed to help developers build applications for UK government services. Each library is focused on a specific design system or set of requirements, making it easier to create accessible, compliant, and user-friendly government applications.
+This monorepo contains a collection of libraries which implement/wrap existing UK public service design systems, making it easier to create compliant public service applications with Angular.
 
 ## Available Libraries
 
-### [NgxGovUKFrontend](libs/ngx-govuk-frontend/README.md)
+### NgxGovUKFrontend
 
-A comprehensive implementation of the [GOV.UK Design System](https://design-system.service.gov.uk/) for Angular applications. This library provides:
+A comprehensive implementation of the [GOV.UK Design System](https://design-system.service.gov.uk/) for Angular applications.
 
-- Complete set of GOV.UK Design System components
-- Form controls and validation
-- Accessible components following WCAG guidelines
-- Responsive layouts and patterns
-- Integration with Angular's form system
-
-[View NgxGovUKFrontend Documentation](https://jonnyheavey.github.io/ngx-govuk-frontend)
+- [Documentation](https://jonnyheavey.github.io/ngx-uk-frontend)
+- [README](libs/ngx-govuk-frontend/README.md)
 
 ## Development
 
