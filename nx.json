@@ -33,7 +33,7 @@
         "build"
       ],
       "options": {
-        "packageRoot": "dist/libs/{projectRoot}"
+        "packageRoot": "dist/{projectRoot}"
       }
     }
   },
