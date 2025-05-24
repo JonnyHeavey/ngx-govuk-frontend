@@ -110,7 +110,8 @@
       ],
       "ngx-govuk-frontend/warning-text": [
         "libs/ngx-govuk-frontend/warning-text/src/index.ts"
-      ]
+      ],
+      "ngx-nhsuk-frontend": ["libs/ngx-nhsuk-frontend/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
