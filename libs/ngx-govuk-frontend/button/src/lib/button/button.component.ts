@@ -5,6 +5,7 @@ import {
   Component,
   input,
 } from '@angular/core';
+import { ButtonDirective } from '@ngx-uk-frontend/core/button';
 
 /**
  * The color type for GovUK buttons
@@ -32,10 +33,7 @@ export type GovUKButtonColorType =
   templateUrl: './button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GovUKButtonComponent {
-  /** Whether the button is disabled. Defaults to false. */
-  readonly disabled = input(false, { transform: booleanAttribute });
-
+export class GovUKButtonComponent extends ButtonDirective {
   /** Whether to show the start icon (forward arrow). Defaults to false. */
   readonly start = input(false, { transform: booleanAttribute });
 

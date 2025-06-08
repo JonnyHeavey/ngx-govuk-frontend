@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@ngx-uk-frontend/core": ["libs/core/src/index.ts"],
+      "@ngx-uk-frontend/core/button": ["libs/core/button/src/index.ts"],
       "ngx-govuk-frontend": ["libs/ngx-govuk-frontend/src/index.ts"],
       "ngx-govuk-frontend/accordion": [
         "libs/ngx-govuk-frontend/accordion/src/index.ts"
