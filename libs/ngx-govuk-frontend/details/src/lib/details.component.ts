@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DetailsDirective } from '@ngx-uk-frontend/core/details';
 
 /**
  * This component implements the GOV.UK Design System details component.
@@ -11,7 +12,4 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   templateUrl: './details.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GovUKDetailsComponent {
-  /** The text shown in the details summary element. This input is required. */
-  readonly summary = input.required<string>();
-}
+export class GovUKDetailsComponent extends DetailsDirective {}
