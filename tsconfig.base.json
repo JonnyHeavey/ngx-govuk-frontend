@@ -22,6 +22,9 @@
       "ngx-govscot-frontend/button": [
         "libs/ngx-govscot-frontend/button/src/index.ts"
       ],
+      "ngx-govscot-frontend/details": [
+        "libs/ngx-govscot-frontend/details/src/index.ts"
+      ],
       "ngx-govuk-frontend": ["libs/ngx-govuk-frontend/src/index.ts"],
       "ngx-govuk-frontend/accordion": [
         "libs/ngx-govuk-frontend/accordion/src/index.ts"
