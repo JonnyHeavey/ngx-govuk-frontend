@@ -15,6 +15,7 @@
     "url": "https://github.com/JonnyHeavey/ngx-uk-frontend.git"
   },
   "peerDependencies": {
+    "@ngx-uk-frontend/core": "^0.0.1",
     "@angular/common": "^19.0.0 || ^20.0.0",
     "@angular/core": "^19.0.0 || ^20.0.0",
     "@angular/forms": "^19.0.0 || ^20.0.0",
