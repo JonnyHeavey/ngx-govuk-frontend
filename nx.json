@@ -38,6 +38,11 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "@nx/angular:package": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -93,6 +98,7 @@
       }
     },
     "version": {
+      "preVersionCommand": "npx nx run-many -t build",
       "manifestRootsToUpdate": [
         "{projectRoot}",
         {

@@ -1,0 +1,26 @@
+{
+  "name": "ngx-govscot-frontend",
+  "version": "0.0.1",
+  "description": "Angular components for the Scottish Government Design System",
+  "keywords": [
+    "angular",
+    "govscot",
+    "scotland",
+    "design-system",
+    "components"
+  ],
+  "author": "Jonny Heavey <@jonnyheavey>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonnyHeavey/ngx-uk-frontend.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.0.0 || ^20.0.0",
+    "@angular/core": "^19.0.0 || ^20.0.0",
+    "@angular/forms": "^19.0.0 || ^20.0.0",
+    "@angular/router": "^19.0.0 || ^20.0.0",
+    "@angular/cdk": "^19.0.0 || ^20.0.0"
+  },
+  "sideEffects": false
+}
