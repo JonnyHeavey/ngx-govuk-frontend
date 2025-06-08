@@ -1,1 +1,4 @@
-export const greeting = 'Hello World!';
+export {
+  GovScotButtonColorType,
+  GovScotButtonComponent,
+} from './lib/button/button.component';

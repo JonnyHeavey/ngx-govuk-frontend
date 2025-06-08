@@ -1,1 +1,1 @@
-export const greeting = 'Hello World!';
+export { GovScotDetailsComponent } from './lib/details.component';
