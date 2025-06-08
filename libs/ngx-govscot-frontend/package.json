@@ -1,10 +1,11 @@
 {
-  "name": "ngx-govuk-frontend",
-  "version": "1.0.0",
-  "description": "Angular components for the GOV.UK Design System",
+  "name": "ngx-govscot-frontend",
+  "version": "0.0.0",
+  "description": "Angular components for the Scottish Government Design System",
   "keywords": [
     "angular",
-    "govuk",
+    "govscot",
+    "scotland",
     "design-system",
     "components"
   ],
@@ -21,7 +22,7 @@
     "@angular/forms": "^19.0.0 || ^20.0.0",
     "@angular/router": "^19.0.0 || ^20.0.0",
     "@angular/cdk": "^19.0.0 || ^20.0.0",
-    "govuk-frontend": "^5.8.0"
+    "@scottish-government/design-system": "^3.0.1"
   },
   "sideEffects": false
 }
