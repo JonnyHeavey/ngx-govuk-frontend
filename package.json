@@ -43,6 +43,7 @@
     "@nx/web": "21.1.1",
     "@nx/workspace": "21.1.1",
     "@schematics/angular": "19.2.9",
+    "@scottish-government/design-system": "^3.0.1",
     "@storybook/addon-essentials": "8.6.12",
     "@storybook/angular": "8.6.12",
     "@storybook/core-server": "8.6.12",

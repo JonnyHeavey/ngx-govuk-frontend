@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { GovScotDetailsComponent } from 'ngx-govscot-frontend/details';
 
 @Component({
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [RouterModule, GovScotDetailsComponent],
   selector: 'ngx-govscot-frontend-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

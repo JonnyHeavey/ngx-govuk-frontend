@@ -22,7 +22,10 @@
             "input": "apps/govscot-service/public"
           }
         ],
-        "styles": ["apps/govscot-service/src/styles.scss"],
+        "styles": [
+          "apps/govscot-service/src/styles.scss",
+          "node_modules/@scottish-government/design-system/dist/css/design-system.css"
+        ],
         "scripts": []
       },
       "configurations": {
