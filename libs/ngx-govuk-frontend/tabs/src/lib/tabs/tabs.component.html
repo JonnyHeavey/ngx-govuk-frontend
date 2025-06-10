@@ -1,7 +1,7 @@
 <div class="govuk-tabs">
   <h2 class="govuk-tabs__title">Contents</h2>
   <ul class="govuk-tabs__list" role="tablist">
-    @for (tab of tabs(); track tab.id) {
+    @for (tab of tabs(); track tab.id()) {
       <li
         class="govuk-tabs__list-item"
         [class.govuk-tabs__list-item--selected]="$index === activeTab()"
@@ -19,7 +19,7 @@
     }
   </ul>
 
-  @for (tab of tabs(); track tab.id) {
+  @for (tab of tabs(); track tab.id()) {
     <div
       class="govuk-tabs__panel"
       [class.govuk-tabs__panel--hidden]="$index !== activeTab()"
