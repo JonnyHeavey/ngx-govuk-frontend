@@ -16,14 +16,52 @@
     "baseUrl": ".",
     "paths": {
       "@ngx-uk-frontend/core": ["libs/core/src/index.ts"],
+      "@ngx-uk-frontend/core/accordion": ["libs/core/accordion/src/index.ts"],
+      "@ngx-uk-frontend/core/breadcrumbs": [
+        "libs/core/breadcrumbs/src/index.ts"
+      ],
       "@ngx-uk-frontend/core/button": ["libs/core/button/src/index.ts"],
       "@ngx-uk-frontend/core/details": ["libs/core/details/src/index.ts"],
+      "@ngx-uk-frontend/core/notification-panel": [
+        "libs/core/notification-panel/src/index.ts"
+      ],
+      "@ngx-uk-frontend/core/phase-banner": [
+        "libs/core/phase-banner/src/index.ts"
+      ],
+      "@ngx-uk-frontend/core/tabs": ["libs/core/tabs/src/index.ts"],
       "ngx-govscot-frontend": ["libs/ngx-govscot-frontend/src/index.ts"],
+      "ngx-govscot-frontend/accordion": [
+        "libs/ngx-govscot-frontend/accordion/src/index.ts"
+      ],
+      "ngx-govscot-frontend/breadcrumbs": [
+        "libs/ngx-govscot-frontend/breadcrumbs/src/index.ts"
+      ],
       "ngx-govscot-frontend/button": [
         "libs/ngx-govscot-frontend/button/src/index.ts"
       ],
       "ngx-govscot-frontend/details": [
         "libs/ngx-govscot-frontend/details/src/index.ts"
+      ],
+      "ngx-govscot-frontend/inset-text": [
+        "libs/ngx-govscot-frontend/inset-text/src/index.ts"
+      ],
+      "ngx-govscot-frontend/notification-panel": [
+        "libs/ngx-govscot-frontend/notification-panel/src/index.ts"
+      ],
+      "ngx-govscot-frontend/phase-banner": [
+        "libs/ngx-govscot-frontend/phase-banner/src/index.ts"
+      ],
+      "ngx-govscot-frontend/skip-link": [
+        "libs/ngx-govscot-frontend/skip-link/src/index.ts"
+      ],
+      "ngx-govscot-frontend/status-tag": [
+        "libs/ngx-govscot-frontend/status-tag/src/index.ts"
+      ],
+      "ngx-govscot-frontend/tabs": [
+        "libs/ngx-govscot-frontend/tabs/src/index.ts"
+      ],
+      "ngx-govscot-frontend/warning-text": [
+        "libs/ngx-govscot-frontend/warning-text/src/index.ts"
       ],
       "ngx-govuk-frontend": ["libs/ngx-govuk-frontend/src/index.ts"],
       "ngx-govuk-frontend/accordion": [
