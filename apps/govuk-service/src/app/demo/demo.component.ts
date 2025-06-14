@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
@@ -38,7 +38,6 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
 
 @Component({
   imports: [
-    CommonModule,
     RouterModule,
     GovUKButtonGroupComponent,
     GovUKButtonComponent,
@@ -63,8 +62,8 @@ import { GovUKWarningTextComponent } from 'ngx-govuk-frontend/warning-text';
     GovUKSummaryListActionsComponent,
     GovUKSummaryListCardComponent,
     GovUKSummaryListCardActionsComponent,
-    GovUKSummaryListValueDirective,
-  ],
+    GovUKSummaryListValueDirective
+],
   selector: 'ngx-govuk-frontend-demo',
   templateUrl: './demo.component.html',
 })

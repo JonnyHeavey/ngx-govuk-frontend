@@ -13,290 +13,291 @@
 
 <ngx-govuk-notification-banner title="Notification title"
   >Notification content</ngx-govuk-notification-banner
->
+  >
 
-<ngx-govuk-panel title="Panel title">Panel content</ngx-govuk-panel>
+  <ngx-govuk-panel title="Panel title">Panel content</ngx-govuk-panel>
 
-<ngx-govuk-tag color="green">Completed</ngx-govuk-tag>
+  <ngx-govuk-tag color="green">Completed</ngx-govuk-tag>
 
-<ngx-govuk-warning-text>This is a warning</ngx-govuk-warning-text>
+  <ngx-govuk-warning-text>This is a warning</ngx-govuk-warning-text>
 
-<ngx-govuk-tabs title="Contents">
-  <ngx-govuk-tab id="tab-one" title="Tab One"> Tab One Content </ngx-govuk-tab>
-  <ngx-govuk-tab id="tab-two" title="Tab Two"> Tab Two Content </ngx-govuk-tab>
-  <ngx-govuk-tab id="tab-three" title="Tab Three">
-    Tab Three Content
-  </ngx-govuk-tab>
-</ngx-govuk-tabs>
+  <ngx-govuk-tabs title="Contents">
+    <ngx-govuk-tab id="tab-one" title="Tab One"> Tab One Content </ngx-govuk-tab>
+    <ngx-govuk-tab id="tab-two" title="Tab Two"> Tab Two Content </ngx-govuk-tab>
+    <ngx-govuk-tab id="tab-three" title="Tab Three">
+      Tab Three Content
+    </ngx-govuk-tab>
+  </ngx-govuk-tabs>
 
-<ngx-govuk-table
-  caption="Employee Information"
-  [dataSource]="dataSource"
-  [columns]="columns"
-></ngx-govuk-table>
+  <ngx-govuk-table
+    caption="Employee Information"
+    [dataSource]="dataSource"
+    [columns]="columns"
+  ></ngx-govuk-table>
 
-<div class="govuk-frontend-supported">
-  <h2 class="govuk-heading-l">Accordion With Summary</h2>
-  <ngx-govuk-accordion id="accordion-with-summary">
-    <ngx-govuk-accordion-item
-      itemId="1"
-      heading="Understanding agile project management"
-      summary="Introductions, methods, core features."
-    >
-      <ul class="govuk-list">
-        <li>
-          <a class="govuk-link" href="#"
-            >Agile and government services: an introduction</a
+  <div class="govuk-frontend-supported">
+    <h2 class="govuk-heading-l">Accordion With Summary</h2>
+    <ngx-govuk-accordion id="accordion-with-summary">
+      <ngx-govuk-accordion-item
+        itemId="1"
+        heading="Understanding agile project management"
+        summary="Introductions, methods, core features."
+        >
+        <ul class="govuk-list">
+          <li>
+            <a class="govuk-link" href="#"
+              >Agile and government services: an introduction</a
+              >
+            </li>
+            <li>
+              <a class="govuk-link" href="#">Agile methods: an introduction</a>
+            </li>
+            <li>
+              <a class="govuk-link" href="#">Core principles of agile</a>
+            </li>
+          </ul>
+        </ngx-govuk-accordion-item>
+        <ngx-govuk-accordion-item
+          itemId="2"
+          heading="Working with agile methods"
+          summary="Workspaces, tools and techniques, user stories, planning."
           >
-        </li>
-        <li>
-          <a class="govuk-link" href="#">Agile methods: an introduction</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="#">Core principles of agile</a>
-        </li>
-      </ul>
-    </ngx-govuk-accordion-item>
-    <ngx-govuk-accordion-item
-      itemId="2"
-      heading="Working with agile methods"
-      summary="Workspaces, tools and techniques, user stories, planning."
-    >
-      <ul class="govuk-list">
-        <li>
-          <a class="govuk-link" href="#"
-            >Creating an agile working environment</a
-          >
-        </li>
-        <li>
-          <a class="govuk-link" href="#">Agile tools and techniques</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="#">Set up a team wall</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="#">Writing user stories</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="#">Planning in agile</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="#">Deciding on priorities</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="#">Developing a roadmap</a>
-        </li>
-      </ul>
-    </ngx-govuk-accordion-item>
-  </ngx-govuk-accordion>
-</div>
+          <ul class="govuk-list">
+            <li>
+              <a class="govuk-link" href="#"
+                >Creating an agile working environment</a
+                >
+              </li>
+              <li>
+                <a class="govuk-link" href="#">Agile tools and techniques</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#">Set up a team wall</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#">Writing user stories</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#">Planning in agile</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#">Deciding on priorities</a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#">Developing a roadmap</a>
+              </li>
+            </ul>
+          </ngx-govuk-accordion-item>
+        </ngx-govuk-accordion>
+      </div>
 
-<!-- Pagination Examples -->
-<div class="govuk-frontend-supported">
-  <h2 class="govuk-heading-l">Pagination Examples</h2>
+      <!-- Pagination Examples -->
+      <div class="govuk-frontend-supported">
+        <h2 class="govuk-heading-l">Pagination Examples</h2>
 
-  <h3 class="govuk-heading-m">Dynamic Pagination</h3>
-  <p>Current page: {{ currentPage }}</p>
-  <ngx-govuk-pagination
-    [itemCount]="totalItems"
-    [itemsPerPage]="itemsPerPage"
-    [currentPage]="currentPage"
-    (pageChange)="onPageChange($event)"
-    (previousClick)="onPreviousClick()"
-    (nextClick)="onNextClick()"
-  ></ngx-govuk-pagination>
+        <h3 class="govuk-heading-m">Dynamic Pagination</h3>
+        <p>Current page: {{ currentPage }}</p>
+        <ngx-govuk-pagination
+          [itemCount]="totalItems"
+          [itemsPerPage]="itemsPerPage"
+          [currentPage]="currentPage"
+          (pageChange)="onPageChange($event)"
+          (previousClick)="onPreviousClick()"
+          (nextClick)="onNextClick()"
+        ></ngx-govuk-pagination>
 
-  <h3 class="govuk-heading-m">Pagination with Custom Labels</h3>
-  <ngx-govuk-pagination
-    [itemCount]="30"
-    [itemsPerPage]="10"
-    [currentPage]="2"
-    previousTitle="Previous step"
-    nextTitle="Next step"
-    (previousClick)="onPreviousClick()"
-    (nextClick)="onNextClick()"
-  ></ngx-govuk-pagination>
+        <h3 class="govuk-heading-m">Pagination with Custom Labels</h3>
+        <ngx-govuk-pagination
+          [itemCount]="30"
+          [itemsPerPage]="10"
+          [currentPage]="2"
+          previousTitle="Previous step"
+          nextTitle="Next step"
+          (previousClick)="onPreviousClick()"
+          (nextClick)="onNextClick()"
+        ></ngx-govuk-pagination>
 
-  <h3 class="govuk-heading-m">Block Mode Pagination</h3>
-  <ngx-govuk-pagination
-    [itemCount]="totalItems"
-    [itemsPerPage]="1"
-    [currentPage]="currentPage"
-    mode="block"
-    previousLabel="Application details"
-    nextLabel="Check your answers"
-    (previousClick)="onPreviousClick()"
-    (nextClick)="onNextClick()"
-  ></ngx-govuk-pagination>
-</div>
+        <h3 class="govuk-heading-m">Block Mode Pagination</h3>
+        <ngx-govuk-pagination
+          [itemCount]="totalItems"
+          [itemsPerPage]="1"
+          [currentPage]="currentPage"
+          mode="block"
+          previousLabel="Application details"
+          nextLabel="Check your answers"
+          (previousClick)="onPreviousClick()"
+          (nextClick)="onNextClick()"
+        ></ngx-govuk-pagination>
+      </div>
 
-<!-- Task List Examples -->
-<div class="govuk-frontend-supported">
-  <h2 class="govuk-heading-l">Task List Examples</h2>
+      <!-- Task List Examples -->
+      <div class="govuk-frontend-supported">
+        <h2 class="govuk-heading-l">Task List Examples</h2>
 
-  <h3 class="govuk-heading-m">Static Task List</h3>
-  <ngx-govuk-task-list>
-    <ngx-govuk-task-list-item
-      title="Company information"
-      routerLink="/forms"
-      statusText="Completed"
-    ></ngx-govuk-task-list-item>
-    <ngx-govuk-task-list-item
-      title="Personal details"
-      href="#"
-      statusText="In progress"
-      color="blue"
-    ></ngx-govuk-task-list-item>
-    <ngx-govuk-task-list-item
-      title="Financial history"
-      href="#"
-      hint="Provide financial information for the last 3 years"
-      statusText="Not started"
-      color="grey"
-    ></ngx-govuk-task-list-item>
-  </ngx-govuk-task-list>
+        <h3 class="govuk-heading-m">Static Task List</h3>
+        <ngx-govuk-task-list>
+          <ngx-govuk-task-list-item
+            title="Company information"
+            routerLink="/forms"
+            statusText="Completed"
+          ></ngx-govuk-task-list-item>
+          <ngx-govuk-task-list-item
+            title="Personal details"
+            href="#"
+            statusText="In progress"
+            color="blue"
+          ></ngx-govuk-task-list-item>
+          <ngx-govuk-task-list-item
+            title="Financial history"
+            href="#"
+            hint="Provide financial information for the last 3 years"
+            statusText="Not started"
+            color="grey"
+          ></ngx-govuk-task-list-item>
+        </ngx-govuk-task-list>
 
-  <h3 class="govuk-heading-m">Dynamic Task List</h3>
-  <ngx-govuk-task-list>
-    <ngx-govuk-task-list-item
-      *ngFor="let task of taskItems"
-      [title]="task.title"
-      [href]="task.href"
-      [hint]="task.hint"
-      [statusText]="task.statusText"
-      [tagColor]="task.color"
-      [noLink]="task.noLink"
-    ></ngx-govuk-task-list-item>
-  </ngx-govuk-task-list>
+        <h3 class="govuk-heading-m">Dynamic Task List</h3>
+        <ngx-govuk-task-list>
+          @for (task of taskItems; track task) {
+            <ngx-govuk-task-list-item
+              [title]="task.title"
+              [href]="task.href"
+              [hint]="task.hint"
+              [statusText]="task.statusText"
+              [tagColor]="task.color"
+              [noLink]="task.noLink"
+            ></ngx-govuk-task-list-item>
+          }
+        </ngx-govuk-task-list>
 
-  <h3 class="govuk-heading-m">Task List With noLink Property</h3>
-  <ngx-govuk-task-list>
-    <ngx-govuk-task-list-item
-      title="Read the guidance"
-      statusText="Completed"
-    ></ngx-govuk-task-list-item>
-    <ngx-govuk-task-list-item
-      title="Application unavailable"
-      href="#"
-      noLink="true"
-      hint="This section cannot be started until a later date"
-      statusText="Cannot start yet"
-      color="grey"
-    ></ngx-govuk-task-list-item>
-    <ngx-govuk-task-list-item
-      title="Required section"
-      href="#"
-      statusText="Not started"
-      color="grey"
-    ></ngx-govuk-task-list-item>
-  </ngx-govuk-task-list>
-</div>
+        <h3 class="govuk-heading-m">Task List With noLink Property</h3>
+        <ngx-govuk-task-list>
+          <ngx-govuk-task-list-item
+            title="Read the guidance"
+            statusText="Completed"
+          ></ngx-govuk-task-list-item>
+          <ngx-govuk-task-list-item
+            title="Application unavailable"
+            href="#"
+            noLink="true"
+            hint="This section cannot be started until a later date"
+            statusText="Cannot start yet"
+            color="grey"
+          ></ngx-govuk-task-list-item>
+          <ngx-govuk-task-list-item
+            title="Required section"
+            href="#"
+            statusText="Not started"
+            color="grey"
+          ></ngx-govuk-task-list-item>
+        </ngx-govuk-task-list>
+      </div>
 
-<!-- Summary List Examples -->
-<div class="govuk-frontend-supported">
-  <h2 class="govuk-heading-l">Summary List Examples</h2>
+      <!-- Summary List Examples -->
+      <div class="govuk-frontend-supported">
+        <h2 class="govuk-heading-l">Summary List Examples</h2>
 
-  <h3 class="govuk-heading-m">Basic Summary List</h3>
-  <ngx-govuk-summary-list>
-    <ngx-govuk-summary-list-item key="Name" value="Sarah Philips" />
-    <ngx-govuk-summary-list-item key="Date of birth" value="5 January 1978">
-      <ngx-govuk-summary-list-actions>
-        <ngx-govuk-summary-list-action
-          href="#"
-          visuallyHiddenText="date of birth"
-          >Change</ngx-govuk-summary-list-action
-        >
-      </ngx-govuk-summary-list-actions>
-    </ngx-govuk-summary-list-item>
-    <ngx-govuk-summary-list-item key="Address">
-      <ng-template ngxGovUkSummaryListValue>
-        <p class="govuk-body">72 Guild Street<br />London<br />SE23 6FH</p>
-      </ng-template>
-      <ngx-govuk-summary-list-actions>
-        <ngx-govuk-summary-list-action href="#" visuallyHiddenText="address"
-          >Change</ngx-govuk-summary-list-action
-        >
-      </ngx-govuk-summary-list-actions>
-    </ngx-govuk-summary-list-item>
-    <ngx-govuk-summary-list-item key="Contact details">
-      <ng-template ngxGovUkSummaryListValue>
-        <p class="govuk-body">
-          Email:
-          <a href="mailto:sarah.phillips@example.com"
-            >sarah.phillips&#64;example.com</a
-          >
-        </p>
-        <p class="govuk-body">Phone: 07700 900457</p>
-      </ng-template>
-      <ngx-govuk-summary-list-actions>
-        <ngx-govuk-summary-list-action
-          href="#"
-          visuallyHiddenText="contact details"
-          >Add</ngx-govuk-summary-list-action
-        >
-        <ngx-govuk-summary-list-action
-          href="#"
-          visuallyHiddenText="contact details"
-          >Change</ngx-govuk-summary-list-action
-        >
-      </ngx-govuk-summary-list-actions>
-    </ngx-govuk-summary-list-item>
-  </ngx-govuk-summary-list>
+        <h3 class="govuk-heading-m">Basic Summary List</h3>
+        <ngx-govuk-summary-list>
+          <ngx-govuk-summary-list-item key="Name" value="Sarah Philips" />
+          <ngx-govuk-summary-list-item key="Date of birth" value="5 January 1978">
+            <ngx-govuk-summary-list-actions>
+              <ngx-govuk-summary-list-action
+                href="#"
+                visuallyHiddenText="date of birth"
+                >Change</ngx-govuk-summary-list-action
+                >
+              </ngx-govuk-summary-list-actions>
+            </ngx-govuk-summary-list-item>
+            <ngx-govuk-summary-list-item key="Address">
+              <ng-template ngxGovUkSummaryListValue>
+                <p class="govuk-body">72 Guild Street<br />London<br />SE23 6FH</p>
+              </ng-template>
+              <ngx-govuk-summary-list-actions>
+                <ngx-govuk-summary-list-action href="#" visuallyHiddenText="address"
+                  >Change</ngx-govuk-summary-list-action
+                  >
+                </ngx-govuk-summary-list-actions>
+              </ngx-govuk-summary-list-item>
+              <ngx-govuk-summary-list-item key="Contact details">
+                <ng-template ngxGovUkSummaryListValue>
+                  <p class="govuk-body">
+                    Email:
+                    <a href="mailto:sarah.phillips@example.com"
+                      >sarah.phillips&#64;example.com</a
+                      >
+                    </p>
+                    <p class="govuk-body">Phone: 07700 900457</p>
+                  </ng-template>
+                  <ngx-govuk-summary-list-actions>
+                    <ngx-govuk-summary-list-action
+                      href="#"
+                      visuallyHiddenText="contact details"
+                      >Add</ngx-govuk-summary-list-action
+                      >
+                      <ngx-govuk-summary-list-action
+                        href="#"
+                        visuallyHiddenText="contact details"
+                        >Change</ngx-govuk-summary-list-action
+                        >
+                      </ngx-govuk-summary-list-actions>
+                    </ngx-govuk-summary-list-item>
+                  </ngx-govuk-summary-list>
 
-  <h3 class="govuk-heading-m">Summary List as Card</h3>
-  <ngx-govuk-summary-list-card title="University of Gloucestershire">
-    <ngx-govuk-summary-list-card-actions>
-      <ngx-govuk-summary-list-action
-        href="#"
-        visuallyHiddenText="of University of Gloucestershire"
-        >Delete choice</ngx-govuk-summary-list-action
-      >
-      <ngx-govuk-summary-list-action
-        routerLink="/forms"
-        visuallyHiddenText="of University of Gloucestershire"
-        >Amend choice</ngx-govuk-summary-list-action
-      >
-    </ngx-govuk-summary-list-card-actions>
-    <ngx-govuk-summary-list>
-      <ngx-govuk-summary-list-item
-        key="Course"
-        value="English (3DMD)"
-      ></ngx-govuk-summary-list-item>
-      <ngx-govuk-summary-list-item
-        key="Location"
-        value="School name, Road, City, SW1 1AA"
-      ></ngx-govuk-summary-list-item>
-      <ngx-govuk-summary-list-item
-        key="Study type"
-        value="Full-time"
-      ></ngx-govuk-summary-list-item>
-    </ngx-govuk-summary-list>
-  </ngx-govuk-summary-list-card>
+                  <h3 class="govuk-heading-m">Summary List as Card</h3>
+                  <ngx-govuk-summary-list-card title="University of Gloucestershire">
+                    <ngx-govuk-summary-list-card-actions>
+                      <ngx-govuk-summary-list-action
+                        href="#"
+                        visuallyHiddenText="of University of Gloucestershire"
+                        >Delete choice</ngx-govuk-summary-list-action
+                        >
+                        <ngx-govuk-summary-list-action
+                          routerLink="/forms"
+                          visuallyHiddenText="of University of Gloucestershire"
+                          >Amend choice</ngx-govuk-summary-list-action
+                          >
+                        </ngx-govuk-summary-list-card-actions>
+                        <ngx-govuk-summary-list>
+                          <ngx-govuk-summary-list-item
+                            key="Course"
+                            value="English (3DMD)"
+                          ></ngx-govuk-summary-list-item>
+                          <ngx-govuk-summary-list-item
+                            key="Location"
+                            value="School name, Road, City, SW1 1AA"
+                          ></ngx-govuk-summary-list-item>
+                          <ngx-govuk-summary-list-item
+                            key="Study type"
+                            value="Full-time"
+                          ></ngx-govuk-summary-list-item>
+                        </ngx-govuk-summary-list>
+                      </ngx-govuk-summary-list-card>
 
-  <h3 class="govuk-heading-m">Summary List with Multiple Actions</h3>
-  <ngx-govuk-summary-list>
-    <ngx-govuk-summary-list-item key="Application reference" value="HDJ2123F">
-      <ngx-govuk-summary-list-actions>
-        <ngx-govuk-summary-list-action
-          href="#"
-          visuallyHiddenText="application reference"
-          >Copy</ngx-govuk-summary-list-action
-        >
-        <ngx-govuk-summary-list-action
-          href="#"
-          visuallyHiddenText="application reference"
-          >Print</ngx-govuk-summary-list-action
-        >
-      </ngx-govuk-summary-list-actions>
-    </ngx-govuk-summary-list-item>
-    <ngx-govuk-summary-list-item key="Submitted" value="15 March 2023">
-      <ngx-govuk-summary-list-actions>
-        <ngx-govuk-summary-list-action
-          routerLink="/forms"
-          visuallyHiddenText="for application submission"
-          >View receipt</ngx-govuk-summary-list-action
-        >
-      </ngx-govuk-summary-list-actions>
-    </ngx-govuk-summary-list-item>
-  </ngx-govuk-summary-list>
-</div>
+                      <h3 class="govuk-heading-m">Summary List with Multiple Actions</h3>
+                      <ngx-govuk-summary-list>
+                        <ngx-govuk-summary-list-item key="Application reference" value="HDJ2123F">
+                          <ngx-govuk-summary-list-actions>
+                            <ngx-govuk-summary-list-action
+                              href="#"
+                              visuallyHiddenText="application reference"
+                              >Copy</ngx-govuk-summary-list-action
+                              >
+                              <ngx-govuk-summary-list-action
+                                href="#"
+                                visuallyHiddenText="application reference"
+                                >Print</ngx-govuk-summary-list-action
+                                >
+                              </ngx-govuk-summary-list-actions>
+                            </ngx-govuk-summary-list-item>
+                            <ngx-govuk-summary-list-item key="Submitted" value="15 March 2023">
+                              <ngx-govuk-summary-list-actions>
+                                <ngx-govuk-summary-list-action
+                                  routerLink="/forms"
+                                  visuallyHiddenText="for application submission"
+                                  >View receipt</ngx-govuk-summary-list-action
+                                  >
+                                </ngx-govuk-summary-list-actions>
+                              </ngx-govuk-summary-list-item>
+                            </ngx-govuk-summary-list>
+                          </div>
