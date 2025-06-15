@@ -3,7 +3,7 @@
   [class.govuk-radios--small]="small()"
   [class.govuk-radios--inline]="inline()"
 >
-  @for (option of options(); track option.value) {
+  @for (option of options(); track option.value()) {
     @if ($index > 0 && option.isDivided()) {
       <div class="govuk-radios__divider">Or</div>
     }

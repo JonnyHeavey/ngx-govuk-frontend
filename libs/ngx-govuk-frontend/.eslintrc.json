@@ -28,6 +28,12 @@
       }
     },
     {
+      "files": ["*.spec.ts"],
+      "rules": {
+        "@angular-eslint/prefer-inject": "off"
+      }
+    },
+    {
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
       "rules": {}

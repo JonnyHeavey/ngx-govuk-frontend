@@ -1,4 +1,4 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, inject, TemplateRef } from '@angular/core';
 
 /**
  * This directive implements the value in a GOV.UK Design System summary list component.
@@ -10,5 +10,5 @@ import { Directive, TemplateRef } from '@angular/core';
   selector: '[ngxGovUkSummaryListValue]',
 })
 export class GovUKSummaryListValueDirective {
-  constructor(public templateRef: TemplateRef<unknown>) {}
+  public templateRef = inject(TemplateRef);
 }
