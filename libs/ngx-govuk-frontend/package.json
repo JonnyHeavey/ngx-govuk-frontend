@@ -21,7 +21,7 @@
     "@angular/forms": "^20.0.0 || ^21.0.0",
     "@angular/router": "^20.0.0 || ^21.0.0",
     "@angular/cdk": "^20.0.0 || ^21.0.0",
-    "govuk-frontend": "^5.8.0"
+    "govuk-frontend": "^5.10.2"
   },
   "sideEffects": false
 }
