@@ -13,6 +13,17 @@ The library is designed to:
 - Be easily integrated into Angular applications
 - Follow best practices for performance and accessibility
 
+## Version Compatibility
+
+The following table shows which versions of NgxGovUKFrontend are compatible with which versions of Angular:
+
+| NgxGovUKFrontend Version | Angular Version Support |
+| ------------------------ | ----------------------- |
+| 1.x                      | 19, 20                  |
+| 2.x                      | 20, 21                  |
+
+**Note:** We recommend using the latest version of NgxGovUKFrontend that supports your Angular version for the best experience and latest features.
+
 ## Documentation
 
 **[View the full NgxGovUKFrontend documentation](https://jonnyheavey.github.io/ngx-uk-frontend)**
