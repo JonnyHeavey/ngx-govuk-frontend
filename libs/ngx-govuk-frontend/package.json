@@ -1,6 +1,6 @@
 {
   "name": "ngx-govuk-frontend",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Angular components for the GOV.UK Design System",
   "keywords": [
     "angular",
@@ -16,12 +16,12 @@
   },
   "peerDependencies": {
     "@ngx-uk-frontend/core": "^0.0.3",
-    "@angular/common": "^19.0.0 || ^20.0.0",
-    "@angular/core": "^19.0.0 || ^20.0.0",
-    "@angular/forms": "^19.0.0 || ^20.0.0",
-    "@angular/router": "^19.0.0 || ^20.0.0",
-    "@angular/cdk": "^19.0.0 || ^20.0.0",
-    "govuk-frontend": "^5.8.0"
+    "@angular/common": "^20.0.0 || ^21.0.0",
+    "@angular/core": "^20.0.0 || ^21.0.0",
+    "@angular/forms": "^20.0.0 || ^21.0.0",
+    "@angular/router": "^20.0.0 || ^21.0.0",
+    "@angular/cdk": "^20.0.0 || ^21.0.0",
+    "govuk-frontend": "^5.10.2"
   },
   "sideEffects": false
 }

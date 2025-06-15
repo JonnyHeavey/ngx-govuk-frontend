@@ -4,6 +4,7 @@ import {
   Component,
   contentChildren,
   ElementRef,
+  inject,
   input,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -34,6 +35,8 @@ import { GovUKErrorSummaryItemDirective } from './error-summary-item.directive';
   imports: [RouterLink],
 })
 export class GovUKErrorSummaryComponent {
+  private elementRef = inject(ElementRef);
+
   /**
    * Query for all error summary item directives using signal-based query
    * This allows the component to iterate through the child error items
@@ -45,7 +48,7 @@ export class GovUKErrorSummaryComponent {
    */
   readonly title = input<string>('There is a problem');
 
-  constructor(private elementRef: ElementRef) {
+  constructor() {
     // Focus on the error summary when it's rendered
     afterNextRender(() => {
       const element = this.elementRef.nativeElement as HTMLElement;

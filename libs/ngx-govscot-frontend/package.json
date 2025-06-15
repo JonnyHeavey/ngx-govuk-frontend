@@ -17,11 +17,11 @@
   },
   "peerDependencies": {
     "@ngx-uk-frontend/core": "^0.0.3",
-    "@angular/common": "^19.0.0 || ^20.0.0",
-    "@angular/core": "^19.0.0 || ^20.0.0",
-    "@angular/forms": "^19.0.0 || ^20.0.0",
-    "@angular/router": "^19.0.0 || ^20.0.0",
-    "@angular/cdk": "^19.0.0 || ^20.0.0",
+    "@angular/common": "^20.0.0 || ^21.0.0",
+    "@angular/core": "^20.0.0 || ^21.0.0",
+    "@angular/forms": "^20.0.0 || ^21.0.0",
+    "@angular/router": "^20.0.0 || ^21.0.0",
+    "@angular/cdk": "^20.0.0 || ^21.0.0",
     "@scottish-government/design-system": "^3.0.1"
   },
   "sideEffects": false
