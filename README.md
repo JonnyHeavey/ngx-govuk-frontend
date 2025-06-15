@@ -20,7 +20,7 @@ A comprehensive implementation of the [GOV.UK Design System](https://design-syst
 ### Prerequisites
 
 - Node.js (LTS version recommended)
-- Angular 19+
+- Angular 20+
 - Nx CLI
 
 ### Getting Started
