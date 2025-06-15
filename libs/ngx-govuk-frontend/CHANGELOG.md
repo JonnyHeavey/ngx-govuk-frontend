@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Breaking Changes
 
-- Library now supports Angular versions 20 and 21.
+- Library now supports Angular versions v20 and v21. Support for v19 has been removed.
+- Library now depends on govuk-frontend v5.10 which introduces a rebrand. See [govuk-frontend v5.10.0 release notes](https://github.com/alphagov/govuk-frontend/releases/tag/v5.10.0) for details.
 
 ## [1.0.1] - 2025-06-08
 
